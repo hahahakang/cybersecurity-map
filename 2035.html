@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2035 中国智能安全市场格局预判</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:linear-gradient(135deg,#0b1120 0%,#162032 45%,#0d1526 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px 40px;}
+.container{max-width:1200px;margin:0 auto;}
+.header{text-align:center;margin-bottom:8px;}
+.header h1{font-size:24px;font-weight:700;background:linear-gradient(90deg,#c084fc,#818cf8,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.header .sub{font-size:13px;color:#64748b;margin-top:6px;}
+.back-link{display:inline-block;margin-bottom:16px;padding:6px 14px;border-radius:8px;font-size:12.5px;color:#94a3b8;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .2s;}
+.back-link:hover{color:#c084fc;border-color:rgba(192,132,252,0.4);}
+.orbit-wrap{position:relative;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:14px;
+  padding:20px;margin-top:16px;display:flex;justify-content:center;overflow:hidden;}
+.orbit-system{position:relative;width:680px;height:620px;max-width:100%;}
+/* 轨道 */
+.orbit{position:absolute;border-radius:50%;border:1px dashed rgba(129,140,248,0.2);left:50%;top:50%;transform:translate(-50%,-50%);}
+.orbit.o1{width:260px;height:260px;border-color:rgba(192,132,252,0.25);}
+.orbit.o2{width:480px;height:480px;border-color:rgba(56,189,248,0.2);}
+.orbit.o3{width:660px;height:620px;border-radius:50%;border-color:rgba(52,211,153,0.12);border-style:dotted;}
+.orbit-label{position:absolute;font-size:10px;color:#64748b;letter-spacing:1px;white-space:nowrap;}
+/* 中心基座 */
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:140px;height:140px;
+  background:radial-gradient(circle,rgba(192,132,252,0.3) 0%,rgba(192,132,252,0.1) 50%,transparent 70%);
+  border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:10;}
+.core-inner{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,rgba(192,132,252,0.3),rgba(129,140,248,0.2));
+  border:2px solid rgba(192,132,252,0.6);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 40px rgba(192,132,252,0.3);animation:pulse 3s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(192,132,252,0.3);}50%{box-shadow:0 0 60px rgba(192,132,252,0.5);}}
+.core-name{font-size:12px;font-weight:700;color:#f1f5f9;line-height:1.3;}
+.core-sub{font-size:9px;color:#c4b5fd;margin-top:3px;}
+/* 节点 */
+.node{position:absolute;transform:translate(-50%,-50%);border-radius:10px;padding:8px 12px;text-align:center;
+  font-size:10.5px;font-weight:600;white-space:nowrap;z-index:5;transition:transform .2s;}
+.node:hover{transform:translate(-50%,-50%) scale(1.12);z-index:20;}
+.node.agent{background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.5);color:#e9d5ff;box-shadow:0 0 12px rgba(192,132,252,0.15);}
+.node.industry{background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.4);color:#bae6fd;box-shadow:0 0 10px rgba(56,189,248,0.1);}
+.node.infra{background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.35);color:#a7f3d0;}
+.node .n-icon{font-size:14px;display:block;margin-bottom:2px;}
+.ring1{position:absolute;left:50%;top:50%;width:280px;height:280px;margin-left:-140px;margin-top:-140px;}
+.ring2{position:absolute;left:50%;top:50%;width:500px;height:500px;margin-left:-250px;margin-top:-250px;}
+.node:hover{transform:translate(-50%,-50%) scale(1.15);z-index:20;}
+/* 静态外圈 */
+.infra-grid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:660px;height:620px;pointer-events:none;}
+.infra-item{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;}
+/* 图例 */
+.legend{display:flex;gap:18px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#94a3b8;}
+.legend-dot{width:10px;height:10px;border-radius:3px;}
+/* 判断 */
+.insights{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.insight-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px;}
+.insight-card .ic-title{font-size:12px;font-weight:600;color:#c084fc;margin-bottom:6px;}
+.insight-card .ic-body{font-size:11.5px;color:#94a3b8;line-height:1.7;}
+.footer{text-align:center;margin-top:20px;font-size:11px;color:#475569;line-height:1.7;}
+@media(max-width:720px){
+  .orbit-system{width:340px;height:380px;}
+  .orbit.o1{width:160px;height:160px;}.orbit.o2{width:280px;height:280px;}.orbit.o3{width:340px;height:380px;}
+  .ring1{width:160px;height:160px;margin-left:-80px;margin-top:-80px;}
+  .ring2{width:280px;height:280px;margin-left:-140px;margin-top:-140px;}
+  .core{width:90px;height:90px;}.core-inner{width:68px;height:68px;}
+  .core-name{font-size:10px;}.node{font-size:9px;padding:5px 7px;}.node .n-icon{font-size:11px;}
+  .infra-grid{width:340px;height:380px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回市场格局图谱</a>
+  <div class="header">
+    <h1>2035 年中国智能安全市场格局预判</h1>
+    <div class="sub">安全智能体自主化 · 基座一体化 · 安全即服务融入数字基础设施</div>
+  </div>
+
+  <div class="orbit-wrap">
+    <div class="orbit-system" id="orbitSystem">
+      <div class="orbit o3"></div>
+      <div class="orbit o2"></div>
+      <div class="orbit o1"></div>
+
+      <div class="orbit-label" style="left:50%;top:8px;transform:translateX(-50%);color:#6ee7b7;">安全即服务层 · 融入数字社会基础设施</div>
+      <div class="orbit-label" style="right:8px;top:50%;transform:translateY(-50%);color:#38bdf8;">行业深度应用层</div>
+      <div class="orbit-label" style="left:8px;top:50%;transform:translateY(-50%);color:#c084fc;">安全智能体层</div>
+
+      <!-- 中心基座 -->
+      <div class="core">
+        <div class="core-inner">
+          <div class="core-name">国家级安全<br>智能基座</div>
+          <div class="core-sub">1-2家 · 统一标准</div>
+        </div>
+      </div>
+
+      <!-- 内圈：安全Agent -->
+      <div class="ring1" id="ring1"></div>
+      <!-- 中圈：行业应用 -->
+      <div class="ring2" id="ring2"></div>
+      <!-- 外圈：基础设施 -->
+      <div class="infra-grid" id="infraGrid"></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:rgba(192,132,252,0.5);"></span>安全智能体（自主运行）</span>
+    <span class="legend-item"><span class="legend-dot" style="background:rgba(56,189,248,0.4);"></span>行业深度应用</span>
+    <span class="legend-item"><span class="legend-dot" style="background:rgba(52,211,153,0.35);"></span>安全即服务基础设施</span>
+  </div>
+
+  <div class="insights">
+    <div class="insight-card">
+      <div class="ic-title">▎核心判断一：基座归一</div>
+      <div class="ic-body">2030 年的 3-4 家基座进一步整合为 1-2 家国家级安全智能基座，形成统一安全大模型标准和协议，类似通信领域的"骨干网"，由国家队+龙头企业主导。</div>
+    </div>
+    <div class="insight-card">
+      <div class="ic-title">▎核心判断二：Agent 成为主力</div>
+      <div class="ic-body">安全运营从"人+工具"转向"Agent 自主执行"。威胁狩猎、应急响应、合规审计、攻防对抗等均由专业安全 Agent 7×24 自主完成，人类转为策略制定和监督。</div>
+    </div>
+    <div class="insight-card">
+      <div class="ic-title">▎核心判断三：安全即服务</div>
+      <div class="ic-body">安全能力像水电一样随取随用，深度嵌入云计算、物联网、车联网、工业互联网、卫星互联网等数字基础设施，企业无需自建安全体系，按防护效果付费。</div>
+    </div>
+    <div class="insight-card">
+      <div class="ic-title">▎核心判断四：应用层重构</div>
+      <div class="ic-body">传统安全产品形态消失，行业安全应用以"Agent+场景"形式重构。省级安全服务商转型为基座的区域运营节点，安全人才结构从攻防转向 AI 训练和策略治理。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    本图为 2035 年市场格局概念预判图，非精确预测 · 基于 AI 安全、Agent 技术和产业集中化趋势推演<br>
+    轨道节点持续旋转代表生态动态演化 · 2026年8月
+  </div>
+</div>
+
+<script>
+(function(){
+  var agents=[
+    {icon:'🛡️',name:'威胁狩猎Agent'},{icon:'🚨',name:'应急响应Agent'},
+    {icon:'📋',name:'合规审计Agent'},{icon:'🔐',name:'数据安全Agent'},
+    {icon:'🎭',name:'攻防对抗Agent'},{icon:'👤',name:'身份安全Agent'},
+    {icon:'🔍',name:'漏洞挖掘Agent'},{icon:'🤝',name:'供应链安全Agent'}
+  ];
+  var industries=[
+    {icon:'🏦',name:'金融'},{icon:'🏛️',name:'政务'},{icon:'⚡',name:'能源电力'},
+    {icon:'🚗',name:'车联网'},{icon:'🏭',name:'工业互联网'},{icon:'🏥',name:'医疗'},
+    {icon:'🛰️',name:'卫星互联网'},{icon:'🌐',name:'跨境数据'},{icon:'🤖',name:'AI基础设施'},{icon:'🏙️',name:'智慧城市'}
+  ];
+  var infra=[
+    {name:'云安全原生内置',x:50,y:2},{name:'物联网安全默认开启',x:93,y:18},
+    {name:'5G/6G安全协议',x:95,y:50},{name:'车联网安全准入',x:88,y:82},
+    {name:'工业控制安全',x:65,y:97},{name:'数据跨境安全网关',x:35,y:97},
+    {name:'卫星互联网安全',x:10,y:82},{name:'量子安全通信',x:5,y:50},
+    {name:'AI安全标准',x:7,y:18}
+  ];
+  function placeNodes(containerId,items,className){
+    var c=document.getElementById(containerId);if(!c)return;
+    items.forEach(function(item,i){
+      var angle=(i/items.length)*Math.PI*2 - Math.PI/2;
+      var x=50+42*Math.cos(angle);
+      var y=50+42*Math.sin(angle);
+      var d=document.createElement('div');
+      d.className='node '+className;
+      d.style.left=x+'%';d.style.top=y+'%';
+      d.innerHTML='<span class="n-icon">'+item.icon+'</span>'+item.name;
+      c.appendChild(d);
+    });
+  }
+  placeNodes('ring1',agents,'agent');
+  placeNodes('ring2',industries,'industry');
+  var ig=document.getElementById('infraGrid');
+  infra.forEach(function(item){
+    var d=document.createElement('div');
+    d.className='node infra infra-item';
+    d.style.left=item.x+'%';d.style.top=item.y+'%';
+    d.textContent=item.name;
+    ig.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>
