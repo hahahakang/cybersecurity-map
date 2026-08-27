@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球网络安全市场格局图谱 | Cybersecurity Market Map</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #0b1120 0%, #162032 45%, #0d1526 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+  }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .header { text-align:center; margin-bottom: 20px; }
+  .header h1 {
+    font-size: 26px; font-weight: 700; letter-spacing: 1px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .sub { font-size: 13px; color: #64748b; margin-top: 6px; }
+  .tabs {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .tab-btn {
+    padding: 9px 20px; border-radius: 10px; cursor: pointer;
+    font-size: 13.5px; font-weight: 500; transition: all .25s;
+    background: rgba(255,255,255,0.04); color: #94a3b8;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .tab-btn:hover { background: rgba(56,189,248,0.1); color: #e2e8f0; }
+  .tab-btn.active {
+    background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(129,140,248,0.2));
+    color: #38bdf8; border-color: rgba(56,189,248,0.4);
+    box-shadow: 0 0 20px rgba(56,189,248,0.15);
+  }
+  .stats-row {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .stat-card {
+    flex: 1 1 180px; min-width: 160px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .stat-card .label { font-size: 11.5px; color: #64748b; margin-bottom: 5px; }
+  .stat-card .value { font-size: 22px; font-weight: 700; color: #f1f5f9; }
+  .stat-card .value .unit { font-size: 12px; color: #64748b; font-weight: 400; margin-left: 3px; }
+  .stat-card .delta { font-size: 11px; color: #34d399; margin-top: 3px; }
+  .chart-wrap {
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 12px; position: relative;
+  }
+  #mainChart { width: 100%; height: 560px; }
+  .legend-bar {
+    display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center;
+    margin-top: 14px; padding: 0 8px;
+  }
+  .legend-item {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11.5px; color: #94a3b8;
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+  .footer {
+    text-align: center; margin-top: 18px; font-size: 11px; color: #475569; line-height: 1.7;
+  }
+  .footer a { color: #38bdf8; text-decoration: none; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 20px; }
+    #mainChart { height: 440px; }
+    .stat-card .value { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>全球网络安全市场格局图谱</h1>
+    <div class="sub">Cybersecurity Market Landscape · 矩形面积 = 公司市值 · 颜色 = 技术领域 · 数据截至 2026年8月</div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab-btn active" data-market="cn">🇨🇳 中国市场</div>
+    <div class="tab-btn" data-market="us">🇺🇸 美国市场</div>
+    <div class="tab-btn" data-market="global_other">🌍 中美以外全球</div>
+    <div class="tab-btn" data-market="global">🌐 全球总览</div>
+  </div>
+
+  <div class="stats-row" id="statsRow"></div>
+
+  <div class="chart-wrap">
+    <div id="mainChart"></div>
+  </div>
+
+  <div class="legend-bar" id="legendBar"></div>
+
+  <div class="footer">
+    数据来源：同花顺 / 证券时报 / 东方财富 / finplify / SecurityLab / Grand View Research / 数说安全 · 美股市值按 1 USD≈7.2 CNY 统一换算 ·
+    图谱分类参考数说安全《2025中国网络安全市场全景图》与 Alexej Pikovsky Cybersecurity Market Map 2026<br>
+    注：市值为公开市场数据，已被收购/私有化公司标注收购价或估值；市场规模为2025-2026年各机构估算中值
+  </div>
+</div>
+
+<script>
+(function(){
+  // ===== 领域配色 =====
+  var catColors = {
+    '网络基础架构':'#3b82f6','端点安全':'#f97316','身份与访问':'#8b5cf6',
+    '应用安全':'#22c55e','数据安全':'#eab308','大模型/AI安全':'#ef4444',
+    '云安全':'#06b6d4','安全运营':'#64748b','工控/物联网安全':'#d97706',
+    '消费安全':'#ec4899','隐私合规':'#14b8a6','安全服务':'#475569'
+  };
+
+  // ===== 中国市场（亿元人民币）=====
+  var cnData = [
+    {cat:'网络基础架构', items:[
+      {name:'深信服', val:486.06, desc:'防火墙·零信任SASE·超融合'},
+      {name:'天融信', val:74.31, desc:'防火墙·网络安全老牌'},
+      {name:'山石网科', val:25, desc:'防火墙·云安全'},
+      {name:'迪普科技', val:20, desc:'应用交付·安全'}
+    ]},
+    {cat:'安全运营', items:[
+      {name:'奇安信', val:170.29, desc:'全场景安全运营·市占率第一'},
+      {name:'绿盟科技', val:55.37, desc:'漏洞管理·IDS/IPS·安全运营'},
+      {name:'永信至诚', val:23.23, desc:'攻防演练·靶场·安全培训'},
+      {name:'任子行', val:15, desc:'网络审计·监管科技'}
+    ]},
+    {cat:'数据安全', items:[
+      {name:'启明星辰', val:161.72, desc:'数据安全·工控安全(中国移动控股)'},
+      {name:'美亚柏科', val:40, desc:'电子数据取证·大数据安全'}
+    ]},
+    {cat:'大模型/AI安全', items:[
+      {name:'三六零', val:606.86, desc:'安全大脑·内容安全·大模型安全'}
+    ]},
+    {cat:'应用安全', items:[
+      {name:'安恒信息', val:35, desc:'WAF·数据安全·云安全'}
+    ]},
+    {cat:'端点安全', items:[
+      {name:'亚信安全', val:30, desc:'终端安全·云安全·身份安全'}
+    ]}
+  ];
+
+  // ===== 美国市场（亿美元）=====
+  var usData = [
+    {cat:'网络基础架构', items:[
+      {name:'Palo Alto Networks', val:286, desc:'防火墙+Prisma SASE·全球平台龙头'},
+      {name:'Fortinet', val:61, desc:'NGFW·SASE·SMB市场深厚'},
+      {name:'Cisco Security', val:0, desc:'Splunk收购后整合·网络安全巨头', note:'含Splunk $28B收购'}
+    ]},
+    {cat:'端点安全', items:[
+      {name:'CrowdStrike', val:194, desc:'EDR/XDR·云原生端点安全龙头'},
+      {name:'SentinelOne', val:4.8, desc:'AI驱动EDR·CrowdStrike竞品'}
+    ]},
+    {cat:'云安全', items:[
+      {name:'Cloudflare', val:70, desc:'零信任·应用安全·CDN+安全'},
+      {name:'Zscaler', val:30, desc:'零信任云代理SSE·SASE'}
+    ]},
+    {cat:'身份与访问', items:[
+      {name:'Okta', val:25, desc:'IAM·SSO·身份安全平台'},
+      {name:'CyberArk', val:22, desc:'特权访问管理PAM(以色列总部/美上市)'}
+    ]},
+    {cat:'安全运营', items:[
+      {name:'Tenable', val:30, desc:'漏洞管理·暴露面管理'},
+      {name:'Rapid7', val:25, desc:'漏洞管理·安全运营·SIEM'},
+      {name:'Qualys', val:20, desc:'云原生漏洞管理·VMDR'}
+    ]},
+    {cat:'消费安全', items:[
+      {name:'Gen Digital', val:16, desc:'Norton·Avast·消费安全巨头'}
+    ]}
+  ];
+
+  // ===== 中美以外全球（亿美元）=====
+  var otherData = [
+    {cat:'网络基础架构', items:[
+      {name:'Check Point', val:20, desc:'以色列·网络安全·威胁预防老牌'},
+      {name:'Sophos', val:39, desc:'英国·中小企业安全(已被Thoma Bravo私有化)', note:'$3.9B收购价'}
+    ]},
+    {cat:'身份与访问', items:[
+      {name:'CyberArk', val:22, desc:'以色列·特权访问管理PAM领导者'}
+    ]},
+    {cat:'端点安全', items:[
+      {name:'Trend Micro', val:15, desc:'日本·端点·混合云安全·企业级'},
+      {name:'Kaspersky', val:10, desc:'俄罗斯·端点·消费安全(私有估算)'}
+    ]},
+    {cat:'大模型/AI安全', items:[
+      {name:'Darktrace', val:53, desc:'英国·AI异常检测·网络安全AI(已私有化)', note:'$5.3B收购价'}
+    ]},
+    {cat:'隐私合规', items:[
+      {name:'OneTrust', val:50, desc:'英国·隐私管理·数据治理(私有估值)', note:'估值约$5B'}
+    ]},
+    {cat:'应用安全', items:[
+      {name:'Mimecast', val:57, desc:'英国·邮件安全·归档(已被Perforce私有化)', note:'$5.7B收购价'}
+    ]}
+  ];
+
+  // ===== 全球总览（亿美元，区域→领域→公司）=====
+  var globalData = [
+    {name:'🇺🇸 美国', val:0, children: usData.map(function(d){
+      return {name:d.cat, children:d.items.filter(function(i){return i.val>0;}).map(function(i){
+        return {name:i.name, value:i.val, cat:d.cat};
+      })};
+    })},
+    {name:'🇨🇳 中国', val:0, children: cnData.map(function(d){
+      return {name:d.cat, children:d.items.map(function(i){
+        return {name:i.name, value:+(i.val/7.2).toFixed(1), cat:d.cat};
+      })};
+    })},
+    {name:'🌍 其他地区', val:0, children: otherData.map(function(d){
+      return {name:d.cat, children:d.items.filter(function(i){return i.val>0;}).map(function(i){
+        return {name:i.name, value:i.val, cat:d.cat};
+      })};
+    })}
+  ];
+
+  // 计算区域总值
+  globalData.forEach(function(region){
+    var total = 0;
+    region.children.forEach(function(cat){
+      cat.children.forEach(function(c){ total += c.value; });
+    });
+    region.val = +total.toFixed(0);
+  });
+
+  // ===== 市场规模数据 =====
+  var marketStats = {
+    cn: {size:'887', unit:'亿元人民币', cagr:'~8%', companies:'8家上市', note:'2025年数字安全业务收入(数世咨询)'},
+    us: {size:'~1,250', unit:'亿美元', cagr:'~12%', companies:'12家代表', note:'北美市场约占全球41.5%'},
+    global_other: {size:'~870', unit:'亿美元', cagr:'~11%', companies:'8家代表', note:'欧洲25%+亚太(除中国)+拉美+中东非'},
+    global: {size:'~3,010', unit:'亿美元', cagr:'~10-14%', companies:'28家代表', note:'2026年全球网络安全市场估算中值'}
+  };
+
+  // ===== 构建treemap数据 =====
+  function buildTreeData(raw) {
+    return raw.filter(function(d){return d.items && d.items.length>0;}).map(function(d){
+      var total = 0;
+      var col = getColor(d.cat);
+      var children = d.items.filter(function(i){return i.val>0;}).map(function(i){
+        total += i.val;
+        return {
+          name: i.name, value: i.val, cat: d.cat, desc: i.desc || '', note: i.note || '',
+          itemStyle: {color: col, borderColor:'#0b1120', borderWidth:1, gapWidth:1.5}
+        };
+      });
+      return {
+        name: d.cat, value: +total.toFixed(1), cat: d.cat,
+        itemStyle: {color: col, borderColor:'#0b1120', borderWidth:2, gapWidth:2},
+        children: children
+      };
+    });
+  }
+
+  function buildGlobalTree(raw) {
+    return raw.map(function(region){
+      var regionColor = region.name.indexOf('美国')>=0 ? '#1e40af' : region.name.indexOf('中国')>=0 ? '#991b1b' : '#334155';
+      return {
+        name: region.name, value: region.val,
+        itemStyle: {color: regionColor, borderColor:'#0b1120', borderWidth:3, gapWidth:3},
+        children: region.children.filter(function(cat){return cat.children && cat.children.length>0;}).map(function(cat){
+          var t = 0; var col = getColor(cat.name);
+          var kids = cat.children.map(function(c){
+            t+=c.value;
+            return {name:c.name, value:c.value, cat:cat.name, desc:c.desc||'',
+              itemStyle:{color:col, borderColor:'#0b1120', borderWidth:1, gapWidth:1}};
+          });
+          return {name:cat.name, value:+t.toFixed(1), cat:cat.name,
+            itemStyle:{color:col, borderColor:'#0b1120', borderWidth:2, gapWidth:2},
+            children:kids};
+        })
+      };
+    });
+  }
+
+  // ===== ECharts初始化 =====
+  var chart = echarts.init(document.getElementById('mainChart'));
+  var currentMarket = 'cn';
+
+  function getColor(catName) {
+    // 模糊匹配
+    for(var k in catColors){
+      if(catName.indexOf(k.replace('/',''))>=0 || k.indexOf(catName)>=0) return catColors[k];
+    }
+    // 关键词匹配
+    if(catName.indexOf('网络')>=0) return catColors['网络基础架构'];
+    if(catName.indexOf('端点')>=0) return catColors['端点安全'];
+    if(catName.indexOf('身份')>=0) return catColors['身份与访问'];
+    if(catName.indexOf('应用')>=0) return catColors['应用安全'];
+    if(catName.indexOf('数据')>=0) return catColors['数据安全'];
+    if(catName.indexOf('大模型')>=0 || catName.indexOf('AI')>=0) return catColors['大模型/AI安全'];
+    if(catName.indexOf('云')>=0) return catColors['云安全'];
+    if(catName.indexOf('运营')>=0) return catColors['安全运营'];
+    if(catName.indexOf('工控')>=0 || catName.indexOf('物联网')>=0) return catColors['工控/物联网安全'];
+    if(catName.indexOf('消费')>=0) return catColors['消费安全'];
+    if(catName.indexOf('隐私')>=0) return catColors['隐私合规'];
+    return '#64748b';
+  }
+
+  function renderChart(market) {
+    currentMarket = market;
+    var isGlobal = (market === 'global');
+    var rawData, unitLabel, levels;
+
+    if(market === 'cn') {
+      rawData = buildTreeData(cnData);
+      unitLabel = '亿元';
+    } else if(market === 'us') {
+      rawData = buildTreeData(usData);
+      unitLabel = '亿美元';
+    } else if(market === 'global_other') {
+      rawData = buildTreeData(otherData);
+      unitLabel = '亿美元';
+    } else {
+      rawData = buildGlobalTree(globalData);
+      unitLabel = '亿美元';
+    }
+
+    // 层级样式（levels[0]=根节点, levels[1]=领域, levels[2]=公司）
+    if(isGlobal) {
+      levels = [
+        { // 根节点
+          itemStyle: {borderColor:'#0b1120', borderWidth:0},
+          label: {show:false}, upperLabel:{show:false}
+        },
+        { // 区域层
+          itemStyle: {borderColor:'#0b1120', borderWidth:3, gapWidth:3},
+          upperLabel: {show:true, height:30, fontSize:15, fontWeight:700, color:'#f1f5f9'}
+        },
+        { // 领域层
+          itemStyle: {borderColor:'#0b1120', borderWidth:2, gapWidth:2},
+          upperLabel: {show:true, height:20, fontSize:11, color:'#e2e8f0'}
+        },
+        { // 公司层
+          itemStyle: {borderColor:'#0b1120', borderWidth:1, gapWidth:1},
+          label: {show:true, fontSize:10, color:'#fff', lineHeight:13,
+            formatter:function(p){ return p.name+'\n'+p.value+unitLabel; }}
+        }
+      ];
+    } else {
+      levels = [
+        { // 根节点
+          itemStyle: {borderColor:'#0b1120', borderWidth:0},
+          label: {show:false}, upperLabel:{show:false}
+        },
+        { // 领域层
+          itemStyle: {borderColor:'#0b1120', borderWidth:3, gapWidth:3},
+          upperLabel: {show:true, height:24, fontSize:12.5, fontWeight:600, color:'#f1f5f9',
+            formatter:function(p){ return p.name+' · '+p.value+unitLabel; }}
+        },
+        { // 公司层
+          itemStyle: {borderColor:'#0b1120', borderWidth:1.5, gapWidth:1.5},
+          label: {show:true, fontSize:11, color:'#fff', fontWeight:500, lineHeight:14,
+            formatter:function(p){
+              return '{name|'+p.name+'}\n{val|'+p.value+unitLabel+'}';
+            },
+            rich: {
+              name: {fontSize:11, color:'#fff', fontWeight:600, lineHeight:15},
+              val: {fontSize:10, color:'rgba(255,255,255,0.75)', lineHeight:14}
+            }
+          }
+        }
+      ];
+    }
+
+    var option = {
+      backgroundColor: 'transparent',
+      tooltip: {
+        confine: true,
+        backgroundColor: 'rgba(15,23,42,0.95)',
+        borderColor: 'rgba(56,189,248,0.3)',
+        borderWidth: 1,
+        textStyle: {color:'#e2e8f0', fontSize:12},
+        extraCssText: 'border-radius:8px; padding:10px 14px; max-width:280px; white-space:normal; word-break:break-all;',
+        formatter: function(info){
+          if(info.data.desc){
+            return '<div style="font-weight:700;font-size:13px;margin-bottom:4px;color:#38bdf8;">'+info.name+'</div>'
+              + '<div style="color:#94a3b8;font-size:11px;margin-bottom:3px;">领域：'+info.data.cat+'</div>'
+              + '<div style="color:#e2e8f0;font-size:12px;margin-bottom:3px;">市值：'+info.value+' '+unitLabel+'</div>'
+              + '<div style="color:#cbd5e1;font-size:11.5px;">'+info.data.desc+'</div>'
+              + (info.data.note?'<div style="color:#f59e0b;font-size:10.5px;margin-top:4px;">'+info.data.note+'</div>':'');
+          }
+          return '<div style="font-weight:700;color:#38bdf8;">'+info.name+'</div>'
+            + '<div style="color:#94a3b8;font-size:11px;">合计：'+info.value+' '+unitLabel+'</div>';
+        }
+      },
+      series: [{
+        type: 'treemap',
+        data: rawData,
+        roam: false,
+        nodeClick: false,
+        breadcrumb: {show: false},
+        animationDuration: 600,
+        animationEasing: 'cubicOut',
+        width: '97%',
+        height: '95%',
+        left: 'center',
+        top: 'center',
+        levels: levels,
+        labelLayout: {hideOverlap: true}
+      }]
+    };
+
+    chart.setOption(option, true);
+  }
+
+  // ===== 统计卡片 =====
+  function renderStats(market) {
+    var s = marketStats[market];
+    var row = document.getElementById('statsRow');
+    row.innerHTML =
+      '<div class="stat-card"><div class="label">市场总规模</div><div class="value">'+s.size+'<span class="unit">'+s.unit+'</span></div><div class="delta">'+s.note+'</div></div>'
+      + '<div class="stat-card"><div class="label">年复合增长率</div><div class="value">'+s.cagr+'</div><div class="delta">2025-2030E</div></div>'
+      + '<div class="stat-card"><div class="label">图谱收录厂商</div><div class="value">'+s.companies+'</div><div class="delta">含上市/私有化代表企业</div></div>'
+      + '<div class="stat-card"><div class="label">最大厂商市值</div><div class="value" id="topMktVal">--</div><div class="delta" id="topMktName">--</div></div>';
+
+    // 计算最大厂商
+    var allItems = [];
+    var src = market==='cn'?cnData : market==='us'?usData : market==='global_other'?otherData : null;
+    if(src){
+      src.forEach(function(d){ d.items.forEach(function(i){ if(i.val>0) allItems.push({name:i.name,val:i.val}); }); });
+    } else {
+      globalData.forEach(function(r){ r.children.forEach(function(c){ c.children.forEach(function(i){ allItems.push({name:i.name,val:i.value}); }); }); });
+    }
+    allItems.sort(function(a,b){return b.val-a.val;});
+    if(allItems.length>0){
+      var unit = market==='cn'?'亿元':'亿美元';
+      document.getElementById('topMktVal').innerHTML = allItems[0].val + '<span class="unit">'+unit+'</span>';
+      document.getElementById('topMktName').textContent = allItems[0].name;
+    }
+  }
+
+  // ===== 图例 =====
+  function renderLegend() {
+    var bar = document.getElementById('legendBar');
+    var html = '';
+    for(var k in catColors){
+      html += '<span class="legend-item"><span class="legend-dot" style="background:'+catColors[k]+'"></span>'+k+'</span>';
+    }
+    bar.innerHTML = html;
+  }
+
+  // ===== Tab切换 =====
+  var tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var m = btn.getAttribute('data-market');
+      renderStats(m);
+      renderChart(m);
+    });
+  });
+
+  // ===== 响应式 =====
+  window.addEventListener('resize', function(){ chart.resize(); });
+
+  // ===== 初始化 =====
+  renderStats('cn');
+  renderChart('cn');
+  renderLegend();
+})();
+</script>
+</body>
+</html>
