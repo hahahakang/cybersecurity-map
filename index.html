@@ -69,6 +69,25 @@
     text-align: center; margin-top: 18px; font-size: 11px; color: #475569; line-height: 1.7;
   }
   .footer a { color: #38bdf8; text-decoration: none; }
+  /* 自定义详情浮层 */
+  #detailTip {
+    position: fixed; display: none; z-index: 9999; pointer-events: none;
+    background: rgba(15,23,42,0.96); border: 1px solid rgba(56,189,248,0.35);
+    border-radius: 10px; padding: 12px 16px; max-width: 360px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+    font-size: 12px; line-height: 1.6; color: #e2e8f0;
+  }
+  #detailTip .dt-name { font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 5px; }
+  #detailTip .dt-row { margin-bottom: 3px; }
+  #detailTip .dt-label { color: #64748b; font-size: 11px; }
+  #detailTip .dt-val { color: #e2e8f0; }
+  #detailTip .dt-desc { color: #cbd5e1; margin: 4px 0; }
+  #detailTip .dt-note { color: #f59e0b; font-size: 11px; margin-top: 3px; }
+  #detailTip .dt-section { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 7px; padding-top: 7px; }
+  #detailTip .dt-section .dt-label { color: #818cf8; }
+  #detailTip .dt-why { color: #a5b4fc; font-size: 11.5px; margin-top: 2px; }
+  #detailTip .dt-hint { color: #475569; font-size: 10.5px; margin-top: 6px; font-style: italic; }
+  #detailTip .dt-click { color: #34d399; font-size: 10.5px; margin-top: 4px; }
   @media (max-width: 640px) {
     .header h1 { font-size: 20px; }
     #mainChart { height: 440px; }
@@ -98,6 +117,7 @@
 
   <div class="chart-wrap">
     <div id="mainChart"></div>
+<div id="detailTip"></div>
   </div>
 
   <div class="legend-bar" id="legendBar"></div>
@@ -105,7 +125,7 @@
   <div class="footer">
     数据来源：同花顺 / 证券时报 / 东方财富 / finplify / SecurityLab / Grand View Research / 数说安全 · 美股市值按 1 USD≈7.2 CNY 统一换算 ·
     图谱分类参考数说安全《2025中国网络安全市场全景图》与 Alexej Pikovsky Cybersecurity Market Map 2026<br>
-    注：市值为公开市场数据，已被收购/私有化公司标注收购价或估值；市场规模为2025-2026年各机构估算中值
+    注：市值为公开市场数据，已被收购/私有化公司标注收购价或估值；市场规模统一采用Gartner终端用户信息安全支出口径(2026E)，各板块加总一致
   </div>
 </div>
 
@@ -122,82 +142,82 @@
   // ===== 中国市场（亿元人民币）=====
   var cnData = [
     {cat:'网络基础架构', items:[
-      {name:'深信服', val:486.06, desc:'防火墙·零信任SASE·超融合'},
-      {name:'天融信', val:74.31, desc:'防火墙·网络安全老牌'},
-      {name:'山石网科', val:25, desc:'防火墙·云安全'},
-      {name:'迪普科技', val:20, desc:'应用交付·安全'}
+      {name:'深信服', val:486.06, desc:'防火墙·零信任SASE·超融合', url:'https://www.sangfor.com.cn', founders:'何朝曦(52岁)', ipo:'2018年深交所创业板上市', why:'从VPN/上网行为管理切入下沉渠道，"安全+云计算"双轮驱动，超融合与安全业务协同，地市级政企覆盖率高'},
+      {name:'天融信', val:74.31, desc:'防火墙·网络安全老牌', url:'https://www.topsec.com.cn', founders:'贺卫东(约59岁)', ipo:'2017年借壳南洋股份上市(002212)', why:'中国防火墙市场开创者之一，政企安全老牌厂商，国产化/信创适配早，运营商与政府客户根基深'},
+      {name:'山石网科', val:25, desc:'防火墙·云安全', url:'https://www.hillstonenet.com.cn', founders:'罗东平(60岁)', ipo:'2019年科创板上市', why:'技术驱动型，NGFW与微隔离技术领先，创始人团队来自NetScreen/Juniper，高端防火墙客户口碑好'},
+      {name:'迪普科技', val:20, desc:'应用交付·安全', url:'https://www.dptechnology.net', founders:'郑树生(60岁)', ipo:'2019年深交所上市', why:'脱胎于华为华三体系，应用交付(ADC)与安全融合，运营商和企业网市场份额稳定，自研硬件平台'}
     ]},
     {cat:'安全运营', items:[
-      {name:'奇安信', val:170.29, desc:'全场景安全运营·市占率第一'},
-      {name:'绿盟科技', val:55.37, desc:'漏洞管理·IDS/IPS·安全运营'},
-      {name:'永信至诚', val:23.23, desc:'攻防演练·靶场·安全培训'},
-      {name:'任子行', val:15, desc:'网络审计·监管科技'}
+      {name:'奇安信', val:170.29, desc:'全场景安全运营·市占率第一', url:'https://www.qianxin.com', founders:'齐向东(62岁)', ipo:'2020年科创板上市', why:'从360分拆专注B端，"44333"平台化战略，政企安全市占率第一，奥运/两会等重保项目建立品牌壁垒'},
+      {name:'绿盟科技', val:55.37, desc:'漏洞管理·IDS/IPS·安全运营', url:'https://www.nsfocus.com.cn', founders:'沈继业(57岁)', ipo:'2014年深交所创业板上市', why:'攻防技术基因强，"巨人背后的专家"，IDS/IPS和漏洞管理老牌，星云/格物实验室威胁情报能力突出'},
+      {name:'永信至诚', val:23.23, desc:'攻防演练·靶场·安全培训', url:'https://www.integritytech.com.cn', founders:'蔡晶晶(44岁)', ipo:'2022年科创板上市', why:'网络靶场和攻防人才培训细分龙头，CTF社区文化深厚，"数字风洞"测试评估理念，护网演练核心供应商'},
+      {name:'任子行', val:15, desc:'网络审计·监管科技', url:'http://www.1218.com.cn', founders:'景晓军(约58岁)', ipo:'2012年深交所创业板上市', why:'网络审计和监管科技先行者，公安系统20年服务经验，网吧/公共WiFi审计市场占有率高'}
     ]},
     {cat:'数据安全', items:[
-      {name:'启明星辰', val:161.72, desc:'数据安全·工控安全(中国移动控股)'},
-      {name:'美亚柏科', val:40, desc:'电子数据取证·大数据安全'}
+      {name:'启明星辰', val:161.72, desc:'数据安全·工控安全(中国移动控股)', url:'https://www.venustech.com.cn', founders:'严望佳(57岁)', ipo:'2010年深交所上市', why:'中国最早网络安全公司之一，IDS/UTM市场长期领先，2022年获中国移动控股后运营商渠道大幅增强'},
+      {name:'美亚柏科', val:40, desc:'电子数据取证·大数据安全', url:'https://www.300188.cn', founders:'刘祥南(约68岁)', ipo:'2011年深交所创业板上市', why:'电子数据取证国内市占率超40%，公安监察系统渠道深厚，大数据智能化+网络空间安全双主业'}
     ]},
     {cat:'大模型/AI安全', items:[
-      {name:'三六零', val:606.86, desc:'安全大脑·内容安全·大模型安全'}
+      {name:'三六零', val:606.86, desc:'安全大脑·内容安全·大模型安全', url:'https://www.360.cn', founders:'周鸿祎(56岁)', ipo:'2011年NYSE上市，2018年借壳回A股', why:'"免费安全"颠覆行业，积累海量终端安全大数据，安全大脑+大模型安全战略，C端流量与B端安全双轮驱动'}
     ]},
     {cat:'应用安全', items:[
-      {name:'安恒信息', val:35, desc:'WAF·数据安全·云安全'}
+      {name:'安恒信息', val:35, desc:'WAF·数据安全·云安全', url:'https://www.dbappsecurity.com.cn', founders:'范渊(51岁)', ipo:'2019年科创板上市', why:'WAF起家连续多年市占率第一，云安全+数据安全+MSS多点布局，杭州亚运会等重保项目，城市安全运营中心模式'}
     ]},
     {cat:'端点安全', items:[
-      {name:'亚信安全', val:30, desc:'终端安全·云安全·身份安全'}
+      {name:'亚信安全', val:30, desc:'终端安全·云安全·身份安全', url:'https://www.asiainfo-sec.com', founders:'田溯宁(63岁)', ipo:'2022年科创板上市', why:'亚信科技背景，运营商市场渠道深厚，防毒墙终端安全市占率领先，收购趋势科技中国业务强化竞争力'}
     ]}
   ];
 
   // ===== 美国市场（亿美元）=====
   var usData = [
     {cat:'网络基础架构', items:[
-      {name:'Palo Alto Networks', val:286, desc:'防火墙+Prisma SASE·全球平台龙头'},
-      {name:'Fortinet', val:61, desc:'NGFW·SASE·SMB市场深厚'},
-      {name:'Cisco Security', val:0, desc:'Splunk收购后整合·网络安全巨头', note:'含Splunk $28B收购'}
+      {name:'Palo Alto Networks', val:286, desc:'防火墙+Prisma SASE·全球平台龙头', url:'https://www.paloaltonetworks.com', founders:'Nir Zuk(55岁)', ipo:'2012年NYSE上市', why:'发明下一代防火墙(NGFW)品类，从防火墙扩展到Prisma云安全+Cortex安全运营+Strata网络三大平台，Nikesh Arora任CEO后激进并购平台化，成为全球最大纯安全厂商', note:'2026年市值约$1300亿'},
+      {name:'Fortinet', val:61, desc:'NGFW·SASE·SMB市场深厚', url:'https://www.fortinet.com', founders:'谢青Ken Xie(63岁)、谢华Michael Xie', ipo:'2009年NASDAQ上市', why:'自研FortiASIC芯片实现高性能低价，FortiGate一体机整合防火墙/VPN/杀毒/IPS多功能，SMB到企业全覆盖，出货量全球第一，安全+网络融合战略', note:'2026年市值约$600亿'},
+      {name:'Cisco Security', val:0, desc:'Splunk收购后整合·网络安全巨头', url:'https://www.cisco.com', founders:'Leonard Bosack、Sandy Lerner', ipo:'1990年NASDAQ上市', why:'网络设备霸主，安全嵌入网络基础设施，2024年$280亿收购Splunk强化安全运营/可观测性，从硬件向软件+SaaS转型', note:'含Splunk $28B收购; 市值约$2500亿'}
     ]},
     {cat:'端点安全', items:[
-      {name:'CrowdStrike', val:194, desc:'EDR/XDR·云原生端点安全龙头'},
-      {name:'SentinelOne', val:4.8, desc:'AI驱动EDR·CrowdStrike竞品'}
+      {name:'CrowdStrike', val:194, desc:'EDR/XDR·云原生端点安全龙头', url:'https://www.crowdstrike.com', founders:'George Kurtz(约61岁)、Dmitri Alperovitch', ipo:'2019年NASDAQ上市', why:'云原生EDR颠覆传统杀毒，单代理轻量架构免重启，Falcon平台模块化扩展(19+模块)，订阅模式净留存率>120%，威胁情报飞轮效应', note:'2026年市值约$900亿'},
+      {name:'SentinelOne', val:4.8, desc:'AI驱动EDR·CrowdStrike竞品', url:'https://www.sentinelone.com', founders:'Tomer Weingarten(39岁)、Almog Cohen', ipo:'2021年NYSE上市', why:'AI自主响应(无人工干预)差异化定位，Singularity平台覆盖端点/云/身份，以色列军方技术背景，Purple AI功能领先'}
     ]},
     {cat:'云安全', items:[
-      {name:'Cloudflare', val:70, desc:'零信任·应用安全·CDN+安全'},
-      {name:'Zscaler', val:30, desc:'零信任云代理SSE·SASE'}
+      {name:'Cloudflare', val:70, desc:'零信任·应用安全·CDN+安全', url:'https://www.cloudflare.com', founders:'Matthew Prince(52岁)、Lee Holloway、Michelle Zatlyn', ipo:'2019年NYSE上市', why:'全球335+城市边缘网络，CDN+DDoS防护+零信任一体化，免费版获客漏斗转化企业付费，开发者友好生态，处理全球~20% HTTP流量', note:'2026年市值约$400亿'},
+      {name:'Zscaler', val:30, desc:'零信任云代理SSE·SASE', url:'https://www.zscaler.com', founders:'Jay Chaudhry(67岁)', ipo:'2018年NASDAQ上市', why:'云原生安全网关开创者，零信任架构先发优势，SSE/SASE赛道定义者，多租户云架构处理千亿级请求，连续创业者(4次成功退出)'}
     ]},
     {cat:'身份与访问', items:[
-      {name:'Okta', val:25, desc:'IAM·SSO·身份安全平台'},
-      {name:'CyberArk', val:22, desc:'特权访问管理PAM(以色列总部/美上市)'}
+      {name:'Okta', val:25, desc:'IAM·SSO·身份安全平台', url:'https://www.okta.com', founders:'Todd McKinnon(54岁)、Frederic Kerrest(49岁)', ipo:'2017年NASDAQ上市', why:'云原生IAM先发者，SSO成为事实标准，$65亿收购Auth0扩展客户身份/开发者IAM，Workforce+CIG双平台，集成7000+应用生态'},
+      {name:'CyberArk', val:22, desc:'特权访问管理PAM(以色列/美上市)', url:'https://www.cyberark.com', founders:'Udi Mokady(59岁)、Alon Cohen', ipo:'2014年NASDAQ上市', why:'特权访问管理(PAM)品类定义者和绝对领导者，以色列军方网络技术背景，从PAM向身份安全平台扩展，2024年被Palo Alto收购', note:'2024年被Palo Alto Networks收购'}
     ]},
     {cat:'安全运营', items:[
-      {name:'Tenable', val:30, desc:'漏洞管理·暴露面管理'},
-      {name:'Rapid7', val:25, desc:'漏洞管理·安全运营·SIEM'},
-      {name:'Qualys', val:20, desc:'云原生漏洞管理·VMDR'}
+      {name:'Tenable', val:30, desc:'漏洞管理·暴露面管理', url:'https://www.tenable.com', founders:'Ron Gula、Jack Huffard、Renaud Deraison', ipo:'2018年NASDAQ上市', why:'Nessus开源漏洞扫描器起家(全球部署超200万)，漏洞管理品类领导者，收购Ermetic扩展CNAPP，暴露面管理平台化'},
+      {name:'Rapid7', val:25, desc:'漏洞管理·安全运营·SIEM', url:'https://www.rapid7.com', founders:'Alan Matthews等', ipo:'2015年NASDAQ上市', why:'Metasploit开源渗透测试框架社区生态，漏洞管理+MDR安全运营一体化，托管检测响应服务高增长'},
+      {name:'Qualys', val:20, desc:'云原生漏洞管理·VMDR', url:'https://www.qualys.com', founders:'Philippe Courtot(1944-2023)', ipo:'2012年NASDAQ上市', why:'云原生漏洞管理先驱，VMDR(漏洞管理+检测响应)一体化，单代理多模块SaaS模式，高毛利高留存，合规自动化能力强'}
     ]},
     {cat:'消费安全', items:[
-      {name:'Gen Digital', val:16, desc:'Norton·Avast·消费安全巨头'}
+      {name:'Gen Digital', val:16, desc:'Norton·Avast·消费安全巨头', url:'https://www.gendigital.com', founders:'Gary Hendrix(Symantec,1982)', ipo:'1989年NASDAQ上市(前身Symantec)', why:'Norton消费安全品牌认知度极高，收购Avast/AVG/BullGuard/Avast整合全球消费安全市场，身份防盗+隐私+金融保护多元化'}
     ]}
   ];
 
   // ===== 中美以外全球（亿美元）=====
   var otherData = [
     {cat:'网络基础架构', items:[
-      {name:'Check Point', val:20, desc:'以色列·网络安全·威胁预防老牌'},
-      {name:'Sophos', val:39, desc:'英国·中小企业安全(已被Thoma Bravo私有化)', note:'$3.9B收购价'}
+      {name:'Check Point', val:20, desc:'以色列·网络安全·威胁预防老牌', url:'https://www.checkpoint.com', founders:'Gil Shwed(58岁)、Marius Nacht、Shlomo Kramer', ipo:'1996年NASDAQ上市', why:'状态检测防火墙发明者(与FireWall-1)，以色列网安产业奠基者，高利润高分红，软件订阅转型成功，Infinity架构平台化'},
+      {name:'Sophos', val:39, desc:'英国·中小企业安全(已被Thoma Bravo私有化)', url:'https://www.sophos.com', founders:'Jan Hruska、Peter Lammer', ipo:'2015年LSE上市，2020年Thoma Bravo $39亿私有化', why:'中小企业渠道+MSP伙伴生态深厚，端点+网络一体化，Intercept X端点检测领先，私有化后加速MDR服务转型', note:'$3.9B收购价'}
     ]},
     {cat:'身份与访问', items:[
-      {name:'CyberArk', val:22, desc:'以色列·特权访问管理PAM领导者'}
+      {name:'CyberArk', val:22, desc:'以色列·特权访问管理PAM领导者', url:'https://www.cyberark.com', founders:'Udi Mokady(59岁)、Alon Cohen', ipo:'2014年NASDAQ上市', why:'特权访问管理(PAM)品类定义者和绝对领导者，以色列军方网络技术背景，从PAM向身份安全平台扩展', note:'2024年被Palo Alto Networks收购'}
     ]},
     {cat:'端点安全', items:[
-      {name:'Trend Micro', val:15, desc:'日本·端点·混合云安全·企业级'},
-      {name:'Kaspersky', val:10, desc:'俄罗斯·端点·消费安全(私有估算)'}
+      {name:'Trend Micro', val:15, desc:'日本·端点·混合云安全·企业级', url:'https://www.trendmicro.com', founders:'张明正Steve Chang(72岁)', ipo:'1998年东京证券交易所上市', why:'日本市场根基深厚(日企客户忠诚度高)，端点+混合云安全布局早，与AWS/Azure/Vmware深度合作，威胁情报能力强'},
+      {name:'Kaspersky', val:10, desc:'俄罗斯·端点·消费安全(私有估算)', url:'https://www.kaspersky.com', founders:'尤金·卡巴斯基Eugene Kaspersky(61岁)', ipo:'私营未上市', why:'顶尖威胁情报能力(GReAT团队发现Stuxnet/Flame等)，端点检测引擎技术评价高，消费+企业双品牌，地缘政治下市场受限'}
     ]},
     {cat:'大模型/AI安全', items:[
-      {name:'Darktrace', val:53, desc:'英国·AI异常检测·网络安全AI(已私有化)', note:'$5.3B收购价'}
+      {name:'Darktrace', val:53, desc:'英国·AI异常检测·网络安全AI(已私有化)', url:'https://www.darktrace.com', founders:'Poppy Gustafsson、Dave Palmer等', ipo:'2021年LSE上市，2024年Thoma Bravo $53亿私有化', why:'无监督学习AI异常检测开创者，Self-Learning AI自主响应，剑桥大学数学背景，企业免疫系统概念，内生增长快', note:'$5.3B收购价'}
     ]},
     {cat:'隐私合规', items:[
-      {name:'OneTrust', val:50, desc:'英国·隐私管理·数据治理(私有估值)', note:'估值约$5B'}
+      {name:'OneTrust', val:50, desc:'英国·隐私管理·数据治理(私有估值)', url:'https://www.onetrust.com', founders:'Kabir Barday(39岁)', ipo:'私营未上市(估值约$50亿)', why:'GDPR合规红利先发，隐私管理+安全+数据治理整合平台，收购整合能力强，"Trust Intelligence"品类定义者', note:'估值约$5B'}
     ]},
     {cat:'应用安全', items:[
-      {name:'Mimecast', val:57, desc:'英国·邮件安全·归档(已被Perforce私有化)', note:'$5.7B收购价'}
+      {name:'Mimecast', val:57, desc:'英国·邮件安全·归档(已被Perforce私有化)', url:'https://www.mimecast.com', founders:'Peter Bauer、Neil Murray', ipo:'2010年NASDAQ上市，2022年私有化$57亿', why:'邮件安全SaaS化先驱，归档+连续性+安全一体化，企业邮箱迁移上云趋势受益，渠道生态强', note:'$5.7B收购价'}
     ]}
   ];
 
@@ -205,17 +225,17 @@
   var globalData = [
     {name:'🇺🇸 美国', val:0, children: usData.map(function(d){
       return {name:d.cat, children:d.items.filter(function(i){return i.val>0;}).map(function(i){
-        return {name:i.name, value:i.val, cat:d.cat};
+        return {name:i.name, value:i.val, cat:d.cat, desc:i.desc, note:i.note, url:i.url, founders:i.founders, ipo:i.ipo, why:i.why};
       })};
     })},
     {name:'🇨🇳 中国', val:0, children: cnData.map(function(d){
       return {name:d.cat, children:d.items.map(function(i){
-        return {name:i.name, value:+(i.val/7.2).toFixed(1), cat:d.cat};
+        return {name:i.name, value:+(i.val/7.2).toFixed(1), cat:d.cat, desc:i.desc, note:i.note, url:i.url, founders:i.founders, ipo:i.ipo, why:i.why};
       })};
     })},
     {name:'🌍 其他地区', val:0, children: otherData.map(function(d){
       return {name:d.cat, children:d.items.filter(function(i){return i.val>0;}).map(function(i){
-        return {name:i.name, value:i.val, cat:d.cat};
+        return {name:i.name, value:i.val, cat:d.cat, desc:i.desc, note:i.note, url:i.url, founders:i.founders, ipo:i.ipo, why:i.why};
       })};
     })}
   ];
@@ -229,12 +249,12 @@
     region.val = +total.toFixed(0);
   });
 
-  // ===== 市场规模数据 =====
+  // ===== 市场规模数据（统一Gartner口径：end-user information security spending, 2026E）=====
   var marketStats = {
-    cn: {size:'887', unit:'亿元人民币', cagr:'~8%', companies:'8家上市', note:'2025年数字安全业务收入(数世咨询)'},
-    us: {size:'~1,250', unit:'亿美元', cagr:'~12%', companies:'12家代表', note:'北美市场约占全球41.5%'},
-    global_other: {size:'~870', unit:'亿美元', cagr:'~11%', companies:'8家代表', note:'欧洲25%+亚太(除中国)+拉美+中东非'},
-    global: {size:'~3,010', unit:'亿美元', cagr:'~10-14%', companies:'28家代表', note:'2026年全球网络安全市场估算中值'}
+    cn: {size:'~900', unit:'亿元人民币 (~$130亿)', cagr:'~9%', companies:'8家上市', note:'2026E, IDC $122亿(2025)+数世咨询887亿元推算'},
+    us: {size:'~$1,000', unit:'亿美元', cagr:'~8%', companies:'12家代表', note:'2026E, Mordor Intelligence $997.9亿, 约占全球41%'},
+    global_other: {size:'~$1,270', unit:'亿美元', cagr:'~10%', companies:'8家代表', note:'2026E差额: 欧洲~$600亿+亚太(除中)~$360亿+拉美/中东非~$310亿'},
+    global: {size:'~$2,400', unit:'亿美元', cagr:'~12.5%', companies:'28家代表', note:'2026E, Gartner Forecast: Worldwide InfoSec End-User Spending $240B'}
   };
 
   // ===== 构建treemap数据 =====
@@ -246,6 +266,7 @@
         total += i.val;
         return {
           name: i.name, value: i.val, cat: d.cat, desc: i.desc || '', note: i.note || '',
+          url: i.url || '', founders: i.founders || '', ipo: i.ipo || '', why: i.why || '',
           itemStyle: {color: col, borderColor:'#0b1120', borderWidth:1, gapWidth:1.5}
         };
       });
@@ -267,7 +288,8 @@
           var t = 0; var col = getColor(cat.name);
           var kids = cat.children.map(function(c){
             t+=c.value;
-            return {name:c.name, value:c.value, cat:cat.name, desc:c.desc||'',
+            return {name:c.name, value:c.value, cat:cat.name, desc:c.desc||'', note:c.note||'',
+              url:c.url||'', founders:c.founders||'', ipo:c.ipo||'', why:c.why||'',
               itemStyle:{color:col, borderColor:'#0b1120', borderWidth:1, gapWidth:1}};
           });
           return {name:cat.name, value:+t.toFixed(1), cat:cat.name,
@@ -370,25 +392,7 @@
 
     var option = {
       backgroundColor: 'transparent',
-      tooltip: {
-        confine: true,
-        backgroundColor: 'rgba(15,23,42,0.95)',
-        borderColor: 'rgba(56,189,248,0.3)',
-        borderWidth: 1,
-        textStyle: {color:'#e2e8f0', fontSize:12},
-        extraCssText: 'border-radius:8px; padding:10px 14px; max-width:280px; white-space:normal; word-break:break-all;',
-        formatter: function(info){
-          if(info.data.desc){
-            return '<div style="font-weight:700;font-size:13px;margin-bottom:4px;color:#38bdf8;">'+info.name+'</div>'
-              + '<div style="color:#94a3b8;font-size:11px;margin-bottom:3px;">领域：'+info.data.cat+'</div>'
-              + '<div style="color:#e2e8f0;font-size:12px;margin-bottom:3px;">市值：'+info.value+' '+unitLabel+'</div>'
-              + '<div style="color:#cbd5e1;font-size:11.5px;">'+info.data.desc+'</div>'
-              + (info.data.note?'<div style="color:#f59e0b;font-size:10.5px;margin-top:4px;">'+info.data.note+'</div>':'');
-          }
-          return '<div style="font-weight:700;color:#38bdf8;">'+info.name+'</div>'
-            + '<div style="color:#94a3b8;font-size:11px;">合计：'+info.value+' '+unitLabel+'</div>';
-        }
-      },
+      tooltip: { show: false },
       series: [{
         type: 'treemap',
         data: rawData,
@@ -402,11 +406,80 @@
         left: 'center',
         top: 'center',
         levels: levels,
-        labelLayout: {hideOverlap: true}
+        labelLayout: {hideOverlap: true},
+        cursor: 'pointer'
       }]
     };
 
     chart.setOption(option, true);
+
+    // ===== 自定义浮层：2秒延迟显示详情 + 点击跳转官网 =====
+    var tipEl = document.getElementById('detailTip');
+    var hoverTimer = null;
+    var currentData = null;
+
+    function buildBasicHtml(d, unit){
+      var html = '<div class="dt-name">'+d.name+'</div>'
+        + '<div class="dt-row"><span class="dt-label">领域：</span><span class="dt-val">'+(d.cat||'')+'</span></div>'
+        + '<div class="dt-row"><span class="dt-label">市值：</span><span class="dt-val" style="color:#34d399;font-weight:600;">'+d.value+' '+unit+'</span></div>'
+        + (d.desc?'<div class="dt-desc">'+d.desc+'</div>':'')
+        + (d.note?'<div class="dt-note">'+d.note+'</div>':'');
+      return html;
+    }
+    function buildDetailHtml(d, unit){
+      var html = buildBasicHtml(d, unit);
+      if(d.founders || d.ipo || d.why){
+        html += '<div class="dt-section">';
+        if(d.founders) html += '<div class="dt-row"><span class="dt-label">创始人：</span><span class="dt-val">'+d.founders+'</span></div>';
+        if(d.ipo) html += '<div class="dt-row"><span class="dt-label">上市：</span><span class="dt-val">'+d.ipo+'</span></div>';
+        if(d.why) html += '<div class="dt-why"><span class="dt-label">做对了什么：</span>'+d.why+'</div>';
+        html += '</div>';
+      }
+      if(d.url) html += '<div class="dt-click">🔗 点击访问官网 →</div>';
+      return html;
+    }
+
+    chart.off('mouseover');
+    chart.off('mousemove');
+    chart.off('mouseout');
+    chart.off('click');
+
+    chart.on('mouseover', function(params){
+      if(!params.data || !params.data.desc) { tipEl.style.display='none'; return; }
+      currentData = params.data;
+      var unit = currentMarket==='cn' ? '亿元' : '亿美元';
+      tipEl.innerHTML = buildBasicHtml(params.data, unit) + '<div class="dt-hint">悬停查看更多…</div>';
+      tipEl.style.display = 'block';
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function(){
+        if(currentData === params.data){
+          tipEl.innerHTML = buildDetailHtml(params.data, unit);
+        }
+      }, 2000);
+    });
+
+    chart.on('mousemove', function(params){
+      if(tipEl.style.display === 'none') return;
+      var x = params.event.event.clientX + 16;
+      var y = params.event.event.clientY + 16;
+      var rect = tipEl.getBoundingClientRect();
+      if(x + rect.width > window.innerWidth - 10) x = params.event.event.clientX - rect.width - 16;
+      if(y + rect.height > window.innerHeight - 10) y = params.event.event.clientY - rect.height - 16;
+      tipEl.style.left = x + 'px';
+      tipEl.style.top = y + 'px';
+    });
+
+    chart.on('mouseout', function(){
+      clearTimeout(hoverTimer);
+      currentData = null;
+      tipEl.style.display = 'none';
+    });
+
+    chart.on('click', function(params){
+      if(params.data && params.data.url){
+        window.open(params.data.url, '_blank');
+      }
+    });
   }
 
   // ===== 统计卡片 =====
