@@ -413,10 +413,8 @@
 
     chart.setOption(option, true);
 
-    // ===== 自定义浮层：2秒延迟显示详情 + 点击跳转官网 =====
+    // ===== 自定义浮层：悬停即显示全部详情 + 点击跳转官网 =====
     var tipEl = document.getElementById('detailTip');
-    var hoverTimer = null;
-    var currentData = null;
 
     function buildBasicHtml(d, unit){
       var html = '<div class="dt-name">'+d.name+'</div>'
@@ -446,16 +444,9 @@
 
     chart.on('mouseover', function(params){
       if(!params.data || !params.data.desc) { tipEl.style.display='none'; return; }
-      currentData = params.data;
       var unit = currentMarket==='cn' ? '亿元' : '亿美元';
-      tipEl.innerHTML = buildBasicHtml(params.data, unit) + '<div class="dt-hint">悬停查看更多…</div>';
+      tipEl.innerHTML = buildDetailHtml(params.data, unit);
       tipEl.style.display = 'block';
-      clearTimeout(hoverTimer);
-      hoverTimer = setTimeout(function(){
-        if(currentData === params.data){
-          tipEl.innerHTML = buildDetailHtml(params.data, unit);
-        }
-      }, 2000);
     });
 
     chart.on('mousemove', function(params){
@@ -470,8 +461,6 @@
     });
 
     chart.on('mouseout', function(){
-      clearTimeout(hoverTimer);
-      currentData = null;
       tipEl.style.display = 'none';
     });
 
