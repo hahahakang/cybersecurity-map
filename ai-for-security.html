@@ -3,187 +3,405 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>用AI赋能网络安全 · 行业图谱三级细分</title>
+<title>用 AI 提升网络安全 · 行业图谱（攻击基座大模型专题·底座层重算版）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js" onerror="document.getElementById('fb2').style.display='block'"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
-  background:linear-gradient(135deg,#0b1120 0%,#162032 45%,#0d1526 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px 40px;}
-.container{max-width:1280px;margin:0 auto;}
-.back-link{display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:8px;font-size:12.5px;color:#94a3b8;
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .2s;}
-.back-link:hover{color:#34d399;border-color:rgba(52,211,153,0.4);}
-.header{text-align:center;margin-bottom:18px;}
-.header h1{font-size:24px;font-weight:700;background:linear-gradient(90deg,#34d399,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.header .sub{font-size:13px;color:#64748b;margin-top:6px;}
-.header .tagline{display:inline-block;margin-top:10px;font-size:11.5px;color:#34d399;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);padding:4px 14px;border-radius:20px;}
-.flow-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:18px 0 22px;}
-.flow-step{font-size:11px;padding:6px 12px;border-radius:8px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);color:#6ee7b7;}
-.flow-arrow{color:#475569;font-size:14px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
-.cat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;transition:all .25s;}
-.cat-card:hover{border-color:rgba(52,211,153,0.35);background:rgba(255,255,255,0.05);transform:translateY(-2px);}
-.cat-head{padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06);}
-.cat-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
-.cat-title{font-size:13.5px;font-weight:600;color:#f1f5f9;}
-.cat-en{font-size:10px;color:#64748b;margin-top:1px;}
-.cat-body{padding:10px 14px 12px;}
-.l3-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:11.5px;color:#cbd5e1;line-height:1.5;}
-.l3-dot{width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0;}
-.l3-name{font-weight:500;color:#e2e8f0;}
-.l3-desc{color:#94a3b8;font-size:10.5px;}
-.c1 .cat-num{background:rgba(52,211,153,0.15);color:#34d399;} .c1 .l3-dot{background:#34d399;}
-.c2 .cat-num{background:rgba(56,189,248,0.15);color:#38bdf8;} .c2 .l3-dot{background:#38bdf8;}
-.c3 .cat-num{background:rgba(129,140,248,0.15);color:#818cf8;} .c3 .l3-dot{background:#818cf8;}
-.c4 .cat-num{background:rgba(192,132,252,0.15);color:#c084fc;} .c4 .l3-dot{background:#c084fc;}
-.c5 .cat-num{background:rgba(244,114,182,0.15);color:#f472b6;} .c5 .l3-dot{background:#f472b6;}
-.c6 .cat-num{background:rgba(251,191,36,0.15);color:#fbbf24;} .c6 .l3-dot{background:#fbbf24;}
-.c7 .cat-num{background:rgba(248,113,113,0.15);color:#f87171;} .c7 .l3-dot{background:#f87171;}
-.c8 .cat-num{background:rgba(148,163,184,0.15);color:#94a3b8;} .c8 .l3-dot{background:#94a3b8;}
-.evol-box{margin-top:22px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.2);border-radius:12px;padding:16px 18px;}
-.evol-box h3{font-size:13px;color:#34d399;margin-bottom:12px;}
-.evol-table{width:100%;border-collapse:collapse;font-size:11px;}
-.evol-table th{color:#64748b;font-weight:600;text-align:left;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.1);font-size:10.5px;}
-.evol-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#cbd5e1;line-height:1.5;}
-.evol-table tr:last-child td{border-bottom:none;}
-.evol-table .era{color:#6ee7b7;font-weight:600;white-space:nowrap;}
-.judge-box{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
-.judge-card{background:rgba(255,255,255,0.03);border-left:3px solid #34d399;border-radius:8px;padding:12px 14px;}
-.judge-card .jt{font-size:12px;font-weight:600;color:#34d399;margin-bottom:5px;}
-.judge-card .jb{font-size:11px;color:#94a3b8;line-height:1.7;}
-.footer{text-align:center;margin-top:22px;font-size:11px;color:#475569;line-height:1.7;}
-@media(max-width:640px){.header h1{font-size:19px;}.grid{grid-template-columns:1fr;}.evol-table{font-size:10px;}}
+  :root{
+    --ink:#241a1c;--ink2:#5b4648;--line:#ecd9da;--bg:#faf5f4;--card:#fff;
+    --navy:#6e2420;--teal:#a63a2f;--amber:#c9831c;--red:#b3402f;--green:#3d7d52;--purple:#6b5b95;--blue:#2f5d8a;
+    --u1:#b3402f;--u2:#2f5d8a;--u3:#3d7d52;--u4:#c9831c;--u5:#6b5b95;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.62;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 22px 64px;}
+  header.h{background:linear-gradient(135deg,#3d1411,#7c2a23 58%,#a6442f);color:#fff;padding:36px 40px 30px;border-radius:0 0 18px 18px;}
+  header.h .kk{font-size:12.5px;letter-spacing:3px;color:#f0c3bb;margin-bottom:9px;}
+  header.h h1{margin:0 0 10px;font-size:26px;font-weight:760;}
+  header.h p{margin:5px 0;color:#f3ddda;font-size:14px;max-width:1030px;}
+  h2.sec{font-size:20.5px;margin:40px 0 5px;padding-left:12px;border-left:5px solid var(--teal);}
+  .ss{color:var(--ink2);font-size:13.4px;margin:0 0 16px 13px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 23px;margin:15px 0;box-shadow:0 2px 9px rgba(110,36,32,.05);}
+  .core{background:#4a1a16;color:#fbecea;border-radius:12px;padding:18px 22px;margin:20px 0 4px;font-size:15px;}
+  .core b{color:#ffcf8f;}
+  .note{font-size:12.6px;color:var(--ink2);font-style:italic;}
+  .warn{background:#fbf3ea;border:1px solid #efddc2;border-radius:9px;padding:11px 14px;font-size:12.9px;color:#7a531b;margin:10px 0;}
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .rule{background:#fdf7f6;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:9px;padding:12px 14px;font-size:13.1px;}
+  .rule b{color:var(--navy);}
+  .tree{font-size:13.4px;}
+  .tnode{border:1px solid var(--line);border-radius:9px;padding:9px 13px;margin:7px 0;background:#fff;}
+  .lvl-label{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--navy);border-radius:5px;padding:1px 7px;margin-right:8px;letter-spacing:1px;}
+  .branch{margin-left:26px;padding-left:18px;border-left:2px dashed #e0c6c7;}
+  .seg-head{display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
+  .seg-badge{flex:0 0 auto;width:38px;height:38px;border-radius:9px;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13.5px;}
+  .seg-name{font-weight:720;font-size:15.5px;color:var(--navy);}
+  .seg-en{font-size:11.8px;color:var(--ink2);font-weight:400;}
+  .sibling{opacity:.62;font-size:12.6px;}
+  .l4list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .l4{font-size:11.8px;background:#f6eceb;border:1px solid #ecd9da;border-radius:6px;padding:2px 9px;color:#5c2622;}
+  .l4grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .l4col{border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .l4col .hd{color:#fff;padding:9px 11px;font-size:13px;font-weight:700;}
+  .l4col .bd{padding:10px 12px;font-size:12.5px;}
+  .l4col .bd div{margin-bottom:8px;}
+  .l4col .bd b{color:var(--navy);}
+  .c1 .hd{background:var(--u1);}.c2 .hd{background:var(--u2);}.c3 .hd{background:var(--u3);}.c4 .hd{background:var(--u4);}.c5 .hd{background:var(--u5);}
+  .seg{border:1px solid var(--line);border-radius:12px;margin:14px 0;overflow:hidden;}
+  .seg-top{display:flex;align-items:center;gap:14px;padding:13px 18px;}
+  .seg-top .seg-badge{width:48px;height:48px;font-size:15px;}
+  .seg-top .tt{flex:1;}
+  .seg-top .tt .a{font-size:17px;font-weight:760;color:var(--navy);}
+  .seg-top .tt .b{font-size:12.5px;color:var(--ink2);}
+  .buyer{flex:0 0 auto;font-size:11.8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 11px;text-align:center;}
+  .buyer b{display:block;color:var(--navy);font-size:12.5px;}
+  .seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px dashed var(--line);}
+  .sg{padding:14px 18px;}
+  .sg+.sg{border-left:1px dashed var(--line);}
+  .sg h5{margin:0 0 6px;font-size:12px;letter-spacing:1px;color:var(--teal);}
+  .sg p,.sg ul{margin:4px 0;font-size:13.1px;color:#3a2a2c;}
+  .sg ul{padding-left:17px;}
+  .bound{background:#fbf3ea;border:1px solid #efddc2;border-radius:8px;padding:8px 11px;font-size:12.7px;color:#7a531b;}
+  .vn{display:inline-block;font-size:11.6px;border-radius:6px;padding:2px 8px;margin:2px 3px 2px 0;border:1px solid;}
+  .vn.na{background:#eef3f8;border-color:#d3e3ec;color:#1c5670;}
+  .vn.cn{background:#fdf0ec;border-color:#f0cdc4;color:#8a3324;}
+  .vn.oss{background:#eef7f1;border-color:#cfe7d8;color:#2f6b45;}
+  .comp-note{font-size:12.4px;color:var(--ink2);margin-top:6px;}
+  .u1 .seg-top{background:#fceee9;}.u1 .seg-badge{background:var(--u1);}
+  .u2 .seg-top{background:#edf3f8;}.u2 .seg-badge{background:var(--u2);}
+  .u3 .seg-top{background:#ecf5f0;}.u3 .seg-badge{background:var(--u3);}
+  .u4 .seg-top{background:#fdf4e6;}.u4 .seg-badge{background:var(--u4);}
+  .u5 .seg-top{background:#f0edf7;}.u5 .seg-badge{background:var(--u5);}
+  table{border-collapse:collapse;width:100%;font-size:12.9px;margin:8px 0;}
+  th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top;}
+  th{background:#f7ecea;color:var(--navy);font-weight:660;}
+  .est{color:#b56a1c;font-weight:700;}
+  .auth{color:#2f6b45;}
+  .big{color:#b3402f;font-weight:800;}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0;}
+  .chip{background:#fdf0ec;border:1px solid #f0cdc4;border-radius:8px;padding:6px 11px;font-size:12.6px;}
+  .arrow{color:var(--teal);font-weight:800;}
+  .chart{width:100%;height:380px;}
+  .fb{display:none;background:#fff7ed;border:1px solid #f0d3ac;color:#8a5417;padding:11px;border-radius:8px;font-size:12.8px;}
+  .verdict{border-radius:11px;padding:16px 19px;margin:12px 0;border:1px solid;}
+  .verdict.yes{background:#fdf0e8;border-color:#eec2ac;}
+  .step{border-left:4px solid var(--teal);background:#fdf7f6;border-radius:0 9px 9px 0;padding:11px 15px;margin:10px 0;font-size:13.4px;}
+  .step b{color:var(--navy);}
+  .quote{font-size:14.5px;color:#7c2a23;font-weight:700;}
+  /* 飞轮 / 结构 */
+  .hub{border:1.6px solid var(--u1);background:#fceee9;border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .hub .center{text-align:center;font-weight:800;color:var(--u1);font-size:14.5px;margin-bottom:9px;}
+  .spokes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .spoke{background:#fff;border:1px solid #f0cdc4;border-radius:8px;padding:8px;font-size:11.8px;text-align:center;}
+  .spoke b{display:block;color:var(--navy);font-size:12.3px;margin-bottom:2px;}
+  .layer{display:grid;grid-template-columns:150px 1fr;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:8px 0;}
+  .layer .lt{background:var(--navy);color:#fff;padding:11px 13px;font-size:13px;font-weight:700;display:flex;align-items:center;}
+  .layer .lc{padding:11px 14px;font-size:12.9px;background:#fff;}
+  .layer.l2 .lt{background:var(--blue);}.layer.l3 .lt{background:var(--green);}
+  .refs{font-size:12.6px;color:var(--ink2);columns:2;column-gap:32px;}
+  .refs div{break-inside:avoid;margin-bottom:6px;}
+  .pill{display:inline-block;font-size:10.8px;padding:1px 7px;border-radius:4px;background:var(--navy);color:#fff;margin-right:5px;}
+  @media(max-width:880px){.rules,.seg-grid,.l4grid,.spokes{grid-template-columns:1fr;}.sg+.sg{border-left:0;border-top:1px dashed var(--line);}.refs{columns:1;}.layer{grid-template-columns:1fr;}header.h{padding:26px 20px;}}
 </style>
 </head>
 <body>
-<div class="container">
-  <a href="2030.html" class="back-link">← 返回2030格局预判</a>
-  <div class="header">
-    <h1>用 AI 赋能网络安全 · 行业图谱三级细分</h1>
-    <div class="sub">AI for Cybersecurity — 以AI重构检测、运营、响应、攻防全链路</div>
-    <div class="tagline">AI 安全四大板块之三 · AI 是安全行业最大的生产力变量</div>
-  </div>
+<div style="max-width:1200px;margin:0 auto;padding:14px 22px 0;"><a href="2030.html" style="display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;color:#1b4965;background:#eef3f8;border:1px solid #cfdce8;text-decoration:none;font-family:inherit;">← 返回 2030 格局预判</a></div>
 
-  <div class="flow-bar">
-    <span class="flow-step">① 威胁检测</span><span class="flow-arrow">→</span>
-    <span class="flow-step">② 安全运营</span><span class="flow-arrow">→</span>
-    <span class="flow-step">③ 漏洞代码</span><span class="flow-arrow">→</span>
-    <span class="flow-step">④ 欺诈内容</span><span class="flow-arrow">→</span>
-    <span class="flow-step">⑤ 身份安全</span><span class="flow-arrow">→</span>
-    <span class="flow-step">⑥ 云与应用</span><span class="flow-arrow">→</span>
-    <span class="flow-step">⑦ 安全大模型</span><span class="flow-arrow">→</span>
-    <span class="flow-step">⑧ 攻防对抗</span>
-  </div>
+<header class="h">
+  <div class="kk">AI-AMPLIFIED SECURITY · ATTACK FOUNDATION MODEL · HORIZONTAL BASE-LAYER VIEW</div>
+  <h1>“用 AI 提升网络安全”行业图谱与攻击基座大模型专题（底座层重算版）</h1>
+  <p>5 个三级、16 个四级能力；关键修正——攻击基座大模型（中国版 Mythos）不是 593.5 亿盘子里的一个小切片，而是<b style="color:#ffd79a;">横跨“用 AI 做安全 + 保护 AI 安全”两个二级市场的共享底座</b>，U2–U5、姊妹篇 T1–T5、软硬一体机与省市服务商皆是其客户，具数据飞轮。本版以“底座层渗透法”自下而上重算其规模与增速。</p>
+</header>
+<div class="wrap">
 
-  <div class="grid">
-    <div class="cat-card c1">
-      <div class="cat-head"><div class="cat-num">1</div><div><div class="cat-title">AI 威胁检测</div><div class="cat-en">AI-Powered Threat Detection</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 NDR 网络检测响应</span><div class="l3-desc">ML建模网络行为，识别C2隧道/横向移动</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">UEBA 用户实体行为分析</span><div class="l3-desc">基线学习发现内鬼、异常账号、数据窃取</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 威胁狩猎</span><div class="l3-desc">自动生成狩猎假设、IOC关联、主动捕获</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">加密流量分析</span><div class="l3-desc">无需解密，基于行为特征识别恶意加密流</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">未知威胁(0day)检测</span><div class="l3-desc">无监督学习发现无签名的新型攻击</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c2">
-      <div class="cat-head"><div class="cat-num">2</div><div><div class="cat-title">AI 安全运营 AISecOps</div><div class="cat-en">Autonomous Security Operations</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能告警降噪</span><div class="l3-desc">告警聚合/误报过滤，MTTR大幅下降</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动化研判处置</span><div class="l3-desc">L1/L2工单自动分析、SOAR智能编排响应</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全 Copilot/副驾驶</span><div class="l3-desc">自然语言问数、研判建议、剧本生成</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能报告与知识问答</span><div class="l3-desc">自动生成态势报告、安全知识RAG问答</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">无人/少人值守SOC</span><div class="l3-desc">AI分析师替代重复人力，7×24自治运营</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c3">
-      <div class="cat-head"><div class="cat-num">3</div><div><div class="cat-title">AI 漏洞与代码安全</div><div class="cat-en">AI Vulnerability & AppSec</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 代码审计 SAST</span><div class="l3-desc">大模型理解语义，精准定位漏洞并给修复</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能漏洞挖掘</span><div class="l3-desc">模糊测试+LLM自动生成利用链与PoC</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">攻击面管理 ASM/EASM</span><div class="l3-desc">自动发现影子资产、暴露面与风险优先级</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动补丁/修复建议</span><div class="l3-desc">生成代码补丁、依赖升级方案</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI SCA 供应链安全</span><div class="l3-desc">开源组件风险、投毒包智能识别</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c4">
-      <div class="cat-head"><div class="cat-num">4</div><div><div class="cat-title">AI 反诈与内容安全</div><div class="cat-en">Anti-Fraud & Content Integrity</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">深度伪造 Deepfake 检测</span><div class="l3-desc">AI换脸/拟声视频通话鉴伪</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AIGC 内容识别</span><div class="l3-desc">识别AI生成文本/图片/视频，溯源取证</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能反欺诈</span><div class="l3-desc">交易反欺诈、刷单/洗钱网络识别、团伙挖掘</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多模态内容审核</span><div class="l3-desc">图文音视频违规内容自动识别分级</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">钓鱼/诈骗攻防</span><div class="l3-desc">AI生成钓鱼识别、诈骗话术/剧本检测</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c5">
-      <div class="cat-head"><div class="cat-num">5</div><div><div class="cat-title">AI 身份安全</div><div class="cat-en">AI-Powered Identity Security</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">行为生物特征</span><div class="l3-desc">击键/鼠标/步态持续身份认证</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自适应风险认证</span><div class="l3-desc">基于风险评分动态调整MFA强度</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 身份治理 IGA</span><div class="l3-desc">权限异常发现、职责分离自动审计</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">会话风险分析</span><div class="l3-desc">实时识别账号接管、异常会话</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c6">
-      <div class="cat-head"><div class="cat-num">6</div><div><div class="cat-title">AI 云与应用安全</div><div class="cat-en">AI Cloud & App Security</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 WAF</span><div class="l3-desc">ML识别未知Web攻击、业务逻辑滥用</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">CNAPP 智能化</span><div class="l3-desc">云配置风险、云工作负载、云身份关联分析</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI API 安全</span><div class="l3-desc">API影子发现、参数异常、数据泄露检测</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 DDoS 防护</span><div class="l3-desc">自适应流量基线、秒级攻击识别清洗</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c7">
-      <div class="cat-head"><div class="cat-num">7</div><div><div class="cat-title">安全大模型与基座</div><div class="cat-en">Security Foundation Model</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全垂直大模型</span><div class="l3-desc">安全语料训练的专用基座(检测/研判/响应)</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多模态安全模型</span><div class="l3-desc">融合日志/流量/代码/图像统一理解</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全知识图谱</span><div class="l3-desc">攻击/资产/漏洞/威胁情报知识结构化</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全智能体 Agent</span><div class="l3-desc">可自主执行研判处置的安全专家Agent</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全 MaaS 能力平台</span><div class="l3-desc">统一API输出安全AI能力，按量计费</div></div></div>
-      </div>
-    </div>
-    <div class="cat-card c8">
-      <div class="cat-head"><div class="cat-num">8</div><div><div class="cat-title">AI 攻防对抗</div><div class="cat-en">Autonomous Offense & Defense</div></div></div>
-      <div class="cat-body">
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动化渗透测试</span><div class="l3-desc">AI自主侦察、利用、提权、横向移动</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动攻击模拟 BAS</span><div class="l3-desc">持续模拟真实攻击验证防御有效性</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 红队</span><div class="l3-desc">自动生成攻击路径、钓鱼、绕过样本</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自适应防御</span><div class="l3-desc">防御策略自动生成、动态蜜罐、移动目标防御</div></div></div>
-        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">威胁情报自动生产</span><div class="l3-desc">LLM从暗网/论坛自动提取IOC与TTP</div></div></div>
+  <div class="core"><b>核心结论：</b>①专用安全基座是独立品类——同代模型专用版 GPT-5.6-Cyber 完成 <b>95%</b> 高级攻防、通用版仅 <b>1.5%</b>，微软 5B 小专用模型反超 Mythos 12 分且成本减半，胜负手是攻防数据 / 工作流 / 系统而非参数规模；②攻击基座客户横跨两个二级，重算后中国 <b>2025 约 2.8 亿 → 2030 中性约 190 亿元（区间 127–268 亿）、CAGR≈133%</b>，远高于此前切片口径；③格局为 <b>约 2 家纯软件 + 1–2 家软硬一体安全基座寡头，上承应用层百花齐放、下接省市服务商</b>；④字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 因机会成本、对美制裁顾虑与 AGI/ASI 主战略，<b>只做开源通用上游、不做安全基座生意</b>（DoGNAVY 建在 GLM-5.2 上即是现实样本），窗口留给达酷诺威这类专业团队；⑤规模采用<b>“三口径阶梯 + 底座层渗透”</b>并经两位一线专家（无糖张瑞东、某头部一线安全厂商安全实验室负责人）交叉校验，结论是壁垒在<b>攻防数据与运行时控制</b>、生命周期管理易复制、开放权重“后训练”存疑——据此把“后训练能否突破开放权重天花板”列为头号技术尽调问题；全球首部智能体安全强制国标 2026 年 6 月在华立项，存在 <b>18–24 个月战略窗口</b>。</div>
+
+  <!-- 一 -->
+  <h2 class="sec">一、划分原则与主轴线</h2>
+  <div class="card"><div class="rules">
+    <div class="rule"><b>主轴 · 产品类型（客户需求不同）</b><br>U1 卖“会攻防的能力底座”，U2–U5 按安全作战域卖“会干活的智能体”，买方与预算各自独立、彼此 MECE。</div>
+    <div class="rule"><b>辅助 A · 技术路线</b><br>调用通用 API / 开源微调 / 自研专用基座；Copilot / 半自主 / 全自主，是同一需求的不同实现。</div>
+    <div class="rule"><b>辅助 B · 产业链环节</b><br>上游通用基座 / 算力 / 攻防数据 → 中游安全基座与智能体产品 → 下游软硬一体 / 托管运营 / 区域服务。</div>
+  </div></div>
+
+  <!-- 二 -->
+  <h2 class="sec">二、行业层级树：大行业 → 二级 → 三级 → 四级</h2>
+  <div class="card tree">
+    <div class="tnode"><span class="lvl-label">大行业</span><b>AGI 安全 / 人工智能安全行业</b></div>
+    <div class="branch">
+      <div class="tnode sibling"><span class="lvl-label" style="background:#a98d8e;">二级</span>安全地建设 AI ｜ 安全地运行 Agent（T1–T5，另文，<b>同为 U1 客户</b>）｜ AI 治理与安全保证</div>
+      <div class="tnode" style="border:2px solid var(--teal);background:#fdf3f1;">
+        <span class="lvl-label" style="background:var(--teal);">二级</span><b>用 AI 提升网络安全（AI-Amplified Security / AI+安全）— 本报告对象</b>
+        <div class="branch" style="margin-top:9px;">
+          <div class="tnode" style="border:1.6px solid var(--u1);background:#fceee9;"><div class="seg-head"><span class="seg-badge" style="background:var(--u1);">U1</span><span class="seg-name">攻击 / 安全基座大模型（共享底座） <span class="seg-en">Security Foundation Model</span> <span style="font-size:10.5px;background:var(--u1);color:#fff;border-radius:4px;padding:1px 6px;">本报告重点·横跨两二级</span></span></div><div class="l4list"><span class="l4">1.1 漏洞挖掘与代码推理</span><span class="l4">1.2 复现/利用与攻击链编排</span><span class="l4">1.3 专用训练微调私有化与攻防对齐</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u2);">U2</span><span class="seg-name">AI 安全运营与自主响应 <span class="seg-en">Autonomous SOC</span></span></div><div class="l4list"><span class="l4">2.1 告警研判降噪</span><span class="l4">2.2 自动威胁狩猎</span><span class="l4">2.3 自主响应处置</span><span class="l4">2.4 多智能体 SOC 编排</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u3);">U3</span><span class="seg-name">AI 漏洞挖掘与应用安全 <span class="seg-en">AppSec / ASM / Auto-Pentest</span></span></div><div class="l4list"><span class="l4">3.1 AI 代码审计 SAST</span><span class="l4">3.2 攻击面管理 ASM</span><span class="l4">3.3 自动渗透 / BAS</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u4);">U4</span><span class="seg-name">AI 威胁情报与欺诈对抗 <span class="seg-en">Intel / Anti-Phishing / Anti-Deepfake</span></span></div><div class="l4list"><span class="l4">4.1 情报生产归因</span><span class="l4">4.2 反钓鱼/反深伪</span><span class="l4">4.3 业务反欺诈</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u5);">U5</span><span class="seg-name">AI 安全治理与知识协同 <span class="seg-en">GRC / Copilot / Autofix</span></span></div><div class="l4list"><span class="l4">5.1 智能合规 GRC</span><span class="l4">5.2 安全知识 Copilot</span><span class="l4">5.3 自动修复</span></div></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="evol-box">
-    <h3>▎AI 赋能安全的三代演进：从"辅助工具"到"自主运营"</h3>
-    <table class="evol-table">
-      <tr><th>阶段</th><th>技术范式</th><th>人机关系</th><th>典型能力</th><th>时间窗</th></tr>
-      <tr><td class="era">1.0 机器学习辅助</td><td>小模型/规则+ML</td><td>AI辅助人决策</td><td>垃圾邮件识别、异常检测、评分</td><td>2015-2022</td></tr>
-      <tr><td class="era">2.0 大模型增强</td><td>LLM+安全知识库(RAG)</td><td>人机协同(Copilot)</td><td>告警研判、报告生成、代码审计、问答</td><td>2023-2027</td></tr>
-      <tr><td class="era">3.0 智能体自治</td><td>安全多Agent+工具调用</td><td>AI自主执行、人监督</td><td>自治SOC、自动响应、自动攻防闭环</td><td>2027-2030</td></tr>
+  <!-- 三 -->
+  <h2 class="sec">三、16 个四级能力</h2>
+  <div class="card"><div class="l4grid">
+    <div class="l4col c1"><div class="hd">U1 攻击基座（3）</div><div class="bd">
+      <div><b>1.1 漏洞挖掘代码推理</b>：陌生大代码库自主定位 0day。</div>
+      <div><b>1.2 复现利用 / 攻击链</b>：自动 PoC/Exploit、多步渗透编排。</div>
+      <div><b>1.3 专用训练 / 私有化</b>：注入攻防数据续训，涉密内网部署与攻防对齐。</div></div></div>
+    <div class="l4col c2"><div class="hd">U2 安全运营（4）</div><div class="bd">
+      <div><b>2.1 告警研判降噪</b>：自动分诊定性，替代 L1。</div>
+      <div><b>2.2 自动威胁狩猎</b>：主动检索潜伏威胁。</div>
+      <div><b>2.3 自主响应处置</b>：自动执行 SOAR、隔离封禁。</div>
+      <div><b>2.4 多智能体 SOC</b>：数字分析师团队闭环。</div></div></div>
+    <div class="l4col c3"><div class="hd">U3 应用安全（3）</div><div class="bd">
+      <div><b>3.1 AI 代码审计</b>：语义级逻辑漏洞。</div>
+      <div><b>3.2 攻击面管理</b>：资产暴露面发现排序。</div>
+      <div><b>3.3 自动渗透/BAS</b>：持续自动化攻防验证。</div></div></div>
+    <div class="l4col c4"><div class="hd">U4 情报对抗（3）</div><div class="bd">
+      <div><b>4.1 情报归因</b>：IOC/TTP 自动关联。</div>
+      <div><b>4.2 反钓鱼/深伪</b>：识别 AI 钓鱼换脸。</div>
+      <div><b>4.3 业务反欺诈</b>：识别智能体作恶。</div></div></div>
+    <div class="l4col c5"><div class="hd">U5 治理协同（3）</div><div class="bd">
+      <div><b>5.1 智能合规</b>：策略 / 等保 / 报告自动生成。</div>
+      <div><b>5.2 知识 Copilot</b>：研判 / 运维助手。</div>
+      <div><b>5.3 自动修复</b>：定位即生成补丁。</div></div></div>
+  </div></div>
+
+  <!-- 四：规模 -->
+  <h2 class="sec">四、中国市场规模：先用 MECE 总盘，再用“底座层渗透法”单独重算 U1</h2>
+  <p class="ss">权威总盘 IDC：网络安全相关 AI Agent（AI+安全）15.8→593.5 亿、CAGR106.5%；保护 AI（Securing AI）44.1→340.3 亿为姊妹二级。</p>
+  <div class="card">
+    <div class="warn"><b>口径：</b>下表先在“用 AI 做安全”二级内按<b>价值层</b>做 MECE（U1 为内嵌于 U2–U5 产品中的底座层收入，U2–U5 为应用 / 服务层），合计严格等于 IDC 593.5 亿；随后第八节用“底座层渗透法”叠加 U1 对姊妹二级与国家直供的收入，得到 U1 的<b>跨二级全口径 TAM</b>——这才是攻击基座的真实空间。</div>
+    <table>
+      <tr><th>三级（本二级内）</th><th>2025（亿元，测算）</th><th>2030（亿元，测算）</th><th>CAGR</th><th>说明 / 权威锚点</th></tr>
+      <tr><td><b>U1 安全基座层（内嵌）</b></td><td class="est">1.2</td><td class="big">107</td><td class="big">≈146%</td><td>593.5 亿下游产品中约 18% 价值归于底座层（中性）</td></tr>
+      <tr><td>U2 AI 安全运营（应用层）</td><td class="est">6.0</td><td class="est">215.5</td><td class="est">≈105%</td><td>最大应用口袋；Security Copilot / 恒脑 150+</td></tr>
+      <tr><td>U3 AI 漏洞 / 应用安全</td><td class="est">3.5</td><td class="est">108</td><td class="est">≈99%</td><td>XBOW / GitHub Autofix；数据安全相邻大盘</td></tr>
+      <tr><td>U4 情报 / 反欺诈</td><td class="est">3.5</td><td class="est">105</td><td class="est">≈98%</td><td>微步 / 朱雀 / Abnormal / Darktrace</td></tr>
+      <tr><td>U5 治理 / 知识协同</td><td class="est">1.6</td><td class="est">58</td><td class="est">≈105%</td><td>GRC / Copilot 增值模块</td></tr>
+      <tr style="background:#f7ecea;font-weight:700;"><td>合计 = IDC 总盘</td><td>15.8</td><td>593.5</td><td>106.5%</td><td class="auth">IDC 2026.4 约束值</td></tr>
     </table>
+    <div id="c_cn" class="chart"></div>
+    <div id="fb2" class="fb">静态读数（亿元，本二级内测算）：2025 U1 1.2/U2 6/U3 3.5/U4 3.5/U5 1.6；2030 U1 107/U2 215.5/U3 108/U4 105/U5 58。</div>
+    <p class="note" style="margin-bottom:0;">注意：上表 U1 的 107 亿只是它在“用 AI 做安全”一个二级内的内嵌收入；攻击基座同时向“保护 AI（340.3 亿）”与国家直供收费，全口径见第八节（中性约 190 亿）。</p>
   </div>
 
-  <div class="judge-box">
-    <div class="judge-card">
-      <div class="jt">▎核心变量：AI把安全从"人力密集"变"算力密集"</div>
-      <div class="jb">传统安全行业70%成本是人力(分析师)，AI Copilot/Agent可将人均处置效率提升5-10倍，行业成本结构与商业模式将被重构，软件订阅与MaaS价值量提升。</div>
-    </div>
-    <div class="judge-card">
-      <div class="jt">▎中国机会：数据+场景+大模型自主可控</div>
-      <div class="jb">中国在反诈/内容安全(360、美亚柏科)、安全运营(奇安信、深信服)有海量数据与政企场景；安全大模型基座是国产替代+AI升级双重红利，2030年有望跑出2-3家平台级公司。</div>
-    </div>
-    <div class="judge-card">
-      <div class="jt">▎胜负手：谁掌握安全大模型基座，谁定义生态</div>
-      <div class="jb">单点AI功能易被大模型厂商内置；真正壁垒在安全垂直大模型+高质量安全语料+闭环运营数据。基座厂商通过MaaS向数百家应用商输出能力，是2030格局的核心层。</div>
-    </div>
+  <!-- 五：详解（精简，重点U1） -->
+  <h2 class="sec">五、五个三级细分详解</h2>
+  <div class="seg u1"><div class="seg-top"><div class="seg-badge">U1</div><div class="tt"><div class="a">攻击 / 安全基座大模型（共享底座）<span style="font-size:11px;color:#b3402f;">· 重点</span></div><div class="b">发动机：把顶尖攻防专家能力内化为专用模型 + 多智能体系统，向全行业供能力</div></div><div class="buyer">买方<b>全行业安全产品</b>国家·涉密</div></div>
+    <div class="seg-grid">
+      <div class="sg"><h5>需求 / 四级（1.1–1.3）</h5><ul><li>漏洞挖掘代码推理、复现利用攻击链、专用训练私有化</li></ul><div class="bound"><b>界线：</b>供“会攻防的底座能力 / 引擎”，不亲自做 7×24 运营(U2)或成品扫描器(U3)；是发动机不是整车。</div></div>
+      <div class="sg"><h5>企业竞争</h5>
+        <span class="vn na">微软 MAI-Cyber-1-Flash / MDASH</span><span class="vn na">Google Gemini 3.5 Flash Cyber / CodeMender</span><span class="vn na">OpenAI GPT-5.6-Cyber</span><span class="vn na">Anthropic Mythos</span><span class="vn na">TrendAI AESIR</span>
+        <span class="vn cn">达酷诺威 DoGNAVY（GLM-5.2+AgentDoG，CyberGym 全球第三 / 开源第一）</span><span class="vn oss">GLM / Qwen / DeepSeek 通用开源底座（上游，不做安全生意）</span>
+        <div class="comp-note">趋势：专用小模型 + 多智能体系统击败巨型通用模型；护城河在攻防数据、工作流系统、战绩与涉密交付。</div></div>
+    </div></div>
+  <div class="seg u2"><div class="seg-top"><div class="seg-badge">U2</div><div class="tt"><div class="a">AI 安全运营与自主响应</div><div class="b">数字安全分析师团队</div></div><div class="buyer">买方<b>SOC/MSSP</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（2.1–2.4）</h5><p>告警研判、威胁狩猎、自主处置、多智能体 SOC；面向已部署系统运营，不挖源代码洞(U3)。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">MS Security Copilot</span><span class="vn na">SentinelOne Purple AI</span><span class="vn na">Cortex XSIAM</span><span class="vn cn">360/某头部一线安全厂商/深信服</span><span class="vn cn">安恒恒脑/绿盟问衡/亚信/启明</span></div></div></div>
+  <div class="seg u3"><div class="seg-top"><div class="seg-badge">U3</div><div class="tt"><div class="a">AI 漏洞挖掘与应用安全</div><div class="b">主动找洞：代码审计 / ASM / 自动渗透</div></div><div class="buyer">买方<b>DevSecOps/红队</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（3.1–3.3）</h5><p>语义级 SAST、攻击面管理、持续自动渗透；是 U1 能力最先产品化的出口。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">XBOW</span><span class="vn na">GitHub Autofix</span><span class="vn na">Snyk/Hadrian/Pentera</span><span class="vn cn">安恒代码审计</span><span class="vn cn">某头部一线安全厂商代码审计 AI</span></div></div></div>
+  <div class="seg u4"><div class="seg-top"><div class="seg-badge">U4</div><div class="tt"><div class="a">AI 威胁情报与欺诈对抗</div><div class="b">千里眼：情报 / 反钓鱼 / 反深伪 / 反欺诈</div></div><div class="buyer">买方<b>情报/风控</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（4.1–4.3）</h5><p>情报归因、反钓鱼深伪、业务反欺诈；生产识别能力，不做内部运营(U2)。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">Recorded Future/Abnormal/Darktrace</span><span class="vn cn">微步/腾讯朱雀</span><span class="vn cn">蚂蚁腾讯风控</span><span class="vn cn">国家反诈</span></div></div></div>
+  <div class="seg u5"><div class="seg-top"><div class="seg-badge">U5</div><div class="tt"><div class="a">AI 安全治理与知识协同</div><div class="b">效率工具：合规 / 知识助手 / 自动修复</div></div><div class="buyer">买方<b>CISO/GRC</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（5.1–5.3）</h5><p>智能合规、安全 Copilot、自动修复；工具属性强、易被套件吸收。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">Drata/Vanta</span><span class="vn cn">绿盟/安恒知识助手</span><span class="vn cn">安全 GPT 运维</span></div></div></div>
+
+  <!-- 六：技术路线 -->
+  <h2 class="sec">六、辅助视角 A · 技术路线</h2>
+  <div class="card"><table>
+    <tr><th>维度</th><th>路线</th><th>特点</th><th>代表</th></tr>
+    <tr><td rowspan="3">基座来源</td><td>调用通用 API</td><td>最快但涉密不可用、受制于人</td><td>多数 Copilot</td></tr>
+    <tr><td>开源通用基座 + 安全续训 / 工作流</td><td>可私有化、性价比高，<b>中国当前主流且被验证可登顶</b></td><td>DoGNAVY(GLM-5.2)、MDASH、Flash Cyber</td></tr>
+    <tr><td>自研全参数安全基座</td><td>投入巨大，趋势是“小专用模型 + 系统”取胜</td><td>MAI-Cyber-1-Flash(5B)</td></tr>
+    <tr><td rowspan="3">自主程度</td><td>Copilot 辅助</td><td>人主导（2025 主流）</td><td>Security Copilot</td></tr>
+    <tr><td>半自主（人审）</td><td>关键动作人确认</td><td>带审批自动响应</td></tr>
+    <tr><td>全自主闭环</td><td>机器速度，价值最高</td><td>XBOW / 多智能体 SOC</td></tr>
+  </table></div>
+
+  <!-- 七：产业链 -->
+  <h2 class="sec">七、辅助视角 B · 产业链与竞争层级</h2>
+  <div class="card">
+    <div class="layer"><div class="lt">① 安全基座层（寡头）</div><div class="lc"><b>约 2 家“纯软件”安全大模型基座 + 1–2 家“软件 + 硬件”安全基座</b>（信创 / 昇腾 / 飞腾 + 涉密一体机）。赢家通吃、壁垒最高。软硬一体佐证：润和 HopeClaw、宝德×恒安嘉新流量大模型一体机、实在 Agent 昇腾一体机、讯飞党政智盒。</div></div>
+    <div class="layer l2"><div class="lt">② 安全应用层（百花齐放）</div><div class="lc">基于基座做 U2–U5 与姊妹篇 T1–T5 的 AI 安全产品公司（运营、漏洞、情报、合规、运行时防护、身份等），数量众多、场景分化。</div></div>
+    <div class="layer l3"><div class="lt">③ 区域服务层</div><div class="lc">各省市本土 AI 安全服务 / 集成 / MSSP 企业，靠本地化交付、关系与等保涉密服务落地，是基座与应用的“最后一公里”。</div></div>
+    <p class="note" style="margin-bottom:0;">纵向产业链：上游通用基座 / 算力 / <b>攻防数据（最稀缺）</b> → 中游安全基座与智能体 → 下游软硬一体 / 托管运营 / 区域服务。</p>
   </div>
 
-  <div class="footer">
-    用AI赋能网络安全(AI for Cybersecurity)三级细分图谱 · AI安全四大板块之三<br>
-    框架参考 Gartner Hype Cycle for AI in Security、IDC AI安全支出指南、安全牛 · 2026年8月
+  <!-- 八：重点专题 -->
+  <h2 class="sec">八、重点专题：攻击基座大模型——专用性、客户飞轮、格局与重算规模</h2>
+  <div class="card">
+    <div class="step"><b>8.1 为什么它是独立品类、且通用模型替代不了：专用 vs 通用是“数量级”差距。</b>
+      <table style="margin-top:7px;">
+        <tr><th>证据（2026，权威 / 官方）</th><th>结果</th><th>说明</th></tr>
+        <tr><td>OpenAI GPT-5.6-Cyber vs 同代通用 GPT-5.6-Sol</td><td class="big">95% vs 1.5%</td><td>同一实验室，专用版完成 95% 高级攻防请求，通用版仅 1.5%</td></tr>
+        <tr><td>微软 MAI-Cyber-1-Flash（仅 5B 活跃参数）驱动 MDASH</td><td class="big">CyberGym 95.95%，超 Mythos 约 12 分、成本约一半</td><td>小专用模型 + 多智能体系统击败巨型通用模型</td></tr>
+        <tr><td>Google Gemini 3.5 Flash Cyber / CodeMender（V8 引擎）</td><td class="big">55 个独特确认漏洞</td><td>主网 Flash 47、Claude Opus 4.6 仅 36，含 10 个后两者漏掉的；2 小时挖出可绕 ASLR/W^X 的 RCE</td></tr>
+        <tr><td>arXiv 垂直基座研究（2026.5）</td><td class="auth">垂直 Defense-LLM 单卡精度 0.904、误报 9.7%</td><td>前沿通用模型白盒误报 10–50%、黑盒覆盖仅 4–8%；决定性能的是<b>攻防数据与方法论而非参数规模</b></td></tr>
+      </table>
+      <span class="quote">“通用大模型决定攻击的下限，专用攻防数据决定上限。”</span>
+    </div>
+
+    <div class="step"><b>8.2 客户全景与数据飞轮：中国版 Mythos 是横跨两个二级的共享底座。</b>
+      <div class="hub">
+        <div class="center">U1 攻击 / 安全基座大模型（供能力 · 供引擎 · 供私有化底座）</div>
+        <div class="spokes">
+          <div class="spoke"><b>本二级应用层</b>U2 运营 / U3 漏洞 / U4 情报 / U5 治理产品公司</div>
+          <div class="spoke"><b>姊妹二级</b>安全地运行 Agent：T1 治理 / T2 测试 / T3 身份 / T4 运行时 / T5 监控</div>
+          <div class="spoke"><b>软硬一体</b>昇腾 / 飞腾一体机、AI 防火墙、安全探针、信创盒子</div>
+          <div class="spoke"><b>区域服务</b>各省市本土 AI 安全服务商 / 集成商 / MSSP</div>
+          <div class="spoke"><b>国家直供</b>国家漏洞库 / 关基 / 军工涉密 / 红蓝军 / 网络靶场</div>
+        </div>
+      </div>
+      <b>飞轮逻辑：</b>客户越多 → 汇聚的真实攻防遥测、漏洞样本、攻击链越多 → 模型挖掘 / 研判能力越强 → 下游产品越好用 → 客户更多。由于横跨所有产品，基座方拥有任何单一应用厂商都不具备的<b>全局攻击“上帝视角”</b>，边际成本递减、边际能力递增，最终寡头化、赢家通吃。<span class="quote">“所有安全产品都是它的客户，所有攻击数据都回流到它这里。”</span>
+    </div>
+
+    <div class="step"><b>8.3 为什么字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 最终不会来做“安全基座龙头”。</b>
+      <table style="margin-top:7px;">
+        <tr><th>原因</th><th>逻辑</th></tr>
+        <tr><td><b>① 机会成本 / 市场规模</b></td><td>其主战略是万亿级 AGI/ASI 的消费与企业市场；安全基座 2030 中国约 190 亿，盘子小、项目制、毛利低、关系与资质驱动，不值得战略聚焦。</td></tr>
+        <tr><td><b>② 对美制裁顾虑（核心）</b></td><td>做“国家攻击基座”需深度绑定国家攻防 / 涉密体系，极易被列入美实体清单，进而威胁其最看重的高端芯片、海外资本与全球市场、AGI/ASI 竞赛。因此它们选择做<b>中立上游</b>：开源通用模型供安全公司去做专用层，自己不碰敏感攻防与涉密客户。</td></tr>
+        <tr><td><b>③ 能力 / 数据错配</b></td><td>安全需独家漏洞样本、攻防数据、顶级白帽、涉密资质、关基 know-how；通用实验室没有也不经济自建（8.1 已证：决定性能的是攻防数据而非规模）。</td></tr>
+        <tr><td><b>④ 商业模式冲突</b></td><td>实验室卖规模化 token / MaaS；安全要私有化、项目制、等保涉密、7×24 责任兜底，基因不合。</td></tr>
+      </table>
+      <b>证据闭环：</b>(a) DoGNAVY 直接建在智谱 <b>GLM-5.2 开源</b>基座之上——智谱供通用底座、达酷诺威做安全专用层，正是该分工的现实样本；(b) Google 因双重用途把 Gemini Cyber <b>仅限政府与可信伙伴</b>、不做通用商用；(c) Anthropic Mythos 走 Project Glasswing 防御联盟而非安全产品生意。通用基座厂普遍“供底座而不做安全生意”，这正是专业安全基座团队的结构性窗口。
+    </div>
+
+    <div class="step"><b>8.4 重算规模：三口径阶梯 + 底座层渗透法（自下而上）。</b><br>
+      <b>先立方法论：同一赛道三种口径可差 3–10 倍，投委会须先对齐口径，避免“用卖 License 的算法估一个收租的生意”。</b>
+      <table style="margin-top:7px;">
+        <tr><th>口径</th><th>算法</th><th>2030 量级</th><th>评价</th></tr>
+        <tr><td>① 纯安全软件 License（最窄）</td><td>只算攻击基座软件授权 / 订阅</td><td class="est">数十亿～百亿</td><td>会系统性低估“底座 / 收租”型生意，此前 62 亿即此口径</td></tr>
+        <tr style="background:#fdf0e8;font-weight:700;"><td>② 底座层渗透（本报告中性基准）</td><td>基座向两个二级下游产品收费 + 国家直供</td><td class="big">≈190 亿（127–268）</td><td>符合“共享底座”产业本质，作为估值锚</td></tr>
+        <tr><td>③ 大盘×渗透·按运行量收租（最宽，上行期权）</td><td>安全＝Agent 经济固定比例支出（Gartner：守护智能体占 Agentic AI 10–15%），计费由 License 转向<b>按 Agent 运行量 / Token / 事件</b></td><td class="est">随大盘复利，2030 后仍续涨</td><td>天花板由 Agent 大盘决定，是长期上行来源</td></tr>
+      </table>
+      <b>口径②测算（底座层渗透法）：</b>第一步，基座服务的下游 AI 安全产品总盘 2030 = 用 AI 做安全 593.5 + 保护 AI 340.3 = <b>933.8 亿元</b>（均 IDC）；第二步，底座层价值捕获率取保守 12% / 中性 18% / 乐观 25%；第三步，加国家 / 涉密 / 靶场 / 漏洞库直供（15 / 25 / 35 亿）。
+      <table style="margin-top:7px;">
+        <tr><th>情景（捕获率）</th><th>下游 933.8 × 捕获率</th><th>+ 国家直供</th><th>U1 全口径 2030</th><th>CAGR（2025≈2.8 亿起）</th></tr>
+        <tr><td>保守 12%</td><td>112 亿</td><td>15 亿</td><td class="est">≈127 亿</td><td class="est">≈115%</td></tr>
+        <tr style="background:#fdf0e8;font-weight:700;"><td>中性 18%</td><td>168 亿</td><td>25 亿</td><td class="big">≈193 亿</td><td class="big">≈133%</td></tr>
+        <tr><td>乐观 25%</td><td>233 亿</td><td>35 亿</td><td class="est">≈268 亿</td><td class="est">≈149%</td></tr>
+      </table>
+      <b>口径③为什么是动态上行——中国 Agent 大盘多源对账（口径不同但企业级一致高增）：</b>
+      <table style="margin-top:7px;">
+        <tr><th>机构 / 口径</th><th>中国 Agent / 企业级智能体大盘</th><th>增速</th></tr>
+        <tr><td>IDC《中国 AI Agent 市场剖析 3Q25》</td><td>2025 企业级约 190 亿元</td><td class="auth">2025–28 CAGR&gt;110%</td></tr>
+        <tr><td>CIDC《AI 智能体赋能行业决策白皮书 2026》</td><td>212 亿(2025)→449 亿(2026)→3320 亿(2029)</td><td class="auth">2024–29 CAGR 107%</td></tr>
+        <tr><td>中商产业研究院（狭义：平台+软件）</td><td>69 亿(2025)→287 亿(2030)</td><td>≈33%</td></tr>
+        <tr><td>艾媒（广义：全产业链）</td><td>804 亿(2025)</td><td>50%+</td></tr>
+      </table>
+      <span class="note">各口径绝对值差异大，但企业级一致为 70%–110% 高增，显著快于安全软件线（50.5%），意味着安全渗透率长期“补涨”；安全支出＝Agent 大盘 × 渗透率(10–15%) × 基座分成，按运行量计费使 U1 天花板随大盘复利上行。故 <b>190 亿是中性基准、不是上限</b>。</span><br>
+      <b>单家含义：</b>3–4 家寡头（2 纯软 + 1–2 软硬）下，龙头取 45–55%，则 2030 单家安全基座收入约 <b>87–106 亿元</b>——足以支撑独立巨头市值。对比此前“切片法”只给 U1 62 亿，本版中性 193 亿约为其 3 倍，且方法论更符合“共享底座 + 按运行量收租”的产业本质。
+    </div>
+
+    <div class="step"><b>8.5 一线专家观点校验（两位）·区分“待确认”与“已核实”，供投委会尽调。</b>
+      <p style="margin:6px 0;"><b>专家一 · 张瑞东（成都无糖信息创始人）：</b>资深反诈 / 黑产对抗出身，年威胁预警约 1.8 亿次、190+ 公安客户、信创基因；无糖 2024 营收约 4741 万元、B+ 轮。其新切入“安全原生 Harness / 控制面”（工具调用管控、沙箱、Policy-as-Code、人工审批、全链路审计），落在<b>姊妹二级“安全地运行 Agent”的 T4 运行时</b>，但其攻防 DNA 与本报告 U1 同源。选点四逻辑：①Agent 执行咽喉点；②以反诈 / 反滥用数据做差异化安全底座；③时机——2026 为 Agentic 元年、全球首部智能体安全强制国标 2026 年 6 月在华立项、战略窗口 18–24 个月；④客户从公安“事后对抗”上移到金融 / 运营商 / 互联网“事前控制”。<br><b>对 U1 的三点启示：</b>(a) 黑产 / 攻防对抗数据正是攻击基座最稀缺养料，印证 8.1“数据&gt;规模”；(b)“用 AI 做安全”与“保护 Agent”<b>攻防一体、能力双向外溢</b>——同一支团队、同一个底座可同时覆盖 U2–U5 与 T1–T5，直接佐证 8.2 客户飞轮；(c) 18–24 个月窗口即投资时点判断。</p>
+      <p style="margin:6px 0;"><b>专家二 · 某头部一线安全厂商安全实验室负责人（行业内部交流，属“待确认”来源；观点保留、原话与身份已隐去；其支撑事实已逐一核验）：</b></p>
+      <table style="margin-top:4px;">
+        <tr><th>观点（转述，已隐去原话与身份）</th><th>核实状态 / 公开依据</th><th>对 U1 的含义</th></tr>
+        <tr><td>做 Harness 效果好的人不多、门槛高</td><td class="auth">方向吻合·已核实：8/24 披露 DeepSeek Harness 未授权 RCE（QVD-2026-57410，CVSS 9.8，PoC 公开、CERT 验证）；某头部厂商实验室《OpenClaw 生态威胁分析》；6 月 QAgentFabric；星图 Harness 论文</td><td>头部大厂实验室攻防实力强，是创业方最强对手</td></tr>
+        <tr><td>做模型数据积累占优</td><td class="est">自评·无公开可比口径，无法独立证实</td><td>若属实，印证“数据第一壁垒”；创业方须拼<b>独家数据密度</b>而非存量</td></tr>
+        <tr><td>智能体生命周期管理缺乏核心技术、易复制</td><td class="auth">与行业一致：对应姊妹篇 T1 治理层壁垒最低、易被平台原生整合</td><td>反证壁垒在<b>运行时攻防 / 底座（U1、T4）</b>，支撑重仓 U1</td></tr>
+        <tr><td>实验室与集团产研分开</td><td>符合大厂“研究院强、产线联动弱”常态</td><td>大厂商品化内部缝隙＝创业公司贴身快打窗口</td></tr>
+        <tr><td>开源多为半开源（开放权重≠开源），靠后训练提升能力存疑，瓶颈在数据与算力</td><td class="auth">属实 + 行业共识：主流国产“开源”多为 open-weights、不公开训练数据；后训练主做对齐、难破基座推理天花板；安天肖新光亦指开源 / 商业模型在二进制分析等特定域有短板</td><td class="big">关键反方，与 DoGNAVY“开源登顶”形成对冲，见 8.6</td></tr>
+      </table>
+    </div>
+
+    <div class="step"><b>8.6 多空交锋与投委会判据（不唱多，给可证伪的结论）。</b>
+      <table style="margin-top:7px;">
+        <tr><th>多方（开源 + 工作流可快速登顶）</th><th>空方（头部大厂一线：长跑壁垒在数据 / 算力）</th></tr>
+        <tr><td>DoGNAVY 90.8% 全球第三 / 开源第一；微软 5B 小专用模型反超 Mythos；专用 vs 通用 95%∶1.5%</td><td>开放权重≠开源；后训练主要做对齐、有天花板；大厂存量攻防数据最多；算力是长期门槛</td></tr>
+      </table>
+      <b>对账（两者并不矛盾）：</b>开源通用基座是<b>起跑线而非终点线</b>；真实壁垒＝独家攻防数据 × 后训练 / 多智能体系统工程 × 算力 × <b>可稳定复现的战绩</b>。DoGNAVY 证明专业团队能“快速逼近一线”，头部大厂一线则提示“逼近≠持续超越、后训练或遇天花板”。<br>
+      <b>投委会头号技术尽调问题（不看 Demo 看四件事）：</b>①真实 0day / CVE 的<b>持续</b>产出与独立复现；②独家攻防 / 黑产数据的来源、合规与独占性；③在开放权重上的后训练 / 多智能体系统能否<b>稳定复现</b> benchmark（而非单次刷榜）；④算力供给与昇腾 / 飞腾国产化、离线私有化适配。此判据与“三道门”及 F1 信号一致，并将 F1 细化为“<b>后训练能否突破开放权重天花板</b>”。
+    </div>
+
+
+    <div class="verdict yes"><b>结论：</b>攻击基座是“用 AI 提升网络安全”里<b>壁垒最高、增速最快（全口径 CAGR≈133%）、且唯一横跨两个二级、具数据飞轮</b>的环节；其终局是 3–4 家寡头（约 2 纯软 + 1–2 软硬一体），龙头 2030 年单家收入有望达 87–106 亿。通用大模型厂因机会成本、制裁顾虑与主战略主动让出此位。国内卡位者达酷诺威（DoGNAVY 全球第三 / 开源第一）已验证“能力”关，接下来连过三道门：<b>(1) 持续真实 0day/CVE 战绩；(2) 涉密 / 军工资质与关基标杆、软硬一体交付；(3) 从供模型到“基座 + 应用生态 + 数据飞轮”的商业闭环。</b></div>
+    <div class="warn"><b>可证伪信号：</b>F1 开源通用基座若把专用差距抹平（当前 95% vs 1.5%，短期不会），价值下沉到独家数据 / 场景 / 资质；F2 传统大厂绑定国产开源 + 收购头部团队，创业方多走并购退出；F3 自动化攻击受出口管制 / 武器化管控。跟踪：CyberGym/Big Sleep 排名、真实 CVE、昇腾软硬一体机中标、涉密资质、关基 / 军工订单、下游调用量与数据回流。</div>
   </div>
+
+  <!-- 九：总表 -->
+  <h2 class="sec">九、三级细分对比总表</h2>
+  <div class="card"><table>
+    <tr><th>三级</th><th>买方</th><th>2025/2030（本二级内，亿）</th><th>CAGR</th><th>竞争主导</th><th>巨头潜力</th></tr>
+    <tr><td><b>U1 攻击基座</b>★</td><td>全行业产品 / 国家</td><td>1.2 / 107；<span class="big">全口径 2.8/193</span></td><td><b>146%；全口径≈133%</b></td><td>专业寡头，通用厂做上游</td><td class="big">★★★★★</td></tr>
+    <tr><td>U2 安全运营</td><td>SOC/MSSP</td><td>6.0 / 215.5（最大应用）</td><td>≈105%</td><td>平台 + 传统大厂</td><td>★★★★</td></tr>
+    <tr><td>U3 漏洞应用</td><td>DevSecOps/红队</td><td>3.5 / 108</td><td>≈99%</td><td>U1 第一产品出口</td><td>★★★★</td></tr>
+    <tr><td>U4 情报反欺诈</td><td>情报/风控</td><td>3.5 / 105</td><td>≈98%</td><td>情报厂 + 业务大厂内化</td><td>★★★</td></tr>
+    <tr><td>U5 治理协同</td><td>CISO/GRC</td><td>1.6 / 58</td><td>≈105%</td><td>套件增值模块</td><td>★★</td></tr>
+    <tr style="background:#f7ecea;font-weight:700;"><td>合计</td><td colspan="2">= IDC AI+安全总盘 15.8 / 593.5</td><td>106.5%</td><td colspan="2">U1 另有跨二级 +86 亿（Securing AI 61 + 国家 25）</td></tr>
+  </table>
+  <div class="core" style="margin-top:12px;"><b>筛选金句：</b>运营是数字值班员、找洞是侦察兵、情报是千里眼、合规是文书，攻击基座是<b>会自己打仗、还给全军供军火的兵工厂</b>。专用与通用是 95 分对 1.5 分的代差；通用大模型厂忙着奔 AGI、还怕制裁，只肯开源当上游——中国版 Mythos 的空位，就留给既懂攻防、又敢进涉密关基的专业团队。</div></div>
+
+  <!-- 十：全球 -->
+  <h2 class="sec">十、全球对照（权威）</h2>
+  <div class="card"><table>
+    <tr><th>Gartner AI Cybersecurity（用 AI 做安全）</th><th>2025</th><th>2026</th><th>2027</th></tr>
+    <tr><td>全球支出（亿美元）</td><td>259</td><td>513（+98%）</td><td>860（+68%）</td></tr>
+  </table>
+  <ul style="font-size:13px;">
+    <li>专用安全模型竞速（2026）：微软 MAI-Cyber-1-Flash / MDASH 95.95%（超 Mythos 约 12 分）；OpenAI GPT-5.5-Cyber 81.9%→GPT-5.6-Cyber 高级任务 95%（通用版 1.5%）；Google Gemini 3.5 Flash Cyber + CodeMender（V8 55 独特漏洞、限政府 / 可信伙伴）；TrendAI AESIR 97%。</li>
+    <li>CyberGym（UC Berkeley）：达酷诺威 DoGNAVY 90.8%，全球第三 / 开源第一（基于智谱 GLM-5.2 + AgentDoG）。</li>
+    <li>Menlo：安全智能体部署 41%(2025)→73%(2026)，自主处置 3%→31%(2027)；AI-Amplified 2025 约 490 亿美元，约为 Securing AI（28 亿）的 17 倍。</li>
+    <li><b>退出锚点：</b>Cisco 收购 Agent 身份公司 Astrix 约 4 亿美元、Palo Alto 收购 Protect AI 约 5 亿美元、自主攻防 Noma 完成 1 亿美元 B 轮——安全基座 / Agent 安全并购通道清晰、估值有参照。</li>
+    <li><b>政策窗口：</b>全球首部智能体安全强制国标 2026 年 6 月在中国立项，行业判断战略窗口 18–24 个月。</li>
+  </ul>
+  <p class="note" style="margin-bottom:0;">口径：本章为“用 AI 做安全”，勿与姊妹篇 Securing AI（保护 AI）相加。</p></div>
+
+  <!-- 来源 -->
+  <h2 class="sec">十一、数据与资料来源</h2>
+  <div class="card">
+    <p style="margin-top:0;"><span class="pill">权威规模</span></p>
+    <div class="refs">
+      <div>IDC《Anthropic Mythos 叩关》2026-04（AI+安全 15.8→593.5 亿 CAGR106.5%；Securing AI 44.1→340.3 亿）；天融信调研纪要 2026-04-26 同口径转引</div>
+      <div>Gartner Worldwide AI Spending 2026（AI Cybersecurity 259→513→860 亿美元）；Menlo Agents for Security</div>
+    </div>
+    <p><span class="pill" style="background:#b3402f;">专用模型 / 基准</span></p>
+    <div class="refs">
+      <div>Google DeepMind《Introducing Gemini 3.5 Flash Cyber》2026-07-21（CodeMender、V8 55 独特漏洞、政府 / 可信伙伴限量）</div>
+      <div>微软 MAI-Cyber-1-Flash / MDASH CyberGym 95.95%（超 Mythos 12 分、5B、半成本）；OpenAI GPT-5.5/5.6-Cyber（95% vs 通用 1.5%）；TrendAI AESIR 97%</div>
+      <div>arXiv 2605.23243《Are Frontier LLMs Ready for Cybersecurity? Evidence for Vertical Foundation Models》2026-05</div>
+      <div>UC Berkeley CyberGym 2026-08；上观 / 科技日报 / 腾讯云 DoGNAVY、AgentDoG、GLM-5.2 报道；东方财富计算机跟踪 2026-08-10</div>
+    </div>
+    <p><span class="pill" style="background:#c9831c;">大盘 / 软硬一体 / 专家访谈</span></p>
+    <div class="refs">
+      <div>IDC《中国 AI Agent 市场剖析 3Q25》（2025 企业级约 190 亿、2025–28 CAGR&gt;110%）；CIDC《AI 智能体赋能行业决策白皮书 2026》（212→449→3320 亿、CAGR107%）；中商 / 艾媒不同口径对照</div>
+      <div>润和 HopeClaw 昇腾一体机；宝德×恒安嘉新流量大模型一体机；实在 Agent 昇腾一体机；讯飞党政智盒（飞腾）</div>
+      <div>某头部一线安全厂商威胁情报中心：DeepSeek Harness 未授权 RCE，QVD-2026-57410，CVSS 9.8（2026-08-24，PoC 公开、CERT 验证，多源一致）</div>
+      <div><b>两位一线专家交流（2026-08）：</b>无糖信息张瑞东（Harness / 反诈攻防）、某头部一线安全厂商安全实验室负责人（行业内部交流，观点已隐去原话与身份，支撑事实已逐一核验，见 8.5）</div>
+      <div>AI 安全治理与智能体安全实践分享会 2026-08-18；腾讯朱雀 / 阿里千问专家访谈；OWASP Agentic Top10 2026；并购：Cisco-Astrix≈$4 亿、Palo Alto-Protect AI≈$5 亿、Noma $1 亿 B 轮</div>
+    </div>
+    <p class="note" style="margin-bottom:0;">可信度声明：U1–U5、底座层渗透与三口径均为本报告测算（非权威直接发布），以两个 IDC 权威总盘为硬约束、以全球专用模型战绩与多源 Agent 大盘为佐证；总盘、全球数、基准战绩、QVD 漏洞、并购额为权威 / 公开直接引用。捕获率 12/18/25% 为情景假设、已给区间，不做单点伪精确；专家观点严格区分“待确认”与“已核实”，未把内部交流观点当既成事实。</p>
+  </div>
+
 </div>
+<script>
+(function(){
+  try{
+    var el=document.getElementById('c_cn');if(!el||typeof echarts==='undefined'){return;}
+    var ch=echarts.init(el);
+    var cats=['U1 底座层','U2 安全运营','U3 漏洞应用','U4 情报反欺诈','U5 治理协同'];
+    ch.setOption({
+      backgroundColor:'transparent',
+      title:{text:'本二级内各细分规模（亿元）：2025 vs 2030（合计=IDC 593.5；U1 另有跨二级收入见第八节）',left:'center',textStyle:{fontSize:12.8,color:'#6e2420'}},
+      tooltip:{trigger:'axis',triggerOn:'click',renderMode:'richText',confine:true,axisPointer:{type:'shadow'}},
+      legend:{data:['2025(测算)','2030(测算)'],top:27},
+      grid:{left:10,right:14,bottom:8,top:66,containLabel:true},
+      xAxis:{type:'category',data:cats,axisLabel:{interval:0,fontSize:11,color:'#5b4648'}},
+      yAxis:{type:'value',name:'亿元',nameTextStyle:{fontSize:11},axisLabel:{color:'#5b4648'}},
+      series:[
+        {name:'2025(测算)',type:'bar',data:[1.2,6.0,3.5,3.5,1.6],itemStyle:{color:'#e2b4ac',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}},
+        {name:'2030(测算)',type:'bar',data:[107,215.5,108,105,58],itemStyle:{color:'#7c2a23',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}}
+      ]
+    });
+    window.addEventListener('resize',function(){ch.resize();});
+  }catch(e){if(window&&window.console)console.error(e);}
+})();
+</script>
 </body>
 </html>
