@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用AI赋能网络安全 · 行业图谱三级细分</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:linear-gradient(135deg,#0b1120 0%,#162032 45%,#0d1526 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px 40px;}
+.container{max-width:1280px;margin:0 auto;}
+.back-link{display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:8px;font-size:12.5px;color:#94a3b8;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .2s;}
+.back-link:hover{color:#34d399;border-color:rgba(52,211,153,0.4);}
+.header{text-align:center;margin-bottom:18px;}
+.header h1{font-size:24px;font-weight:700;background:linear-gradient(90deg,#34d399,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.header .sub{font-size:13px;color:#64748b;margin-top:6px;}
+.header .tagline{display:inline-block;margin-top:10px;font-size:11.5px;color:#34d399;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);padding:4px 14px;border-radius:20px;}
+.flow-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:18px 0 22px;}
+.flow-step{font-size:11px;padding:6px 12px;border-radius:8px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);color:#6ee7b7;}
+.flow-arrow{color:#475569;font-size:14px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
+.cat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;transition:all .25s;}
+.cat-card:hover{border-color:rgba(52,211,153,0.35);background:rgba(255,255,255,0.05);transform:translateY(-2px);}
+.cat-head{padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.cat-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.cat-title{font-size:13.5px;font-weight:600;color:#f1f5f9;}
+.cat-en{font-size:10px;color:#64748b;margin-top:1px;}
+.cat-body{padding:10px 14px 12px;}
+.l3-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:11.5px;color:#cbd5e1;line-height:1.5;}
+.l3-dot{width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+.l3-name{font-weight:500;color:#e2e8f0;}
+.l3-desc{color:#94a3b8;font-size:10.5px;}
+.c1 .cat-num{background:rgba(52,211,153,0.15);color:#34d399;} .c1 .l3-dot{background:#34d399;}
+.c2 .cat-num{background:rgba(56,189,248,0.15);color:#38bdf8;} .c2 .l3-dot{background:#38bdf8;}
+.c3 .cat-num{background:rgba(129,140,248,0.15);color:#818cf8;} .c3 .l3-dot{background:#818cf8;}
+.c4 .cat-num{background:rgba(192,132,252,0.15);color:#c084fc;} .c4 .l3-dot{background:#c084fc;}
+.c5 .cat-num{background:rgba(244,114,182,0.15);color:#f472b6;} .c5 .l3-dot{background:#f472b6;}
+.c6 .cat-num{background:rgba(251,191,36,0.15);color:#fbbf24;} .c6 .l3-dot{background:#fbbf24;}
+.c7 .cat-num{background:rgba(248,113,113,0.15);color:#f87171;} .c7 .l3-dot{background:#f87171;}
+.c8 .cat-num{background:rgba(148,163,184,0.15);color:#94a3b8;} .c8 .l3-dot{background:#94a3b8;}
+.evol-box{margin-top:22px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.2);border-radius:12px;padding:16px 18px;}
+.evol-box h3{font-size:13px;color:#34d399;margin-bottom:12px;}
+.evol-table{width:100%;border-collapse:collapse;font-size:11px;}
+.evol-table th{color:#64748b;font-weight:600;text-align:left;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.1);font-size:10.5px;}
+.evol-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#cbd5e1;line-height:1.5;}
+.evol-table tr:last-child td{border-bottom:none;}
+.evol-table .era{color:#6ee7b7;font-weight:600;white-space:nowrap;}
+.judge-box{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.judge-card{background:rgba(255,255,255,0.03);border-left:3px solid #34d399;border-radius:8px;padding:12px 14px;}
+.judge-card .jt{font-size:12px;font-weight:600;color:#34d399;margin-bottom:5px;}
+.judge-card .jb{font-size:11px;color:#94a3b8;line-height:1.7;}
+.footer{text-align:center;margin-top:22px;font-size:11px;color:#475569;line-height:1.7;}
+@media(max-width:640px){.header h1{font-size:19px;}.grid{grid-template-columns:1fr;}.evol-table{font-size:10px;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="2030.html" class="back-link">← 返回2030格局预判</a>
+  <div class="header">
+    <h1>用 AI 赋能网络安全 · 行业图谱三级细分</h1>
+    <div class="sub">AI for Cybersecurity — 以AI重构检测、运营、响应、攻防全链路</div>
+    <div class="tagline">AI 安全四大板块之三 · AI 是安全行业最大的生产力变量</div>
+  </div>
+
+  <div class="flow-bar">
+    <span class="flow-step">① 威胁检测</span><span class="flow-arrow">→</span>
+    <span class="flow-step">② 安全运营</span><span class="flow-arrow">→</span>
+    <span class="flow-step">③ 漏洞代码</span><span class="flow-arrow">→</span>
+    <span class="flow-step">④ 欺诈内容</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑤ 身份安全</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑥ 云与应用</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑦ 安全大模型</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑧ 攻防对抗</span>
+  </div>
+
+  <div class="grid">
+    <div class="cat-card c1">
+      <div class="cat-head"><div class="cat-num">1</div><div><div class="cat-title">AI 威胁检测</div><div class="cat-en">AI-Powered Threat Detection</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 NDR 网络检测响应</span><div class="l3-desc">ML建模网络行为，识别C2隧道/横向移动</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">UEBA 用户实体行为分析</span><div class="l3-desc">基线学习发现内鬼、异常账号、数据窃取</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 威胁狩猎</span><div class="l3-desc">自动生成狩猎假设、IOC关联、主动捕获</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">加密流量分析</span><div class="l3-desc">无需解密，基于行为特征识别恶意加密流</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">未知威胁(0day)检测</span><div class="l3-desc">无监督学习发现无签名的新型攻击</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c2">
+      <div class="cat-head"><div class="cat-num">2</div><div><div class="cat-title">AI 安全运营 AISecOps</div><div class="cat-en">Autonomous Security Operations</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能告警降噪</span><div class="l3-desc">告警聚合/误报过滤，MTTR大幅下降</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动化研判处置</span><div class="l3-desc">L1/L2工单自动分析、SOAR智能编排响应</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全 Copilot/副驾驶</span><div class="l3-desc">自然语言问数、研判建议、剧本生成</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能报告与知识问答</span><div class="l3-desc">自动生成态势报告、安全知识RAG问答</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">无人/少人值守SOC</span><div class="l3-desc">AI分析师替代重复人力，7×24自治运营</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c3">
+      <div class="cat-head"><div class="cat-num">3</div><div><div class="cat-title">AI 漏洞与代码安全</div><div class="cat-en">AI Vulnerability & AppSec</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 代码审计 SAST</span><div class="l3-desc">大模型理解语义，精准定位漏洞并给修复</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能漏洞挖掘</span><div class="l3-desc">模糊测试+LLM自动生成利用链与PoC</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">攻击面管理 ASM/EASM</span><div class="l3-desc">自动发现影子资产、暴露面与风险优先级</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动补丁/修复建议</span><div class="l3-desc">生成代码补丁、依赖升级方案</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI SCA 供应链安全</span><div class="l3-desc">开源组件风险、投毒包智能识别</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c4">
+      <div class="cat-head"><div class="cat-num">4</div><div><div class="cat-title">AI 反诈与内容安全</div><div class="cat-en">Anti-Fraud & Content Integrity</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">深度伪造 Deepfake 检测</span><div class="l3-desc">AI换脸/拟声视频通话鉴伪</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AIGC 内容识别</span><div class="l3-desc">识别AI生成文本/图片/视频，溯源取证</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能反欺诈</span><div class="l3-desc">交易反欺诈、刷单/洗钱网络识别、团伙挖掘</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多模态内容审核</span><div class="l3-desc">图文音视频违规内容自动识别分级</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">钓鱼/诈骗攻防</span><div class="l3-desc">AI生成钓鱼识别、诈骗话术/剧本检测</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c5">
+      <div class="cat-head"><div class="cat-num">5</div><div><div class="cat-title">AI 身份安全</div><div class="cat-en">AI-Powered Identity Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">行为生物特征</span><div class="l3-desc">击键/鼠标/步态持续身份认证</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自适应风险认证</span><div class="l3-desc">基于风险评分动态调整MFA强度</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 身份治理 IGA</span><div class="l3-desc">权限异常发现、职责分离自动审计</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">会话风险分析</span><div class="l3-desc">实时识别账号接管、异常会话</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c6">
+      <div class="cat-head"><div class="cat-num">6</div><div><div class="cat-title">AI 云与应用安全</div><div class="cat-en">AI Cloud & App Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 WAF</span><div class="l3-desc">ML识别未知Web攻击、业务逻辑滥用</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">CNAPP 智能化</span><div class="l3-desc">云配置风险、云工作负载、云身份关联分析</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI API 安全</span><div class="l3-desc">API影子发现、参数异常、数据泄露检测</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">智能 DDoS 防护</span><div class="l3-desc">自适应流量基线、秒级攻击识别清洗</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c7">
+      <div class="cat-head"><div class="cat-num">7</div><div><div class="cat-title">安全大模型与基座</div><div class="cat-en">Security Foundation Model</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全垂直大模型</span><div class="l3-desc">安全语料训练的专用基座(检测/研判/响应)</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多模态安全模型</span><div class="l3-desc">融合日志/流量/代码/图像统一理解</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全知识图谱</span><div class="l3-desc">攻击/资产/漏洞/威胁情报知识结构化</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全智能体 Agent</span><div class="l3-desc">可自主执行研判处置的安全专家Agent</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">安全 MaaS 能力平台</span><div class="l3-desc">统一API输出安全AI能力，按量计费</div></div></div>
+      </div>
+    </div>
+    <div class="cat-card c8">
+      <div class="cat-head"><div class="cat-num">8</div><div><div class="cat-title">AI 攻防对抗</div><div class="cat-en">Autonomous Offense & Defense</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动化渗透测试</span><div class="l3-desc">AI自主侦察、利用、提权、横向移动</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动攻击模拟 BAS</span><div class="l3-desc">持续模拟真实攻击验证防御有效性</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI 红队</span><div class="l3-desc">自动生成攻击路径、钓鱼、绕过样本</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自适应防御</span><div class="l3-desc">防御策略自动生成、动态蜜罐、移动目标防御</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">威胁情报自动生产</span><div class="l3-desc">LLM从暗网/论坛自动提取IOC与TTP</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="evol-box">
+    <h3>▎AI 赋能安全的三代演进：从"辅助工具"到"自主运营"</h3>
+    <table class="evol-table">
+      <tr><th>阶段</th><th>技术范式</th><th>人机关系</th><th>典型能力</th><th>时间窗</th></tr>
+      <tr><td class="era">1.0 机器学习辅助</td><td>小模型/规则+ML</td><td>AI辅助人决策</td><td>垃圾邮件识别、异常检测、评分</td><td>2015-2022</td></tr>
+      <tr><td class="era">2.0 大模型增强</td><td>LLM+安全知识库(RAG)</td><td>人机协同(Copilot)</td><td>告警研判、报告生成、代码审计、问答</td><td>2023-2027</td></tr>
+      <tr><td class="era">3.0 智能体自治</td><td>安全多Agent+工具调用</td><td>AI自主执行、人监督</td><td>自治SOC、自动响应、自动攻防闭环</td><td>2027-2030</td></tr>
+    </table>
+  </div>
+
+  <div class="judge-box">
+    <div class="judge-card">
+      <div class="jt">▎核心变量：AI把安全从"人力密集"变"算力密集"</div>
+      <div class="jb">传统安全行业70%成本是人力(分析师)，AI Copilot/Agent可将人均处置效率提升5-10倍，行业成本结构与商业模式将被重构，软件订阅与MaaS价值量提升。</div>
+    </div>
+    <div class="judge-card">
+      <div class="jt">▎中国机会：数据+场景+大模型自主可控</div>
+      <div class="jb">中国在反诈/内容安全(360、美亚柏科)、安全运营(奇安信、深信服)有海量数据与政企场景；安全大模型基座是国产替代+AI升级双重红利，2030年有望跑出2-3家平台级公司。</div>
+    </div>
+    <div class="judge-card">
+      <div class="jt">▎胜负手：谁掌握安全大模型基座，谁定义生态</div>
+      <div class="jb">单点AI功能易被大模型厂商内置；真正壁垒在安全垂直大模型+高质量安全语料+闭环运营数据。基座厂商通过MaaS向数百家应用商输出能力，是2030格局的核心层。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    用AI赋能网络安全(AI for Cybersecurity)三级细分图谱 · AI安全四大板块之三<br>
+    框架参考 Gartner Hype Cycle for AI in Security、IDC AI安全支出指南、安全牛 · 2026年8月
+  </div>
+</div>
+</body>
+</html>
