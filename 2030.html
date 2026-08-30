@@ -8,33 +8,56 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
   background:linear-gradient(135deg,#0b1120 0%,#162032 45%,#0d1526 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px 40px;}
-.container{max-width:1200px;margin:0 auto;}
+.container{max-width:1240px;margin:0 auto;}
 .header{text-align:center;margin-bottom:8px;}
 .header h1{font-size:24px;font-weight:700;background:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .header .sub{font-size:13px;color:#64748b;margin-top:6px;}
 .back-link{display:inline-block;margin-bottom:16px;padding:6px 14px;border-radius:8px;font-size:12.5px;color:#94a3b8;
   background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .2s;}
 .back-link:hover{color:#38bdf8;border-color:rgba(56,189,248,0.4);}
+/* 四大板块入口 */
+.pillar-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 8px;}
+.pillar{position:relative;border-radius:12px;padding:14px 14px 12px;text-decoration:none;color:inherit;transition:all .25s;display:block;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);overflow:hidden;}
+.pillar:hover{transform:translateY(-3px);background:rgba(255,255,255,0.06);}
+.pillar.linked::after{content:'查看三级细分 →';position:absolute;right:10px;bottom:8px;font-size:9.5px;color:#34d399;opacity:0;transition:opacity .2s;}
+.pillar.linked:hover::after{opacity:1;}
+.pillar.p1:hover{border-color:rgba(56,189,248,0.5);box-shadow:0 6px 24px rgba(56,189,248,0.15);}
+.pillar.p2:hover{border-color:rgba(129,140,248,0.5);box-shadow:0 6px 24px rgba(129,140,248,0.15);}
+.pillar.p3:hover{border-color:rgba(52,211,153,0.5);box-shadow:0 6px 24px rgba(52,211,153,0.15);}
+.pillar.p4:hover{border-color:rgba(192,132,252,0.5);box-shadow:0 6px 24px rgba(192,132,252,0.15);}
+.pillar .p-icon{font-size:20px;margin-bottom:6px;}
+.pillar .p-name{font-size:13px;font-weight:700;color:#f1f5f9;margin-bottom:3px;}
+.pillar .p-en{font-size:9.5px;color:#64748b;margin-bottom:6px;}
+.pillar .p-desc{font-size:10.5px;color:#94a3b8;line-height:1.5;}
+.pillar.p1 .p-name{color:#7dd3fc;} .pillar.p2 .p-name{color:#a5b4fc;} .pillar.p3 .p-name{color:#6ee7b7;} .pillar.p4 .p-name{color:#d8b4fe;}
+.pillar .p-soon{display:inline-block;margin-top:6px;font-size:9px;padding:1px 7px;border-radius:4px;background:rgba(148,163,184,0.15);color:#94a3b8;}
 .canvas-wrap{position:relative;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px 16px;margin-top:16px;overflow:hidden;}
 .layer{position:relative;margin-bottom:12px;}
 .layer-label{position:absolute;left:0;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:11px;color:#64748b;letter-spacing:2px;font-weight:600;}
 .layer-title{text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;letter-spacing:1px;}
-/* 应用层 */
 .app-layer{padding:16px 12px 20px 32px;background:linear-gradient(180deg,rgba(56,189,248,0.06),rgba(56,189,248,0.02));border-radius:12px;border:1px solid rgba(56,189,248,0.15);}
-.app-groups{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
-.app-group{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;min-width:130px;flex:1 1 130px;max-width:180px;}
-.app-group-title{font-size:11px;color:#38bdf8;font-weight:600;margin-bottom:8px;text-align:center;padding-bottom:6px;border-bottom:1px solid rgba(56,189,248,0.15);}
-.app-chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
-.chip{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(56,189,248,0.1);color:#bae6fd;border:1px solid rgba(56,189,248,0.15);white-space:nowrap;}
-.chip.region{background:rgba(129,140,248,0.1);color:#c7d2fe;border-color:rgba(129,140,248,0.2);}
-/* 连接层 */
+.pillar-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.pillar-group{border-radius:10px;padding:10px 11px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);}
+.pillar-group.g1{border-top:2px solid #38bdf8;} .pillar-group.g2{border-top:2px solid #818cf8;}
+.pillar-group.g3{border-top:2px solid #34d399;} .pillar-group.g4{border-top:2px solid #c084fc;}
+.pg-title{font-size:11px;font-weight:700;margin-bottom:4px;text-align:center;}
+.g1 .pg-title{color:#7dd3fc;} .g2 .pg-title{color:#a5b4fc;} .g3 .pg-title{color:#6ee7b7;} .g4 .pg-title{color:#d8b4fe;}
+.pg-sub{font-size:9px;color:#64748b;text-align:center;margin-bottom:7px;}
+.pg-chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
+.chip{font-size:9.5px;padding:3px 7px;border-radius:6px;background:rgba(56,189,248,0.1);color:#bae6fd;border:1px solid rgba(56,189,248,0.15);white-space:nowrap;}
+.g2 .chip{background:rgba(129,140,248,0.1);color:#c7d2fe;border-color:rgba(129,140,248,0.15);}
+.g3 .chip{background:rgba(52,211,153,0.1);color:#a7f3d0;border-color:rgba(52,211,153,0.15);}
+.g4 .chip{background:rgba(192,132,252,0.1);color:#e9d5ff;border-color:rgba(192,132,252,0.15);}
+.chip.region{background:rgba(251,191,36,0.1)!important;color:#fde68a!important;border-color:rgba(251,191,36,0.2)!important;}
+.region-row{margin-top:9px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.1);}
+.region-row .rr-label{font-size:9px;color:#fbbf24;text-align:center;margin-bottom:5px;}
 .conn-layer{display:flex;justify-content:center;align-items:center;padding:8px 0;position:relative;height:56px;}
 .conn-line{position:absolute;left:10%;right:10%;top:50%;height:2px;background:linear-gradient(90deg,transparent,rgba(56,189,248,0.4),rgba(129,140,248,0.4),transparent);}
 .conn-label{position:relative;background:#0f172a;padding:6px 16px;border-radius:20px;font-size:11px;color:#818cf8;border:1px solid rgba(129,140,248,0.3);z-index:1;white-space:nowrap;}
 .conn-arrows{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;}
 .arrow{position:absolute;width:6px;height:6px;border-right:1.5px solid rgba(129,140,248,0.6);border-top:1.5px solid rgba(129,140,248,0.6);transform:rotate(-45deg);animation:flowUp 2s infinite;}
 @keyframes flowUp{0%{bottom:8px;opacity:0;}50%{opacity:1;}100%{bottom:42px;opacity:0;}}
-/* 基座层 */
 .base-layer{padding:16px 12px;background:linear-gradient(180deg,rgba(239,68,68,0.05),rgba(239,68,68,0.12));border-radius:12px;border:1px solid rgba(239,68,68,0.2);}
 .base-nodes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .base-node{flex:1 1 200px;max-width:260px;padding:16px;border-radius:12px;text-align:center;position:relative;overflow:hidden;}
@@ -46,13 +69,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .base-node .node-tag{display:inline-block;margin-top:8px;font-size:9.5px;padding:2px 8px;border-radius:4px;font-weight:600;}
 .base-node.software .node-tag{background:rgba(59,130,246,0.2);color:#93c5fd;}
 .base-node.hardware .node-tag{background:rgba(249,115,22,0.2);color:#fdba74;}
-/* 判断说明 */
-.insights{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.section-title{font-size:15px;font-weight:700;margin:24px 0 12px;display:flex;align-items:center;gap:8px;color:#e2e8f0;}
+.section-title::before{content:'';width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#38bdf8,#818cf8);}
+.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
 .insight-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px;}
 .insight-card .ic-title{font-size:12px;font-weight:600;color:#38bdf8;margin-bottom:6px;}
 .insight-card .ic-body{font-size:11.5px;color:#94a3b8;line-height:1.7;}
+.invest-box{background:linear-gradient(135deg,rgba(52,211,153,0.06),rgba(56,189,248,0.04));border:1px solid rgba(52,211,153,0.25);border-radius:12px;padding:16px 18px;margin-top:14px;}
+.invest-box h3{font-size:13px;color:#34d399;margin-bottom:10px;}
+.invest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;}
+.invest-item{font-size:11px;color:#cbd5e1;line-height:1.6;background:rgba(0,0,0,0.2);padding:9px 12px;border-radius:8px;}
+.invest-item b{color:#6ee7b7;}
 .footer{text-align:center;margin-top:20px;font-size:11px;color:#475569;line-height:1.7;}
-@media(max-width:640px){.header h1{font-size:19px;}.base-node{flex:1 1 100%;max-width:100%;}.app-group{min-width:110px;}}
+@media(max-width:900px){.pillar-row{grid-template-columns:repeat(2,1fr);}.pillar-groups{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.header h1{font-size:19px;}.base-node{flex:1 1 100%;max-width:100%;}.pillar-row,.pillar-groups{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -63,43 +93,87 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
     <div class="sub">基座大模型集中化 · 能力接口标准化 · 应用服务生态化</div>
   </div>
 
+  <!-- 四大板块入口 -->
+  <div class="pillar-row">
+    <a class="pillar p1">
+      <div class="p-icon">🛡️</div>
+      <div class="p-name">安全地建设 AI</div>
+      <div class="p-en">Secure AI by Design</div>
+      <div class="p-desc">让模型本身安全：训练数据、对齐、评测、模型供应链防护</div>
+      <span class="p-soon">板块一 · 概览见下图</span>
+    </a>
+    <a class="pillar p2 linked" href="agent-security.html">
+      <div class="p-icon">🤖</div>
+      <div class="p-name">安全地运行 Agent</div>
+      <div class="p-en">Secure Agent Operations</div>
+      <div class="p-desc">智能体全生命周期：输入/决策/工具/记忆/运行时/多Agent/治理</div>
+    </a>
+    <a class="pillar p3 linked" href="ai-for-security.html">
+      <div class="p-icon">⚡</div>
+      <div class="p-name">用 AI 赋能网络安全</div>
+      <div class="p-en">AI for Cybersecurity</div>
+      <div class="p-desc">AI重构检测/运营/漏洞/反诈/身份/云安全/攻防全链路</div>
+    </a>
+    <a class="pillar p4">
+      <div class="p-icon">⚖️</div>
+      <div class="p-name">AI 治理与安全保证</div>
+      <div class="p-en">AI Governance & Assurance</div>
+      <div class="p-desc">合规审计、风险评估、标准认证、责任保险、监管科技</div>
+      <span class="p-soon">板块四 · 概览见下图</span>
+    </a>
+  </div>
+
   <div class="canvas-wrap">
-    <!-- 应用层 -->
+    <!-- 应用层：按四大板块组织 -->
     <div class="layer app-layer">
       <div class="layer-label">应用服务层</div>
-      <div class="layer-title" style="color:#38bdf8;">网络安全定制服务与应用生态（数百家）</div>
-      <div class="app-groups">
-        <div class="app-group">
-          <div class="app-group-title">金融安全</div>
-          <div class="app-chips"><span class="chip">银行安全运营</span><span class="chip">反欺诈</span><span class="chip">交易风控</span></div>
+      <div class="layer-title" style="color:#38bdf8;">四大板块应用生态（数百家厂商 · 调用基座API做行业定制）</div>
+      <div class="pillar-groups">
+        <div class="pillar-group g1">
+          <div class="pg-title">① 安全地建设AI</div>
+          <div class="pg-sub">Secure by Design</div>
+          <div class="pg-chips">
+            <span class="chip">训练数据投毒防护</span><span class="chip">模型对齐/红队</span>
+            <span class="chip">模型评测认证</span><span class="chip">模型供应链</span>
+            <span class="chip">知识产权保护</span><span class="chip">模型水印</span>
+          </div>
         </div>
-        <div class="app-group">
-          <div class="app-group-title">政务安全</div>
-          <div class="app-chips"><span class="chip">等保合规</span><span class="chip">数据治理</span><span class="chip">关基保护</span></div>
+        <div class="pillar-group g2">
+          <div class="pg-title">② 安全地运行Agent</div>
+          <div class="pg-sub">Agent Runtime Security</div>
+          <div class="pg-chips">
+            <span class="chip">提示注入防护</span><span class="chip">工具调用管控</span>
+            <span class="chip">RAG/记忆安全</span><span class="chip">运行时防护</span>
+            <span class="chip">多Agent协作安全</span><span class="chip">行为审计</span>
+          </div>
         </div>
-        <div class="app-group">
-          <div class="app-group-title">能源/工控</div>
-          <div class="app-chips"><span class="chip">电力安全</span><span class="chip">油气工控</span><span class="chip">轨道交通</span></div>
+        <div class="pillar-group g3">
+          <div class="pg-title">③ 用AI赋能网络安全</div>
+          <div class="pg-sub">AI for Security</div>
+          <div class="pg-chips">
+            <span class="chip">AI威胁检测</span><span class="chip">自治SOC运营</span>
+            <span class="chip">AI代码审计</span><span class="chip">Deepfake检测</span>
+            <span class="chip">自动攻防BAS</span><span class="chip">安全Copilot</span>
+          </div>
         </div>
-        <div class="app-group">
-          <div class="app-group-title">医疗/教育</div>
-          <div class="app-chips"><span class="chip">数据隐私</span><span class="chip">校园安全</span><span class="chip">医保风控</span></div>
-        </div>
-        <div class="app-group">
-          <div class="app-group-title">AI/大模型安全</div>
-          <div class="app-chips"><span class="chip">内容检测</span><span class="chip">模型对齐</span><span class="chip">Agent安全</span></div>
-        </div>
-        <div class="app-group">
-          <div class="app-group-title">省级安全服务商</div>
-          <div class="app-chips">
-            <span class="chip region">北京</span><span class="chip region">上海</span><span class="chip region">广东</span>
-            <span class="chip region">浙江</span><span class="chip region">江苏</span><span class="chip region">四川</span>
-            <span class="chip region">湖北</span><span class="chip region">陕西</span><span class="chip region">…各省</span>
+        <div class="pillar-group g4">
+          <div class="pg-title">④ AI治理与安全保证</div>
+          <div class="pg-sub">Governance & Assurance</div>
+          <div class="pg-chips">
+            <span class="chip">AI合规管理</span><span class="chip">风险评估</span>
+            <span class="chip">标准/认证</span><span class="chip">AI审计</span>
+            <span class="chip">网络安全保险</span><span class="chip">监管科技</span>
           </div>
         </div>
       </div>
+      <div class="region-row">
+        <div class="rr-label">▎属地化交付层：各省/直辖市安全服务商（北京·上海·广东·浙江·江苏·四川·湖北·陕西…）负责属地合规对接与运营</div>
+        <div class="pg-chips" style="justify-content:center;">
+          <span class="chip region">金融安全</span><span class="chip region">政务/关基</span><span class="chip region">能源工控</span>
+          <span class="chip region">医疗教育</span><span class="chip region">电信运营商</span><span class="chip region">智能制造</span>
+        </div>
+      </div>
     </div>
-
     <!-- 连接层 -->
     <div class="layer conn-layer">
       <div class="conn-line"></div>
@@ -110,9 +184,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
         <div class="arrow" style="left:65%;animation-delay:1.2s;"></div>
         <div class="arrow" style="left:80%;animation-delay:1.6s;"></div>
       </div>
-      <div class="conn-label">安全大模型 API / MaaS 能力调用层（统一接口 · 按量计费）</div>
+      <div class="conn-label">安全大模型 API / MaaS 能力调用层（统一接口 · 按量计费 · 四大板块共用基座）</div>
     </div>
-
     <!-- 基座层 -->
     <div class="layer base-layer">
       <div class="layer-label" style="color:#f87171;">基座模型层</div>
@@ -140,28 +213,41 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
     </div>
   </div>
 
+  <!-- 核心判断 -->
+  <div class="section-title">核心判断</div>
   <div class="insights">
     <div class="insight-card">
-      <div class="ic-title">▎核心判断一：基座高度集中</div>
-      <div class="ic-body">安全大模型训练成本高、数据壁垒强，2030 年全国仅 3-4 家基座厂商存活，形成"2 纯软件 + 1-2 软硬件一体"格局，类似云计算时代的阿里云/华为云/腾讯云。</div>
+      <div class="ic-title">▎判断一：基座高度集中，3-4家定格局</div>
+      <div class="ic-body">安全大模型训练成本高、高质量安全语料壁垒强、闭环运营数据稀缺，2030年全国仅3-4家基座厂商存活，形成"2纯软件+1-2软硬件一体"格局，类似云计算时代的阿里云/华为云/腾讯云，成为整个智能安全产业的"水电煤"。</div>
     </div>
     <div class="insight-card">
-      <div class="ic-title">▎核心判断二：应用层碎片化繁荣</div>
-      <div class="ic-body">上层数百家应用服务商不训练基座，而是调用基座 API 做行业定制。各省/直辖市保留本地安全服务企业，负责属地化交付、合规对接和运营服务。</div>
+      <div class="ic-title">▎判断二：四大板块分层，机会不同</div>
+      <div class="ic-body">"建设AI"与"治理保证"由大模型厂商+合规机构主导；"运行Agent"是从0到1新增量、独立厂商机会最大；"AI赋能安全"改造存量市场、空间最大。四大板块共用同一套安全大模型基座，通过MaaS层解耦。</div>
     </div>
     <div class="insight-card">
-      <div class="ic-title">▎核心判断三：MaaS 成为分水岭</div>
-      <div class="ic-body">安全能力以 API/MaaS 形式输出，按量计费。无法接入基座生态的传统安全厂商将被管道化，具备行业 know-how 的应用厂商价值凸显。</div>
+      <div class="ic-title">▎判断三：MaaS成为产业分水岭</div>
+      <div class="ic-body">安全能力以API/MaaS形式输出、按量计费。无法接入基座生态的传统单点厂商将被管道化/内置化；具备行业know-how、能基于基座做深行业定制的应用厂商价值凸显，形成"集中基座+繁荣应用"的纺锤生态。</div>
     </div>
     <div class="insight-card">
-      <div class="ic-title">▎核心判断四：软硬件一体卡位关基</div>
-      <div class="ic-body">能源、金融、政务等关基行业要求私有化、低延迟、高自主可控，软硬件一体基座厂商凭借芯片+模型+一体机方案占据高壁垒市场。</div>
+      <div class="ic-title">▎判断四：软硬件一体卡位关基市场</div>
+      <div class="ic-body">能源、金融、政务、军工等关基行业要求私有化、低延迟、高自主可控，软硬件一体基座厂商凭借"国产芯片+安全大模型+一体机"方案占据最高壁垒市场，享受国产替代与AI升级双重红利。</div>
+    </div>
+  </div>
+
+  <!-- 投资启示 -->
+  <div class="invest-box">
+    <h3>▎对华控产业基金的投资启示</h3>
+    <div class="invest-grid">
+      <div class="invest-item"><b>① 投基座（高壁垒·少而重）：</b>重点跟踪2家纯软件安全大模型+1家软硬件一体标的，基座是生态定义者，赢家通吃，宜早不宜晚、宜重不宜散。</div>
+      <div class="invest-item"><b>② 投Agent安全（高成长·从0到1）：</b>运行时防护、工具调用管控、多Agent审计是全新增量，尚无龙头，优先投有Agent攻防实战能力的团队。</div>
+      <div class="invest-item"><b>③ 投AI赋能安全的存量改造（大空间）：</b>自治SOC、AI代码审计、Deepfake反诈需求确定，关注有数据闭环和客户黏性的头部厂商升级机会。</div>
+      <div class="invest-item"><b>④ 警惕被内置化的单点工具：</b>纯输入输出过滤、单点检测功能易被大模型/云厂商原生集成，独立价值有限，估值需谨慎。</div>
     </div>
   </div>
 
   <div class="footer">
     本图为 2030 年市场格局概念预判图，非精确市场份额数据 · 基于当前 AI 安全产业趋势推演<br>
-    分类参考数说安全全景图与安全牛行业图谱 · 2026年8月
+    四大板块框架参考 Gartner AI TRiSM、NIST AI RMF 与数说安全/安全牛行业图谱 · 2026年8月
   </div>
 </div>
 </body>
