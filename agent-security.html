@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安全地运行Agent · 行业图谱三级细分</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:linear-gradient(135deg,#0b1120 0%,#162032 45%,#0d1526 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px 40px;}
+.container{max-width:1280px;margin:0 auto;}
+.back-link{display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:8px;font-size:12.5px;color:#94a3b8;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .2s;}
+.back-link:hover{color:#38bdf8;border-color:rgba(56,189,248,0.4);}
+.header{text-align:center;margin-bottom:18px;}
+.header h1{font-size:24px;font-weight:700;background:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.header .sub{font-size:13px;color:#64748b;margin-top:6px;}
+.header .tagline{display:inline-block;margin-top:10px;font-size:11.5px;color:#818cf8;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.25);padding:4px 14px;border-radius:20px;}
+/* Agent生命周期流程条 */
+.flow-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:18px 0 22px;}
+.flow-step{font-size:11px;padding:6px 12px;border-radius:8px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);color:#7dd3fc;}
+.flow-arrow{color:#475569;font-size:14px;}
+/* 网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
+.cat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;transition:all .25s;}
+.cat-card:hover{border-color:rgba(56,189,248,0.35);background:rgba(255,255,255,0.05);transform:translateY(-2px);}
+.cat-head{padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.cat-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.cat-title{font-size:13.5px;font-weight:600;color:#f1f5f9;}
+.cat-en{font-size:10px;color:#64748b;margin-top:1px;}
+.cat-body{padding:10px 14px 12px;}
+.l3-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:11.5px;color:#cbd5e1;line-height:1.5;}
+.l3-dot{width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+.l3-name{font-weight:500;color:#e2e8f0;}
+.l3-desc{color:#94a3b8;font-size:10.5px;}
+/* 颜色主题 */
+.c1 .cat-num{background:rgba(56,189,248,0.15);color:#38bdf8;} .c1 .l3-dot{background:#38bdf8;}
+.c2 .cat-num{background:rgba(129,140,248,0.15);color:#818cf8;} .c2 .l3-dot{background:#818cf8;}
+.c3 .cat-num{background:rgba(192,132,252,0.15);color:#c084fc;} .c3 .l3-dot{background:#c084fc;}
+.c4 .cat-num{background:rgba(244,114,182,0.15);color:#f472b6;} .c4 .l3-dot{background:#f472b6;}
+.c5 .cat-num{background:rgba(52,211,153,0.15);color:#34d399;} .c5 .l3-dot{background:#34d399;}
+.c6 .cat-num{background:rgba(251,191,36,0.15);color:#fbbf24;} .c6 .l3-dot{background:#fbbf24;}
+.c7 .cat-num{background:rgba(248,113,113,0.15);color:#f87171;} .c7 .l3-dot{background:#f87171;}
+.c8 .cat-num{background:rgba(148,163,184,0.15);color:#94a3b8;} .c8 .l3-dot{background:#94a3b8;}
+/* 威胁场景 */
+.threat-box{margin-top:22px;background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:16px 18px;}
+.threat-box h3{font-size:13px;color:#f87171;margin-bottom:10px;}
+.threat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;}
+.threat-item{font-size:11px;color:#cbd5e1;background:rgba(0,0,0,0.2);padding:7px 10px;border-radius:7px;line-height:1.5;}
+.threat-item b{color:#fca5a5;}
+/* 市场判断 */
+.judge-box{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.judge-card{background:rgba(255,255,255,0.03);border-left:3px solid #818cf8;border-radius:8px;padding:12px 14px;}
+.judge-card .jt{font-size:12px;font-weight:600;color:#818cf8;margin-bottom:5px;}
+.judge-card .jb{font-size:11px;color:#94a3b8;line-height:1.7;}
+.footer{text-align:center;margin-top:22px;font-size:11px;color:#475569;line-height:1.7;}
+@media(max-width:640px){.header h1{font-size:19px;}.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="2030.html" class="back-link">← 返回2030格局预判</a>
+  <div class="header">
+    <h1>安全地运行 Agent · 行业图谱三级细分</h1>
+    <div class="sub">Secure Agent Operations — Agent 全生命周期安全防护体系</div>
+    <div class="tagline">AI 安全四大板块之二 · 从"模型安全"延伸到"智能体行为安全"</div>
+  </div>
+
+  <!-- Agent运行生命周期 -->
+  <div class="flow-bar">
+    <span class="flow-step">① 输入接收</span><span class="flow-arrow">→</span>
+    <span class="flow-step">② 认知决策</span><span class="flow-arrow">→</span>
+    <span class="flow-step">③ 工具调用</span><span class="flow-arrow">→</span>
+    <span class="flow-step">④ 记忆检索</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑤ 执行输出</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑥ 运行时监控</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑦ 多Agent协作</span><span class="flow-arrow">→</span>
+    <span class="flow-step">⑧ 治理审计</span>
+  </div>
+
+  <div class="grid">
+    <!-- 1 输入层 -->
+    <div class="cat-card c1">
+      <div class="cat-head"><div class="cat-num">1</div><div><div class="cat-title">输入层安全</div><div class="cat-en">Input Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">直接提示注入防护</span><div class="l3-desc">识别并拦截恶意指令覆盖系统提示词</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">间接提示注入防御</span><div class="l3-desc">检测网页/文档/RAG知识库中隐藏的注入载荷</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">越狱攻击防御</span><div class="l3-desc">对抗角色扮演、编码绕过、多轮诱导等越狱</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">输入消毒与隔离</span><div class="l3-desc">区分指令与数据，外部内容加标记/降权</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多模态输入安全</span><div class="l3-desc">图片/语音/视频中的隐写与跨模态注入检测</div></div></div>
+      </div>
+    </div>
+    <!-- 2 认知决策 -->
+    <div class="cat-card c2">
+      <div class="cat-head"><div class="cat-num">2</div><div><div class="cat-title">认知与决策安全</div><div class="cat-en">Cognition & Decision Safety</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">幻觉检测与抑制</span><div class="l3-desc">事实一致性校验、虚构信息识别与拦截</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">目标对齐防护</span><div class="l3-desc">防止目标漂移、奖励黑客、意图被恶意改写</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">规划链(Plan)安全</span><div class="l3-desc">任务分解路径校验，阻断危险执行计划</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">推理完整性</span><div class="l3-desc">CoT/ReAct链路防篡改，推理过程可验证</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">置信度评估</span><div class="l3-desc">低置信决策自动转人工，避免自主误操作</div></div></div>
+      </div>
+    </div>
+    <!-- 3 工具调用 -->
+    <div class="cat-card c3">
+      <div class="cat-head"><div class="cat-num">3</div><div><div class="cat-title">工具调用安全</div><div class="cat-en">Tool/Action Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">最小权限管控</span><div class="l3-desc">按Agent角色授予API/工具最小调用权限</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">工具沙箱隔离</span><div class="l3-desc">代码执行/Shell/数据库操作在沙箱中运行</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">函数调用审计</span><div class="l3-desc">Function Call参数校验、调用链全程留痕</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">高危操作拦截</span><div class="l3-desc">转账/删除/外发/提权等动作需人工确认</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">越权调用检测</span><div class="l3-dot">识别SSRF、水平/垂直越权、数据外传</div></div></div>
+      </div>
+    </div>
+    <!-- 4 记忆知识 -->
+    <div class="cat-card c4">
+      <div class="cat-head"><div class="cat-num">4</div><div><div class="cat-title">记忆与知识安全</div><div class="cat-en">Memory & RAG Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">RAG投毒防护</span><div class="l3-desc">知识库文档来源校验，防恶意知识注入</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">向量库安全</span><div class="l3-desc">向量嵌入反演攻击防护、访问隔离与加密</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">记忆篡改检测</span><div class="l3-desc">长期/短期记忆完整性校验，防持久化污染</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">多租户上下文隔离</span><div class="l3-desc">会话/用户/租户间记忆严格隔离防串扰</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">知识来源验证</span><div class="l3-desc">检索结果可信度分级、引用溯源</div></div></div>
+      </div>
+    </div>
+    <!-- 5 输出层 -->
+    <div class="cat-card c5">
+      <div class="cat-head"><div class="cat-num">5</div><div><div class="cat-title">输出层安全</div><div class="cat-en">Output Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">敏感信息泄露防护</span><div class="l3-desc">DLP检测，拦截密钥/PII/商业秘密外泄</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">恶意代码输出拦截</span><div class="l3-desc">识别生成的漏洞利用、恶意脚本、木马</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">内容合规过滤</span><div class="l3-desc">违法违规/有害内容/偏见歧视输出审查</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">AI水印与溯源</span><div class="l3-desc">生成内容隐式水印、来源标识与取证</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">输出行为约束</span><div class="l3-desc">限制Agent对外动作的范围、频率、额度</div></div></div>
+      </div>
+    </div>
+    <!-- 6 运行时 -->
+    <div class="cat-card c6">
+      <div class="cat-head"><div class="cat-num">6</div><div><div class="cat-title">运行时防护</div><div class="cat-en">Runtime Protection (RASP for Agent)</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">Agent行为基线</span><div class="l3-desc">建立正常行为画像，UEBA式异常识别</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">实时行为监控</span><div class="l3-desc">动作序列、访问对象、资源消耗实时采集</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">自动熔断与回滚</span><div class="l3-desc">异常时自动暂停、撤销已执行动作</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">动态权限收敛</span><div class="l3-desc">按风险等级动态降权，Just-In-Time授权</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">资源与成本防护</span><div class="l3-desc">防死循环、token耗尽、资源滥用攻击</div></div></div>
+      </div>
+    </div>
+    <!-- 7 多Agent协作 -->
+    <div class="cat-card c7">
+      <div class="cat-head"><div class="cat-num">7</div><div><div class="cat-title">多Agent协作安全</div><div class="cat-en">Multi-Agent Security</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">Agent身份认证</span><div class="l3-desc">Agent间mTLS/身份凭证，防伪造Agent</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">通信加密与隔离</span><div class="l3-desc">A2A通信加密、消息完整性、信道隔离</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">权限委派控制</span><div class="l3-desc">任务委派时权限不放大、可追溯、可回收</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">编排链安全</span><div class="l3-desc">Orchestrator工作流注入与劫持防护</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">共谋与操纵检测</span><div class="l3-desc">识别多Agent被诱导合谋、互相背书</div></div></div>
+      </div>
+    </div>
+    <!-- 8 治理审计 -->
+    <div class="cat-card c8">
+      <div class="cat-head"><div class="cat-num">8</div><div><div class="cat-title">治理与审计</div><div class="cat-en">Governance & Audit</div></div></div>
+      <div class="cat-body">
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">全链路行为日志</span><div class="l3-desc">输入-推理-调用-输出完整审计链(Tamper-proof)</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">决策可解释性</span><div class="l3-desc">每个动作可回溯原因，满足监管问责</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">Agent资产清单</span><div class="l3-desc">影子Agent发现、登记、分级与生命周期管理</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">合规策略引擎</span><div class="l3-desc">对齐《生成式AI管理办法》/EU AI Act等</div></div></div>
+        <div class="l3-item"><div class="l3-dot"></div><div><span class="l3-name">红队评估</span><div class="l3-desc">Agent对抗性测试、自动化攻防演练</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 典型攻击面 -->
+  <div class="threat-box">
+    <h3>⚠ Agent 区别于传统大模型的新型攻击面</h3>
+    <div class="threat-grid">
+      <div class="threat-item"><b>提示注入→真实行动：</b>Agent能调用工具，注入不再只是"说错话"，可直接执行转账、删库、外发邮件</div>
+      <div class="threat-item"><b>混乱代理问题(Confused Deputy)：</b>Agent被诱导利用其高权限访问用户无权访问的资源</div>
+      <div class="threat-item"><b>RAG持久化投毒：</b>污染知识库一次，所有调用该知识的Agent长期受控</div>
+      <div class="threat-item"><b>多步攻击链放大：</b>单步无害的动作被Agent串联成完整攻击链，传统单点规则失效</div>
+      <div class="threat-item"><b>自主决策不可中断：</b>自动化Agent在无人确认时高速执行，攻击窗口以秒计</div>
+      <div class="threat-item"><b>跨Agent信任传递：</b>一个被攻破的Agent通过协作链污染整个Agent集群</div>
+    </div>
+  </div>
+
+  <!-- 市场判断 -->
+  <div class="judge-box">
+    <div class="judge-card">
+      <div class="jt">▎赛道阶段：从0到1，2026-2028爆发</div>
+      <div class="jb">当前Agent安全工具链极度碎片化，尚无绝对龙头。随着企业Agent大规模部署(预计2027年渗透率超40%)，运行时防护、工具调用管控、Agent审计将成为必选项，类比2015年的云安全(CNAPP)。</div>
+    </div>
+    <div class="judge-card">
+      <div class="jt">▎价值环节：运行时防护与治理审计壁垒最高</div>
+      <div class="jb">输入/输出过滤可被大模型厂商内置，易被管道化；而运行时行为监控、多Agent协作安全、全链路审计需要深度接入企业IT环境与业务上下文，是独立安全厂商的核心机会。</div>
+    </div>
+    <div class="judge-card">
+      <div class="jt">▎格局预判：基座厂商+独立厂商分层共存</div>
+      <div class="jb">基座大模型厂商提供"原生轻防护"(输入输出层)，独立Agent安全厂商主攻"企业级重防护"(运行时/工具/治理)，并通过安全大模型基座API实现能力复用，最终被平台型安全公司整合。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    安全地运行Agent(Secure Agent Operations)三级细分图谱 · AI安全四大板块之二<br>
+    框架参考 OWASP Agentic AI Threats、NIST AI RMF、MITRE ATLAS · 2026年8月
+  </div>
+</div>
+</body>
+</html>
