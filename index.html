@@ -251,10 +251,10 @@
 
   // ===== 市场规模数据（统一Gartner口径：end-user information security spending, 2026E）=====
   var marketStats = {
-    cn: {size:'~900', unit:'亿元人民币 (~$130亿)', cagr:'~9%', companies:'8家上市', note:'2026E, IDC $122亿(2025)+数世咨询887亿元推算'},
-    us: {size:'~$1,000', unit:'亿美元', cagr:'~8%', companies:'12家代表', note:'2026E, Mordor Intelligence $997.9亿, 约占全球41%'},
-    global_other: {size:'~$1,270', unit:'亿美元', cagr:'~10%', companies:'8家代表', note:'2026E差额: 欧洲~$600亿+亚太(除中)~$360亿+拉美/中东非~$310亿'},
-    global: {size:'~$2,400', unit:'亿美元', cagr:'~12.5%', companies:'28家代表', note:'2026E, Gartner Forecast: Worldwide InfoSec End-User Spending $240B'}
+    cn: {size:'~900', unit:'亿元人民币 (~$130亿)', cagr:'~9.2%', companies:'8家上市', note:'规模2026E(数世咨询887亿元+IDC插值); CAGR取IDC五年9.2%($110亿(2023)→$171亿(2028)),第三方区间9–11%,短期受宏观影响2025安全软件仅+3%'},
+    us: {size:'~$1,000', unit:'亿美元', cagr:'~9.6%', companies:'12家代表', note:'规模2026E约占全球41–42%; CAGR取Ken Research 9.6%($876亿(2025)→$1518亿(2031)),第三方区间7.1–11.4%'},
+    global_other: {size:'~$1,270', unit:'亿美元', cagr:'~11.5%', companies:'8家代表', note:'规模=全球差额:欧洲~$600亿+亚太(除中)~$360亿+拉美/中东非~$310亿; CAGR按全球加权平衡测算(新兴市场拉动),非单一机构发布'},
+    global: {size:'~$2,400', unit:'亿美元', cagr:'~10.6%', companies:'28家代表', note:'Gartner权威:终端用户信息安全支出$1934亿(2024)→$2130亿(2025)→$2398亿(2026);2024–2029五年CAGR 10.6%(固定汇率),2029达$3090亿。注:12.5%仅为2025→2026单年同比,非五年CAGR'}
   };
 
   // ===== 构建treemap数据 =====
