@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGI 安全行业 · 四大二级细分重点比较</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+  :root{
+    --ink:#16263a; --ink2:#3a4c63; --mut:#6b7a90; --line:#e3e9f2; --bg:#f4f7fb; --card:#ffffff;
+    --navy:#0f3a5f; --blue:#1f6fb2; --teal:#138a8a; --amber:#d98a1f; --red:#c6452f; --green:#2e8b6f;
+    --s1c:#4a86a8; --s2c:#1f6fb2; --s3c:#c6452f; --s4c:#7a6fb0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-size:15px}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 26px 70px}
+  header.hero{background:linear-gradient(130deg,#0e3354 0%,#155a86 55%,#138a8a 100%);color:#fff;padding:46px 0 40px;margin-bottom:34px}
+  header.hero .wrap{padding-bottom:0}
+  .kicker{font-size:13px;letter-spacing:3px;opacity:.82;text-transform:uppercase}
+  h1{font-size:31px;font-weight:800;margin:10px 0 12px;letter-spacing:.5px}
+  .sub{font-size:15.5px;opacity:.92;max-width:980px}
+  .meta{margin-top:18px;font-size:12.5px;opacity:.78}
+  h2{font-size:22px;font-weight:800;color:var(--navy);margin:46px 0 8px;padding-left:13px;border-left:5px solid var(--blue)}
+  h2 .en{font-size:13px;color:var(--mut);font-weight:600;margin-left:9px;letter-spacing:.5px}
+  .lead{color:var(--ink2);margin:0 0 20px 13px;font-size:14.5px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:22px 24px;box-shadow:0 2px 10px rgba(20,50,90,.05);margin-bottom:20px}
+  /* 层级树 */
+  .tree{display:flex;flex-direction:column;gap:0}
+  .lvl1{background:var(--navy);color:#fff;border-radius:10px;padding:13px 18px;font-weight:800;font-size:16px;display:inline-block;align-self:flex-start;margin-bottom:14px}
+  .lvl2grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .seg{border-radius:11px;padding:15px 16px;border:1.5px solid var(--line);background:#fbfdff;position:relative}
+  .seg .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;display:inline-block;margin-bottom:7px}
+  .seg h4{font-size:15.5px;font-weight:800;margin-bottom:3px}
+  .seg .en{font-size:11.5px;color:var(--mut);margin-bottom:8px}
+  .seg .t3{font-size:12.3px;color:var(--ink2);border-top:1px dashed var(--line);padding-top:8px;margin-top:6px}
+  .seg.focus{box-shadow:0 0 0 2px rgba(217,138,31,.35);background:#fffaf2}
+  .seg.s1{border-top:4px solid var(--s1c)} .seg.s1 .tag{background:var(--s1c)}
+  .seg.s2{border-top:4px solid var(--s2c)} .seg.s2 .tag{background:var(--s2c)}
+  .seg.s3{border-top:4px solid var(--s3c)} .seg.s3 .tag{background:var(--s3c)}
+  .seg.s4{border-top:4px solid var(--s4c)} .seg.s4 .tag{background:var(--s4c)}
+  .star{color:var(--amber);font-weight:800}
+  /* 主比较表 */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  table.cmp{border-collapse:collapse;width:100%;min-width:1180px;font-size:12.8px;line-height:1.55}
+  table.cmp th,table.cmp td{border:1px solid var(--line);padding:11px 12px;vertical-align:top;text-align:left}
+  table.cmp thead th{background:var(--navy);color:#fff;font-size:12.8px;font-weight:700;position:sticky;top:0;z-index:2;text-align:center}
+  table.cmp tbody th{background:#eef3f9;font-weight:800;width:150px;min-width:150px}
+  table.cmp td .rowname{font-weight:800;font-size:13.6px;display:block;margin-bottom:3px}
+  table.cmp td .ename{font-size:11px;color:var(--mut);font-weight:600;display:block;margin-bottom:6px}
+  .g-hi{color:var(--red);font-weight:800}.g-mid{color:var(--amber);font-weight:800}.g-lo{color:var(--green);font-weight:800}
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:5px;margin:1px 2px 1px 0;white-space:nowrap}
+  .b-auth{background:#e3f2ec;color:#1d7a59;border:1px solid #bfe3d4}
+  .b-est{background:#fdf0dd;color:#a96a12;border:1px solid #f2d6ab}
+  .lab{font-weight:800;color:var(--navy)}
+  .segcol-s1{background:linear-gradient(180deg,#f6fafc,#fff)} .segcol-s2{background:linear-gradient(180deg,#f3f8fd,#fff)}
+  .segcol-s3{background:linear-gradient(180deg,#fef5f2,#fff)} .segcol-s4{background:linear-gradient(180deg,#f7f5fc,#fff)}
+  /* 详卡 */
+  .detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .dcard{border-radius:12px;border:1px solid var(--line);overflow:hidden;background:#fff}
+  .dcard.full{grid-column:1/-1}
+  .dhead{padding:12px 17px;color:#fff;font-weight:800;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+  .dhead .verdict{font-size:11.5px;font-weight:700;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px}
+  .dhead.s1{background:var(--s1c)}.dhead.s2{background:var(--s2c)}.dhead.s3{background:var(--s3c)}.dhead.s4{background:var(--s4c)}
+  .dbody{padding:15px 18px;font-size:13.2px}
+  .dbody p{margin-bottom:8px}
+  .kv{display:grid;grid-template-columns:88px 1fr;gap:5px 10px;margin-bottom:9px;font-size:12.8px}
+  .kv dt{color:var(--mut);font-weight:700}.kv dd{color:var(--ink2)}
+  .quote{border-left:3px solid var(--amber);background:#fffaf2;padding:8px 12px;font-size:12.8px;color:#7a5413;border-radius:0 7px 7px 0;margin-top:7px}
+  ul.tight{margin:4px 0 4px 18px}ul.tight li{margin-bottom:4px}
+  .chart{width:100%;height:380px}
+  .chartgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.chartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .chartbox h5{font-size:14px;color:var(--navy);margin-bottom:4px}.chartbox .cap{font-size:11.8px;color:var(--mut);margin-bottom:8px}
+  .note{font-size:12px;color:var(--mut);background:#f0f4f9;border-left:3px solid var(--blue);padding:9px 13px;border-radius:0 7px 7px 0;margin-top:10px}
+  .concl{background:linear-gradient(130deg,#0e3354,#155a86);color:#fff;border-radius:13px;padding:24px 28px;margin-top:14px}
+  .concl h3{font-size:18px;margin-bottom:12px}.concl table{width:100%;font-size:13.3px;border-collapse:collapse}
+  .concl th,.concl td{border:1px solid rgba(255,255,255,.22);padding:8px 11px;text-align:left}
+  .concl th{background:rgba(255,255,255,.13)}
+  .src{font-size:12px;color:var(--ink2)}
+  .src ol{margin:6px 0 0 20px}.src li{margin-bottom:5px}
+  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;font-weight:700}
+  .p-focus{background:#fde8d6;color:#b45a12}.p-watch{background:#e6edf5;color:#33546f}
+  @media(max-width:980px){.lvl2grid,.detailgrid,.chartgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div style="max-width:1180px;margin:0 auto;padding:14px 22px 0;"><a href="2030.html" style="display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;color:#1b4965;background:#eef3f8;border:1px solid #cfdce8;text-decoration:none;font-family:inherit;">← 返回 2030 格局预判</a></div>
+<header class="hero"><div class="wrap">
+  <div class="kicker">AGI Security · Secondary Segment Screening</div>
+  <h1>AGI 安全行业 · 四大二级细分市场重点比较</h1>
+  <div class="sub">以"区分客户需求、厘清企业竞争"为目标，沿用《安全地运行 Agent》三级细分表的 8 列字段（过去增速 / 现有规模 / 进口占比 / 预期增速 / 未来空间 / 竞争-门槛-生命周期-重大变化 / 研究建议），对 AGI 安全下四个二级细分做同口径横向比较，并重点标注主攻方向——<b>安全地运行 Agent（智能体运行时防护）</b>与<b>用 AI 提升网络安全（攻击基座大模型，对标 Mythos 5）</b>。</div>
+  <div class="meta">研究管理部 · 2026-09 ｜ 货币：全球美元、中国人民币（亿元）｜ 权威值与测算值分色标注</div>
+</div></header>
+
+<div class="wrap">
+
+<!-- ============ 一、层级关系 ============ -->
+<h2>一、行业层级与本次比较对象<span class="en">Taxonomy</span></h2>
+<p class="lead">AGI 安全（一级）下四个二级细分，买方、预算口袋、毛利结构、竞争对手各不相同，不可合并为"一个行业"。</p>
+<div class="card tree">
+  <div class="lvl1">AGI 安全 / 通用人工智能安全（一级细分）</div>
+  <div class="lvl2grid">
+    <div class="seg s1">
+      <span class="tag">S1</span><h4>安全地建设 AI</h4><div class="en">Security for AI · Secure AI Development</div>
+      <div class="t3">代表三级：模型/数据安全、AI 供应链(AI-SBOM)、MLSecOps、上线前安全开发</div>
+    </div>
+    <div class="seg s2 focus">
+      <span class="tag">S2 · 主攻</span><h4>安全地运行 Agent</h4><div class="en">AI Safety · Agent Harness / Runtime</div>
+      <div class="t3"><span class="star">★ 代表三级：智能体运行时防护</span>（身份权限、工具调用管控、注入防护、沙箱）</div>
+    </div>
+    <div class="seg s3 focus">
+      <span class="tag">S3 · 主攻</span><h4>用 AI 提升网络安全</h4><div class="en">AI for Security · AI-amplified Security</div>
+      <div class="t3"><span class="star">★ 代表三级：攻击基座大模型</span>（对标 Anthropic Mythos 5 / GPT-5.7 Aster）</div>
+    </div>
+    <div class="seg s4">
+      <span class="tag">S4</span><h4>AI 治理与安全保证</h4><div class="en">AI Governance &amp; Assurance</div>
+      <div class="t3">代表三级：评估、红队、合规审计、可解释、AI 保险</div>
+    </div>
+  </div>
+  <div class="note">一级筛选结论（内部 8/31 报告、熊总框架）：S1 多为<b>基模/云大厂内建</b>、独立初创机会小；S4 偏<b>政府与第三方评测机构</b>、商业巨头潜力弱；一级市场应聚焦 <b>S2 运行安全</b> 与 <b>S3 攻防大模型</b> 两个高增长、高壁垒赛道。</div>
+</div>
+
+<!-- ============ 二、8列重点比较表 ============ -->
+<h2>二、四大二级细分 · 8 列同口径重点比较表<span class="en">沿用附件2字段</span></h2>
+<p class="lead">字段与《安全地运行 Agent T1–T5 表》完全一致；<span class="badge b-auth">权威</span>＝Gartner/IDC 等直接口径，<span class="badge b-est">测算</span>＝以权威总盘为约束的拆分（已在第四节说明口径）。</p>
+<div class="tablewrap">
+<table class="cmp">
+  <thead><tr>
+    <th>细分行业</th><th>行业过去增速</th><th>市场现有规模</th><th>国内市场进口占比</th><th>行业预期增速</th><th>行业未来空间（未来3-5年）</th><th>行业简析（竞争 / 门槛 / 生命周期 / 重大变化）</th><th>研究建议</th>
+  </tr></thead>
+  <tbody>
+  <!-- S1 -->
+  <tr>
+    <th class="segcol-s1"><span class="rowname">S1 安全地建设 AI</span><span class="ename">Security for AI</span>模型·数据·供应链·模型运维</th>
+    <td class="segcol-s1"><span class="g-mid">中（20–30%）</span><br>AppSec/DevSecOps 为成熟市场（全球约 $12B@2024，年增约25%），但其中"AI 专属"部分刚从 0 起步</td>
+    <td class="segcol-s1">全球 2026 约 <b>$0.8B</b>（Gartner AI 应用安全 $508M 为核心＋模型/数据/供应链）<span class="badge b-auth">权威</span><br>中国 2025 约 <b>9.0 亿</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s1"><span class="g-mid">中（30–50%）</span><br>MLSecOps/代码与制品扫描工具链海外主导（Snyk/Veracode/Checkmarx/Endor/HiddenLayer）；但大模型备案、数据安全倒逼国产化，基模厂多自研内建</td>
+    <td class="segcol-s1"><span class="g-hi">高 &gt;35%</span><br>中国 CAGR 约 <b>43.6%</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s1">全球 2030 约 <b>$2.5B</b>（Gartner Securing AI $16.4B 中建设侧约15%）<br>中国 2030 约 <b>55 亿</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s1"><span class="lab">竞争：</span>大厂内建为主（基模厂自带对齐/红队，云厂原生整合），独立创业多被并购（Protect AI→Palo Alto、Robust Intelligence→Cisco）。<br><span class="lab">门槛：</span>中高（需深入 ML 训练/CI 流程）但易被平台原生吞掉。<br><span class="lab">生命周期：</span>导入期。<br><span class="lab">重大变化：</span>AI-SBOM/供应链安全、美 Secure-by-Design 行政令、智能体安全强制国标 2026-06 立项。</td>
+    <td class="segcol-s1"><span class="pill p-watch">低配 / 观察</span><br>独立巨头潜力弱、易被云与基模平台整合；仅 AI-SBOM 供应链、国产基模配套存在窄门机会，不作一级主攻</td>
+  </tr>
+  <!-- S2 -->
+  <tr>
+    <th class="segcol-s2"><span class="rowname">S2 安全地运行 Agent</span><span class="ename">AI Safety / Agent Harness</span>身份·权限·工具调用·注入·运行时</th>
+    <td class="segcol-s2"><span class="g-hi">高（&gt;30%）</span><br>内容风控 CAGR 30.5%（艾瑞）；LLM 防火墙/Agent 沙箱为 2024 后爆发新品类</td>
+    <td class="segcol-s2">全球 2026 约 <b>$1.1B</b>（使用控制 $433M＋AI 网关 $251M＋运行时应用安全）<span class="badge b-auth">权威</span><br>中国 2025 约 <b>28.0 亿</b>（保护AI盘中最大）<span class="badge b-est">测算</span></td>
+    <td class="segcol-s2"><span class="g-lo">低（&lt;10–30%）</span><br>内容风控/LLM 防火墙国产化率高，海外 Lakera 等进入中国有限；信创与数据不出域要求强化本土供给</td>
+    <td class="segcol-s2"><span class="g-hi">高 &gt;50%</span><br>中国 CAGR 约 <b>54.3%</b><span class="badge b-est">测算</span>；全球 Securing AI CAGR 约 60%</td>
+    <td class="segcol-s2">全球 2030 运行时为 Dell'Oro AISS（约 <b>$8B</b>）决胜战场、Gartner Securing AI <b>$16.4B</b><br>中国 2030 约 <b>245 亿</b>（保护AI盘 72%）<span class="badge b-est">测算</span></td>
+    <td class="segcol-s2"><span class="lab">竞争：</span>激烈，创业主战场（Lakera/Operant/Nightfall）＋云网关（Cloudflare/FortiAIGate）＋国内移动/百度/华清未央/电信。<br><span class="lab">门槛：</span>高——意图识别、攻防数据、毫秒级 inline 阻断。<br><span class="lab">生命周期：</span>成长期。<br><span class="lab">重大变化：</span>LLM 防火墙/Agent 沙箱/意图识别技术突破，运行时控制层独立成基础设施，强制国标 2026-06 立项。</td>
+    <td class="segcol-s2"><span class="pill p-focus">★ 重点研究</span><br>增速高＋规模最大＋咽喉点＋独立巨头最可能出现＋数据飞轮；聚焦智能体运行时防护（T4）与身份（T3）</td>
+  </tr>
+  <!-- S3 -->
+  <tr>
+    <th class="segcol-s3"><span class="rowname">S3 用 AI 提升网络安全</span><span class="ename">AI for Security</span>安全运营·威胁·漏洞·代码·渗透</th>
+    <td class="segcol-s3"><span class="g-hi">极高（&gt;70%）</span><br>中国大模型安全运营平台 2025 同比 <b>+144%</b>（IDC）；全球 AI 网安支出 2025→2026 近翻倍（+98%）</td>
+    <td class="segcol-s3">全球 2026 AI 增强安全 <b>$48.5B</b><span class="badge b-auth">权威</span><br>中国 2025 <b>15.8 亿</b>（网络安全 AI Agent 应用）<span class="badge b-auth">权威 IDC</span></td>
+    <td class="segcol-s3"><span class="g-mid">民用低 / 攻基"对表不进口"</span><br>民用 SOC/运营工具国产化率高（进口&lt;20%）；攻击基座涉密涉军<b>不可能直接进口</b>，须自主可控，当前对表 Mythos 5.1 技术代差约 1 代（6–12 月，360），安恒称黑盒渗透差距已不足半年、差距在未公开 0day 储备</td>
+    <td class="segcol-s3"><span class="g-hi">极高</span><br>中国 CAGR <b>106.5%</b>（四细分最高，IDC 权威）；全球 AI 增强安全 CAGR 约 53–65%</td>
+    <td class="segcol-s3">全球 2030 AI 增强安全 <b>$204.5B</b>（Gartner，超终端防护成最大品类）<br>中国 2030 <b>593.5 亿</b><span class="badge b-auth">权威 IDC</span>；叠加国防军工，内部专家测算 2031 破千亿、2035 达 3000–4000 亿</td>
+    <td class="segcol-s3"><span class="lab">竞争：</span>平台巨头（智谱5.3/MiniMax/阿里已组队，字节、DeepSeek 未布局）＋垂直厂商（360 屠龙、安恒安小龙、绿盟、奇安信、长亭）；攻击基座终局国内仅约 3 家（侯海平）/全行业≤5 家、头部 2–3 家（朱雀）。<br><span class="lab">门槛：</span>极高——稀缺攻防数据飞轮（EXP 核心数据仅十万级、高价值 0day 集中于特定体系）＋受限算力(4–5 张 H100)/隐蔽寄生/1–2B 小参数改造＋涉密资质。<br><span class="lab">生命周期：</span>导入期（2026 试点、2027–28 放量、新巨头 2028–30 诞生）。<br><span class="lab">重大变化：</span>Mythos/Aster 攻击基座问世、CIA 收购安全大模型、渗透服务标品化（单次 8–50 万元→可复制）；5ms 高并发实时瓶颈当前无解、AI 暂只能事后清扫。</td>
+    <td class="segcol-s3"><span class="pill p-focus">★ 最高优先级（攻击基座大模型）</span><br>对标 Mythos 5：国防刚需＋数据飞轮＋终局 3 家寡头＋百亿→千亿空间；在 2–10 亿估值卡位有独家攻防数据、年轻灵活组织、具资质的标的；同时纳入 360"基座主导、独立难活"的反方观点做压力测试</td>
+  </tr>
+  <!-- S4 -->
+  <tr>
+    <th class="segcol-s4"><span class="rowname">S4 AI 治理与安全保证</span><span class="ename">AI Governance &amp; Assurance</span>评估·红队·合规·审计·解释·保险</th>
+    <td class="segcol-s4"><span class="g-hi">高（&gt;40%）</span><br>全球 AI 治理平台 $65M@2024→$492M@2026，合规驱动、基数小增速快；中国双备案大模型 2025 同比 +170%、退回率 65%</td>
+    <td class="segcol-s4">全球 2026 AI 治理平台 <b>$492M</b>（Securing AI 内治理子项 $275M）<span class="badge b-auth">权威</span><br>中国 2025 约 <b>7.1 亿</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s4"><span class="g-hi">二元结构</span><br>平台软件海外主导（IBM/ServiceNow/OneTrust/Truyo，工具进口 50%+）；但中国评测/认证/备案<b>牌照不可进口</b>，由信通院、公安三所、赛迪等事业单位与国测机构主导</td>
+    <td class="segcol-s4"><span class="g-hi">高</span><br>全球 CAGR 约 <b>67.5%</b>（$65M@2024→$1.4B@2030，Gartner）；中国 CAGR 约 <b>41.5%</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s4">全球 2030 <b>$1.0–1.4B</b>（Gartner：2030 超 $1B）<br>中国 2030 约 <b>40.3 亿</b><span class="badge b-est">测算</span></td>
+    <td class="segcol-s4"><span class="lab">竞争：</span>服务先行、证据链订阅；海外 IBM/ServiceNow 为领导者，国内信通院/公安三所/赛迪＋治理咨询评测厂商。<br><span class="lab">门槛：</span>资质/牌照/信任壁垒高、技术壁垒中等。<br><span class="lab">生命周期：</span>成长早期。<br><span class="lab">重大变化：</span>欧盟 AI Act 2026-08 执法、中国大模型双备案与智能体国标、AI 保险新险种萌芽。</td>
+    <td class="segcol-s4"><span class="pill p-watch">谨慎 / 观察</span><br>偏政府与第三方评测、独立商业巨头潜力弱；关注合规 SaaS 化、AI 保险与"评测即服务"，不作一级主攻</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div class="note">读表提示：S1/S2/S4 同属"保护 AI 自身"预算盘（IDC 人工智能安全：中国 44.1→340.3 亿、CAGR50.5%），三者中国分项之和严格等于该总盘；S3 属"用 AI 做安全"独立预算盘（IDC 网络安全 AI Agent：15.8→593.5 亿、CAGR106.5%），两者不可相加混淆。</div>
+
+<!-- ============ 三、规模图表 ============ -->
+<h2>三、规模与增速可视化<span class="en">Market size &amp; CAGR</span></h2>
+<div class="chartgrid">
+  <div class="chartbox"><h5>中国市场：四大二级细分 2025 vs 2030（亿元）</h5><div class="cap">S1/S2/S4 为 IDC 总盘约束下测算；S3 为 IDC 权威值</div><div id="c_cn" class="chart"></div></div>
+  <div class="chartbox"><h5>预期 CAGR 对比（%）</h5><div class="cap">中国 CAGR；S3 显著领跑，全球同口径标注于括号</div><div id="c_cagr" class="chart"></div></div>
+</div>
+<div class="chartbox" style="margin-top:16px"><h5>全球市场现有规模与 2030 空间（美元，亿）</h5><div class="cap">S3 为 Gartner AI 增强安全（体量最大）；S1/S2/S4 合计对应 Gartner Securing AI（$2.84B@2026→$16.4B@2030），分项为方向性拆分、非严格可加</div><div id="c_gl" class="chart" style="height:360px"></div></div>
+
+<!-- ============ 四、口径与测算 ============ -->
+<h2>四、规模口径与测算依据（可信度纪律）</h2>
+<div class="card src">
+<p><b>两个权威总盘（中国，IDC 2026-04，不可混淆）：</b></p>
+<ul class="tight">
+<li><b>人工智能安全（Securing AI，保护 AI 自身）＝S1+S2+S4</b>：44.1 亿(2025)→340.3 亿(2030)，CAGR 50.5%。</li>
+<li><b>网络安全 AI Agent 应用（AI for Security，用 AI 做安全）＝S3</b>：15.8 亿(2025)→593.5 亿(2030)，CAGR 106.5%。</li>
+</ul>
+<p style="margin-top:9px"><b>中国 S1/S2/S4 分项为"约束式测算"，非权威直接数字：</b>权威机构未按本四分类发布分项。本表以 IDC 总盘为硬约束（两年分项之和严格等于总盘），以 Gartner 全球 Securing AI 子结构（应用安全/使用控制/治理平台/网关）为模板，结合中国阶段赋权——2025：S1 9.0 / S2 28.0 / S4 7.1＝44.1；2030：S1 55 / S2 245 / S4 40.3＝340.3；对应 CAGR 43.6% / 54.3% / 41.5%。投委会级"分项均权威"需委托 IDC/赛迪定制拆分。</p>
+<p style="margin-top:9px"><b>全球锚点：</b>Gartner Securing AI $2.835B(2026)→$4.783B(2027,+68.7%)→$7.7B(2028)→$16.4B(2030)；AI 增强安全 $48.5B(2026)→$204.5B(2030)；AI 治理平台 $492M(2026)→$1B+(2030)；Dell'Oro AI 系统安全 0→约 $8B(2030)，运行时/控制为决胜战场。</p>
+</div>
+
+<!-- ============ 五、细分详解 ============ -->
+<h2>五、四细分深度详解与投资定性<span class="en">Detail &amp; verdict</span></h2>
+<div class="detailgrid">
+  <div class="dcard"><div class="dhead s1">S1 安全地建设 AI <span class="verdict">低配 · 易被整合</span></div><div class="dbody">
+    <dl class="kv"><dt>买方</dt><dd>技术/AI 平台/安全负责人；平台、云、研发与安全预算</dd><dt>收费</dt><dd>按模型/应用/调用订阅；云、应用安全、AI 基模厂商</dd></dl>
+    <p>解决"把 AI 做安全"——训练对齐、数据投毒/后门、模型与组件供应链（AI-SBOM）、MLSecOps。<b>核心矛盾：能力与基模/云平台高度同源，大厂天然内建，第三方难以独立收费。</b></p>
+    <div class="quote">金句：建设侧安全像"毛坯房的钢筋"——开发商（基模/云厂）自己就浇了，第三方卖钢筋的，最后都被开发商收购。</div>
+  </div></div>
+
+  <div class="dcard"><div class="dhead s2">S2 安全地运行 Agent <span class="verdict">★ 主攻 · 独立巨头沃土</span></div><div class="dbody">
+    <dl class="kv"><dt>买方</dt><dd>信息化/安全/身份负责人；身份、网关、云运行时预算</dd><dt>收费</dt><dd>按 Agent/会话/调用；身份、云、云原生安全厂商</dd></dl>
+    <p>解决"让 AI 安全地动手"——身份权限、工具调用管控、提示注入、运行时 inline 阻断与沙箱。风险从大模型"说错话"升级为 Agent"做错事"，传统围栏仅覆盖约 70% 基础风险。</p>
+    <div class="quote">金句：上一代安全在门口查身份证，这一代要在 Agent 的每一个念头里站岗；运行时就是智能体时代的"操作系统层"，谁卡住这层，谁收过路费。</div>
+  </div></div>
+
+  <div class="dcard full"><div class="dhead s3">S3 用 AI 提升网络安全 · 攻击基座大模型专题（对标 Mythos 5）<span class="verdict">★ 最高优先级</span></div><div class="dbody">
+    <p><b>为什么单列主攻：</b>它同时满足"技术门槛高、竞争烈度（终局）小、利润空间大"三条优质标的标准（阿里专家），且有国家级对冲刚需——海外 Mythos（闭源攻击模型）/Fable（公开模型）、GPT-5.7 Aster 已实现跨域长期自主渗透，CIA 已收购相关安全大模型，国内亟需对等"守护型/攻击型基座"形成战略对冲。</p>
+    <div class="detailgrid" style="margin-top:6px">
+      <div>
+        <p class="lab">能力与代差（一线尽调交叉验证）</p>
+        <ul class="tight">
+          <li>360"屠龙"多智能体漏挖验证率 50%+（目标 60%），行业通用 20–37%；对海外顶级产品落后约 1 代（6–12 月），短板在基座代码理解。</li>
+          <li>安恒"安小龙"：自动化渗透准确率 85%（传统扫描&lt;30%）、代码审计命中 92%、1 小时还原攻击链；黑盒渗透与 Mythos 5.1 差距已不足半年，真正差距在顶级黑客未公开 0day 储备。</li>
+          <li>本质壁垒不是通用基座，而是把零散漏洞点推理串联成完整利用链；EXP 级核心数据仅十万条以下，高价值原创漏洞高度集中。</li>
+        </ul>
+      </div>
+      <div>
+        <p class="lab">护城河、格局与节奏</p>
+        <ul class="tight">
+          <li>四大准入条件：模型架构（差距已拉平）、攻防数据（最稀缺，某处室年漏洞采购近 40 亿）、算力调度（4–5 张 H100 受限算力/断网 1–2B 小参数改造）、组织形式（年轻灵活团队迭代力）。</li>
+          <li>终局：底层攻击基座国内仅约 3 家（侯海平）/全行业≤5 家、头部 2–3 家、百亿级（朱雀）；各地资质型商务公司转为调用基模 API 的渠道。</li>
+          <li>数据飞轮：模型越强→客户越广→攻防数据越多→模型更强，天然一家独大；新进入者陷"无数据-无能力-无订单"死锁，须先全球打榜建立信任。</li>
+          <li>节奏：安全滞后产业爆发 5–9 年；2026 试点、2027–28 规模落地、新巨头 2028–30 集中诞生；标的估值路径 2 亿→10 亿→50 亿→500 亿。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lab" style="margin-top:8px">必须纳入的反方观点（压力测试）：</p>
+    <ul class="tight">
+      <li>360 胡晓娜：AI 安全核心壁垒在基座代码能力，未来由强代码基模厂商"合纵连横"主导，纯创业缺资金/模型迭代能力极难独立存活，Harness 控制层门槛低、无盈利模式；5ms 高并发实时拦截当前无解。</li>
+      <li>安恒姚吉：不存在独立"安全垂类基座"生存空间，真正壁垒是 Harness 工程＋千名安服场景飞轮；绿盟/奇安信/长亭/京东在 60–70 分阶段同质化严重。</li>
+      <li>破局关键：标的是否<b>独占可持续的高价值攻防数据源</b>、是否具备基模之外的工程/资质/组织壁垒、能否先打榜再变现——三者缺一，则落入"基座主导"反方剧本。</li>
+    </ul>
+    <div class="quote">金句：攻击基座是 AI 安全的"两弹一星"——通用基座可以开源买炮管，攻防数据和年轻组织才是核弹头；终局只剩两三家，窗口期最多三年，卡位要在 2–10 亿估值、在国家核心数据到位之前。</div>
+  </div></div>
+
+  <div class="dcard"><div class="dhead s4">S4 AI 治理与安全保证 <span class="verdict">观察 · 牌照生意</span></div><div class="dbody">
+    <dl class="kv"><dt>买方</dt><dd>法务/合规/模型风险/内审；治理、认证与保险预算</dd><dt>收费</dt><dd>服务先行、证据链订阅；治理、咨询、评测厂商</dd></dl>
+    <p>解决"证明 AI 可信、出事可追责"——评估、红队、合规审计、可解释、AI 保险。欧盟 AI Act 执法、中国双备案（退回率 65%）驱动确定性需求，但中国认证牌照集中于事业单位，市场化空间偏服务、难出产品型巨头。</p>
+    <div class="quote">金句：治理是"AI 世界的公证处"——刚需、稳定、受保护，但公证处永远长不成互联网平台。</div>
+  </div></div>
+</div>
+
+<!-- ============ 六、一级筛选结论 ============ -->
+<h2>六、一级筛选结论<span class="en">Screening verdict</span></h2>
+<div class="concl">
+<h3>四细分横向排序（一级市场视角）</h3>
+<table>
+  <tr><th>排序</th><th>二级细分</th><th>中国 CAGR</th><th>独立巨头潜力</th><th>壁垒性质</th><th>结论</th></tr>
+  <tr><td>1</td><td><b>S3 用 AI 提升网络安全</b>（攻击基座大模型）</td><td>106.5%</td><td>高（终局约 3 家寡头，含国防千亿空间）</td><td>攻防数据飞轮＋受限算力/隐蔽工程＋资质</td><td>最高优先级，2–10 亿估值卡位</td></tr>
+  <tr><td>2</td><td><b>S2 安全地运行 Agent</b>（智能体运行时防护）</td><td>54.3%</td><td>高（运行时咽喉、独立基础设施层）</td><td>意图识别＋攻防数据＋毫秒级 inline</td><td>重点研究，聚焦运行时 T4/身份 T3</td></tr>
+  <tr><td>3</td><td>S1 安全地建设 AI</td><td>43.6%</td><td>弱（基模/云内建，创业多被并购）</td><td>中高但易被平台整合</td><td>低配，仅看供应链(AI-SBOM)窄门</td></tr>
+  <tr><td>4</td><td>S4 AI 治理与安全保证</td><td>41.5%</td><td>弱（牌照/事业单位主导，服务型）</td><td>资质信任高、技术中</td><td>观察，看合规 SaaS/AI 保险期权</td></tr>
+</table>
+<p style="margin-top:13px;font-size:13px;opacity:.92">一句话总纲：<b>S3 决定"能不能跟美国对撞"、是国家级寡头赛；S2 决定"智能体能不能放心跑"、是基础设施级平台赛；S1/S4 是被平台与牌照吸收的配套赛。一级市场把主力弹药压在 S3 攻击基座与 S2 运行时两条主线。</b></p>
+</div>
+
+<!-- ============ 数据来源 ============ -->
+<h2>数据来源<span class="en">Sources</span></h2>
+<div class="card src">
+<ol>
+<li>Gartner,《Forecasts the Market for Securing AI Will Reach $4.8B in 2027》, 2026-08-26（$2.835B@2026 / $4.783B@2027 / $7.7B@2028，子项：AI 应用安全、使用控制、治理平台、网关）。</li>
+<li>Gartner,《Global AI Regulations Fuel Billion-Dollar Market for AI Governance Platforms》, 2026-02-17（治理平台 $492M@2026→超 $1B@2030；$65M@2024→$1.4B@2030，CAGR 67.5%）。</li>
+<li>Gartner,《Forecast: Information Security, Worldwide, 4Q25 / AI-Amplified Security 2026》（AI 增强安全 $48.5B@2026→$204.5B@2030；Securing AI $1.5B@2025→$16.4B@2030）。</li>
+<li>Dell'Oro Group,《AI Systems Security（AISS）Advanced Research》, 2026-04（0→约 $8B@2030，约 60 家厂商，runtime/control 为决胜战场）。</li>
+<li>IDC,《Anthropic Mythos 叩关：AI 攻防变局下中国安全厂商的破局之路》, 2026-04（中国人工智能安全 44.1→340.3 亿/CAGR50.5%；网络安全 AI Agent 15.8→593.5 亿/CAGR106.5%）。</li>
+<li>IDC MarketShare,《中国基于大模型的安全运营平台市场份额 2025》, 2026-07（15 亿、同比 +144%）。</li>
+<li>Mordor Intelligence,《Cybersecurity for AI Models &amp; LLMs Market》, 2026-06（$3.62B@2026→$14.47B@2031，CAGR31.9%，量级校验）。</li>
+<li>艾瑞咨询,《2026 中国大模型内容风控报告》（第三方内容风控 24.8→93.7 亿，CAGR30.5%）；上海市信安协会/安在《人工智能安全产业调查报告》（中国 AI 安全 2025–2030 CAGR50.5%、340.3 亿）。</li>
+<li>内部调研：华控产业基金 AI 安全行业思考（2026-08-10）；0831 内部报告会纪要/熊总发言提炼（四市场划分与一级筛选）；腾讯朱雀实验室专家访谈（08-11）；阿里千问侯海平访谈（08-15/09-03）；360 漏洞云胡晓娜访谈（09-02）；安恒安小龙姚吉访谈（09-01）；阿里千问销售章山访谈（08-24）。</li>
+</ol>
+<div class="note">免责声明：标注"测算"的中国 S1/S2/S4 分项为研究管理部在 IDC 权威总盘约束下的拆分估计，不代表 IDC 官方口径；全球分项因 Gartner 子品类存在交叉，方向性引用、不做严格加总。市场有不确定性，结论供内部研究使用。</div>
+</div>
+
+</div>
+<script>
+const navy='#0f3a5f',s1c='#4a86a8',s2c='#1f6fb2',s3c='#c6452f',s4c='#7a6fb0',grey='#9fb0c3';
+// 中国柱状
+echarts.init(document.getElementById('c_cn')).setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  legend:{top:0,textStyle:{fontSize:12}},
+  grid:{left:48,right:16,top:34,bottom:30},
+  xAxis:{type:'category',data:['S1 建设AI','S2 运行Agent','S3 AI做安全','S4 治理保证'],axisLabel:{fontSize:11.5,interval:0}},
+  yAxis:{type:'value',name:'亿元',nameTextStyle:{fontSize:11}},
+  series:[
+    {name:'2025',type:'bar',data:[9.0,28.0,15.8,7.1],itemStyle:{color:grey,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:11}},
+    {name:'2030',type:'bar',data:[55,245,593.5,40.3],itemStyle:{color:function(p){return [s1c,s2c,s3c,s4c][p.dataIndex]},borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:11,fontWeight:'bold'}}
+  ]
+});
+// CAGR
+echarts.init(document.getElementById('c_cagr')).setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+'<br/>中国 CAGR：'+p[0].value+'%'}},
+  grid:{left:110,right:46,top:18,bottom:30},
+  xAxis:{type:'value',max:120,axisLabel:{formatter:'{value}%'}},
+  yAxis:{type:'category',data:['S4 治理保证','S1 建设AI','S2 运行Agent','S3 AI做安全'],axisLabel:{fontSize:12}},
+  series:[{type:'bar',data:[
+      {value:41.5,itemStyle:{color:s4c}},{value:43.6,itemStyle:{color:s1c}},
+      {value:54.3,itemStyle:{color:s2c}},{value:106.5,itemStyle:{color:s3c}}],
+    barWidth:22,label:{show:true,position:'right',formatter:'{c}%',fontWeight:'bold',fontSize:12}}]
+});
+// 全球
+echarts.init(document.getElementById('c_gl')).setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  legend:{top:0,textStyle:{fontSize:12}},
+  grid:{left:52,right:16,top:34,bottom:30},
+  xAxis:{type:'category',data:['S1 建设AI','S2 运行Agent','S3 AI做安全','S4 治理保证'],axisLabel:{fontSize:11.5,interval:0}},
+  yAxis:{type:'value',name:'美元（亿）',nameTextStyle:{fontSize:11}},
+  series:[
+    {name:'2026 现有',type:'bar',data:[8,11,485,4.92],itemStyle:{color:grey,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}},
+    {name:'2030 空间',type:'bar',data:[25,80,2045,12],itemStyle:{color:function(p){return [s1c,s2c,s3c,s4c][p.dataIndex]},borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5,fontWeight:'bold'}}
+  ]
+});
+window.addEventListener('resize',()=>{document.querySelectorAll('.chart').forEach(el=>{const i=echarts.getInstanceByDom(el);if(i)i.resize()})});
+</script>
+</body>
+</html>
