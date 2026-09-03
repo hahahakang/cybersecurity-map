@@ -66,10 +66,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .cg.hot{background:rgba(52,211,153,0.16);color:#6ee7b7;}
 .cg.mid{background:rgba(56,189,248,0.14);color:#7dd3fc;}
 /* 重点三级 */
-.n-l3.tech-layer{border:1.5px dashed rgba(148,163,184,0.55);border-left:5px solid #94a3b8;background:linear-gradient(135deg,rgba(148,163,184,0.09),rgba(148,163,184,0.02));box-shadow:none;width:262px;}
-.n-l3.tech-layer .l3-name{color:#dbe3ee;}
-.leaf-tech{border:1px dashed rgba(148,163,184,0.5);background:rgba(148,163,184,0.07);color:#cbd5e1;}
-.leaf-tech b{color:#94a3b8;}
+/* U1 兼安全智能底座：青色虚线供能 */
+.leaf-supply{border:1.2px dashed #22d3ee;background:rgba(34,211,238,0.08);color:#cffafe;}
+.leaf-supply b{color:#22d3ee;}
+.supply-note{margin-top:6px;padding:5px 8px;border:1.2px dashed rgba(34,211,238,0.6);border-radius:7px;font-size:9.5px;line-height:1.5;color:#a5f3fc;background:rgba(34,211,238,0.06);}
+.sup-tag{font-size:8.5px;font-weight:700;color:#67e8f9;background:rgba(34,211,238,0.12);border:1px dashed rgba(34,211,238,0.55);border-radius:5px;padding:1px 5px;margin-left:auto;white-space:nowrap;}
 .n-l3.key-t4{border:1.8px solid var(--t4);border-left:5px solid var(--t4);background:linear-gradient(135deg,rgba(251,191,36,0.14),rgba(251,191,36,0.04));box-shadow:0 0 18px rgba(251,191,36,0.22);width:262px;}
 .n-l3.key-u1{border:1.8px solid var(--u1);border-left:5px solid var(--u1);background:linear-gradient(135deg,rgba(251,113,133,0.14),rgba(251,113,133,0.04));box-shadow:0 0 18px rgba(251,113,133,0.22);width:262px;}
 .flag{font-size:9px;font-weight:800;padding:1px 7px;border-radius:5px;}
@@ -112,13 +113,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   <div class="legend">
     <span class="lg"><span class="dot" style="background:#94a3b8;"></span>安全地建设 AI（概览）</span>
     <span class="lg"><span class="dot" style="background:#38bdf8;"></span>安全地运行 Agent（重点展开 T1–T5）</span>
-    <span class="lg"><span class="dot" style="background:#34d399;"></span>用 AI 提升网络安全（重点展开 U1–U5 + 横向底座层）</span>
+    <span class="lg"><span class="dot" style="background:#34d399;"></span>用 AI 提升网络安全（重点展开 U1–U5，U1 兼安全智能底座）</span>
     <span class="lg"><span class="dot" style="background:#c084fc;"></span>AI 治理与安全保证（概览）</span>
     <span class="lg key">★ 金色 T4 运行时防护(Harness)</span>
     <span class="lg key r">★ 红色 U1 自主攻防(第一优先 · 对标 Mythos5)</span>
-    <span class="lg" style="color:#94a3b8;"><span class="dot" style="background:#94a3b8;"></span>灰虚线 安全智能底座层（横向技术内核 · 非独立赛道，主体即 U1 寡头）</span>
+    <span class="lg" style="color:#67e8f9;"><span class="dot" style="background:#22d3ee;"></span>青色虚线 ＝ U1（兼安全智能底座）横向供能 U2–U5 / T1–T5</span>
   </div>
-  <div class="focus-tip">▸ 研究侧重：②安全地运行 Agent 与 ③用 AI 提升网络安全 两大分支完整展开至「三级细分功能点」；①④为基座公司 / 第三方主业，仅列概览。两大第一重点＝金色 <b>T4 运行时防护</b> 与红色 <b>U1 自主攻防（对标 Mythos5）</b>；③底部灰虚线「安全智能底座层」是 U1 及全行业的横向技术内核（供能、不占编号、不重复计规模、非独立赛道），其商业化主体即 U1 头部寡头。可横向滚动查看全树。</div>
+  <div class="focus-tip">▸ 两大第一重点：金色 <b>T4 智能体运行时防护</b>（②运行 Agent）、红色 <b>U1 自主攻防与暴露面验证</b>（③用 AI，兼安全智能底座、对标 Mythos5）；U1 以青色虚线横向供能 U2–U5 与姊妹篇 T1–T5。①建设、④治理为基座大厂 / 第三方主业，列概览。可横向滚动查看全树。</div>
 
   <div class="scroll-wrap">
    <div id="tree">
@@ -155,6 +156,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
             <div class="t">② 安全地运行 Agent</div>
             <div class="en">Securing AI / 守护智能体</div>
             <div class="sz">中国 <b>44.1 → 340.3 亿</b><br><span class="cg">CAGR 50.5%</span></div>
+            <div style="margin-top:6px;font-size:9px;line-height:1.45;color:#67e8f9;border:1px dashed rgba(34,211,238,0.5);border-radius:6px;padding:3px 6px;background:rgba(34,211,238,0.06);">◌ T1–T5 同为 U1 安全智能底座的供能对象</div>
           </div>
           <div class="children" data-link="#38bdf8">
 
@@ -242,26 +244,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
           </div>
           <div class="children" data-link="#34d399">
 
-            <!-- ★ U1 自主攻防（用AI侧第一重点·对标Mythos5） -->
+            <!-- ★ U1 自主攻防（兼安全智能底座·用AI侧第一重点·对标Mythos5） -->
             <div class="nw">
               <div class="node n-l3 key-u1">
-                <div class="l3-head"><span class="badge" style="background:#fb7185;">U1</span><span class="l3-name">自主攻防与暴露面验证</span><span class="flag u1">★ 第一优先 · 对标 Mythos5</span></div>
+                <div class="l3-head"><span class="badge" style="background:#fb7185;">U1</span><span class="l3-name">自主攻防与暴露面验证 <span style="color:#67e8f9;font-weight:400;">(兼安全智能底座)</span></span><span class="flag u1">★ 第一优先 · 对标 Mythos5</span></div>
                 <div class="l3-en">Autonomous Offense & Exposure Validation · 攻击者视角 · 壁垒最高 ★★★★★</div>
-                <div class="metrics"><span class="m"><b>2.6</b>亿</span><span class="m ar">→</span><span class="m"><b>150</b>亿(MECE)</span><span class="cg hot">CAGR ≈125% · 最高</span></div>
+                <div class="metrics"><span class="m">作战域 <b>2.6</b>亿</span><span class="m ar">→</span><span class="m"><b>150</b>亿(五域内)</span><span class="cg hot">CAGR≈125% · 最高</span></div>
+                <div class="metrics" style="margin-top:3px;"><span class="m" style="border:1px dashed #22d3ee;">兼底座·全口径 <b>2.8→193</b>亿(127–268)</span><span class="cg" style="background:rgba(34,211,238,0.14);color:#67e8f9;">供能全行业 CAGR≈133%</span></div>
                 <div class="knote u1">「高增速·小规模」里唯一因<b>壁垒＋底座属性</b>上调为第一优先的赛道：专用对通用 95%∶1.5% 数量级代差＋刚性进口替代；在 GLM 等开放权重上以专用小模型＋独家攻防数据＋涉密/关基交付立足（不自训前沿权重），终局 3–4 家寡头、龙头单家 87–106 亿。<a href="ai-for-security.html">报告 →</a></div>
+                <div class="supply-note">↣ U1 同时充当「安全智能底座」：以下 3 项底座能力以青色虚线横向<b>供能 U2–U5 与姊妹篇 T1–T5</b>（价值内嵌各域、不重复计规模，全口径 193 亿为跨二级 TAM）</div>
               </div>
               <div class="children" data-link="#fb7185">
                 <div class="nw"><div class="node n-l4 leaf-u1"><b>1.1</b>自主挖洞与代码/二进制推理</div></div>
                 <div class="nw"><div class="node n-l4 leaf-u1"><b>1.2</b>利用验证与攻击链编排</div></div>
                 <div class="nw"><div class="node n-l4 leaf-u1"><b>1.3</b>持续自动渗透与暴露面验证 BAS</div></div>
                 <div class="nw"><div class="node n-l4 leaf-u1"><b>1.4</b>专用续训私有化与攻防对齐</div></div>
+                <div class="nw"><div class="node n-l4 leaf-supply"><b>底座能力</b>专用攻防小模型（上承 GLM/Qwen/DeepSeek 开放权重）</div></div>
+                <div class="nw"><div class="node n-l4 leaf-supply"><b>底座能力</b>独家攻防 / 黑产数据飞轮</div></div>
+                <div class="nw"><div class="node n-l4 leaf-supply"><b>底座能力</b>多智能体框架与软硬一体/信创交付</div></div>
               </div>
             </div>
 
             <!-- U2 -->
             <div class="nw">
               <div class="node n-l3 l3-use">
-                <div class="l3-head"><span class="badge b-use">U2</span><span class="l3-name">智能安全运营与自主响应</span></div>
+                <div class="l3-head"><span class="badge b-use">U2</span><span class="l3-name">智能安全运营与自主响应</span><span class="sup-tag">◌ U1 底座供能</span></div>
                 <div class="l3-en">Autonomous SOC</div>
                 <div class="metrics"><span class="m"><b>6.0</b>亿</span><span class="m ar">→</span><span class="m"><b>215.5</b>亿</span><span class="cg hot">CAGR 105% · 最大应用</span></div>
               </div>
@@ -276,7 +283,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
             <!-- U3 -->
             <div class="nw">
               <div class="node n-l3 l3-use">
-                <div class="l3-head"><span class="badge b-use">U3</span><span class="l3-name">智能代码与应用安全</span></div>
+                <div class="l3-head"><span class="badge b-use">U3</span><span class="l3-name">智能代码与应用安全</span><span class="sup-tag">◌ U1 底座供能</span></div>
                 <div class="l3-en">AI-Native AppSec / DevSecOps · 开发者视角</div>
                 <div class="metrics"><span class="m"><b>2.1</b>亿</span><span class="m ar">→</span><span class="m"><b>65</b>亿</span><span class="cg hot">CAGR 99%</span></div>
               </div>
@@ -290,7 +297,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
             <!-- U4 -->
             <div class="nw">
               <div class="node n-l3 l3-use">
-                <div class="l3-head"><span class="badge b-use">U4</span><span class="l3-name">威胁情报·攻击面测绘与反欺诈</span></div>
+                <div class="l3-head"><span class="badge b-use">U4</span><span class="l3-name">威胁情报·攻击面测绘与反欺诈</span><span class="sup-tag">◌ U1 底座供能</span></div>
                 <div class="l3-en">Intel / Cyber-Mapping / Anti-Fraud</div>
                 <div class="metrics"><span class="m"><b>3.5</b>亿</span><span class="m ar">→</span><span class="m"><b>105</b>亿</span><span class="cg hot">CAGR 97%</span></div>
               </div>
@@ -304,28 +311,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
             <!-- U5 -->
             <div class="nw">
               <div class="node n-l3 l3-use">
-                <div class="l3-head"><span class="badge b-use">U5</span><span class="l3-name">安全治理·风险与知识协同</span></div>
+                <div class="l3-head"><span class="badge b-use">U5</span><span class="l3-name">安全治理·风险与知识协同</span><span class="sup-tag">◌ U1 底座供能</span></div>
                 <div class="l3-en">GRC & Security Knowledge</div>
                 <div class="metrics"><span class="m"><b>1.6</b>亿</span><span class="m ar">→</span><span class="m"><b>58</b>亿</span><span class="cg hot">CAGR 105%</span></div>
               </div>
               <div class="children" data-link="#34d399">
                 <div class="nw"><div class="node n-l4 leaf-use"><b>5.1</b>智能合规与风险 GRC</div></div>
                 <div class="nw"><div class="node n-l4 leaf-use"><b>5.2</b>安全知识 Copilot 与协同</div></div>
-              </div>
-            </div>
-
-            <!-- 横向：安全智能底座层（中性技术层·非独立赛道；U1头部寡头即其商业化主体） -->
-            <div class="nw">
-              <div class="node n-l3 tech-layer">
-                <div class="l3-head"><span class="badge" style="background:#94a3b8;color:#0f172a;">横向</span><span class="l3-name">安全智能底座层（横向技术层）</span><span class="flag" style="background:#475569;color:#cbd5e1;">技术内核 · 非独立赛道</span></div>
-                <div class="l3-en">Security Foundation Layer · 横向供能 U1–U5 与 T1–T5 · 不占编号·不重复计规模</div>
-                <div class="metrics"><span class="m">全口径<b> 2.8</b>亿</span><span class="m ar">→</span><span class="m"><b>193</b>亿(127–268)</span><span class="cg mid">全口径 CAGR ≈133%</span></div>
-                <div class="knote" style="border-left:3px solid #94a3b8;background:rgba(148,163,184,0.08);color:#cbd5e1;">U1 及全行业的共性技术内核（"供军火的兵工厂"）：前沿权重归通用大厂、受控开放，独立方靠专用小模型＋独家攻防/黑产数据＋多智能体框架＋涉密交付；其独立商业化主体即 <b>U1 头部寡头</b>，价值已内嵌五域、不另立市场。<a href="ai-for-security.html">报告 →</a></div>
-              </div>
-              <div class="children" data-link="#94a3b8">
-                <div class="nw"><div class="node n-l4 leaf-tech"><b>F.1</b>专用攻防小模型（上承 GLM/Qwen/DeepSeek 开放权重）</div></div>
-                <div class="nw"><div class="node n-l4 leaf-tech"><b>F.2</b>独家攻防 / 黑产数据飞轮</div></div>
-                <div class="nw"><div class="node n-l4 leaf-tech"><b>F.3</b>多智能体框架与软硬一体/信创交付</div></div>
               </div>
             </div>
 
@@ -366,22 +358,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
     <div class="sum-card" style="border-top:3px solid #34d399;">
       <div class="st" style="color:#6ee7b7;">▎③ 用 AI 提升网络安全（AI+安全）</div>
       <div class="sr"><span>2025 中国规模</span><b>15.8 亿元</b></div>
-      <div class="sr"><span>2030 中国规模</span><b>593.5 亿元（五域 MECE）</b></div>
+      <div class="sr"><span>2030 中国规模</span><b>593.5 亿元（五域合计）</b></div>
       <div class="sr"><span>5年 CAGR</span><b style="color:#6ee7b7;">106.5%</b></div>
       <div class="sr"><span>最大应用口袋</span><b>U2 智能安全运营 215.5亿</b></div>
     </div>
     <div class="sum-card" style="border-top:3px solid #fbbf24;">
       <div class="st" style="color:#fde68a;">★ 两大第一重点赛道（分属 ②③ 两个二级）</div>
-      <div class="sr"><span>T4 运行时防护 Harness（②）</span><b>18.5→148亿(重估100–310)</b></div>
-      <div class="sr"><span style="color:#fda4af;">U1 自主攻防与暴露面验证（③·对标 Mythos5）</span><b>2.6→150亿(CAGR≈125%)</b></div>
-      <div class="sr"><span>└ U1 全口径空间放大＝横向底座层渗透（跨二级、不重复计）</span><b>2.8→193亿</b></div>
-      <div class="sr"><span>共性壁垒</span><b>攻防数据+运行时控制+数据飞轮</b></div>
+      <div class="sr"><span>T4 智能体运行时防护 Harness（②）</span><b>18.5→148亿（成长区间100–310）</b></div>
+      <div class="sr"><span style="color:#fda4af;">U1 自主攻防与暴露面验证（③·兼安全智能底座·对标 Mythos5）</span><b>作战域 2.6→150亿</b></div>
+      <div class="sr"><span>└ U1 兼底座、跨二级供能的全口径 TAM</span><b>2.8→193亿（127–268）</b></div>
+      <div class="sr"><span>共性壁垒</span><b>攻防数据 · 运行时控制 · 数据飞轮</b></div>
     </div>
   </div>
 
   <div class="footnote">
-    <b>数据口径与来源：</b>① 二级总盘为 IDC（2026.4）权威值——"人工智能安全 Securing AI"44.1→340.3亿/CAGR50.5%（对应②）、"网络安全相关 AI Agent(AI+安全)"15.8→593.5亿/CAGR106.5%（对应③）；② T1–T5、U1–U5 三级细分为以 IDC 总盘为硬约束、以 Gartner 全球结构为模板的<b>测算值</b>（五域分项之和严格等于总盘），非权威发布；③ ③内 U1–U5 为按"买方/作战域"切分的需求轴五域（4/4/3/3/2 共 16 个三级细分功能点）；<b>「安全智能底座层」为横向技术层、不占五域编号、不重复计规模</b>，其跨"用 AI 做安全＋保护 AI"两个二级的全口径 TAM 约 2.8→193亿(127–268)/CAGR≈133%；③内<b>第一重点赛道为 U1 自主攻防与暴露面验证</b>（对标 Mythos5 顶级攻防能力、走"开放权重＋专用层"路线），底座层是 U1 的技术内核与全口径空间放大、二者是"赛道与其兵工厂"关系、非两个并列重点；T4 列静态锚点148亿与大盘联动重估区间100–310亿；④ ①建设侧、④治理侧为基座公司/第三方主业，能力内建或服务化，暂无独立权威市场口径，故仅列概览、不展开功能点；⑤ 全球对照 Gartner：Securing AI 2026 28.35亿美元→2030 164亿美元、AI Cybersecurity 2025 259亿→2027 860亿美元。详细测算见两份三级细分报告。<br>
-    <b>框架：</b>大行业→二级→三级→三级细分功能点 MECE · 参考 Gartner AI TRiSM / NIST AI RMF / IDC 支出指南 · 2026年9月
+    <b>数据来源与口径：</b>二级市场规模采用 IDC（2026.4）——人工智能安全 Securing AI 44.1→340.3 亿元 / CAGR 50.5%（对应②）、网络安全相关 AI Agent（AI+安全）15.8→593.5 亿元 / CAGR 106.5%（对应③）；三级细分在 IDC 总盘框架下参照 Gartner 全球结构拆分，③内 U1–U5 按买方 / 作战域分为五域、共 16 项功能点。<b>U1 自主攻防兼作安全智能底座</b>：作战域 2030 年 150 亿元计入五域；其专用模型 / 攻防数据 / 多智能体框架横向供能 U2–U5 与 T1–T5，跨二级全口径 TAM 约 193 亿元（区间 127–268、CAGR≈133%），两口径不同、不重复相加。T4 运行时防护 2030 年静态 148 亿元、随 Agent 大盘联动的成长区间 100–310 亿元。①建设、④治理由基座大厂内建或第三方评测机构承担，列能力概览。全球对照 Gartner：Securing AI 2026 年 28.35 亿美元→2030 年 164 亿美元；AI Cybersecurity 2025 年 259 亿→2027 年 860 亿美元。<br>
+    <b>分析框架：</b>大行业 → 二级 → 三级 → 功能点；参照 Gartner AI TRiSM、NIST AI RMF、IDC 支出指南 · 华控产业基金研究管理部 · 2026 年 9 月
   </div>
  </div>
 
