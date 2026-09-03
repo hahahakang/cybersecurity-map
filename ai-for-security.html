@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>用 AI 提升网络安全 · 行业图谱（攻击基座大模型专题·底座层重算版）</title>
+<title>用 AI 提升网络安全 · 行业图谱（五域重构版·需求轴统一 + 底座层横向）</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js" onerror="document.getElementById('fb2').style.display='block'"></script>
 <style>
   :root{
@@ -37,7 +37,7 @@
   .seg-badge{flex:0 0 auto;width:38px;height:38px;border-radius:9px;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13.5px;}
   .seg-name{font-weight:720;font-size:15.5px;color:var(--navy);}
   .seg-en{font-size:11.8px;color:var(--ink2);font-weight:400;}
-  .sibling{opacity:.62;font-size:12.6px;}
+  .sibling{opacity:.72;font-size:12.6px;}
   .l4list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
   .l4{font-size:11.8px;background:#f6eceb;border:1px solid #ecd9da;border-radius:6px;padding:2px 9px;color:#5c2622;}
   .l4grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
@@ -88,7 +88,6 @@
   .step{border-left:4px solid var(--teal);background:#fdf7f6;border-radius:0 9px 9px 0;padding:11px 15px;margin:10px 0;font-size:13.4px;}
   .step b{color:var(--navy);}
   .quote{font-size:14.5px;color:#7c2a23;font-weight:700;}
-  /* 飞轮 / 结构 */
   .hub{border:1.6px solid var(--u1);background:#fceee9;border-radius:12px;padding:13px 15px;margin:10px 0;}
   .hub .center{text-align:center;font-weight:800;color:var(--u1);font-size:14.5px;margin-bottom:9px;}
   .spokes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
@@ -101,27 +100,32 @@
   .refs{font-size:12.6px;color:var(--ink2);columns:2;column-gap:32px;}
   .refs div{break-inside:avoid;margin-bottom:6px;}
   .pill{display:inline-block;font-size:10.8px;padding:1px 7px;border-radius:4px;background:var(--navy);color:#fff;margin-right:5px;}
-  @media(max-width:880px){.rules,.seg-grid,.l4grid,.spokes{grid-template-columns:1fr;}.sg+.sg{border-left:0;border-top:1px dashed var(--line);}.refs{columns:1;}.layer{grid-template-columns:1fr;}header.h{padding:26px 20px;}}
+  .posmap{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:10px 0;}
+  .poscol{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:12px;}
+  .poscol .ph{color:#fff;padding:8px 10px;font-weight:700;font-size:12.3px;text-align:center;}
+  .poscol .pb{padding:9px 10px;}
+  .pchip{display:block;background:#fff;border:1px solid var(--line);border-radius:7px;padding:6px 8px;margin-bottom:6px;font-size:11.7px;}
+  .pchip b{color:var(--navy);}
+  .p1 .ph{background:var(--u1);}.p2 .ph{background:var(--u3);}.p3 .ph{background:var(--u4);}.p4 .ph{background:#7a6a6b;}.p5 .ph{background:var(--blue);}
+  @media(max-width:880px){.rules,.seg-grid,.l4grid,.spokes,.posmap{grid-template-columns:1fr;}.sg+.sg{border-left:0;border-top:1px dashed var(--line);}.refs{columns:1;}.layer{grid-template-columns:1fr;}header.h{padding:26px 20px;}}
 </style>
 </head>
-<body>
-<div style="max-width:1200px;margin:0 auto;padding:14px 22px 0;"><a href="2030.html" style="display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;color:#1b4965;background:#eef3f8;border:1px solid #cfdce8;text-decoration:none;font-family:inherit;">← 返回 2030 格局预判</a></div>
-
+<body><div style="max-width:1180px;margin:0 auto;padding:14px 22px 0;"><a href="2030.html" style="display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;color:#1b4965;background:#eef3f8;border:1px solid #cfdce8;text-decoration:none;font-family:inherit;">← 返回 2030 格局预判</a></div>
 <header class="h">
-  <div class="kk">AI-AMPLIFIED SECURITY · ATTACK FOUNDATION MODEL · HORIZONTAL BASE-LAYER VIEW</div>
-  <h1>“用 AI 提升网络安全”行业图谱与攻击基座大模型专题（底座层重算版）</h1>
-  <p>5 个三级、16 个四级能力；关键修正——攻击基座大模型（中国版 Mythos）不是 593.5 亿盘子里的一个小切片，而是<b style="color:#ffd79a;">横跨“用 AI 做安全 + 保护 AI 安全”两个二级市场的共享底座</b>，U2–U5、姊妹篇 T1–T5、软硬一体机与省市服务商皆是其客户，具数据飞轮。本版以“底座层渗透法”自下而上重算其规模与增速。</p>
+  <div class="kk">AI-AMPLIFIED SECURITY · DEMAND-AXIS TAXONOMY · HORIZONTAL FOUNDATION LAYER</div>
+  <h1>“用 AI 提升网络安全”行业图谱（五域重构版：需求轴统一 · 底座层横向）</h1>
+  <p>二级不变；三级统一到<b style="color:#ffd79a;">“买方 / 作战域”一条轴</b>，重排为 5 个三级、16 个四级能力；原“攻击基座大模型”不再与作战域平级，降为贯穿五域的<b style="color:#ffd79a;">横向“安全智能底座层”</b>。关键事实校正：全球前沿攻击能力（Anthropic Mythos＝通用旗舰 Fable5 同权重、GPT‑Cyber、Gemini Cyber、MAI‑Cyber）均出自通用基座大厂、是通用旗舰的后训练衍生物且受控开放，独立公司不拼前沿权重，而以“专用小模型＋攻防数据＋多智能体系统＋涉密交付”立足。</p>
 </header>
 <div class="wrap">
 
-  <div class="core"><b>核心结论：</b>①专用安全基座是独立品类——同代模型专用版 GPT-5.6-Cyber 完成 <b>95%</b> 高级攻防、通用版仅 <b>1.5%</b>，微软 5B 小专用模型反超 Mythos 12 分且成本减半，胜负手是攻防数据 / 工作流 / 系统而非参数规模；②攻击基座客户横跨两个二级，重算后中国 <b>2025 约 2.8 亿 → 2030 中性约 190 亿元（区间 127–268 亿）、CAGR≈133%</b>，远高于此前切片口径；③格局为 <b>约 2 家纯软件 + 1–2 家软硬一体安全基座寡头，上承应用层百花齐放、下接省市服务商</b>；④字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 因机会成本、对美制裁顾虑与 AGI/ASI 主战略，<b>只做开源通用上游、不做安全基座生意</b>（DoGNAVY 建在 GLM-5.2 上即是现实样本），窗口留给达酷诺威这类专业团队；⑤规模采用<b>“三口径阶梯 + 底座层渗透”</b>并经两位一线专家（无糖张瑞东、某头部一线安全厂商安全实验室负责人）交叉校验，结论是壁垒在<b>攻防数据与运行时控制</b>、生命周期管理易复制、开放权重“后训练”存疑——据此把“后训练能否突破开放权重天花板”列为头号技术尽调问题；全球首部智能体安全强制国标 2026 年 6 月在华立项，存在 <b>18–24 个月战略窗口</b>。</div>
+  <div class="core"><b>核心结论：</b>①<b>五域同轴、MECE 干净</b>——U1 自主攻防、U2 安全运营、U3 代码应用、U4 情报测绘反诈、U5 治理知识，全部按买方切分，合计严格等于 IDC 15.8→593.5 亿；“安全智能底座层”是横向技术层、不占编号、不重复计规模。②<b>前沿攻击权重归通用大厂</b>——Mythos 与通用版 Fable5 同一套权重、GPT‑5.6‑Cyber 建在 GPT‑5.6‑Sol 上、Gemini/MAI‑Cyber 同为旗舰后训练，且均受控开放；独立安全公司的真实生态位是“专用小模型＋独家攻防数据＋多智能体系统＋涉密 / 关基交付”（专用对通用 95%∶1.5% 的代差来自数据与工作流而非参数）。③横向底座层跨“用 AI 做安全＋保护 AI”两个二级，全口径中性约 <b>190 亿元（127–268）、CAGR≈133%</b>。④格局为 <b>约 2 家纯软件 + 1–2 家软硬一体</b>；字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 因机会成本、对美制裁顾虑与 AGI/ASI 主战略只做开源上游（DoGNAVY 建在 GLM‑5.2 上为现实样本）。⑤国内优质团队呈<b>清华系 + GLM 生态</b>聚集：真正自研垂直基座者仅华清未央（二进制 / 机器语言），自主攻防第一梯队为赛博昆仑、达酷诺威、360、安恒；全球首部智能体安全强制国标 2026 年 6 月在华立项，<b>18–24 个月战略窗口</b>。</div>
 
   <!-- 一 -->
   <h2 class="sec">一、划分原则与主轴线</h2>
   <div class="card"><div class="rules">
-    <div class="rule"><b>主轴 · 产品类型（客户需求不同）</b><br>U1 卖“会攻防的能力底座”，U2–U5 按安全作战域卖“会干活的智能体”，买方与预算各自独立、彼此 MECE。</div>
-    <div class="rule"><b>辅助 A · 技术路线</b><br>调用通用 API / 开源微调 / 自研专用基座；Copilot / 半自主 / 全自主，是同一需求的不同实现。</div>
-    <div class="rule"><b>辅助 B · 产业链环节</b><br>上游通用基座 / 算力 / 攻防数据 → 中游安全基座与智能体产品 → 下游软硬一体 / 托管运营 / 区域服务。</div>
+    <div class="rule"><b>主轴 · 产品类型（客户需求 / 买方不同）</b><br>五个三级全部按“谁付钱、保护 / 攻击对象是谁”切分，买方与预算各自独立、彼此 MECE；不允许把“技术层”与“作战域”混在同一级。</div>
+    <div class="rule"><b>横向层 · 安全智能底座（不单列市场）</b><br>专用攻防小模型 / 攻防数据 / 智能体框架是贯穿 U1–U5 的技术层，上游接通用基座，价值内嵌于五域、另以全口径 TAM 单独观察，不重复计规模。</div>
+    <div class="rule"><b>辅助视角 · 技术路线 / 产业链</b><br>调用通用 API / 开源续训 / 自研专用小模型；上游通用基座·算力·攻防数据 → 中游底座与智能体 → 下游软硬一体 / 托管 / 区域服务。</div>
   </div></div>
 
   <!-- 二 -->
@@ -129,159 +133,365 @@
   <div class="card tree">
     <div class="tnode"><span class="lvl-label">大行业</span><b>AGI 安全 / 人工智能安全行业</b></div>
     <div class="branch">
-      <div class="tnode sibling"><span class="lvl-label" style="background:#a98d8e;">二级</span>安全地建设 AI ｜ 安全地运行 Agent（T1–T5，另文，<b>同为 U1 客户</b>）｜ AI 治理与安全保证</div>
+      <div class="tnode sibling"><span class="lvl-label" style="background:#a98d8e;">二级</span>安全地建设 AI ｜ 安全地运行 Agent（T1–T5，另文，<b>同为横向底座层客户</b>）｜ AI 治理与安全保证</div>
       <div class="tnode" style="border:2px solid var(--teal);background:#fdf3f1;">
         <span class="lvl-label" style="background:var(--teal);">二级</span><b>用 AI 提升网络安全（AI-Amplified Security / AI+安全）— 本报告对象</b>
         <div class="branch" style="margin-top:9px;">
-          <div class="tnode" style="border:1.6px solid var(--u1);background:#fceee9;"><div class="seg-head"><span class="seg-badge" style="background:var(--u1);">U1</span><span class="seg-name">攻击 / 安全基座大模型（共享底座） <span class="seg-en">Security Foundation Model</span> <span style="font-size:10.5px;background:var(--u1);color:#fff;border-radius:4px;padding:1px 6px;">本报告重点·横跨两二级</span></span></div><div class="l4list"><span class="l4">1.1 漏洞挖掘与代码推理</span><span class="l4">1.2 复现/利用与攻击链编排</span><span class="l4">1.3 专用训练微调私有化与攻防对齐</span></div></div>
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u2);">U2</span><span class="seg-name">AI 安全运营与自主响应 <span class="seg-en">Autonomous SOC</span></span></div><div class="l4list"><span class="l4">2.1 告警研判降噪</span><span class="l4">2.2 自动威胁狩猎</span><span class="l4">2.3 自主响应处置</span><span class="l4">2.4 多智能体 SOC 编排</span></div></div>
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u3);">U3</span><span class="seg-name">AI 漏洞挖掘与应用安全 <span class="seg-en">AppSec / ASM / Auto-Pentest</span></span></div><div class="l4list"><span class="l4">3.1 AI 代码审计 SAST</span><span class="l4">3.2 攻击面管理 ASM</span><span class="l4">3.3 自动渗透 / BAS</span></div></div>
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u4);">U4</span><span class="seg-name">AI 威胁情报与欺诈对抗 <span class="seg-en">Intel / Anti-Phishing / Anti-Deepfake</span></span></div><div class="l4list"><span class="l4">4.1 情报生产归因</span><span class="l4">4.2 反钓鱼/反深伪</span><span class="l4">4.3 业务反欺诈</span></div></div>
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u5);">U5</span><span class="seg-name">AI 安全治理与知识协同 <span class="seg-en">GRC / Copilot / Autofix</span></span></div><div class="l4list"><span class="l4">5.1 智能合规 GRC</span><span class="l4">5.2 安全知识 Copilot</span><span class="l4">5.3 自动修复</span></div></div>
+          <div class="tnode" style="border:1.6px solid var(--u1);background:#fceee9;"><div class="seg-head"><span class="seg-badge" style="background:var(--u1);">U1</span><span class="seg-name">自主攻防与暴露面验证 <span class="seg-en">Autonomous Offense &amp; Exposure Validation</span> <span style="font-size:10.5px;background:var(--u1);color:#fff;border-radius:4px;padding:1px 6px;">本报告重点·攻击者视角</span></span></div><div class="l4list"><span class="l4">1.1 自主挖洞与代码/二进制推理</span><span class="l4">1.2 利用验证与攻击链编排</span><span class="l4">1.3 持续自动渗透与暴露面验证 BAS</span><span class="l4">1.4 专用续训私有化与攻防对齐</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u2);">U2</span><span class="seg-name">智能安全运营与自主响应 <span class="seg-en">Autonomous SOC</span></span></div><div class="l4list"><span class="l4">2.1 告警研判降噪</span><span class="l4">2.2 自动威胁狩猎</span><span class="l4">2.3 自主响应处置</span><span class="l4">2.4 多智能体 SOC 编排</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u3);">U3</span><span class="seg-name">智能代码与应用安全 <span class="seg-en">AI-Native AppSec / DevSecOps</span></span></div><div class="l4list"><span class="l4">3.1 代码审计 SAST/DAST</span><span class="l4">3.2 成分与供应链安全 SCA/SBOM</span><span class="l4">3.3 自动修复与安全开发副驾</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u4);">U4</span><span class="seg-name">威胁情报 · 攻击面测绘与反欺诈 <span class="seg-en">Intel / Cyber-Mapping / Anti-Fraud</span></span></div><div class="l4list"><span class="l4">4.1 情报生产归因</span><span class="l4">4.2 网络空间测绘与攻击面情报</span><span class="l4">4.3 反深伪反钓鱼与反诈反欺诈</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--u5);">U5</span><span class="seg-name">安全治理 · 风险与知识协同 <span class="seg-en">GRC &amp; Security Knowledge</span></span></div><div class="l4list"><span class="l4">5.1 智能合规与风险 GRC</span><span class="l4">5.2 安全知识 Copilot 与协同</span></div></div>
+          <div class="tnode" style="border:1.6px dashed #7a6a6b;background:#f6f1f0;"><span class="lvl-label" style="background:#7a6a6b;">横向层</span><b>安全智能底座层（不占五域编号、不重复计规模）</b><div class="l4list"><span class="l4" style="background:#efe7e7;">专用攻防小模型</span><span class="l4" style="background:#efe7e7;">独家攻防 / 黑产数据</span><span class="l4" style="background:#efe7e7;">多智能体框架</span><span class="l4" style="background:#efe7e7;">上承 GLM/Qwen/DeepSeek 开放权重，横向供能 U1–U5 与姊妹篇 T1–T5</span></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- 三 -->
-  <h2 class="sec">三、16 个四级能力</h2>
+  <h2 class="sec">三、16 个四级能力（4 / 4 / 3 / 3 / 2）</h2>
   <div class="card"><div class="l4grid">
-    <div class="l4col c1"><div class="hd">U1 攻击基座（3）</div><div class="bd">
-      <div><b>1.1 漏洞挖掘代码推理</b>：陌生大代码库自主定位 0day。</div>
-      <div><b>1.2 复现利用 / 攻击链</b>：自动 PoC/Exploit、多步渗透编排。</div>
-      <div><b>1.3 专用训练 / 私有化</b>：注入攻防数据续训，涉密内网部署与攻防对齐。</div></div></div>
+    <div class="l4col c1"><div class="hd">U1 自主攻防（4）</div><div class="bd">
+      <div><b>1.1 自主挖洞 / 推理</b>：陌生大库（含闭源二进制）自主定位 0day。</div>
+      <div><b>1.2 利用验证 / 攻击链</b>：自动 PoC/Exploit、多步串联并证明“真能打进去”。</div>
+      <div><b>1.3 持续自动渗透 / BAS</b>：7×24 暴露面验证、入侵与爆破模拟。</div>
+      <div><b>1.4 专用续训 / 私有化</b>：注入攻防数据续训，涉密内网部署与攻防对齐。</div></div></div>
     <div class="l4col c2"><div class="hd">U2 安全运营（4）</div><div class="bd">
       <div><b>2.1 告警研判降噪</b>：自动分诊定性，替代 L1。</div>
       <div><b>2.2 自动威胁狩猎</b>：主动检索潜伏威胁。</div>
       <div><b>2.3 自主响应处置</b>：自动执行 SOAR、隔离封禁。</div>
       <div><b>2.4 多智能体 SOC</b>：数字分析师团队闭环。</div></div></div>
-    <div class="l4col c3"><div class="hd">U3 应用安全（3）</div><div class="bd">
-      <div><b>3.1 AI 代码审计</b>：语义级逻辑漏洞。</div>
-      <div><b>3.2 攻击面管理</b>：资产暴露面发现排序。</div>
-      <div><b>3.3 自动渗透/BAS</b>：持续自动化攻防验证。</div></div></div>
-    <div class="l4col c4"><div class="hd">U4 情报对抗（3）</div><div class="bd">
-      <div><b>4.1 情报归因</b>：IOC/TTP 自动关联。</div>
-      <div><b>4.2 反钓鱼/深伪</b>：识别 AI 钓鱼换脸。</div>
-      <div><b>4.3 业务反欺诈</b>：识别智能体作恶。</div></div></div>
-    <div class="l4col c5"><div class="hd">U5 治理协同（3）</div><div class="bd">
-      <div><b>5.1 智能合规</b>：策略 / 等保 / 报告自动生成。</div>
-      <div><b>5.2 知识 Copilot</b>：研判 / 运维助手。</div>
-      <div><b>5.3 自动修复</b>：定位即生成补丁。</div></div></div>
-  </div></div>
+    <div class="l4col c3"><div class="hd">U3 代码应用（3）</div><div class="bd">
+      <div><b>3.1 代码审计</b>：语义级 SAST/DAST/IAST 逻辑漏洞。</div>
+      <div><b>3.2 成分 / 供应链</b>：SCA、SBOM、开源依赖风险。</div>
+      <div><b>3.3 自动修复 / 副驾</b>：定位即生成补丁、安全左移。</div></div></div>
+    <div class="l4col c4"><div class="hd">U4 情报测绘反诈（3）</div><div class="bd">
+      <div><b>4.1 情报归因</b>：IOC/TTP 自动关联与攻击者画像。</div>
+      <div><b>4.2 空间测绘</b>：资产 / 暴露面地图与攻击面情报（FOFA 类）。</div>
+      <div><b>4.3 反深伪 / 反诈</b>：识别 AI 钓鱼换脸、业务与电信反诈。</div></div></div>
+    <div class="l4col c5"><div class="hd">U5 治理知识（2）</div><div class="bd">
+      <div><b>5.1 智能合规 GRC</b>：策略 / 等保 / 报告自动生成。</div>
+      <div><b>5.2 知识 Copilot</b>：研判 / 运维 / 协同助手。</div></div></div>
+  </div>
+  <p class="note" style="margin-bottom:0;">切分纪律：U1 是<b>攻击者视角、证明可利用</b>（买方＝红队 / 攻防 / 暴露面）；U3 是<b>开发者视角、在 SDLC 左移找缺陷并修复</b>（买方＝DevSecOps / 研发安全）——同一“漏洞”在进攻验证与开发修复两侧买方不同，故分属 U1、U3，消除旧版 U1/U3 重叠。</p></div>
 
   <!-- 四：规模 -->
-  <h2 class="sec">四、中国市场规模：先用 MECE 总盘，再用“底座层渗透法”单独重算 U1</h2>
+  <h2 class="sec">四、中国市场规模：五域 MECE 总盘 + 横向底座层全口径</h2>
   <p class="ss">权威总盘 IDC：网络安全相关 AI Agent（AI+安全）15.8→593.5 亿、CAGR106.5%；保护 AI（Securing AI）44.1→340.3 亿为姊妹二级。</p>
   <div class="card">
-    <div class="warn"><b>口径：</b>下表先在“用 AI 做安全”二级内按<b>价值层</b>做 MECE（U1 为内嵌于 U2–U5 产品中的底座层收入，U2–U5 为应用 / 服务层），合计严格等于 IDC 593.5 亿；随后第八节用“底座层渗透法”叠加 U1 对姊妹二级与国家直供的收入，得到 U1 的<b>跨二级全口径 TAM</b>——这才是攻击基座的真实空间。</div>
+    <div class="warn"><b>口径：</b>下表五个三级全部为<b>需求 / 作战域</b>，合计严格等于 IDC 593.5 亿（旧版“U1 底座层内嵌 1.2/107”已按进攻 / 防御重新拆并：进攻性自主挖洞并入新 U1，开发侧留在新 U3）。“安全智能底座层”为横向技术层，其价值已内嵌五域、<b>不另计</b>；它对姊妹二级与国家直供的跨二级收入，用“底座层渗透法”在第十节给出<b>全口径 TAM（中性约 190 亿）</b>。</div>
     <table>
-      <tr><th>三级（本二级内）</th><th>2025（亿元，测算）</th><th>2030（亿元，测算）</th><th>CAGR</th><th>说明 / 权威锚点</th></tr>
-      <tr><td><b>U1 安全基座层（内嵌）</b></td><td class="est">1.2</td><td class="big">107</td><td class="big">≈146%</td><td>593.5 亿下游产品中约 18% 价值归于底座层（中性）</td></tr>
-      <tr><td>U2 AI 安全运营（应用层）</td><td class="est">6.0</td><td class="est">215.5</td><td class="est">≈105%</td><td>最大应用口袋；Security Copilot / 恒脑 150+</td></tr>
-      <tr><td>U3 AI 漏洞 / 应用安全</td><td class="est">3.5</td><td class="est">108</td><td class="est">≈99%</td><td>XBOW / GitHub Autofix；数据安全相邻大盘</td></tr>
-      <tr><td>U4 情报 / 反欺诈</td><td class="est">3.5</td><td class="est">105</td><td class="est">≈98%</td><td>微步 / 朱雀 / Abnormal / Darktrace</td></tr>
-      <tr><td>U5 治理 / 知识协同</td><td class="est">1.6</td><td class="est">58</td><td class="est">≈105%</td><td>GRC / Copilot 增值模块</td></tr>
-      <tr style="background:#f7ecea;font-weight:700;"><td>合计 = IDC 总盘</td><td>15.8</td><td>593.5</td><td>106.5%</td><td class="auth">IDC 2026.4 约束值</td></tr>
+      <tr><th>三级（作战域）</th><th>2025（亿元，测算）</th><th>2030（亿元，测算）</th><th>CAGR</th><th>说明 / 权威锚点</th></tr>
+      <tr style="background:#fceee9;"><td><b>U1 自主攻防与暴露面验证</b></td><td class="est">2.6</td><td class="big">150</td><td class="big">≈125%</td><td>自主挖洞 / 利用验证 / 持续渗透；360 图龙锋、XBOW、赛博昆仑、华清未央；壁垒最高</td></tr>
+      <tr><td>U2 智能安全运营与自主响应</td><td class="est">6.0</td><td class="est">215.5</td><td class="est">≈105%</td><td>最大应用口袋；Security Copilot / AI-SOC</td></tr>
+      <tr><td>U3 智能代码与应用安全</td><td class="est">2.1</td><td class="est">65</td><td class="est">≈99%</td><td>DevSecOps：SAST/SCA/Autofix；Snyk / GitHub / 云起无垠</td></tr>
+      <tr><td>U4 情报 · 测绘与反欺诈</td><td class="est">3.5</td><td class="est">105</td><td class="est">≈97%</td><td>微步 / 华顺信安 FOFA / 无糖反诈 / Abnormal</td></tr>
+      <tr><td>U5 治理 · 风险与知识</td><td class="est">1.6</td><td class="est">58</td><td class="est">≈105%</td><td>GRC / Copilot 增值模块，易被套件吸收</td></tr>
+      <tr style="background:#f7ecea;font-weight:700;"><td>合计 = IDC 总盘</td><td>15.8</td><td>593.5</td><td>106.5%</td><td class="auth">IDC 2026.4 约束值（五域 MECE，不重不漏）</td></tr>
+      <tr style="background:#f6f1f0;"><td><i>横向：安全智能底座层（内嵌、不另计）</i></td><td class="est"><i>≈2.8（全口径起算）</i></td><td class="big"><i>≈193（127–268）</i></td><td class="big"><i>≈133%</i></td><td><i>跨“用 AI 做安全 593.5＋保护 AI 340.3”的底座分成 + 国家直供，算法见第十节</i></td></tr>
     </table>
     <div id="c_cn" class="chart"></div>
-    <div id="fb2" class="fb">静态读数（亿元，本二级内测算）：2025 U1 1.2/U2 6/U3 3.5/U4 3.5/U5 1.6；2030 U1 107/U2 215.5/U3 108/U4 105/U5 58。</div>
-    <p class="note" style="margin-bottom:0;">注意：上表 U1 的 107 亿只是它在“用 AI 做安全”一个二级内的内嵌收入；攻击基座同时向“保护 AI（340.3 亿）”与国家直供收费，全口径见第八节（中性约 190 亿）。</p>
+    <div id="fb2" class="fb">静态读数（亿元，五域 MECE）：2025 U1 2.6/U2 6.0/U3 2.1/U4 3.5/U5 1.6；2030 U1 150/U2 215.5/U3 65/U4 105/U5 58，合计 15.8/593.5；横向底座层全口径约 2.8/193（不另计）。</div>
+    <p class="note" style="margin-bottom:0;">注意：五域表内 U1 的 150 亿是“自主攻防作战域”在本二级内的规模；横向底座层另有跨二级 +86 亿（Securing AI 61＋国家 25），全口径约 193 亿见第十节，二者口径不同、不可相加。</p>
   </div>
 
-  <!-- 五：详解（精简，重点U1） -->
-  <h2 class="sec">五、五个三级细分详解</h2>
-  <div class="seg u1"><div class="seg-top"><div class="seg-badge">U1</div><div class="tt"><div class="a">攻击 / 安全基座大模型（共享底座）<span style="font-size:11px;color:#b3402f;">· 重点</span></div><div class="b">发动机：把顶尖攻防专家能力内化为专用模型 + 多智能体系统，向全行业供能力</div></div><div class="buyer">买方<b>全行业安全产品</b>国家·涉密</div></div>
+  <!-- 五：重点细分比较 -->
+  <h2 class="sec">五、重点细分比较：5 个三级细分横向筛选（决定研究优先级）</h2>
+  <p class="ss">考察维度：历史增速 · 现有规模 · 国内进口占比 · 预期增速 · 未来 3–5 年空间 · 竞争 / 门槛 / 生命周期 / 集中度 / 重大变化（进口替代·技术突破·政策）。全球数取自 MarketsandMarkets、Mordor、Fortune Business Insights、Grand View、Straits 等第三方；中国大盘取 IDC、信通院、赛迪，五个三级的中国拆分是以 IDC“AI+安全 15.8→593.5 亿”为硬约束的本报告测算。</p>
+  <div class="card">
+    <div style="overflow-x:auto;">
+    <table style="font-size:11.1px;min-width:1060px;">
+      <tr>
+        <th style="width:9%;">三级细分</th>
+        <th style="width:9%;">行业过去增速</th>
+        <th style="width:15%;">市场现有规模（2025，全球 / 中国）</th>
+        <th style="width:8%;">国内进口占比</th>
+        <th style="width:11%;">行业预期增速（未来 3–5 年）</th>
+        <th style="width:14%;">行业未来空间（2030/31，全球 / 中国）</th>
+        <th style="width:22%;">行业简析：竞争 · 门槛 · 周期 · 集中度 · 重大变化</th>
+        <th style="width:12%;">研究建议</th>
+      </tr>
+      <tr style="background:#fceee9;">
+        <td><b>U1 自主攻防与暴露面验证</b> ★</td>
+        <td class="big">高（新兴，2024 前近乎 0、基数极小）</td>
+        <td>全球：自主攻防 / Auto-Pentest 刚起步（XBOW 2024 成立、2026 即独角兽）；<br>中国：约 2.6 亿元（测算）</td>
+        <td class="auth">&lt;10% 低（国产主导；但前沿攻击模型海外领先且对我管制不供货，<b>自主可控攻坚最迫切</b>）</td>
+        <td class="big">高（全球模型 / 自主攻防层 &gt;50%；中国 CAGR≈125%）</td>
+        <td>全球：自主攻防 / 暴露面验证数十亿美元级；<br>中国：150 亿元（MECE）；横向底座层全口径约 193 亿（127–268）</td>
+        <td>竞争：全球前沿攻击权重归 Anthropic / OpenAI / Google / 微软（均为通用旗舰后训练、受控开放），独立阵营 XBOW 领跑，国内 360 图龙锋、安恒恒脑、赛博昆仑、华清未央、达酷诺威卡位；门槛：<b>极高</b>（独家攻防数据 / 白帽 / 涉密资质 / 可复现战绩）；周期：导入期→成长初期、拐点临近；集中度：将高度集中（3–4 家寡头）；重大变化：<b>技术突破</b>（专用 vs 通用 95%∶1.5% 代差）＋<b>进口替代</b>＋智能体安全强制国标 2026.6 立项</td>
+        <td class="big">【重点研究·第一优先】</td>
+      </tr>
+      <tr>
+        <td><b>U2 智能安全运营与自主响应</b></td>
+        <td>中→高（传统 SOC 约 10–15%，AI-SOC 层 2022 后 &gt;20%）</td>
+        <td>全球：AI-SOC 约 <b>150.5 亿美元</b>（MnM）；<br>中国：约 6.0 亿元（测算）</td>
+        <td class="auth">&lt;10% 低（国产 SOC / 平台主导）</td>
+        <td class="big">高（全球 21–25%；中国≈105%）</td>
+        <td>全球：470.7 亿美元（2031，MnM）；<br>中国：215.5 亿元（最大应用口袋）</td>
+        <td>竞争：激烈（MS Copilot / Cortex / SentinelOne＋国内大厂）；门槛：中高（数据＋工作流＋客户粘性）；周期：成长期；集中度：中（平台化、头部集中）；重大变化：自主处置率 3%→31%（Menlo）、替代 L1 分析师、XDR / SOC 一体化</td>
+        <td class="big">【重点研究】</td>
+      </tr>
+      <tr>
+        <td><b>U3 智能代码与应用安全</b></td>
+        <td>中（AppSec 约 11–19%；AI 修复子项 &gt;16%）</td>
+        <td>全球：AppSec 约 <b>122 亿美元</b>（MnM；GVR 106 亿）；<br>中国：约 2.1 亿元（测算）</td>
+        <td class="auth">&lt;10% 低</td>
+        <td>中（全球 11–19%，AI 修复 16.8% 拉高；中国≈99%）</td>
+        <td>全球：AppSec 约 200 亿美元＋；<br>中国：65 亿元</td>
+        <td>竞争：DevSecOps 工具碎片化、较激烈；门槛：常规扫描一般、<b>语义级挖洞 / 二进制分析高</b>；周期：成熟市场被 AI 重塑（成长期）；集中度：中低（工具链分散）；重大变化：语义 SAST、SCA/SBOM 供应链强监管、Autofix——是 U1 能力的<b>防御侧 / 左移出口</b>（进攻性利用验证归 U1）</td>
+        <td class="big">【重点研究】</td>
+      </tr>
+      <tr>
+        <td><b>U4 情报 · 攻击面测绘与反欺诈</b></td>
+        <td>中（情报 14–18%；反欺诈 / 反深伪 &gt;20%）</td>
+        <td>全球：威胁情报 <b>115.5 亿美元</b>（MnM），相邻反欺诈 657 亿、深伪检测 6.5 亿；<br>中国：约 3.5 亿元（测算）</td>
+        <td class="auth">&lt;10% 低（国家反诈＋国产情报 / 测绘主导）</td>
+        <td>中（情报 14.7%；反欺诈 24.2%、深伪快而小；中国≈97%）</td>
+        <td>全球：情报 230 亿美元、反欺诈超 2000 亿（宽口径）；<br>中国：105 亿元</td>
+        <td>竞争：情报 / 测绘具数据网络效应（FOFA 资产基因库百亿级）、反欺诈被支付 / 云大厂内化；门槛：测绘 / 情报数据网络高、通用反欺诈中；周期：情报成熟＋反深伪成长；集中度：中高；重大变化：AI 钓鱼 / 深伪爆发、国家反诈战略、攻击面测绘成为攻击智能体的“上游地图”</td>
+        <td class="est">【选择性重点研究】</td>
+      </tr>
+      <tr>
+        <td><b>U5 治理 · 风险与知识协同</b></td>
+        <td>中（GRC 约 11–12%）</td>
+        <td>全球：企业 GRC 约 <b>210 亿美元</b>（Mordor）；<br>中国：约 1.6 亿元（最小·测算）</td>
+        <td class="auth">&lt;10% 低</td>
+        <td>中（全球约 12%；中国≈105% 但基数最小）</td>
+        <td>全球：GRC 约 422 亿美元（2031）；<br>中国：58 亿元</td>
+        <td>竞争：被大套件捆绑（Drata / Vanta / 传统 GRC）；门槛：<b>低—中、易复制</b>（一线交流印证“生命周期管理无核心技术”）；周期：成熟期、AI 为增值；集中度：高；重大变化：AI 合规自动化、EU AI Act / 中国生成式 AI 办法、Copilot 化</td>
+        <td>【跟踪 / 择机研究】</td>
+      </tr>
+    </table>
+    </div>
+    <p class="note" style="margin-bottom:4px;">分档口径：增速 &lt;10% 低 / 10–20% 中 / &gt;20% 高；进口占比 &lt;10% 低 / 10–30% 中 / &gt;50% 高。全球为第三方机构值（口径不一已给区间），中国为以 IDC 总盘约束的测算值；横向底座层全口径测算过程见第十节。</p>
+    <div id="c_prio" class="chart" style="height:420px;"></div>
+    <div id="fb3" class="fb">研究优先级四象限（横轴=2025 全球规模 亿美元，纵轴=未来 3–5 年全球 CAGR%，气泡=中国 2030 规模）：U1（约 1，55%，150 亿；底座层全口径 193）高增速小规模·战略级；U2（150.5，23%，215.5 亿）高增速大规模；U3（122，15%，65 亿）、U4（115.5，15%，105 亿）中速大规模；U5（210，12%，58 亿）低速大规模但易被吸收。</div>
+  </div>
+
+  <div class="card">
+    <b style="color:var(--navy);font-size:14.5px;">筛选逻辑（先“增速 × 规模”定象限，再用门槛 / 集中度 / 重大变化 / 进口替代修正）：</b>
+    <div class="flow" style="margin:9px 0;">
+      <span class="chip">① 增速高 × 规模大 → 首选</span><span class="arrow">→</span>
+      <span class="chip">② 增速中 × 规模大（取重点）</span><span class="arrow">→</span>
+      <span class="chip">③ 增速高 × 规模小（看壁垒 / 弹性）</span><span class="arrow">→</span>
+      <span class="chip">④ 增速慢 × 规模大（只取重点二级）</span><span class="arrow">→</span>
+      <span class="chip">⑤ 增速中 × 规模小（只取重点二级）</span>
+    </div>
+    <table style="margin-top:6px;">
+      <tr><th style="width:8%;">顺序</th><th style="width:14%;">三级细分</th><th>入选 / 保留逻辑</th></tr>
+      <tr style="background:#fceee9;"><td class="big">1</td><td><b>U1 自主攻防</b></td><td>当前规模小但<b>增速最高（中国 125%）、壁垒最高、确定性最强</b>：专用对通用是数量级代差，海外攻击能力对我管制不供货构成刚性进口替代；横向底座层又横跨两个二级、空间被下游整体放大——属“高增速小规模”里唯一因<b>壁垒＋底座属性</b>上调为第一优先的赛道。</td></tr>
+      <tr><td class="big">2</td><td><b>U2 安全运营</b></td><td>典型“<b>高增速 × 大规模</b>”：全球 150 亿美元、CAGR 21–25%，中国 2030 最大应用口袋（215.5 亿）。平台层易被微软 / 大厂捆绑，独立机会在差异化垂直智能体与托管运营（MSSP）。</td></tr>
+      <tr><td class="big">3</td><td><b>U3 代码应用</b></td><td>“<b>中速 × 大规模</b>”的全球 122 亿美元存量盘，叠加 AI 修复（16.8%）等高增速子项；是攻防能力在开发侧最先变现的出口，优先看具备语义级 / 二进制分析能力的团队。</td></tr>
+      <tr><td class="est">4</td><td><b>U4 情报测绘反诈</b></td><td>“中速 × 大规模”，但结构分化：<b>攻击面测绘（FOFA 类）有数据网络价值、反深伪 / AI 反诈是新变量</b>；通用反欺诈工具易被支付与云大厂内化，不押注独立巨头，保留结构性机会（不否定）。</td></tr>
+      <tr><td>5</td><td><b>U5 治理知识</b></td><td>全球 GRC 规模大但增速仅约 12%、门槛低、易被套件吸收、中国基数最小；<b>不作为独立巨头重点</b>，作为底座增值模块与 AI 治理政策期权跟踪，一旦出现 AI 原生合规爆款再升级（不轻易否定）。</td></tr>
+    </table>
+    <div class="core" style="margin-top:12px;"><b>价值判断结论：</b>
+      <b>确定有研究价值（重点）：U1、U2、U3</b>——U1 是壁垒 / 弹性盘（第一优先），U2、U3 是规模盘；
+      <b>结构性 / 有条件研究价值：U4</b>（聚焦攻击面测绘、反深伪、AI 反诈与独立情报，规避被内化的通用反欺诈工具）；
+      <b>确定不具“独立安全巨头”价值、但保留模块价值：U5 的独立工具形态</b>（易被套件吸收，不等于赛道无价值，不否定）；
+      <b>待进一步获取信息后分析：</b>① U4 反深伪 / 反诈在中国市场的独立规模拆分（现有公开数据不足）；② U5 是否出现 AI 原生合规独立爆款（待验证）。整体研究顺序 <b>U1 → U2 → U3 → U4 → U5</b>。</div>
+  </div>
+
+  <!-- 六：详解 -->
+  <h2 class="sec">六、五个三级细分详解</h2>
+  <div class="seg u1"><div class="seg-top"><div class="seg-badge">U1</div><div class="tt"><div class="a">自主攻防与暴露面验证<span style="font-size:11px;color:#b3402f;">· 重点</span></div><div class="b">进攻者：把顶尖白帽能力内化为专用小模型 + 多智能体系统，自动找洞、验证可利用、持续攻击模拟</div></div><div class="buyer">买方<b>红队/攻防团队</b>暴露面管理</div></div>
     <div class="seg-grid">
-      <div class="sg"><h5>需求 / 四级（1.1–1.3）</h5><ul><li>漏洞挖掘代码推理、复现利用攻击链、专用训练私有化</li></ul><div class="bound"><b>界线：</b>供“会攻防的底座能力 / 引擎”，不亲自做 7×24 运营(U2)或成品扫描器(U3)；是发动机不是整车。</div></div>
+      <div class="sg"><h5>需求 / 四级（1.1–1.4）</h5><ul><li>自主挖洞与代码 / 二进制推理、利用验证与攻击链、持续自动渗透 BAS、专用续训私有化</li></ul><div class="bound"><b>界线：</b>攻击者视角、只负责“证明真能打进去”；不做 7×24 防御运营(U2)、不做开发侧左移修复(U3)。</div></div>
       <div class="sg"><h5>企业竞争</h5>
-        <span class="vn na">微软 MAI-Cyber-1-Flash / MDASH</span><span class="vn na">Google Gemini 3.5 Flash Cyber / CodeMender</span><span class="vn na">OpenAI GPT-5.6-Cyber</span><span class="vn na">Anthropic Mythos</span><span class="vn na">TrendAI AESIR</span>
-        <span class="vn cn">达酷诺威 DoGNAVY（GLM-5.2+AgentDoG，CyberGym 全球第三 / 开源第一）</span><span class="vn oss">GLM / Qwen / DeepSeek 通用开源底座（上游，不做安全生意）</span>
-        <div class="comp-note">趋势：专用小模型 + 多智能体系统击败巨型通用模型；护城河在攻防数据、工作流系统、战绩与涉密交付。</div></div>
+        <span class="vn na">XBOW（自主攻击系统，2026 独角兽）</span><span class="vn na">Pentera / Horizon3.ai / Bishop Fox</span><span class="vn na">Anthropic Mythos / OpenAI GPT-Cyber / Gemini Cyber / 微软 MAI-Cyber（通用大厂·受控）</span>
+        <span class="vn cn">360 图龙锋 / 安恒恒脑</span><span class="vn cn">赛博昆仑 / 华清未央 / 达酷诺威 DoGNAVY</span><span class="vn oss">GLM / Qwen / DeepSeek 通用开源底座（上游，不做安全生意）</span>
+        <div class="comp-note">趋势：前沿权重归通用大厂，独立阵营赢在专用小模型 + 攻防数据 + 多智能体系统 + 涉密交付与可复现战绩。</div></div>
     </div></div>
-  <div class="seg u2"><div class="seg-top"><div class="seg-badge">U2</div><div class="tt"><div class="a">AI 安全运营与自主响应</div><div class="b">数字安全分析师团队</div></div><div class="buyer">买方<b>SOC/MSSP</b></div></div>
-    <div class="seg-grid"><div class="sg"><h5>需求（2.1–2.4）</h5><p>告警研判、威胁狩猎、自主处置、多智能体 SOC；面向已部署系统运营，不挖源代码洞(U3)。</p></div>
+  <div class="seg u2"><div class="seg-top"><div class="seg-badge">U2</div><div class="tt"><div class="a">智能安全运营与自主响应</div><div class="b">数字安全分析师团队</div></div><div class="buyer">买方<b>SOC/MSSP</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（2.1–2.4）</h5><p>告警研判、威胁狩猎、自主处置、多智能体 SOC；面向已部署系统运营，不主动挖源代码洞。</p></div>
       <div class="sg"><h5>竞争</h5><span class="vn na">MS Security Copilot</span><span class="vn na">SentinelOne Purple AI</span><span class="vn na">Cortex XSIAM</span><span class="vn cn">360/某头部一线安全厂商/深信服</span><span class="vn cn">安恒恒脑/绿盟问衡/亚信/启明</span></div></div></div>
-  <div class="seg u3"><div class="seg-top"><div class="seg-badge">U3</div><div class="tt"><div class="a">AI 漏洞挖掘与应用安全</div><div class="b">主动找洞：代码审计 / ASM / 自动渗透</div></div><div class="buyer">买方<b>DevSecOps/红队</b></div></div>
-    <div class="seg-grid"><div class="sg"><h5>需求（3.1–3.3）</h5><p>语义级 SAST、攻击面管理、持续自动渗透；是 U1 能力最先产品化的出口。</p></div>
-      <div class="sg"><h5>竞争</h5><span class="vn na">XBOW</span><span class="vn na">GitHub Autofix</span><span class="vn na">Snyk/Hadrian/Pentera</span><span class="vn cn">安恒代码审计</span><span class="vn cn">某头部一线安全厂商代码审计 AI</span></div></div></div>
-  <div class="seg u4"><div class="seg-top"><div class="seg-badge">U4</div><div class="tt"><div class="a">AI 威胁情报与欺诈对抗</div><div class="b">千里眼：情报 / 反钓鱼 / 反深伪 / 反欺诈</div></div><div class="buyer">买方<b>情报/风控</b></div></div>
-    <div class="seg-grid"><div class="sg"><h5>需求（4.1–4.3）</h5><p>情报归因、反钓鱼深伪、业务反欺诈；生产识别能力，不做内部运营(U2)。</p></div>
-      <div class="sg"><h5>竞争</h5><span class="vn na">Recorded Future/Abnormal/Darktrace</span><span class="vn cn">微步/腾讯朱雀</span><span class="vn cn">蚂蚁腾讯风控</span><span class="vn cn">国家反诈</span></div></div></div>
-  <div class="seg u5"><div class="seg-top"><div class="seg-badge">U5</div><div class="tt"><div class="a">AI 安全治理与知识协同</div><div class="b">效率工具：合规 / 知识助手 / 自动修复</div></div><div class="buyer">买方<b>CISO/GRC</b></div></div>
-    <div class="seg-grid"><div class="sg"><h5>需求（5.1–5.3）</h5><p>智能合规、安全 Copilot、自动修复；工具属性强、易被套件吸收。</p></div>
+  <div class="seg u3"><div class="seg-top"><div class="seg-badge">U3</div><div class="tt"><div class="a">智能代码与应用安全</div><div class="b">开发者视角：代码审计 / 供应链 / 自动修复（安全左移）</div></div><div class="buyer">买方<b>DevSecOps/研发安全</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（3.1–3.3）</h5><p>语义级 SAST/DAST、SCA/SBOM 供应链、Autofix 与安全开发副驾；进攻性“利用验证”归 U1。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">Snyk / GitHub Autofix / Veracode / Endor</span><span class="vn cn">云起无垠（Fuzzing→安全智能体）</span><span class="vn cn">安恒/某头部一线安全厂商代码审计 AI</span></div></div></div>
+  <div class="seg u4"><div class="seg-top"><div class="seg-badge">U4</div><div class="tt"><div class="a">威胁情报 · 攻击面测绘与反欺诈</div><div class="b">千里眼 + 地图：情报 / 空间测绘 / 反深伪 / 反诈</div></div><div class="buyer">买方<b>情报/公安/风控</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（4.1–4.3）</h5><p>情报归因、网络空间测绘与攻击面情报、反深伪反钓鱼与反诈；产出识别 / 数据能力，不做内部运营(U2)。</p></div>
+      <div class="sg"><h5>竞争</h5><span class="vn na">Recorded Future / Shodan / Censys / Abnormal / Darktrace</span><span class="vn cn">微步 / 华顺信安 FOFA</span><span class="vn cn">成都无糖（公安反诈）</span><span class="vn cn">腾讯朱雀 / 国家反诈</span></div></div></div>
+  <div class="seg u5"><div class="seg-top"><div class="seg-badge">U5</div><div class="tt"><div class="a">安全治理 · 风险与知识协同</div><div class="b">效率工具：合规 / 风险 / 知识助手</div></div><div class="buyer">买方<b>CISO/GRC</b></div></div>
+    <div class="seg-grid"><div class="sg"><h5>需求（5.1–5.2）</h5><p>智能合规与风险、安全知识 Copilot；工具属性强、易被套件吸收（自动修复已归 U3）。</p></div>
       <div class="sg"><h5>竞争</h5><span class="vn na">Drata/Vanta</span><span class="vn cn">绿盟/安恒知识助手</span><span class="vn cn">安全 GPT 运维</span></div></div></div>
 
-  <!-- 六：技术路线 -->
-  <h2 class="sec">六、辅助视角 A · 技术路线</h2>
+  <!-- 七：重点标的聚焦点图谱（新增） -->
+  <h2 class="sec">七、重点标的聚焦点图谱：7 家国内优质团队落位（清华系 · GLM 生态）</h2>
+  <p class="ss">逐家分辨“真在做自主攻防 / 垂直基座”还是“有潜力但主战场在别处”；融资、产品与战果均为公开信息，专家私人交流原话与身份不上页面。</p>
+  <div class="card">
+    <div style="overflow-x:auto;">
+    <table style="font-size:11.3px;min-width:1180px;">
+      <tr><th style="width:11%;">团队（出身）</th><th style="width:17%;">真正聚焦点</th><th style="width:15%;">技术底座</th><th style="width:22%;">代表产品 / 战果</th><th style="width:12%;">融资 / 阶段</th><th style="width:11%;">五域落位</th><th>与横向底座层关系</th></tr>
+      <tr style="background:#fceee9;">
+        <td><b>赛博昆仑</b><br>郑文彬（前 360 顶级漏洞团队）·重点</td>
+        <td>顶级人类漏洞能力 + 漏洞全生命周期<b>防护</b>（微补丁）</td>
+        <td>用智谱 GLM 增强，<b>不自训前沿权重</b></td>
+        <td>昆仑实验室、洞见平台、Agent 微补丁（不下线热修复）；借 GLM 修复 3 枚微软重大漏洞</td>
+        <td class="big">B 轮（2026.7，中金/达晨/红杉/山行），进程最快</td>
+        <td><b>U1</b>（挖洞 / 利用）＋运行时防护</td>
+        <td>底座层最强应用方之一，攻防数据密度高</td></tr>
+      <tr style="background:#fceee9;">
+        <td><b>华清未央</b><br>清华张超体系，CEO 朱文宇</td>
+        <td><b>二进制 / 机器语言专用基座</b>（通用大模型盲区）</td>
+        <td><b>自研 MLM 机器语言大模型 2.0</b>，100TB+ 二进制语料，不需源码 / 符号</td>
+        <td>闭源二进制结构 / 语义 / 安全分析、漏洞、恶意代码、<b>信创软件自动转写迁移</b>；进军工 / 能源 / 金融</td>
+        <td class="big">Pre-A 超亿元（2026.5，洪泰等十余家）</td>
+        <td><b>U1</b>＋U3，兼吃信创预算</td>
+        <td class="big">7 家中唯一真自研“垂直安全基座”，绕开文本推理红海</td></tr>
+      <tr>
+        <td><b>云起无垠</b><br>沈凯文（清华网研院博士）</td>
+        <td>Fuzzing 起家的代码安全 + 安全智能体平台</td>
+        <td>自研小规模 SecGPT / 云起安全大脑 + 开源，联合清华 NISL</td>
+        <td>智能模糊测试、代码分析 / PoC 生成 / 漏洞情报智能体；GLM 红队联盟成员</td>
+        <td class="est">天使+（朗玛峰，2024.3 数千万），最早期</td>
+        <td><b>U3</b> 为主，向 U1 延伸</td>
+        <td>应用层，自研小模型非前沿基座</td></tr>
+      <tr style="background:#edf3f8;">
+        <td><b>方寸跃迁</b><br>李筱健、董胤蓬（清华 AI 学院 / 交叉信息院）</td>
+        <td><b>保护 AI</b>：Agent 全生命周期安全 + 模型前沿评估 + 治理</td>
+        <td>安全对齐 / 评测方法论（STAIR 曾用于 DeepSeek-R1 对齐）</td>
+        <td>Skill Ward 事前审核 / Fangcun Guard 事中防护 / Observer 事后审计</td>
+        <td class="est">天使轮（SEE Fund 无限基金等）</td>
+        <td class="big">不在本二级：属二级②“安全地运行 Agent”＋④治理</td>
+        <td>是底座层在“保护 AI”侧的客户 / 同伴</td></tr>
+      <tr style="background:#fdf4e6;">
+        <td><b>华顺信安</b><br>赵武（白帽）</td>
+        <td>网络空间测绘 / 攻击面管理 / 安全大数据</td>
+        <td>非大模型公司，AI 是放大器</td>
+        <td>FOFA（中国版 Shodan）、FORadar(ASM)、Goby 渗透框架；资产基因库 100 亿+条</td>
+        <td>C 轮（招银国际领投数亿）</td>
+        <td><b>U4</b> 攻击面测绘 / 情报</td>
+        <td>攻击智能体的“上游侦察地图 / 数据飞轮”</td></tr>
+      <tr style="background:#f6f1f0;">
+        <td><b>达酷诺威 DARKNAVY 深蓝</b><br>王琦 · 暂不融资</td>
+        <td><b>独立研究服务机构</b>：攻防能力量化评测 + 顶级社区</td>
+        <td>与上海 AI 机构联合、基于开源 GLM 做 DoGNAVY</td>
+        <td>GEEKCON/deepsec 创办方、AVSS 量化安全首倡；DoGNAVY CyberGym 90.8% 总榜第三 / 开源第一</td>
+        <td class="est">小微主体、明确暂不融资</td>
+        <td>横向“裁判 / 生态”层，非产品市场主体</td>
+        <td>能力标杆与生态枢纽，宜合作 / 并购 / 人才而非股权投资</td></tr>
+      <tr style="background:#fdf4e6;">
+        <td><b>成都无糖</b><br>张瑞冬（PKAV 团队）</td>
+        <td>AI 反诈 / 反黑灰产（公安 G 端）</td>
+        <td>大模型做深伪 / 声音克隆反诈对抗</td>
+        <td>打防管控研一体化平台，服务 270+ 公安、年预警超亿次；2024 营收约 4741 万</td>
+        <td>B 轮</td>
+        <td><b>U4</b> 反诈（独立垂直线）</td>
+        <td>黑产对抗数据是底座层稀缺养料，能力可向 T4 外溢</td></tr>
+    </table>
+    </div>
+
+    <h5 style="color:var(--navy);margin:16px 0 4px;">一图落位（按五域 + 横向层 + 另属二级）</h5>
+    <div class="posmap">
+      <div class="poscol p1"><div class="ph">U1 自主攻防</div><div class="pb">
+        <span class="pchip"><b>赛博昆仑</b>：顶级挖洞+微补丁，B轮最成熟</span>
+        <span class="pchip"><b>华清未央</b>：二进制 MLM 自研垂直基座</span>
+        <span class="pchip"><b>达酷诺威</b>：DoGNAVY 能力标杆（研究机构）</span>
+      </div></div>
+      <div class="poscol p2"><div class="ph">U3 代码应用</div><div class="pb">
+        <span class="pchip"><b>云起无垠</b>：Fuzzing→代码安全智能体（天使+）</span>
+        <span class="pchip"><b>华清未央</b>：二进制代码分析（跨界）</span>
+      </div></div>
+      <div class="poscol p3"><div class="ph">U4 情报测绘反诈</div><div class="pb">
+        <span class="pchip"><b>华顺信安</b>：FOFA 空间测绘/攻击面数据</span>
+        <span class="pchip"><b>成都无糖</b>：公安反诈/反黑灰产</span>
+      </div></div>
+      <div class="poscol p4"><div class="ph">横向评测/生态</div><div class="pb">
+        <span class="pchip"><b>达酷诺威</b>：GEEKCON/deepsec、量化评测，暂不融资</span>
+      </div></div>
+      <div class="poscol p5"><div class="ph">另属二级②/④</div><div class="pb">
+        <span class="pchip"><b>方寸跃迁</b>：保护 Agent / 模型评估 / 治理（移出本二级）</span>
+      </div></div>
+    </div>
+
+    <div class="core" style="margin-top:10px;"><b>三点研判：</b>①<b>唯一自研垂直基座的是华清未央</b>——它不与通用模型拼文本推理，而选闭源二进制 / 机器语言这一通用盲区，还顺带吃到信创迁移的更大预算；其余各家（赛博昆仑、DoGNAVY 等）都站在 GLM 上做工程，印证“基座决定成败、后训练难破天花板”。②<b>自主攻防第一梯队</b>：赛博昆仑（商业化 / 融资最成熟，B 轮）、达酷诺威（能力标杆但是研究机构、暂不融资）、360 / 安恒（大厂工程路线）；云起无垠最早期、弹性大。③<b>清华系已成中国 AI 攻防人才源头</b>（网研院 + AI 学院），且高度围绕清华系智谱 GLM 生态——既是人才红利，也意味着共享同一上游基座，<b>差异化只能靠独家攻防数据密度、二进制等专用域与涉密交付</b>。</div>
+  </div>
+
+  <!-- 八：技术路线 -->
+  <h2 class="sec">八、辅助视角 A · 技术路线</h2>
   <div class="card"><table>
     <tr><th>维度</th><th>路线</th><th>特点</th><th>代表</th></tr>
-    <tr><td rowspan="3">基座来源</td><td>调用通用 API</td><td>最快但涉密不可用、受制于人</td><td>多数 Copilot</td></tr>
-    <tr><td>开源通用基座 + 安全续训 / 工作流</td><td>可私有化、性价比高，<b>中国当前主流且被验证可登顶</b></td><td>DoGNAVY(GLM-5.2)、MDASH、Flash Cyber</td></tr>
-    <tr><td>自研全参数安全基座</td><td>投入巨大，趋势是“小专用模型 + 系统”取胜</td><td>MAI-Cyber-1-Flash(5B)</td></tr>
+    <tr><td rowspan="3">底座来源</td><td>调用通用 API</td><td>最快但涉密不可用、受制于人</td><td>多数 Copilot</td></tr>
+    <tr><td>开放权重 + 安全续训 / 多智能体系统</td><td>可私有化、性价比高，<b>中国当前主流且被验证可登顶</b>；但开放权重≠开源，后训练有天花板</td><td>DoGNAVY(GLM-5.2)、MDASH、Flash Cyber</td></tr>
+    <tr><td>自研专用小模型 / 垂直基座</td><td>不拼前沿参数，专攻通用盲区（如二进制）或成本专用小模型 + 系统取胜</td><td>华清未央 MLM、微软 MAI-Cyber-1-Flash(5B)</td></tr>
     <tr><td rowspan="3">自主程度</td><td>Copilot 辅助</td><td>人主导（2025 主流）</td><td>Security Copilot</td></tr>
     <tr><td>半自主（人审）</td><td>关键动作人确认</td><td>带审批自动响应</td></tr>
     <tr><td>全自主闭环</td><td>机器速度，价值最高</td><td>XBOW / 多智能体 SOC</td></tr>
-  </table></div>
+  </table>
+  <p class="note" style="margin-bottom:0;">关键认知：全球前沿“攻击权重”没有一家是安全创业公司从零预训练出来的——均为通用旗舰的后训练衍生物（见 10.0）；独立安全公司的工程重心在<b>专用小模型、独家攻防数据、多智能体系统与涉密私有化交付</b>。</p></div>
 
-  <!-- 七：产业链 -->
-  <h2 class="sec">七、辅助视角 B · 产业链与竞争层级</h2>
+  <!-- 九：产业链 -->
+  <h2 class="sec">九、辅助视角 B · 产业链与竞争层级</h2>
   <div class="card">
-    <div class="layer"><div class="lt">① 安全基座层（寡头）</div><div class="lc"><b>约 2 家“纯软件”安全大模型基座 + 1–2 家“软件 + 硬件”安全基座</b>（信创 / 昇腾 / 飞腾 + 涉密一体机）。赢家通吃、壁垒最高。软硬一体佐证：润和 HopeClaw、宝德×恒安嘉新流量大模型一体机、实在 Agent 昇腾一体机、讯飞党政智盒。</div></div>
-    <div class="layer l2"><div class="lt">② 安全应用层（百花齐放）</div><div class="lc">基于基座做 U2–U5 与姊妹篇 T1–T5 的 AI 安全产品公司（运营、漏洞、情报、合规、运行时防护、身份等），数量众多、场景分化。</div></div>
-    <div class="layer l3"><div class="lt">③ 区域服务层</div><div class="lc">各省市本土 AI 安全服务 / 集成 / MSSP 企业，靠本地化交付、关系与等保涉密服务落地，是基座与应用的“最后一公里”。</div></div>
-    <p class="note" style="margin-bottom:0;">纵向产业链：上游通用基座 / 算力 / <b>攻防数据（最稀缺）</b> → 中游安全基座与智能体 → 下游软硬一体 / 托管运营 / 区域服务。</p>
+    <div class="layer"><div class="lt">⓪ 通用基座层（上游）</div><div class="lc">GLM / Qwen / DeepSeek / Kimi 等开放权重，以及海外 Anthropic / OpenAI / Google / 微软通用旗舰——<b>供底座而不做安全生意</b>（机会成本 + 制裁顾虑 + 商业模式不合）。</div></div>
+    <div class="layer"><div class="lt">① 安全智能底座层（寡头）</div><div class="lc"><b>约 2 家“纯软件”安全专用模型 / 自主攻防系统 + 1–2 家“软件 + 硬件”</b>（信创 / 昇腾 / 飞腾 + 涉密一体机）。赢家通吃、壁垒最高，形态是专用小模型 + 攻防数据 + 多智能体系统，而非自训前沿权重。软硬一体佐证：润和 HopeClaw、宝德×恒安嘉新流量大模型一体机、实在 Agent 昇腾一体机、讯飞党政智盒。</div></div>
+    <div class="layer l2"><div class="lt">② 安全应用层（百花齐放）</div><div class="lc">基于底座做 U1–U5 与姊妹篇 T1–T5 的安全产品公司（自主攻防、运营、代码、情报、反诈、合规、运行时防护、身份等），数量众多、场景分化。</div></div>
+    <div class="layer l3"><div class="lt">③ 区域服务层</div><div class="lc">各省市本土 AI 安全服务 / 集成 / MSSP 企业，靠本地化交付、关系与等保涉密服务落地，是底座与应用的“最后一公里”。</div></div>
+    <p class="note" style="margin-bottom:0;">纵向产业链：上游通用基座 / 算力 / <b>攻防数据（最稀缺）</b> → 中游安全智能底座与智能体 → 下游软硬一体 / 托管运营 / 区域服务。</p>
   </div>
 
-  <!-- 八：重点专题 -->
-  <h2 class="sec">八、重点专题：攻击基座大模型——专用性、客户飞轮、格局与重算规模</h2>
+  <!-- 十：重点专题 -->
+  <h2 class="sec">十、重点专题：安全智能底座层——前沿权重归谁、独立公司赢在哪、飞轮与重算规模</h2>
   <div class="card">
-    <div class="step"><b>8.1 为什么它是独立品类、且通用模型替代不了：专用 vs 通用是“数量级”差距。</b>
+
+    <div class="step"><b>10.0 先校正前提：全球前沿“攻击模型”全部出自通用基座大厂，独立公司不做前沿权重。</b>
+      <table style="margin-top:7px;">
+        <tr><th>前沿攻击能力（2026）</th><th>与通用旗舰的关系</th><th>开放方式</th></tr>
+        <tr><td>Anthropic Claude Mythos 5 / 5.1</td><td class="big">与通用旗舰 Fable 5 <b>同一套权重</b>，仅放开 / 调整安全策略</td><td>Project Glasswing 防御联盟受控开放、曾出口管制</td></tr>
+        <tr><td>OpenAI GPT-5.6-Cyber</td><td>建在通用旗舰 GPT-5.6-Sol 之上的后训练版本</td><td>Daybreak 蓝 / 红队审核制</td></tr>
+        <tr><td>Google Gemini 3.5/3.8 Flash Cyber</td><td>由通用 3.5/3.8 Flash 微调 + CodeMender</td><td>仅政府 / 可信伙伴</td></tr>
+        <tr><td>微软 MAI-Cyber-1-Flash</td><td>源自 MAI-Code←MAI-Thinking 检查点后训练，5B 稀疏 MoE</td><td>内嵌 MDASH，最难 10% 回路由 OpenAI</td></tr>
+      </table>
+      <b>推论（不唱空、划清生态位）：</b>“从零预训练一个前沿攻击基座并对外卖权重”这门生意<b>在全球范围都不独立成立</b>——前沿权重是通用大厂 AGI 竞赛的副产品且受控。但<b>基座之上的“自主攻防系统 / 专用小模型 + 攻防数据 + 涉密交付”成立</b>：XBOW 建在前沿模型上做 harness、2026 年成为独角兽；微软用 5B 小专用模型反超 Mythos 约 12 分。中国版机会因此不是“再造一个通用 Mythos”，而是<b>在 GLM 等开放权重上，用独家攻防数据与系统工程做出专用层，并吃下涉密 / 关基 / 信创的本土化交付</b>。<span class="quote">“通用基座管下限，攻防数据与系统管上限；创业公司不造发动机，造的是能打的军团和独家弹药库。”</span>
+    </div>
+
+    <div class="step"><b>10.1 为什么专用层仍是独立品类、且通用开箱模型替代不了：专用 vs 通用是“数量级”差距。</b>
       <table style="margin-top:7px;">
         <tr><th>证据（2026，权威 / 官方）</th><th>结果</th><th>说明</th></tr>
-        <tr><td>OpenAI GPT-5.6-Cyber vs 同代通用 GPT-5.6-Sol</td><td class="big">95% vs 1.5%</td><td>同一实验室，专用版完成 95% 高级攻防请求，通用版仅 1.5%</td></tr>
+        <tr><td>OpenAI GPT-5.6-Cyber vs 同代通用 GPT-5.6-Sol</td><td class="big">95% vs 1.5%</td><td>同一实验室，专用版完成 95% 高级攻防请求，开箱通用版仅 1.5%</td></tr>
         <tr><td>微软 MAI-Cyber-1-Flash（仅 5B 活跃参数）驱动 MDASH</td><td class="big">CyberGym 95.95%，超 Mythos 约 12 分、成本约一半</td><td>小专用模型 + 多智能体系统击败巨型通用模型</td></tr>
         <tr><td>Google Gemini 3.5 Flash Cyber / CodeMender（V8 引擎）</td><td class="big">55 个独特确认漏洞</td><td>主网 Flash 47、Claude Opus 4.6 仅 36，含 10 个后两者漏掉的；2 小时挖出可绕 ASLR/W^X 的 RCE</td></tr>
         <tr><td>arXiv 垂直基座研究（2026.5）</td><td class="auth">垂直 Defense-LLM 单卡精度 0.904、误报 9.7%</td><td>前沿通用模型白盒误报 10–50%、黑盒覆盖仅 4–8%；决定性能的是<b>攻防数据与方法论而非参数规模</b></td></tr>
       </table>
-      <span class="quote">“通用大模型决定攻击的下限，专用攻防数据决定上限。”</span>
+      <span class="quote">“开箱通用大模型决定攻击的下限，专用攻防数据决定上限。”</span>
     </div>
 
-    <div class="step"><b>8.2 客户全景与数据飞轮：中国版 Mythos 是横跨两个二级的共享底座。</b>
+    <div class="step"><b>10.2 客户全景与数据飞轮：安全智能底座是横跨两个二级的共享能力层。</b>
       <div class="hub">
-        <div class="center">U1 攻击 / 安全基座大模型（供能力 · 供引擎 · 供私有化底座）</div>
+        <div class="center">安全智能底座层（供专用模型 · 供引擎 · 供私有化底座）</div>
         <div class="spokes">
-          <div class="spoke"><b>本二级应用层</b>U2 运营 / U3 漏洞 / U4 情报 / U5 治理产品公司</div>
+          <div class="spoke"><b>本二级五域</b>U1 自主攻防 / U2 运营 / U3 代码 / U4 情报反诈 / U5 治理</div>
           <div class="spoke"><b>姊妹二级</b>安全地运行 Agent：T1 治理 / T2 测试 / T3 身份 / T4 运行时 / T5 监控</div>
           <div class="spoke"><b>软硬一体</b>昇腾 / 飞腾一体机、AI 防火墙、安全探针、信创盒子</div>
           <div class="spoke"><b>区域服务</b>各省市本土 AI 安全服务商 / 集成商 / MSSP</div>
           <div class="spoke"><b>国家直供</b>国家漏洞库 / 关基 / 军工涉密 / 红蓝军 / 网络靶场</div>
         </div>
       </div>
-      <b>飞轮逻辑：</b>客户越多 → 汇聚的真实攻防遥测、漏洞样本、攻击链越多 → 模型挖掘 / 研判能力越强 → 下游产品越好用 → 客户更多。由于横跨所有产品，基座方拥有任何单一应用厂商都不具备的<b>全局攻击“上帝视角”</b>，边际成本递减、边际能力递增，最终寡头化、赢家通吃。<span class="quote">“所有安全产品都是它的客户，所有攻击数据都回流到它这里。”</span>
+      <b>飞轮逻辑：</b>客户越多 → 汇聚的真实攻防遥测、漏洞样本、攻击链越多 → 模型挖掘 / 研判能力越强 → 下游产品越好用 → 客户更多。由于横跨所有产品，底座方拥有任何单一应用厂商都不具备的<b>全局攻击“上帝视角”</b>，边际成本递减、边际能力递增，最终寡头化、赢家通吃。<span class="quote">“所有安全产品都是它的客户，所有攻击数据都回流到它这里。”</span>
     </div>
 
-    <div class="step"><b>8.3 为什么字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 最终不会来做“安全基座龙头”。</b>
+    <div class="step"><b>10.3 为什么字节 / 智谱 / Kimi / MiniMax / 千问 / DeepSeek 最终不会来做“安全底座龙头”。</b>
       <table style="margin-top:7px;">
         <tr><th>原因</th><th>逻辑</th></tr>
-        <tr><td><b>① 机会成本 / 市场规模</b></td><td>其主战略是万亿级 AGI/ASI 的消费与企业市场；安全基座 2030 中国约 190 亿，盘子小、项目制、毛利低、关系与资质驱动，不值得战略聚焦。</td></tr>
-        <tr><td><b>② 对美制裁顾虑（核心）</b></td><td>做“国家攻击基座”需深度绑定国家攻防 / 涉密体系，极易被列入美实体清单，进而威胁其最看重的高端芯片、海外资本与全球市场、AGI/ASI 竞赛。因此它们选择做<b>中立上游</b>：开源通用模型供安全公司去做专用层，自己不碰敏感攻防与涉密客户。</td></tr>
-        <tr><td><b>③ 能力 / 数据错配</b></td><td>安全需独家漏洞样本、攻防数据、顶级白帽、涉密资质、关基 know-how；通用实验室没有也不经济自建（8.1 已证：决定性能的是攻防数据而非规模）。</td></tr>
+        <tr><td><b>① 机会成本 / 市场规模</b></td><td>其主战略是万亿级 AGI/ASI 的消费与企业市场；安全底座 2030 中国全口径约 190 亿，盘子相对小、项目制、关系与资质驱动，不值得战略聚焦。</td></tr>
+        <tr><td><b>② 对美制裁顾虑（核心）</b></td><td>做“国家攻防底座”需深度绑定国家攻防 / 涉密体系，极易被列入美实体清单，进而威胁其最看重的高端芯片、海外资本与全球市场、AGI/ASI 竞赛。因此它们选择做<b>中立上游</b>：开源开放权重供安全公司做专用层，自己不碰敏感攻防与涉密客户。</td></tr>
+        <tr><td><b>③ 能力 / 数据错配</b></td><td>安全需独家漏洞样本、攻防数据、顶级白帽、涉密资质、关基 know-how；通用实验室没有也不经济自建（10.1 已证：决定性能的是攻防数据而非规模）。</td></tr>
         <tr><td><b>④ 商业模式冲突</b></td><td>实验室卖规模化 token / MaaS；安全要私有化、项目制、等保涉密、7×24 责任兜底，基因不合。</td></tr>
       </table>
-      <b>证据闭环：</b>(a) DoGNAVY 直接建在智谱 <b>GLM-5.2 开源</b>基座之上——智谱供通用底座、达酷诺威做安全专用层，正是该分工的现实样本；(b) Google 因双重用途把 Gemini Cyber <b>仅限政府与可信伙伴</b>、不做通用商用；(c) Anthropic Mythos 走 Project Glasswing 防御联盟而非安全产品生意。通用基座厂普遍“供底座而不做安全生意”，这正是专业安全基座团队的结构性窗口。
+      <b>证据闭环：</b>(a) DoGNAVY 直接建在智谱 <b>GLM-5.2 开源</b>基座之上——智谱供通用底座、达酷诺威做安全专用层，正是该分工的现实样本；(b) Google 因双重用途把 Gemini Cyber <b>仅限政府与可信伙伴</b>、不做通用商用；(c) Anthropic Mythos 走 Project Glasswing 防御联盟而非安全产品生意。通用基座厂普遍“供底座而不做安全生意”，这正是专业安全团队的结构性窗口。
     </div>
 
-    <div class="step"><b>8.4 重算规模：三口径阶梯 + 底座层渗透法（自下而上）。</b><br>
+    <div class="step"><b>10.4 重算规模：三口径阶梯 + 底座层渗透法（自下而上）。</b><br>
       <b>先立方法论：同一赛道三种口径可差 3–10 倍，投委会须先对齐口径，避免“用卖 License 的算法估一个收租的生意”。</b>
       <table style="margin-top:7px;">
         <tr><th>口径</th><th>算法</th><th>2030 量级</th><th>评价</th></tr>
-        <tr><td>① 纯安全软件 License（最窄）</td><td>只算攻击基座软件授权 / 订阅</td><td class="est">数十亿～百亿</td><td>会系统性低估“底座 / 收租”型生意，此前 62 亿即此口径</td></tr>
-        <tr style="background:#fdf0e8;font-weight:700;"><td>② 底座层渗透（本报告中性基准）</td><td>基座向两个二级下游产品收费 + 国家直供</td><td class="big">≈190 亿（127–268）</td><td>符合“共享底座”产业本质，作为估值锚</td></tr>
+        <tr><td>① 纯安全软件 License（最窄）</td><td>只算专用模型 / 自主攻防系统软件授权 / 订阅</td><td class="est">数十亿～百亿</td><td>会系统性低估“底座 / 收租”型生意</td></tr>
+        <tr style="background:#fdf0e8;font-weight:700;"><td>② 底座层渗透（本报告中性基准）</td><td>底座向两个二级下游产品收费 + 国家直供</td><td class="big">≈190 亿（127–268）</td><td>符合“共享能力层”产业本质，作为估值锚</td></tr>
         <tr><td>③ 大盘×渗透·按运行量收租（最宽，上行期权）</td><td>安全＝Agent 经济固定比例支出（Gartner：守护智能体占 Agentic AI 10–15%），计费由 License 转向<b>按 Agent 运行量 / Token / 事件</b></td><td class="est">随大盘复利，2030 后仍续涨</td><td>天花板由 Agent 大盘决定，是长期上行来源</td></tr>
       </table>
-      <b>口径②测算（底座层渗透法）：</b>第一步，基座服务的下游 AI 安全产品总盘 2030 = 用 AI 做安全 593.5 + 保护 AI 340.3 = <b>933.8 亿元</b>（均 IDC）；第二步，底座层价值捕获率取保守 12% / 中性 18% / 乐观 25%；第三步，加国家 / 涉密 / 靶场 / 漏洞库直供（15 / 25 / 35 亿）。
+      <b>口径②测算（底座层渗透法）：</b>第一步，底座服务的下游 AI 安全产品总盘 2030 = 用 AI 做安全 593.5 + 保护 AI 340.3 = <b>933.8 亿元</b>（均 IDC）；第二步，底座层价值捕获率取保守 12% / 中性 18% / 乐观 25%；第三步，加国家 / 涉密 / 靶场 / 漏洞库直供（15 / 25 / 35 亿）。
       <table style="margin-top:7px;">
-        <tr><th>情景（捕获率）</th><th>下游 933.8 × 捕获率</th><th>+ 国家直供</th><th>U1 全口径 2030</th><th>CAGR（2025≈2.8 亿起）</th></tr>
+        <tr><th>情景（捕获率）</th><th>下游 933.8 × 捕获率</th><th>+ 国家直供</th><th>底座层全口径 2030</th><th>CAGR（2025≈2.8 亿起）</th></tr>
         <tr><td>保守 12%</td><td>112 亿</td><td>15 亿</td><td class="est">≈127 亿</td><td class="est">≈115%</td></tr>
         <tr style="background:#fdf0e8;font-weight:700;"><td>中性 18%</td><td>168 亿</td><td>25 亿</td><td class="big">≈193 亿</td><td class="big">≈133%</td></tr>
         <tr><td>乐观 25%</td><td>233 亿</td><td>35 亿</td><td class="est">≈268 亿</td><td class="est">≈149%</td></tr>
@@ -294,113 +504,154 @@
         <tr><td>中商产业研究院（狭义：平台+软件）</td><td>69 亿(2025)→287 亿(2030)</td><td>≈33%</td></tr>
         <tr><td>艾媒（广义：全产业链）</td><td>804 亿(2025)</td><td>50%+</td></tr>
       </table>
-      <span class="note">各口径绝对值差异大，但企业级一致为 70%–110% 高增，显著快于安全软件线（50.5%），意味着安全渗透率长期“补涨”；安全支出＝Agent 大盘 × 渗透率(10–15%) × 基座分成，按运行量计费使 U1 天花板随大盘复利上行。故 <b>190 亿是中性基准、不是上限</b>。</span><br>
-      <b>单家含义：</b>3–4 家寡头（2 纯软 + 1–2 软硬）下，龙头取 45–55%，则 2030 单家安全基座收入约 <b>87–106 亿元</b>——足以支撑独立巨头市值。对比此前“切片法”只给 U1 62 亿，本版中性 193 亿约为其 3 倍，且方法论更符合“共享底座 + 按运行量收租”的产业本质。
+      <span class="note">各口径绝对值差异大，但企业级一致为 70%–110% 高增，显著快于安全软件线（50.5%），意味着安全渗透率长期“补涨”；安全支出＝Agent 大盘 × 渗透率(10–15%) × 底座分成，按运行量计费使底座层天花板随大盘复利上行。故 <b>190 亿是中性基准、不是上限</b>。</span><br>
+      <b>单家含义：</b>3–4 家寡头（2 纯软 + 1–2 软硬）下，龙头取 45–55%，则 2030 单家安全底座收入约 <b>87–106 亿元</b>——足以支撑独立巨头市值。
     </div>
 
-    <div class="step"><b>8.5 一线专家观点校验（两位）·区分“待确认”与“已核实”，供投委会尽调。</b>
-      <p style="margin:6px 0;"><b>专家一 · 张瑞东（成都无糖信息创始人）：</b>资深反诈 / 黑产对抗出身，年威胁预警约 1.8 亿次、190+ 公安客户、信创基因；无糖 2024 营收约 4741 万元、B+ 轮。其新切入“安全原生 Harness / 控制面”（工具调用管控、沙箱、Policy-as-Code、人工审批、全链路审计），落在<b>姊妹二级“安全地运行 Agent”的 T4 运行时</b>，但其攻防 DNA 与本报告 U1 同源。选点四逻辑：①Agent 执行咽喉点；②以反诈 / 反滥用数据做差异化安全底座；③时机——2026 为 Agentic 元年、全球首部智能体安全强制国标 2026 年 6 月在华立项、战略窗口 18–24 个月；④客户从公安“事后对抗”上移到金融 / 运营商 / 互联网“事前控制”。<br><b>对 U1 的三点启示：</b>(a) 黑产 / 攻防对抗数据正是攻击基座最稀缺养料，印证 8.1“数据&gt;规模”；(b)“用 AI 做安全”与“保护 Agent”<b>攻防一体、能力双向外溢</b>——同一支团队、同一个底座可同时覆盖 U2–U5 与 T1–T5，直接佐证 8.2 客户飞轮；(c) 18–24 个月窗口即投资时点判断。</p>
+    <div class="step"><b>10.5 一线专家观点校验（两位）·区分“待确认”与“已核实”，供投委会尽调。</b>
+      <p style="margin:6px 0;"><b>专家一 · 成都无糖信息创始人（资深反诈 / 黑产对抗）：</b>年威胁预警约 1.8 亿次、270+ 公安客户、信创基因；无糖 2024 营收约 4741 万元、B 轮。其新切入“安全原生 Harness / 控制面”（工具调用管控、沙箱、Policy-as-Code、人工审批、全链路审计），落在<b>姊妹二级“安全地运行 Agent”的 T4 运行时</b>，但其攻防 DNA 与本报告 U1 同源。选点四逻辑：①Agent 执行咽喉点；②以反诈 / 反滥用数据做差异化安全底座；③时机——2026 为 Agentic 元年、全球首部智能体安全强制国标 2026 年 6 月在华立项、战略窗口 18–24 个月；④客户从公安“事后对抗”上移到金融 / 运营商 / 互联网“事前控制”。<br><b>对底座层的三点启示：</b>(a) 黑产 / 攻防对抗数据正是安全底座最稀缺养料，印证 10.1“数据&gt;规模”；(b)“用 AI 做安全”与“保护 Agent”<b>攻防一体、能力双向外溢</b>——同一支团队、同一个底座可同时覆盖 U1–U5 与 T1–T5，直接佐证 10.2 客户飞轮；(c) 18–24 个月窗口即投资时点判断。</p>
       <p style="margin:6px 0;"><b>专家二 · 某头部一线安全厂商安全实验室负责人（行业内部交流，属“待确认”来源；观点保留、原话与身份已隐去；其支撑事实已逐一核验）：</b></p>
       <table style="margin-top:4px;">
-        <tr><th>观点（转述，已隐去原话与身份）</th><th>核实状态 / 公开依据</th><th>对 U1 的含义</th></tr>
+        <tr><th>观点（转述，已隐去原话与身份）</th><th>核实状态 / 公开依据</th><th>对底座层的含义</th></tr>
         <tr><td>做 Harness 效果好的人不多、门槛高</td><td class="auth">方向吻合·已核实：8/24 披露 DeepSeek Harness 未授权 RCE（QVD-2026-57410，CVSS 9.8，PoC 公开、CERT 验证）；某头部厂商实验室《OpenClaw 生态威胁分析》；6 月 QAgentFabric；星图 Harness 论文</td><td>头部大厂实验室攻防实力强，是创业方最强对手</td></tr>
         <tr><td>做模型数据积累占优</td><td class="est">自评·无公开可比口径，无法独立证实</td><td>若属实，印证“数据第一壁垒”；创业方须拼<b>独家数据密度</b>而非存量</td></tr>
         <tr><td>智能体生命周期管理缺乏核心技术、易复制</td><td class="auth">与行业一致：对应姊妹篇 T1 治理层壁垒最低、易被平台原生整合</td><td>反证壁垒在<b>运行时攻防 / 底座（U1、T4）</b>，支撑重仓 U1</td></tr>
         <tr><td>实验室与集团产研分开</td><td>符合大厂“研究院强、产线联动弱”常态</td><td>大厂商品化内部缝隙＝创业公司贴身快打窗口</td></tr>
-        <tr><td>开源多为半开源（开放权重≠开源），靠后训练提升能力存疑，瓶颈在数据与算力</td><td class="auth">属实 + 行业共识：主流国产“开源”多为 open-weights、不公开训练数据；后训练主做对齐、难破基座推理天花板；安天肖新光亦指开源 / 商业模型在二进制分析等特定域有短板</td><td class="big">关键反方，与 DoGNAVY“开源登顶”形成对冲，见 8.6</td></tr>
+        <tr><td>开源多为半开源（开放权重≠开源），靠后训练提升能力存疑，瓶颈在数据与算力</td><td class="auth">属实 + 行业共识：主流国产“开源”多为 open-weights、不公开训练数据；后训练主做对齐、难破基座推理天花板；安天肖新光亦指开源 / 商业模型在二进制分析等特定域有短板</td><td class="big">关键反方，与 DoGNAVY“开源登顶”形成对冲，见 10.6</td></tr>
       </table>
     </div>
 
-    <div class="step"><b>8.6 多空交锋与投委会判据（不唱多，给可证伪的结论）。</b>
+    <div class="step"><b>10.6 多空交锋与投委会判据（不唱多，给可证伪的结论）。</b>
       <table style="margin-top:7px;">
-        <tr><th>多方（开源 + 工作流可快速登顶）</th><th>空方（头部大厂一线：长跑壁垒在数据 / 算力）</th></tr>
-        <tr><td>DoGNAVY 90.8% 全球第三 / 开源第一；微软 5B 小专用模型反超 Mythos；专用 vs 通用 95%∶1.5%</td><td>开放权重≠开源；后训练主要做对齐、有天花板；大厂存量攻防数据最多；算力是长期门槛</td></tr>
+        <tr><th>多方（开放权重 + 工作流可快速登顶）</th><th>空方（头部大厂一线：长跑壁垒在数据 / 算力）</th></tr>
+        <tr><td>DoGNAVY 90.8% 全球第三 / 开源第一；微软 5B 小专用模型反超 Mythos；专用 vs 通用 95%∶1.5%；XBOW 建在前沿模型上做成独角兽</td><td>开放权重≠开源；后训练主要做对齐、有天花板；前沿权重在通用大厂手里；大厂存量攻防数据最多；算力是长期门槛</td></tr>
       </table>
-      <b>对账（两者并不矛盾）：</b>开源通用基座是<b>起跑线而非终点线</b>；真实壁垒＝独家攻防数据 × 后训练 / 多智能体系统工程 × 算力 × <b>可稳定复现的战绩</b>。DoGNAVY 证明专业团队能“快速逼近一线”，头部大厂一线则提示“逼近≠持续超越、后训练或遇天花板”。<br>
+      <b>对账（两者并不矛盾）：</b>开放权重是<b>起跑线而非终点线</b>，前沿权重不必自研、但也买不到最尖端；真实壁垒＝独家攻防数据 × 后训练 / 多智能体系统工程 × 算力 × <b>可稳定复现的战绩</b> × 涉密交付资质。DoGNAVY 证明专业团队能“快速逼近一线”，头部大厂一线则提示“逼近≠持续超越、后训练或遇天花板”。<br>
       <b>投委会头号技术尽调问题（不看 Demo 看四件事）：</b>①真实 0day / CVE 的<b>持续</b>产出与独立复现；②独家攻防 / 黑产数据的来源、合规与独占性；③在开放权重上的后训练 / 多智能体系统能否<b>稳定复现</b> benchmark（而非单次刷榜）；④算力供给与昇腾 / 飞腾国产化、离线私有化适配。此判据与“三道门”及 F1 信号一致，并将 F1 细化为“<b>后训练能否突破开放权重天花板</b>”。
     </div>
 
-
-    <div class="verdict yes"><b>结论：</b>攻击基座是“用 AI 提升网络安全”里<b>壁垒最高、增速最快（全口径 CAGR≈133%）、且唯一横跨两个二级、具数据飞轮</b>的环节；其终局是 3–4 家寡头（约 2 纯软 + 1–2 软硬一体），龙头 2030 年单家收入有望达 87–106 亿。通用大模型厂因机会成本、制裁顾虑与主战略主动让出此位。国内卡位者达酷诺威（DoGNAVY 全球第三 / 开源第一）已验证“能力”关，接下来连过三道门：<b>(1) 持续真实 0day/CVE 战绩；(2) 涉密 / 军工资质与关基标杆、软硬一体交付；(3) 从供模型到“基座 + 应用生态 + 数据飞轮”的商业闭环。</b></div>
-    <div class="warn"><b>可证伪信号：</b>F1 开源通用基座若把专用差距抹平（当前 95% vs 1.5%，短期不会），价值下沉到独家数据 / 场景 / 资质；F2 传统大厂绑定国产开源 + 收购头部团队，创业方多走并购退出；F3 自动化攻击受出口管制 / 武器化管控。跟踪：CyberGym/Big Sleep 排名、真实 CVE、昇腾软硬一体机中标、涉密资质、关基 / 军工订单、下游调用量与数据回流。</div>
+    <div class="verdict yes"><b>结论：</b>安全智能底座层是“用 AI 提升网络安全”里<b>壁垒最高、增速最快（全口径 CAGR≈133%）、且唯一横跨两个二级、具数据飞轮</b>的环节；但须清醒——前沿攻击权重归通用大厂，独立公司的终局不是“自训前沿基座”，而是在开放权重上以专用小模型 + 攻防数据 + 系统 + 涉密交付形成 3–4 家寡头（约 2 纯软 + 1–2 软硬一体），龙头 2030 年单家收入有望达 87–106 亿。国内卡位者达酷诺威（DoGNAVY 全球第三 / 开源第一）、华清未央（自研二进制垂直基座）、赛博昆仑（顶级漏洞 + 微补丁，B 轮）已分别验证“能力 / 专用域 / 商业化”三关，接下来连过三道门：<b>(1) 持续真实 0day/CVE 战绩；(2) 涉密 / 军工资质与关基标杆、软硬一体交付；(3) 从供模型到“底座 + 应用生态 + 数据飞轮”的商业闭环。</b></div>
+    <div class="warn"><b>可证伪信号：</b>F1 开放权重 + 后训练若把专用差距抹平（当前 95% vs 1.5%，短期不会），价值下沉到独家数据 / 场景 / 资质；F2 传统大厂绑定国产开放权重 + 收购头部团队，创业方多走并购退出；F3 自动化攻击受出口管制 / 武器化管控；F4 若通用大厂亲自下场做中国涉密安全生意（当前受制裁顾虑与主战略约束，概率低），独立底座逻辑需重估。跟踪：CyberGym/Big Sleep 排名、真实 CVE、昇腾软硬一体机中标、涉密资质、关基 / 军工订单、下游调用量与数据回流。</div>
   </div>
 
-  <!-- 九：总表 -->
-  <h2 class="sec">九、三级细分对比总表</h2>
+  <!-- 十一：总表 -->
+  <h2 class="sec">十一、三级细分对比总表</h2>
   <div class="card"><table>
     <tr><th>三级</th><th>买方</th><th>2025/2030（本二级内，亿）</th><th>CAGR</th><th>竞争主导</th><th>巨头潜力</th></tr>
-    <tr><td><b>U1 攻击基座</b>★</td><td>全行业产品 / 国家</td><td>1.2 / 107；<span class="big">全口径 2.8/193</span></td><td><b>146%；全口径≈133%</b></td><td>专业寡头，通用厂做上游</td><td class="big">★★★★★</td></tr>
-    <tr><td>U2 安全运营</td><td>SOC/MSSP</td><td>6.0 / 215.5（最大应用）</td><td>≈105%</td><td>平台 + 传统大厂</td><td>★★★★</td></tr>
-    <tr><td>U3 漏洞应用</td><td>DevSecOps/红队</td><td>3.5 / 108</td><td>≈99%</td><td>U1 第一产品出口</td><td>★★★★</td></tr>
-    <tr><td>U4 情报反欺诈</td><td>情报/风控</td><td>3.5 / 105</td><td>≈98%</td><td>情报厂 + 业务大厂内化</td><td>★★★</td></tr>
-    <tr><td>U5 治理协同</td><td>CISO/GRC</td><td>1.6 / 58</td><td>≈105%</td><td>套件增值模块</td><td>★★</td></tr>
-    <tr style="background:#f7ecea;font-weight:700;"><td>合计</td><td colspan="2">= IDC AI+安全总盘 15.8 / 593.5</td><td>106.5%</td><td colspan="2">U1 另有跨二级 +86 亿（Securing AI 61 + 国家 25）</td></tr>
+    <tr><td><b>U1 自主攻防与暴露面验证</b>★</td><td>红队/攻防/暴露面</td><td>2.6 / 150；<span class="big">横向底座层全口径 2.8/193</span></td><td><b>125%；全口径≈133%</b></td><td>前沿权重归通用大厂，独立方拼专用层 / 系统 / 涉密交付</td><td class="big">★★★★★</td></tr>
+    <tr><td>U2 智能安全运营</td><td>SOC/MSSP</td><td>6.0 / 215.5（最大应用）</td><td>≈105%</td><td>平台 + 传统大厂</td><td>★★★★</td></tr>
+    <tr><td>U3 智能代码与应用安全</td><td>DevSecOps/研发安全</td><td>2.1 / 65</td><td>≈99%</td><td>DevSecOps 工具链 + 攻防能力外溢</td><td>★★★★</td></tr>
+    <tr><td>U4 情报测绘反诈</td><td>情报/公安/风控</td><td>3.5 / 105</td><td>≈97%</td><td>测绘 / 情报厂 + 业务大厂内化</td><td>★★★</td></tr>
+    <tr><td>U5 治理风险知识</td><td>CISO/GRC</td><td>1.6 / 58</td><td>≈105%</td><td>套件增值模块</td><td>★★</td></tr>
+    <tr style="background:#f7ecea;font-weight:700;"><td>合计</td><td colspan="2">= IDC AI+安全总盘 15.8 / 593.5</td><td>106.5%</td><td colspan="2">横向底座层另有跨二级 +86 亿（Securing AI 61 + 国家 25）</td></tr>
   </table>
-  <div class="core" style="margin-top:12px;"><b>筛选金句：</b>运营是数字值班员、找洞是侦察兵、情报是千里眼、合规是文书，攻击基座是<b>会自己打仗、还给全军供军火的兵工厂</b>。专用与通用是 95 分对 1.5 分的代差；通用大模型厂忙着奔 AGI、还怕制裁，只肯开源当上游——中国版 Mythos 的空位，就留给既懂攻防、又敢进涉密关基的专业团队。</div></div>
+  <div class="core" style="margin-top:12px;"><b>筛选金句：</b>自主攻防是会自己打仗的侦察兵、运营是数字值班员、代码安全是随队军医、情报测绘是千里眼与作战地图、合规是文书；而安全智能底座，是<b>给全军供军火、还收过路费的兵工厂</b>。前沿权重归通用大厂、它们忙着奔 AGI 还怕制裁只肯开源当上游——中国版 Mythos 的空位，就留给既懂攻防、握有独家数据、又敢进涉密关基的专业团队。</div></div>
 
-  <!-- 十：全球 -->
-  <h2 class="sec">十、全球对照（权威）</h2>
+  <!-- 十二：全球 -->
+  <h2 class="sec">十二、全球对照（权威）</h2>
   <div class="card"><table>
     <tr><th>Gartner AI Cybersecurity（用 AI 做安全）</th><th>2025</th><th>2026</th><th>2027</th></tr>
     <tr><td>全球支出（亿美元）</td><td>259</td><td>513（+98%）</td><td>860（+68%）</td></tr>
   </table>
   <ul style="font-size:13px;">
-    <li>专用安全模型竞速（2026）：微软 MAI-Cyber-1-Flash / MDASH 95.95%（超 Mythos 约 12 分）；OpenAI GPT-5.5-Cyber 81.9%→GPT-5.6-Cyber 高级任务 95%（通用版 1.5%）；Google Gemini 3.5 Flash Cyber + CodeMender（V8 55 独特漏洞、限政府 / 可信伙伴）；TrendAI AESIR 97%。</li>
+    <li><b>前沿攻击权重归属（关键校正）：</b>Anthropic Mythos 5 与通用旗舰 Fable 5 <b>同一套权重</b>（Project Glasswing 受控、曾出口管制，5.1 于 2026-09 升级）；OpenAI GPT-5.6-Cyber 建在 GPT-5.6-Sol 上（Daybreak 审核制）；Google Gemini 3.5/3.8 Flash Cyber 由通用 Flash 微调（CodeMender，仅政府 / 可信）；微软 MAI-Cyber-1-Flash 由 MAI-Code 后训练（5B，CyberGym 95.95%、超 Mythos 约 12 分、成本减半）。<b>无一家是安全创业公司自训前沿权重。</b></li>
+    <li><b>独立自主攻防系统成立：</b>XBOW（前 GitHub/CodeQL 团队）建在前沿模型上做 harness，2025 HackerOne 全美第一，2026-03 C 轮 1.2 亿美元、估值超 10 亿（红杉 / 英伟达 / 三星 / SentinelOne 等）；DARPA AIxCC（DEF CON 33）冠军 Team Atlanta、Trail of Bits、Theori 全部开源。</li>
     <li>CyberGym（UC Berkeley）：达酷诺威 DoGNAVY 90.8%，全球第三 / 开源第一（基于智谱 GLM-5.2 + AgentDoG）。</li>
+    <li><b>国内大厂工程路线：</b>360 图龙锋“中国版 Mythos”+ 仪天阵（明确走工程路线、不拼基座预训练）；安恒恒脑“中国版 Claude Code Security”；深信服 / 绿盟 / 某头部一线安全厂商均基于开放权重 + 自有攻防数据。</li>
     <li>Menlo：安全智能体部署 41%(2025)→73%(2026)，自主处置 3%→31%(2027)；AI-Amplified 2025 约 490 亿美元，约为 Securing AI（28 亿）的 17 倍。</li>
-    <li><b>退出锚点：</b>Cisco 收购 Agent 身份公司 Astrix 约 4 亿美元、Palo Alto 收购 Protect AI 约 5 亿美元、自主攻防 Noma 完成 1 亿美元 B 轮——安全基座 / Agent 安全并购通道清晰、估值有参照。</li>
+    <li><b>退出锚点：</b>Cisco 收购 Agent 身份公司 Astrix 约 4 亿美元、Palo Alto 收购 Protect AI 约 5 亿美元、自主攻防 Noma 完成 1 亿美元 B 轮——安全底座 / Agent 安全并购通道清晰、估值有参照。</li>
     <li><b>政策窗口：</b>全球首部智能体安全强制国标 2026 年 6 月在中国立项，行业判断战略窗口 18–24 个月。</li>
   </ul>
   <p class="note" style="margin-bottom:0;">口径：本章为“用 AI 做安全”，勿与姊妹篇 Securing AI（保护 AI）相加。</p></div>
 
-  <!-- 来源 -->
-  <h2 class="sec">十一、数据与资料来源</h2>
+  <!-- 十三：来源 -->
+  <h2 class="sec">十三、数据与资料来源</h2>
   <div class="card">
     <p style="margin-top:0;"><span class="pill">权威规模</span></p>
     <div class="refs">
       <div>IDC《Anthropic Mythos 叩关》2026-04（AI+安全 15.8→593.5 亿 CAGR106.5%；Securing AI 44.1→340.3 亿）；天融信调研纪要 2026-04-26 同口径转引</div>
       <div>Gartner Worldwide AI Spending 2026（AI Cybersecurity 259→513→860 亿美元）；Menlo Agents for Security</div>
+      <div>细分全球规模（第五节）：MarketsandMarkets——AI-SOC 150.5 亿(2025)→470.7 亿(2031) CAGR21.1%、AppSec 121.9 亿 CAGR11.5%、威胁情报 115.5 亿→229.7 亿 CAGR14.7%；Mordor——Autonomous SOC CAGR24.77%、企业 GRC 210.4 亿(2025)→421.9 亿(2031) CAGR12.3%</div>
+      <div>细分全球规模（续）：Grand View AppSec CAGR18.8%；Market.us ASM 23.4 亿 CAGR34.6%；GMI PTaaS CAGR18.3%；Dataintelo AI 漏洞修复 38 亿 CAGR16.8%；Straits 反欺诈 657 亿 CAGR24.2%；深伪检测约 6.5 亿美元</div>
+      <div>中国大盘：IDC《全球网络安全支出指南》中国 112 亿美元(2024)→178 亿(2029) CAGR9.7%；信通院《中国网络安全产业白皮书 2025》1867.3 亿元(2024,+18.6%)；赛迪顾问 952.4 亿元(2024)；五个三级中国拆分为以 IDC AI+安全总盘约束的本报告测算</div>
     </div>
-    <p><span class="pill" style="background:#b3402f;">专用模型 / 基准</span></p>
+    <p><span class="pill" style="background:#b3402f;">前沿攻击模型 / 基准</span></p>
     <div class="refs">
-      <div>Google DeepMind《Introducing Gemini 3.5 Flash Cyber》2026-07-21（CodeMender、V8 55 独特漏洞、政府 / 可信伙伴限量）</div>
-      <div>微软 MAI-Cyber-1-Flash / MDASH CyberGym 95.95%（超 Mythos 12 分、5B、半成本）；OpenAI GPT-5.5/5.6-Cyber（95% vs 通用 1.5%）；TrendAI AESIR 97%</div>
-      <div>arXiv 2605.23243《Are Frontier LLMs Ready for Cybersecurity? Evidence for Vertical Foundation Models》2026-05</div>
-      <div>UC Berkeley CyberGym 2026-08；上观 / 科技日报 / 腾讯云 DoGNAVY、AgentDoG、GLM-5.2 报道；东方财富计算机跟踪 2026-08-10</div>
+      <div>Anthropic《Claude Fable 5 / Mythos 5》及 System Card、Project Glasswing（Mythos 与 Fable5 同权重、受控开放）2026-04 / 5.1 版 2026-09</div>
+      <div>OpenAI《Expanding Daybreak》GPT-5.6-Cyber（95% vs 通用 1.5%）；Google DeepMind Gemini 3.5/3.8 Flash Cyber + CodeMender（V8 55 独特漏洞、政府 / 可信限量）</div>
+      <div>微软 MAI-Cyber-1-Flash / MDASH CyberGym 95.95%（超 Mythos 12 分、5B、半成本）；TrendAI AESIR 97%；arXiv 2605.23243 垂直基座研究 2026-05</div>
+      <div>XBOW 融资与 HackerOne 战绩（2026-03 C 轮 1.2 亿）；DARPA AIxCC DEF CON33 结果（2025-08）；UC Berkeley CyberGym 2026-08；DoGNAVY / AgentDoG / GLM-5.2 报道</div>
+    </div>
+    <p><span class="pill" style="background:#3d7d52;">国内重点团队（第七节）</span></p>
+    <div class="refs">
+      <div>赛博昆仑：昆仑实验室 / Agent 微补丁、借 GLM 修复 3 枚微软漏洞、B 轮（2026-07，中金 / 达晨 / 红杉 / 山行）公开报道</div>
+      <div>华清未央：机器语言大模型 MLM 2.0、100TB+ 二进制语料、信创迁移、Pre-A 超亿元（2026-05）；清华张超团队 DARPA CGC / GreyOne 公开资料</div>
+      <div>云起无垠：SecGPT / 云起安全大脑 / 智能模糊测试、天使+（朗玛峰 2024-03）、清华 NISL 合作公开资料</div>
+      <div>方寸跃迁：Skill Ward / Fangcun Guard / Observer、清华 AI 学院 / 交叉信息院孵化、天使轮公开资料（归二级②/④）</div>
+      <div>华顺信安：FOFA / FORadar / Goby、资产基因库、C 轮（招银国际）公开资料；成都无糖：公安反诈、270+ 客户、2024 营收 4741 万、B 轮公开资料</div>
+      <div>达酷诺威 DARKNAVY 深蓝：GEEKCON/deepsec、AVSS、DoGNAVY CyberGym 90.8%、独立研究服务机构 / 暂不融资（公开资料）</div>
     </div>
     <p><span class="pill" style="background:#c9831c;">大盘 / 软硬一体 / 专家访谈</span></p>
     <div class="refs">
       <div>IDC《中国 AI Agent 市场剖析 3Q25》（2025 企业级约 190 亿、2025–28 CAGR&gt;110%）；CIDC《AI 智能体赋能行业决策白皮书 2026》（212→449→3320 亿、CAGR107%）；中商 / 艾媒不同口径对照</div>
-      <div>润和 HopeClaw 昇腾一体机；宝德×恒安嘉新流量大模型一体机；实在 Agent 昇腾一体机；讯飞党政智盒（飞腾）</div>
+      <div>润和 HopeClaw 昇腾一体机；宝德×恒安嘉新流量大模型一体机；实在 Agent 昇腾一体机；讯飞党政智盒（飞腾）；360 图龙锋 / 安恒恒脑公开发布</div>
       <div>某头部一线安全厂商威胁情报中心：DeepSeek Harness 未授权 RCE，QVD-2026-57410，CVSS 9.8（2026-08-24，PoC 公开、CERT 验证，多源一致）</div>
-      <div><b>两位一线专家交流（2026-08）：</b>无糖信息张瑞东（Harness / 反诈攻防）、某头部一线安全厂商安全实验室负责人（行业内部交流，观点已隐去原话与身份，支撑事实已逐一核验，见 8.5）</div>
+      <div><b>两位一线专家交流（2026-08）：</b>成都无糖信息创始人（Harness / 反诈攻防）、某头部一线安全厂商安全实验室负责人（行业内部交流，观点已隐去原话与身份，支撑事实已逐一核验，见 10.5）</div>
       <div>AI 安全治理与智能体安全实践分享会 2026-08-18；腾讯朱雀 / 阿里千问专家访谈；OWASP Agentic Top10 2026；并购：Cisco-Astrix≈$4 亿、Palo Alto-Protect AI≈$5 亿、Noma $1 亿 B 轮</div>
     </div>
-    <p class="note" style="margin-bottom:0;">可信度声明：U1–U5、底座层渗透与三口径均为本报告测算（非权威直接发布），以两个 IDC 权威总盘为硬约束、以全球专用模型战绩与多源 Agent 大盘为佐证；总盘、全球数、基准战绩、QVD 漏洞、并购额为权威 / 公开直接引用。捕获率 12/18/25% 为情景假设、已给区间，不做单点伪精确；专家观点严格区分“待确认”与“已核实”，未把内部交流观点当既成事实。</p>
+    <p class="note" style="margin-bottom:0;">可信度声明：五域拆分、横向底座层渗透与三口径均为本报告测算（非权威直接发布），以两个 IDC 权威总盘为硬约束、以全球专用模型战绩与多源 Agent 大盘为佐证；总盘、全球数、基准战绩、QVD 漏洞、并购额、公司融资与产品为权威 / 公开直接引用。捕获率 12/18/25% 为情景假设、已给区间，不做单点伪精确；专家观点严格区分“待确认”与“已核实”，未把内部交流观点当既成事实，私人原话与身份不上页面。</p>
   </div>
 
 </div>
 <script>
 (function(){
   try{
-    var el=document.getElementById('c_cn');if(!el||typeof echarts==='undefined'){return;}
+    var el=document.getElementById('c_cn');if(!el||typeof echarts==='undefined'){var f=document.getElementById('fb2');if(f)f.style.display='block';return;}
     var ch=echarts.init(el);
-    var cats=['U1 底座层','U2 安全运营','U3 漏洞应用','U4 情报反欺诈','U5 治理协同'];
+    var cats=['U1 自主攻防','U2 安全运营','U3 代码应用','U4 情报测绘反诈','U5 治理知识'];
     ch.setOption({
       backgroundColor:'transparent',
-      title:{text:'本二级内各细分规模（亿元）：2025 vs 2030（合计=IDC 593.5；U1 另有跨二级收入见第八节）',left:'center',textStyle:{fontSize:12.8,color:'#6e2420'}},
+      title:{text:'五域规模（亿元）：2025 vs 2030（五域 MECE 合计=IDC 593.5；横向底座层全口径见第十节）',left:'center',textStyle:{fontSize:12.6,color:'#6e2420'}},
       tooltip:{trigger:'axis',triggerOn:'click',renderMode:'richText',confine:true,axisPointer:{type:'shadow'}},
       legend:{data:['2025(测算)','2030(测算)'],top:27},
       grid:{left:10,right:14,bottom:8,top:66,containLabel:true},
-      xAxis:{type:'category',data:cats,axisLabel:{interval:0,fontSize:11,color:'#5b4648'}},
+      xAxis:{type:'category',data:cats,axisLabel:{interval:0,fontSize:10.6,color:'#5b4648'}},
       yAxis:{type:'value',name:'亿元',nameTextStyle:{fontSize:11},axisLabel:{color:'#5b4648'}},
       series:[
-        {name:'2025(测算)',type:'bar',data:[1.2,6.0,3.5,3.5,1.6],itemStyle:{color:'#e2b4ac',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}},
-        {name:'2030(测算)',type:'bar',data:[107,215.5,108,105,58],itemStyle:{color:'#7c2a23',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}}
+        {name:'2025(测算)',type:'bar',data:[2.6,6.0,2.1,3.5,1.6],itemStyle:{color:'#e2b4ac',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}},
+        {name:'2030(测算)',type:'bar',data:[150,215.5,65,105,58],itemStyle:{color:'#7c2a23',borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10.5}}
       ]
     });
     window.addEventListener('resize',function(){ch.resize();});
-  }catch(e){if(window&&window.console)console.error(e);}
+  }catch(e){if(window&&window.console)console.error(e);var f=document.getElementById('fb2');if(f)f.style.display='block';}
+})();
+(function(){
+  try{
+    var el=document.getElementById('c_prio');if(!el||typeof echarts==='undefined'){var f=document.getElementById('fb3');if(f)f.style.display='block';return;}
+    var ch=echarts.init(el);
+    // [全球2025规模(亿美元), 全球CAGR%, 中国2030(亿), 名称, 颜色]
+    var rows=[
+      [1,55,150,'U1 自主攻防','#b3402f','right'],
+      [150.5,23,215.5,'U2 安全运营','#2f5d8a','top'],
+      [122,15,65,'U3 代码应用','#3d7d52','top'],
+      [115.5,15,105,'U4 情报测绘反诈','#c9831c','bottom'],
+      [210,12,58,'U5 治理知识','#6b5b95','top']
+    ];
+    ch.setOption({
+      backgroundColor:'transparent',
+      title:{text:'研究优先级四象限：全球现有规模 × 预期增速（气泡大小＝中国 2030 规模）',left:'center',textStyle:{fontSize:12.8,color:'#6e2420'}},
+      tooltip:{trigger:'item',formatter:function(p){var d=p.data;return '<b>'+d.name+'</b><br/>2025 全球规模：'+d.value[0]+' 亿美元<br/>全球预期 CAGR：'+d.value[1]+'%<br/>中国 2030：'+d.value[2]+' 亿元';}},
+      grid:{left:14,right:30,top:60,bottom:46,containLabel:true},
+      xAxis:{type:'value',name:'2025 全球规模（亿美元）→',nameLocation:'middle',nameGap:30,nameTextStyle:{fontSize:11.5,color:'#5b4648'},axisLabel:{color:'#5b4648'},splitLine:{lineStyle:{color:'#f0e4e4'}}},
+      yAxis:{type:'value',name:'全球预期 CAGR (%) →',nameLocation:'middle',nameGap:38,nameTextStyle:{fontSize:11.5,color:'#5b4648'},min:0,max:60,axisLabel:{color:'#5b4648'},splitLine:{lineStyle:{color:'#f0e4e4'}}},
+      series:[{
+        type:'scatter',
+        data:rows.map(function(r){return {value:[r[0],r[1],r[2]],name:r[3],itemStyle:{color:r[4],opacity:.82,borderColor:'#fff',borderWidth:1.5},symbolSize:Math.sqrt(r[2])*2.4,label:{show:true,formatter:r[3],position:r[5]||'top',fontSize:11.2,fontWeight:'bold',color:r[4]}};}),
+        markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#b98a87'},data:[{xAxis:100},{yAxis:20}],label:{show:false}}
+      }]
+    });
+    window.addEventListener('resize',function(){ch.resize();});
+  }catch(e){if(window&&window.console)console.error(e);var f=document.getElementById('fb3');if(f)f.style.display='block';}
 })();
 </script>
 </body>
