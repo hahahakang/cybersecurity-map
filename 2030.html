@@ -26,6 +26,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .oe-text i{font-style:normal;font-size:11px;color:#a5b4fc;line-height:1.5;}
 .oe-arrow{flex-shrink:0;font-size:12.5px;font-weight:700;color:#fff;background:linear-gradient(90deg,#6366f1,#8b5cf6);padding:8px 15px;border-radius:8px;white-space:nowrap;}
 @media(max-width:900px){.overall-entry{flex-wrap:wrap;}.oe-arrow{width:100%;text-align:center;}}
+.compare-entry{display:flex;align-items:center;gap:13px;margin:10px 0 4px;padding:13px 18px;border-radius:12px;text-decoration:none;
+  background:linear-gradient(90deg,rgba(20,184,166,0.14),rgba(52,211,153,0.12) 50%,rgba(45,212,191,0.14));
+  border:1.5px solid rgba(45,212,191,0.45);box-shadow:0 0 22px rgba(20,184,166,0.16);transition:.2s;}
+.compare-entry:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(20,184,166,0.3);border-color:rgba(45,212,191,0.7);}
+.compare-entry .oe-text b{color:#ccfbf1;} .compare-entry .oe-text i{color:#99f6e4;}
+.compare-entry .oe-arrow{background:linear-gradient(90deg,#0d9488,#10b981);}
+@media(max-width:900px){.compare-entry{flex-wrap:wrap;}}
 .pillar-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 8px;}
 .pillar{position:relative;border-radius:12px;padding:14px 14px 12px;text-decoration:none;color:inherit;transition:all .25s;display:block;
   background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);overflow:hidden;}
@@ -106,8 +113,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   <!-- 总体行业图谱入口 -->
   <a href="overall-map.html" class="overall-entry">
     <span class="oe-icon">🗺️</span>
-    <span class="oe-text"><b>总体行业图谱</b><i>AGI 安全 4 大二级板块 → 三级细分(2025/2030规模·CAGR) → 四级能力 全景树状图，金色 T4 运行时防护(Harness)、红色 U1 攻击基座(对标 Mythos5) 两大重点赛道已高亮</i></span>
+    <span class="oe-text"><b>总体行业图谱</b><i>AGI 安全 4 大二级板块 → 三级细分(2025/2030规模·CAGR) → 三级细分功能点 全景树状图，金色 T4 运行时防护(Harness)、红色 安全智能底座层(对标 Mythos5) 两大重点已高亮</i></span>
     <span class="oe-arrow">查看全景 →</span>
+  </a>
+
+  <!-- 二级细分重点比较入口 -->
+  <a href="segment-compare.html" class="compare-entry">
+    <span class="oe-icon">📊</span>
+    <span class="oe-text"><b>AGI 安全行业二级细分市场重点比较</b><i>S1 建设AI / S2 运行Agent / S3 用AI赋能 / S4 治理保证，8 列同口径横向比较（过去/预期增速·现有规模·进口占比·未来空间·竞争门槛·研究建议），主攻 S2 运行时防护 与 S3 自主攻防·安全智能底座</i></span>
+    <span class="oe-arrow">查看比较 →</span>
   </a>
 
   <!-- 四大板块入口 -->
