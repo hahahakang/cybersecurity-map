@@ -391,7 +391,7 @@ function drawLinks(){
     const pb=parent.getBoundingClientRect();
     const x1=pb.right-rb.left, y1=pb.top+pb.height/2-rb.top;
     const color=children.dataset.link||'#64748b';
-    children.querySelectorAll(':scope > .nw > .node').forEach(child=>{
+    children.querySelectorAll(':scope > .nw > .node, :scope > .nw > .mini-card').forEach(child=>{
       const cb=child.getBoundingClientRect();
       const x2=cb.left-rb.left, y2=cb.top+cb.height/2-rb.top;
       const mx=(x1+x2)/2;
