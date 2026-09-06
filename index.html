@@ -51,6 +51,16 @@
   .stat-card .value { font-size: 22px; font-weight: 700; color: #f1f5f9; }
   .stat-card .value .unit { font-size: 12px; color: #64748b; font-weight: 400; margin-left: 3px; }
   .stat-card .delta { font-size: 11px; color: #34d399; margin-top: 3px; }
+  .stat-card .value .u2 { font-size:13px; color:#94a3b8; font-weight:500; }
+  .caliber-bar { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap;
+    background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.22);
+    border-radius:10px; padding:10px 14px; margin-bottom:14px; font-size:11.5px; line-height:1.6; color:#cbd5e1; }
+  .caliber-bar .cb-tag{flex:0 0 auto;font-weight:700;color:#38bdf8;font-size:11px;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:2px 8px;}
+  .caliber-bar b{color:#f1f5f9;} .caliber-bar .warn{color:#fbbf24;}
+  .src-tab{width:100%;border-collapse:collapse;font-size:11px;color:#aeb9c6;}
+  .src-tab td{padding:4px 8px 4px 0;vertical-align:top;line-height:1.6;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .src-tab td.sc{width:96px;color:#64748b;font-weight:700;white-space:nowrap;}
+  .src-tab a{color:#38bdf8;text-decoration:none;} .src-tab a:hover{text-decoration:underline;}
   .chart-wrap {
     background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px; padding: 12px; position: relative;
@@ -99,7 +109,7 @@
 <div class="container">
   <div class="header">
     <h1>全球网络安全市场格局图谱</h1>
-    <div class="sub">Cybersecurity Market Landscape · 矩形面积 = 公司市值 · 颜色 = 技术领域 · 数据截至 2026年8月</div>
+    <div class="sub">Cybersecurity Market Landscape · <b style="color:#cbd5e1;">矩形面积＝公司市值（存量）</b>，顶部「市场规模」＝行业安全支出（流量），两者口径不同 · 颜色＝技术领域 · 数据截至 2026年8月</div>
     <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
       <a href="2030.html" style="padding:7px 16px;border-radius:8px;font-size:12.5px;color:#a78bfa;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.3);text-decoration:none;">🔮 2030 格局预判</a>
       <a href="2035.html" style="padding:7px 16px;border-radius:8px;font-size:12.5px;color:#c084fc;background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.3);text-decoration:none;">🌌 2035 格局预判</a>
@@ -115,6 +125,11 @@
 
   <div class="stats-row" id="statsRow"></div>
 
+  <div class="caliber-bar">
+    <span class="cb-tag">口径提示</span>
+    <div><b>两套数字不可混用：</b>上方「市场规模」是行业<b>年度安全支出</b>（Gartner 终端用户口径，代表市场空间/流量）；下方矩形<b>面积＝上市公司市值</b>（公开市场存量估值）。矩形面积<b class="warn">不是</b>对市场规模的分割，二者不可相加。切换 Tab 可分别查看中国 / 美国 / 中美以外 / 全球。</div>
+  </div>
+
   <div class="chart-wrap">
     <div id="mainChart"></div>
 <div id="detailTip"></div>
@@ -122,10 +137,19 @@
 
   <div class="legend-bar" id="legendBar"></div>
 
-  <div class="footer">
-    数据来源：同花顺 / 证券时报 / 东方财富 / finplify / SecurityLab / Grand View Research / 数说安全 · 美股市值按 1 USD≈7.2 CNY 统一换算 ·
-    图谱分类参考数说安全《2025中国网络安全市场全景图》与 Alexej Pikovsky Cybersecurity Market Map 2026<br>
-    注：市值为公开市场数据，已被收购/私有化公司标注收购价或估值；市场规模统一采用Gartner终端用户信息安全支出口径(2026E)，各板块加总一致
+<div class="footer">
+    <div style="text-align:left;max-width:1120px;margin:0 auto;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;">
+      <div style="color:#94a3b8;font-weight:700;font-size:11.5px;margin-bottom:7px;">数据来源与引用（访问日期均为 2026-09-06；美股市值按 1 USD≈7.2 CNY 换算）</div>
+      <table class="src-tab">
+       <tr><td class="sc">全球规模/CAGR</td><td><a href="https://www.gartner.com/en/information-technology/topics/information-security" target="_blank" rel="noopener">Gartner</a> · Forecast: Information Security &amp; Risk Management Spending（终端用户信息安全支出 2024–2029，2025 年 Q3 更新）——全球规模与五年 CAGR</td></tr>
+       <tr><td class="sc">中国市场</td><td><a href="https://www.idc.com" target="_blank" rel="noopener">IDC</a> · Worldwide Security Spending Guide（2026.4 版）；数世咨询中国网络安全市场年度测算（2025）——中国规模与 CAGR 区间</td></tr>
+       <tr><td class="sc">美国市场</td><td><a href="https://www.kenresearch.com" target="_blank" rel="noopener">Ken Research</a> · U.S. Cybersecurity Market 2025–2031；区间交叉参 Mordor / Fortune Business Insights——美国规模与 CAGR</td></tr>
+       <tr><td class="sc">区域结构</td><td><a href="https://www.grandviewresearch.com/industry-analysis/cyber-security-market" target="_blank" rel="noopener">Grand View Research</a> · Cybersecurity Market 2025–2030（分区域版）——欧洲/亚太/拉美中东非差额交叉校验</td></tr>
+       <tr><td class="sc">公司市值</td><td><a href="https://www.10jqka.com.cn" target="_blank" rel="noopener">同花顺</a> · <a href="https://www.eastmoney.com" target="_blank" rel="noopener">东方财富</a> · <a href="https://www.stcn.com" target="_blank" rel="noopener">证券时报</a>（A 股市值，2026-08 收盘）；finplify / SecurityLab（美股市值与并购对价，2026-08）——矩形面积与公司资料</td></tr>
+       <tr><td class="sc">分类框架</td><td>数说安全《2025 中国网络安全市场全景图》（安全内参 <a href="https://www.secrss.com" target="_blank" rel="noopener">secrss.com</a>）；Alexej Pikovsky, Cybersecurity Market Map 2026——领域分类参考</td></tr>
+      </table>
+      <div style="margin-top:8px;color:#64748b;line-height:1.75;font-size:10.5px;">口径说明：①「市场规模」为行业年度终端用户安全支出（市场空间/流量），「矩形面积」为上市公司市值（存量估值），口径不同、不可相加或相互分割；②已被收购/私有化企业按收购对价或最近一轮估值标注并注明状态；③「中美以外全球」规模＝全球支出−美国−中国的差额，其下矩形为总部位于该地区的公司市值样本，并非该支出的构成项；④思科安全（含 2024 年 280 亿美元收购的 Splunk）隶属思科集团、无独立上市市值，不参与市值面积，仅作竞争格局说明；⑤标注「测算」者为研究团队在权威总盘框架下的行业测算，非机构直接发布数值。</div>
+    </div>
   </div>
 </div>
 
@@ -173,7 +197,6 @@
     {cat:'网络基础架构', items:[
       {name:'Palo Alto Networks', val:286, desc:'防火墙+Prisma SASE·全球平台龙头', url:'https://www.paloaltonetworks.com', founders:'Nir Zuk(1971年生)', ipo:'2012年NYSE上市', why:'发明下一代防火墙(NGFW)品类，从防火墙扩展到Prisma云安全+Cortex安全运营+Strata网络三大平台，Nikesh Arora任CEO后激进并购平台化，成为全球最大纯安全厂商', note:'2026年市值约$1300亿'},
       {name:'Fortinet', val:61, desc:'NGFW·SASE·SMB市场深厚', url:'https://www.fortinet.com', founders:'谢青Ken Xie(1963年生)、谢华Michael Xie', ipo:'2009年NASDAQ上市', why:'自研FortiASIC芯片实现高性能低价，FortiGate一体机整合防火墙/VPN/杀毒/IPS多功能，SMB到企业全覆盖，出货量全球第一，安全+网络融合战略', note:'2026年市值约$600亿'},
-      {name:'Cisco Security', val:0, desc:'Splunk收购后整合·网络安全巨头', url:'https://www.cisco.com', founders:'Leonard Bosack、Sandy Lerner', ipo:'1990年NASDAQ上市', why:'网络设备霸主，安全嵌入网络基础设施，2024年$280亿收购Splunk强化安全运营/可观测性，从硬件向软件+SaaS转型', note:'含Splunk $28B收购; 市值约$2500亿'}
     ]},
     {cat:'端点安全', items:[
       {name:'CrowdStrike', val:194, desc:'EDR/XDR·云原生端点安全龙头', url:'https://www.crowdstrike.com', founders:'George Kurtz(约1965年生)、Dmitri Alperovitch', ipo:'2019年NASDAQ上市', why:'云原生EDR颠覆传统杀毒，单代理轻量架构免重启，Falcon平台模块化扩展(19+模块)，订阅模式净留存率>120%，威胁情报飞轮效应', note:'2026年市值约$900亿'},
@@ -204,7 +227,6 @@
       {name:'Sophos', val:39, desc:'英国·中小企业安全(已被Thoma Bravo私有化)', url:'https://www.sophos.com', founders:'Jan Hruska、Peter Lammer', ipo:'2015年LSE上市，2020年Thoma Bravo $39亿私有化', why:'中小企业渠道+MSP伙伴生态深厚，端点+网络一体化，Intercept X端点检测领先，私有化后加速MDR服务转型', note:'$3.9B收购价'}
     ]},
     {cat:'身份与访问', items:[
-      {name:'CyberArk', val:22, desc:'以色列·特权访问管理PAM领导者', url:'https://www.cyberark.com', founders:'Udi Mokady(约1967年生)、Alon Cohen', ipo:'2014年NASDAQ上市', why:'特权访问管理(PAM)品类定义者和绝对领导者，以色列军方网络技术背景，从PAM向身份安全平台扩展', note:'2024年被Palo Alto Networks收购'}
     ]},
     {cat:'端点安全', items:[
       {name:'Trend Micro', val:15, desc:'日本·端点·混合云安全·企业级', url:'https://www.trendmicro.com', founders:'张明正Steve Chang(1954年生)', ipo:'1998年东京证券交易所上市', why:'日本市场根基深厚(日企客户忠诚度高)，端点+混合云安全布局早，与AWS/Azure/Vmware深度合作，威胁情报能力强'},
@@ -251,10 +273,10 @@
 
   // ===== 市场规模数据（统一Gartner口径：end-user information security spending, 2026E）=====
   var marketStats = {
-    cn: {size:'~900', unit:'亿元人民币 (~$130亿)', cagr:'~9.2%', companies:'8家上市', note:'规模2026E(数世咨询887亿元+IDC插值); CAGR取IDC五年9.2%($110亿(2023)→$171亿(2028)),第三方区间9–11%,短期受宏观影响2025安全软件仅+3%'},
-    us: {size:'~$1,000', unit:'亿美元', cagr:'~9.6%', companies:'12家代表', note:'规模2026E约占全球41–42%; CAGR取Ken Research 9.6%($876亿(2025)→$1518亿(2031)),第三方区间7.1–11.4%'},
-    global_other: {size:'~$1,270', unit:'亿美元', cagr:'~11.5%', companies:'8家代表', note:'规模=全球差额:欧洲~$600亿+亚太(除中)~$360亿+拉美/中东非~$310亿; CAGR按全球加权平衡测算(新兴市场拉动),非单一机构发布'},
-    global: {size:'~$2,400', unit:'亿美元', cagr:'~10.6%', companies:'28家代表', note:'Gartner权威:终端用户信息安全支出$1934亿(2024)→$2130亿(2025)→$2398亿(2026);2024–2029五年CAGR 10.6%(固定汇率),2029达$3090亿。注:12.5%仅为2025→2026单年同比,非五年CAGR'}
+    cn: {size:'~900', unit:'亿元人民币 (~$130亿)', cagr:'~9.2%', companies:'13家上市', note:'行业支出口径2026E（数世咨询887亿元＋IDC插值）；CAGR取IDC五年9.2%（$110亿(2023)→$171亿(2028)），第三方区间9–11%。矩形为公司市值，非支出的拆分'},
+    us: {size:'~$1,000', unit:'亿美元', cagr:'~9.6%', companies:'12家代表', note:'行业支出口径2026E，约占全球41–42%；CAGR取Ken Research 9.6%（$876亿(2025)→$1518亿(2031)），第三方区间7.1–11.4%。思科安全（含Splunk）隶属集团、无独立市值，不参与面积'},
+    global_other: {size:'~$1,270', unit:'亿美元', cagr:'~11.5%', companies:'7家代表', note:'行业支出＝全球差额：欧洲~$600亿＋亚太(除中)~$360亿＋拉美/中东非~$310亿；下列矩形为总部在该地区的代表公司市值样本，并非该支出规模的构成项，二者口径不同、不可相加'},
+    global: {size:'~$2,400', unit:'亿美元', cagr:'~10.6%', companies:'32家代表', note:'Gartner终端用户信息安全支出口径：$1934亿(2024)→$2130亿(2025)→$2398亿(2026E)，2024–2029五年CAGR 10.6%（固定汇率）、2029达$3090亿。中/美/其他公司样本无重复'}
   };
 
   // ===== 构建treemap数据 =====
@@ -472,13 +494,19 @@
   }
 
   // ===== 统计卡片 =====
+  function countFirms(raw){ var n=0; raw.forEach(function(d){d.items.forEach(function(i){if(i.val>0)n++;});}); return n; }
   function renderStats(market) {
     var s = marketStats[market];
     var row = document.getElementById('statsRow');
+    var firmCount;
+    if(market==='cn') firmCount=countFirms(cnData)+' <span class="u2">家上市</span>';
+    else if(market==='us') firmCount=countFirms(usData)+' <span class="u2">家代表</span>';
+    else if(market==='global_other') firmCount=countFirms(otherData)+' <span class="u2">家代表</span>';
+    else firmCount=(countFirms(cnData)+countFirms(usData)+countFirms(otherData))+' <span class="u2">家·无重复</span>';
     row.innerHTML =
-      '<div class="stat-card"><div class="label">市场总规模</div><div class="value">'+s.size+'<span class="unit">'+s.unit+'</span></div><div class="delta">'+s.note+'</div></div>'
-      + '<div class="stat-card"><div class="label">年复合增长率</div><div class="value">'+s.cagr+'</div><div class="delta">2025-2030E</div></div>'
-      + '<div class="stat-card"><div class="label">图谱收录厂商</div><div class="value">'+s.companies+'</div><div class="delta">含上市/私有化代表企业</div></div>'
+      '<div class="stat-card"><div class="label">市场规模 · 行业支出口径</div><div class="value">'+s.size+'<span class="unit">'+s.unit+'</span></div><div class="delta">'+s.note+'</div></div>'
+      + '<div class="stat-card"><div class="label">年复合增长率</div><div class="value">'+s.cagr+'</div><div class="delta">行业支出 2025–2030E</div></div>'
+      + '<div class="stat-card"><div class="label">图谱收录厂商 · 市值口径</div><div class="value">'+firmCount+'</div><div class="delta">矩形面积＝公司市值（存量估值）</div></div>'
       + '<div class="stat-card"><div class="label">最大厂商市值</div><div class="value" id="topMktVal">--</div><div class="delta" id="topMktName">--</div></div>';
 
     // 计算最大厂商
