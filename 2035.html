@@ -57,6 +57,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .insight-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px;}
 .insight-card .ic-title{font-size:12px;font-weight:600;color:#c084fc;margin-bottom:6px;}
 .insight-card .ic-body{font-size:11.5px;color:#94a3b8;line-height:1.7;}
+  .bridge{margin-top:18px;background:rgba(255,255,255,0.03);border:1px solid rgba(192,132,252,0.25);border-radius:14px;padding:16px 18px;}
+  .bridge h3{font-size:14px;color:#d8b4fe;margin-bottom:4px;font-weight:700;}
+  .bridge .b-sub{font-size:11px;color:#64748b;margin-bottom:14px;}
+  .bridge-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .bstep{position:relative;background:rgba(192,132,252,0.07);border:1px solid rgba(192,132,252,0.25);border-radius:10px;padding:11px 12px;}
+  .bstep:not(:last-child)::after{content:'➜';position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#c084fc;font-size:14px;z-index:2;}
+  .bstep .bs-time{font-size:10px;color:#a78bfa;font-weight:700;letter-spacing:.5px;}
+  .bstep .bs-drv{font-size:12px;color:#e9d5ff;font-weight:700;margin:3px 0 6px;}
+  .bstep .bs-mech{font-size:10.5px;color:#aeb9c6;line-height:1.6;}
+  .bstep .bs-out{margin-top:7px;font-size:10.5px;color:#6ee7b7;line-height:1.55;border-top:1px dashed rgba(255,255,255,0.1);padding-top:6px;}
+  .bridge-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+  .bmeta{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;}
+  .bmeta .bm-t{font-size:11px;font-weight:700;margin-bottom:5px;}
+  .bmeta .bm-b{font-size:10.5px;color:#aeb9c6;line-height:1.65;}
+  .bmeta.end .bm-t{color:#6ee7b7;} .bmeta.asm .bm-t{color:#7dd3fc;} .bmeta.risk .bm-t{color:#fbbf24;}
+  @media(max-width:820px){.bridge-flow{grid-template-columns:1fr 1fr;}.bstep:not(:last-child)::after{display:none;}.bridge-meta{grid-template-columns:1fr;}}
 .footer{text-align:center;margin-top:20px;font-size:11px;color:#475569;line-height:1.7;}
 @media(max-width:720px){
   .orbit-system{width:340px;height:380px;}
@@ -109,7 +125,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   <div class="insights">
     <div class="insight-card">
       <div class="ic-title">▎核心判断一：基座归一</div>
-      <div class="ic-body">2030 年的 3-4 家基座进一步整合为 1-2 家国家级安全智能基座，形成统一安全大模型标准和协议，类似通信领域的"骨干网"，由国家队+龙头企业主导。</div>
+      <div class="ic-body">2030 年的 3–4 家基座，经「标准统一 → 并购整合 → 国家队主导 → 数据飞轮闭环」四重收敛（路径见下方专题），到 2035 年形成 1–2 家国家级安全智能基座——约 1 家「国家队＋龙头」综合基座、1 家软硬一体/市场化基座，统一安全大模型标准与协议，类似通信领域的「骨干网」。</div>
     </div>
     <div class="insight-card">
       <div class="ic-title">▎核心判断二：Agent 成为主力</div>
@@ -125,9 +141,41 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
     </div>
   </div>
 
+  <div class="bridge">
+    <h3>2030 → 2035：基座从「3–4 家」收敛到「1–2 家」的情景路径</h3>
+    <div class="b-sub">收敛不是线性外推，而是四股力量在明确时间窗内依次作用的结果；每一步都标注机制与剩余竞争者数量</div>
+    <div class="bridge-flow">
+      <div class="bstep">
+        <div class="bs-time">2030–2032</div><div class="bs-drv">① 标准统一</div>
+        <div class="bs-mech">国标/行标统一模型接口、安全评测与攻防对齐口径；多套私有基座的互操作与合规成本抬升，客户拒绝被单一私有格式锁定。</div>
+        <div class="bs-out">弱势私有基座先丢订单，3–4 家显化分层</div>
+      </div>
+      <div class="bstep">
+        <div class="bs-time">2031–2033</div><div class="bs-drv">② 并购整合</div>
+        <div class="bs-mech">头部以并购补齐独家攻防/黑产数据飞轮与信创软硬一体交付；第二、三梯队或被并购，或上移为应用/区域服务商，不再独立造基座。</div>
+        <div class="bs-out">有效基座竞争者降至 2–3 家</div>
+      </div>
+      <div class="bstep">
+        <div class="bs-time">2032–2034</div><div class="bs-drv">③ 国家队介入</div>
+        <div class="bs-mech">关基、政务、央国企采购向持证、自主可控的统一平台集中；国家级产业基金参股、龙头承建，统筹标准与攻防基础设施。</div>
+        <div class="bs-out">锚定 1 家国家级综合基座</div>
+      </div>
+      <div class="bstep">
+        <div class="bs-time">持续至 2035</div><div class="bs-drv">④ 飞轮闭环</div>
+        <div class="bs-mech">攻防数据、算力与部署规模形成正反馈，安全壁垒指数级抬升，后发者无法追平；软硬一体者凭信创栈守住市场化一极。</div>
+        <div class="bs-out">终局 1–2 家（1 综合 + 1 软硬一体）</div>
+      </div>
+    </div>
+    <div class="bridge-meta">
+      <div class="bmeta end"><div class="bm-t">▎终局结构</div><div class="bm-b">1 家「国家队＋龙头」国家级综合基座（统一标准、主供关基/政务/央国企）＋ 1 家软硬一体/市场化基座（信创栈＋民营效率）；其余厂商转为上层行业应用或省级区域运营节点，统一调用基座能力。</div></div>
+      <div class="bmeta asm"><div class="bm-t">▎关键假设</div><div class="bm-b">①国家将安全智能基座定位为数字基础设施，以标准与采购推动集中；②攻防数据飞轮构成不可复制的规模壁垒；③基座与上层应用分层，应用厂商不重复造基座。</div></div>
+      <div class="bmeta risk"><div class="bm-t">▎反向情景（风险）</div><div class="bm-b">若强制标准推迟、开源基座充分分流、或行业/区域数据割据，则可能长期维持 3 家左右、收敛慢于预期。跟踪信号：国标落地节奏、央国企统一采购批次、头部并购数量。</div></div>
+    </div>
+  </div>
+
   <div class="footer">
-    本图为 2035 年市场格局概念预判图，非精确预测 · 基于 AI 安全、Agent 技术和产业集中化趋势推演<br>
-    轨道节点持续旋转代表生态动态演化 · 2026年8月
+    本图为 2035 年情景推演：结论依赖上述「关键假设」，并以「反向情景」列示不收敛风险与跟踪信号<br>
+    华控产业基金研究管理部 · 2026 年 9 月
   </div>
 </div>
 
