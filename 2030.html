@@ -97,6 +97,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .invest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;}
 .invest-item{font-size:11px;color:#cbd5e1;line-height:1.6;background:rgba(0,0,0,0.2);padding:9px 12px;border-radius:8px;}
 .invest-item b{color:#6ee7b7;}
+  .exec-summary{margin:14px 0 6px;border:1px solid rgba(129,140,248,0.35);border-radius:14px;padding:14px 16px;
+    background:linear-gradient(135deg,rgba(56,189,248,0.06),rgba(129,140,248,0.05) 55%,rgba(192,132,252,0.06));}
+  .exec-summary .es-h{font-size:13.5px;font-weight:700;color:#e0e7ff;margin-bottom:10px;letter-spacing:.5px;}
+  .es-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;}
+  .es-col{background:rgba(0,0,0,0.18);border-radius:10px;padding:10px 12px;}
+  .es-col .es-t{font-size:11px;font-weight:700;margin-bottom:7px;letter-spacing:.5px;}
+  .es-col.c1 .es-t{color:#6ee7b7;} .es-col.c2 .es-t{color:#7dd3fc;} .es-col.c3 .es-t{color:#fbbf24;}
+  .es-col ul{list-style:none;} .es-col li{font-size:10.8px;color:#cbd5e1;line-height:1.6;margin-bottom:6px;padding-left:11px;position:relative;}
+  .es-col li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#818cf8;}
+  .es-col.c1 li::before{background:#34d399;} .es-col.c2 li::before{background:#38bdf8;} .es-col.c3 li::before{background:#fbbf24;}
+  .es-foot{margin-top:9px;font-size:10px;color:#64748b;}
+  @media(max-width:900px){.es-grid{grid-template-columns:1fr;}}
 .footer{text-align:center;margin-top:20px;font-size:11px;color:#475569;line-height:1.7;}
 @media(max-width:900px){.pillar-row{grid-template-columns:repeat(2,1fr);}.pillar-groups{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.header h1{font-size:19px;}.base-node{flex:1 1 100%;max-width:100%;}.pillar-row,.pillar-groups{grid-template-columns:1fr;}}
@@ -110,10 +122,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
     <div class="sub">基座大模型集中化 · 能力接口标准化 · 应用服务生态化</div>
   </div>
 
+  <!-- 执行摘要：结论/假设/风险前置（移动端首屏即见） -->
+  <div class="exec-summary">
+    <div class="es-h">▎执行摘要 · 结论 / 假设 / 风险（投委会速览）</div>
+    <div class="es-grid">
+      <div class="es-col c1">
+        <div class="es-t">核心结论</div>
+        <ul>
+          <li>安全基座大模型 2030 年收敛至 <b style="color:#fff;">3–4 家</b>（2 家纯软件＋1–2 家软硬一体），成为全产业"水电煤"，赢家通吃、布局宜早宜重。</li>
+          <li>四大板块机会分层：<b style="color:#fff;">安全地运行 Agent</b> 是 0→1 新增量、独立厂商机会最大；<b style="color:#fff;">用 AI 赋能安全</b> 改造存量、空间最大；建设与治理由大厂/合规机构主导。</li>
+          <li>MaaS 统一接口解耦上下层，形成"集中基座＋繁荣应用"的纺锤形生态。</li>
+          <li>关基行业由软硬件一体基座卡位，享国产替代＋AI 升级双重红利。</li>
+        </ul>
+      </div>
+      <div class="es-col c2">
+        <div class="es-t">关键假设</div>
+        <ul>
+          <li>训练算力、高质量攻防语料与闭环运营数据构成高壁垒，后发者难追平。</li>
+          <li>基座与应用经 API/MaaS 分层，应用厂商不重复造基座。</li>
+          <li>能源/金融/政务/军工等关基坚持私有化、低延迟、自主可控。</li>
+        </ul>
+      </div>
+      <div class="es-col c3">
+        <div class="es-t">主要风险</div>
+        <ul>
+          <li>单点输入过滤/检测工具易被大模型、云厂商原生内置，独立价值有限。</li>
+          <li>接口标准与生态格局未定，基座收敛节奏存在不确定性。</li>
+          <li>赢家通吃下应用层议价偏弱，须以行业 know-how 与数据闭环筑壁垒。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="es-foot">完整分层架构见下图，详细判断见「核心判断」、标的策略见「投资启示」。</div>
+  </div>
+
   <!-- 总体行业图谱入口 -->
   <a href="overall-map.html" class="overall-entry">
     <span class="oe-icon">🗺️</span>
-    <span class="oe-text"><b>总体行业图谱</b><i>AGI 安全 4 大二级板块 → 三级细分(2025/2030规模·CAGR) → 三级细分功能点 全景树状图，金色 T4 运行时防护(Harness)、红色 U1 自主攻防(第一优先·对标 Mythos5) 两大重点已高亮；灰虚线为横向安全智能底座层（技术内核·非独立赛道）</i></span>
+    <span class="oe-text"><b>总体行业图谱</b><i>AGI 安全 4 大二级板块 → 三级细分(2025/2030规模·CAGR) → 三级细分功能点 全景树状图，金色 T4 运行时防护(Harness)、红色 U1 自主攻防(第一优先·兼安全智能底座·对标 Mythos5) 两大重点已高亮；青色虚线为 U1 向其余细分横向供能</i></span>
     <span class="oe-arrow">查看全景 →</span>
   </a>
 
@@ -277,8 +322,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   </div>
 
   <div class="footer">
-    本图为 2030 年市场格局概念预判图，非精确市场份额数据 · 基于当前 AI 安全产业趋势推演<br>
-    四大板块框架参考 Gartner AI TRiSM、NIST AI RMF 与数说安全/安全牛行业图谱 · 2026年8月
+    本图为 2030 年情景推演，结论依赖上文「关键假设」，风险已在执行摘要列示<br>
+    框架参考 Gartner AI TRiSM、NIST AI RMF 与数说安全行业图谱 · 华控产业基金研究管理部 · 2026 年 9 月
   </div>
 </div>
 </body>
