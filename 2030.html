@@ -110,6 +110,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   .es-foot{margin-top:9px;font-size:10px;color:#64748b;}
   @media(max-width:900px){.es-grid{grid-template-columns:1fr;}}
 .footer{text-align:center;margin-top:20px;font-size:11px;color:#475569;line-height:1.7;}
+  /* 3D 投资决策系统入口 */
+  .os3d-wrap{display:flex;justify-content:center;margin:22px 0 6px;perspective:900px;}
+  a.btn-3d{position:relative;display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;user-select:none;
+    padding:18px 40px;border-radius:16px;font-weight:800;letter-spacing:1px;color:#fff;overflow:hidden;
+    background:linear-gradient(145deg,#22d3ee 0%,#6366f1 48%,#a855f7 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 -3px 0 rgba(0,0,0,.2) inset,
+      0 8px 0 #17143b,0 14px 24px rgba(99,102,241,.5),0 0 36px rgba(34,211,238,.35);
+    text-shadow:0 2px 4px rgba(0,0,0,.4);transform:translateZ(0);
+    transition:transform .12s ease,box-shadow .12s ease,filter .2s;}
+  a.btn-3d::before{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg);animation:btnShine 3.4s ease-in-out infinite;pointer-events:none;}
+  @keyframes btnShine{0%,62%{left:-80%;}100%{left:145%;}}
+  a.btn-3d:hover{transform:translateY(-3px);filter:brightness(1.08);
+    box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 -3px 0 rgba(0,0,0,.2) inset,
+      0 11px 0 #17143b,0 19px 32px rgba(99,102,241,.6),0 0 50px rgba(34,211,238,.5);}
+  a.btn-3d:active{transform:translateY(6px);
+    box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 -2px 0 rgba(0,0,0,.22) inset,
+      0 2px 0 #17143b,0 6px 12px rgba(99,102,241,.4),0 0 26px rgba(34,211,238,.3);}
+  a.btn-3d .b-ico{font-size:25px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45));}
+  a.btn-3d .b-txt{display:flex;flex-direction:column;line-height:1.22;text-align:left;}
+  a.btn-3d .b-main{font-size:17px;}
+  a.btn-3d .b-sub{font-size:9.5px;font-weight:600;letter-spacing:1px;opacity:.88;margin-top:4px;}
+  a.btn-3d .b-go{font-size:21px;font-weight:900;margin-left:6px;transition:transform .2s;}
+  a.btn-3d:hover .b-go{transform:translateX(6px);}
+  @media(max-width:640px){a.btn-3d{width:100%;justify-content:center;padding:15px 22px;}a.btn-3d .b-main{font-size:15px;}}
 @media(max-width:900px){.pillar-row{grid-template-columns:repeat(2,1fr);}.pillar-groups{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.header h1{font-size:19px;}.base-node{flex:1 1 100%;max-width:100%;}.pillar-row,.pillar-groups{grid-template-columns:1fr;}}
 </style>
@@ -196,6 +222,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
       <div class="p-en">AI Governance & Assurance</div>
       <div class="p-desc">合规审计、风险评估、标准认证、责任保险、监管科技</div>
       <span class="p-soon">板块四 · 概览见下图</span>
+    </a>
+  </div>
+
+  <!-- AGI 安全投资决策系统 · 3D 入口 -->
+  <div class="os3d-wrap">
+    <a class="btn-3d" href="https://hahahakang.github.io/hua-ai-security-investment-os-GPT5.6/" target="_blank" rel="noopener">
+      <span class="b-ico">🧭</span>
+      <span class="b-txt">
+        <span class="b-main">AGI 安全行业 · 投资决策系统</span>
+        <span class="b-sub">INVESTMENT DECISION OS · 智能投研决策台</span>
+      </span>
+      <span class="b-go">→</span>
     </a>
   </div>
 
