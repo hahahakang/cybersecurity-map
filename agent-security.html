@@ -93,12 +93,14 @@
   .refs{font-size:12.6px;color:var(--ink2);columns:2;column-gap:32px;}
   .refs div{break-inside:avoid;margin-bottom:6px;}
   .pill{display:inline-block;font-size:10.8px;padding:1px 7px;border-radius:4px;background:var(--navy);color:#fff;margin-right:5px;}
+  .tag{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .tag.t-ok{background:#e7f3ec;color:#2f6b45;border:1px solid #bfe0cd;}
+  .tag.t-warn{background:#fdf3e3;color:#9a6a17;border:1px solid #f0d6a8;}
   @media(max-width:880px){.rules,.seg-grid,.l4grid{grid-template-columns:1fr;}.sg+.sg{border-left:0;border-top:1px dashed var(--line);}.refs{columns:1;}header.h{padding:26px 20px;}}
 </style>
 </head>
 <body>
 <div style="max-width:1200px;margin:0 auto;padding:14px 22px 0;"><a href="2030.html" style="display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;color:#1b4965;background:#eef3f8;border:1px solid #cfdce8;text-decoration:none;font-family:inherit;">← 返回 2030 格局预判</a></div>
-
 <header class="h">
   <div class="kk">AGI SECURITY · INDUSTRY MAP · TAXONOMY · SIZING · C-END</div>
   <h1>“安全地运行 Agent”行业图谱：三级细分与功能点、中国市场规模与 C 端推演</h1>
@@ -106,13 +108,96 @@
 </header>
 <div class="wrap">
 
-  <div class="core"><b>核心结论：</b>①本二级划分为 <b>5 个三级、16 个功能点</b>；②中国市场权威总盘为 IDC“人工智能安全”<b>2025 年 44.1 亿 → 2030 年 340.3 亿元、CAGR 50.5%</b>，以其为锚的分项行业测算：运行时防护(T4) 18.5→148 亿元、体量最大，智能体身份(T3)增速最快；③<b>148 亿不是天花板</b>——智能体大盘以 CAGR≈70.9% 增长，安全支出＝大盘×渗透率，大盘联动重估下 T4 级市场 2030 实为 <b>100–310 亿元</b>、智能体安全总盘 240–700 亿元（详见第四节）；④行业头部专家观点一致指向 <b>harness / 运行时防护是共同卡点、价值在“控制面＋数据飞轮”而非模型</b>（详见第五节）；⑤<b>360 式“免费安全→C 端流量入口→全新商业模式”在本细分不成立</b>，根因是“买方结构”与“入口位置”双重反转，独立巨头的现实路径在 B 端运行时 + 身份的数据飞轮，而非 C 端流量。</div>
+  <div class="core"><b>核心结论：</b>①本二级划分为 <b>5 个三级、16 个功能点</b>；②中国市场权威总盘为 IDC“人工智能安全”<b>2025 年 44.1 亿 → 2030 年 340.3 亿元、CAGR 50.5%</b>，以其为锚的分项行业测算：运行时防护(T4) 18.5→148 亿元、体量最大，智能体身份(T3)增速最快；③<b>148 亿不是天花板</b>——智能体大盘以 CAGR≈70.9% 增长，安全支出＝大盘×渗透率，大盘联动重估下 T4 细分市场 2030 实为 <b>100–310 亿元</b>、智能体安全总盘 240–700 亿元（详见第四节）；④行业头部专家观点一致指向 <b>harness / 运行时防护是共同卡点、价值在“控制面＋数据飞轮”而非模型</b>（详见第五节）；⑤<b>360 式“免费安全→C 端流量入口→全新商业模式”在本细分不成立</b>，根因是“买方结构”与“入口位置”双重反转，独立巨头的现实路径在 B 端运行时 + 身份的数据飞轮，而非 C 端流量。</div>
+
+  <!-- 〇：细分行业概述 -->
+  <h2 class="sec">〇、细分行业概述</h2>
+  <p class="ss">开篇概述：①行业定义 → ②产品解构（核心组件 / 核心控制参数）→ ③应用场景 → ④发展阶段 → ⑤过去若干年规模与增速 → ⑥相对国外领先产品的差距、瓶颈。</p>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">① 行业定义</h3>
+    <p style="margin:0 0 8px;"><b>“安全地运行 Agent”指：为智能体（Agent）在执行多步、带工具权限、自主决策的任务全生命周期提供安全能力的软件产品与服务的集合——即智能体的“运行时安全带 / 控制面”（Harness）。</b>守护对象是“会自己干活、有工具、有数据权限”的 Agent，而非“只会对话”的聊天模型。</p>
+    <ul style="margin:0;padding-left:20px;">
+      <li><b>守护什么：</b>防止 Agent 被 Prompt 注入、越权调用工具 / API、MCP / Skill 供应链投毒、敏感数据外泄、被“洗脑”执行恶意指令等。</li>
+      <li><b>行业边界（Securing AI）：</b>本行业属于“守护 AI / 让 AI 安全运行（Securing AI）”一侧；与“用 AI 做安全（AI-amplified Security，AI 赋能安全运营）”是并列的两侧，不合并计算。</li>
+      <li><b>层级结构：</b>大行业“人工智能安全（Securing AI）”下，按产品类型（客户需求）划分本二级细分，下设 5 个三级（T1 治理态势 / T2 上线前测试 / T3 智能体身份 / T4 运行时防护 / T5 检测守护）与 16 个三级细分功能点（详见第二、三节）。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">② 产品解构：核心组件与核心控制参数</h3>
+    <p style="margin:0 0 8px;font-size:13.2px;">最终产品为<b>软件平台</b>（网关 / SDK / 平台 / Agent 原生等形态，非硬件设备）。按“设备解构”思路拆为五大核心组件（自底向上）与六项核心控制参数：</p>
+    <div style="text-align:center;font-size:12.2px;color:var(--ink2);margin-bottom:6px;">产品解构：安全地运行 Agent 软件平台的五大核心组件（自底向上）</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
+      <div style="background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:8px 13px;"><b>⑤ 数据飞轮 / 威胁情报层</b><span style="font-size:12.2px;color:var(--ink2);">　攻防数据沉淀 · 红队评测 · 规则与模型持续更新（越用越准，头部卡点）</span></div>
+      <div style="background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:8px 13px;"><b>④ 执行 / 阻断层</b><span style="font-size:12.2px;color:var(--ink2);">　inline 实时阻断 · 沙箱隔离 · 命令热替换 · 人工审批兜底（毫秒级）</span></div>
+      <div style="background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:8px 13px;"><b>③ 策略决策引擎</b><span style="font-size:12.2px;color:var(--ink2);">　策略库 · 风险评分 · 上下文感知实时决策</span></div>
+      <div style="background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:8px 13px;"><b>② 意图理解 / 语义分析层</b><span style="font-size:12.2px;color:var(--ink2);">　大模型意图识别 · 多步行为关联 · Policy-as-Code</span></div>
+      <div style="background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:8px 13px;"><b>① 流量 / 行为采集层</b><span style="font-size:12.2px;color:var(--ink2);">　Agent 事件流 · MCP / 工具调用捕获 · 会话级 Token 记录</span></div>
+    </div>
+    <table>
+      <tr><th>核心控制参数</th><th>含义</th><th>行业关键要求</th></tr>
+      <tr><td><b>吞吐量（QPS）</b></td><td>单网关每秒可处理 Agent 调用数</td><td>需支撑企业级 Agent 舰队高并发</td></tr>
+      <tr><td><b>端到端延迟</b></td><td>inline 阻断引入的附加延迟</td><td>需毫秒级，不能拖慢 Agent 决策（&lt;10ms 量级）</td></tr>
+      <tr><td><b>拦截准确率</b></td><td>检出率 / 漏报率 / 误报率</td><td>高检出 + 低误报；误报会打断 Agent 业务</td></tr>
+      <tr><td><b>多步行为建模深度</b></td><td>可关联多少步工具调用的上下文</td><td>决定能否识别“洗脑式”跨步攻击</td></tr>
+      <tr><td><b>生态兼容度</b></td><td>支持 Agent 框架 / MCP 协议 / 工具种类</td><td>决定部署渗透率与绑定深度</td></tr>
+      <tr><td><b>策略下发时延</b></td><td>新威胁规则 / 策略更新生效速度</td><td>决定对新型攻击的响应速度</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">③ 应用场景</h3>
+    <ul style="margin:0;padding-left:20px;">
+      <li><b>金融 / 政务 / 运营商 / 能源电力 / 制造：</b>企业部署自主 Agent（智能客服、数据查询、代码生成、邮件与审批处理、交易辅助）时，防止越权工具调用、敏感数据外泄、Prompt 注入。</li>
+      <li><b>供应链安全（标志性事件）：</b>2026-01 OpenClaw“利爪浩劫”（ClawHavoc）——迄今最大规模 AI 智能体供应链攻击，暴露 Skill / MCP 生态投毒风险，直接催生运行时防护刚需。</li>
+      <li><b>MCP / Skill 审查：</b>Agent 调用第三方工具前的供应链体检（对应 T2 上线前测试 + T4 运行时双重覆盖）。</li>
+      <li><b>合规审计：</b>智能体强制国标《智能体应用安全基本要求》2026-06 立项、网安标委“人工智能安全标准工作组（WG9）”组建，驱动审计与态势管理采购。</li>
+      <li><b>个人侧（当前非主流）：</b>保护个人免受 AI 伤害（反深伪 / AI 鉴真 / 反诈）正被 OS、国家、平台三方内化为准公共品，不构成独立第三方大市场（详见第十节推演）。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">④ 发展阶段</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:6px 0 4px;">
+      <div style="flex:1;min-width:150px;background:#eef3f8;border:1px solid #d7e3ee;border-radius:9px;padding:9px 12px;"><b style="color:var(--navy);">导入期 · 2023–2024</b><br><span style="font-size:12.2px;">大模型爆发 → LLM 安全（护栏 / 评测）萌芽，以“模型层”为主，Agent 尚未规模化。</span></div>
+      <div style="flex:1;min-width:150px;background:#fff7ed;border:1px solid #f0d3ac;border-radius:9px;padding:9px 12px;"><b style="color:var(--navy);">成长期 · 2025–2026（当前）</b><br><span style="font-size:12.2px;">Agent 化落地 → 威胁焦点从模型层转移到运行时与供应链；“利爪浩劫”敲响警钟；强制国标立项。</span></div>
+      <div style="flex:1;min-width:150px;background:#f0f7f4;border:1px solid #cfe5d6;border-radius:9px;padding:9px 12px;"><b style="color:var(--navy);">扩张期 · 2027–2030</b><br><span style="font-size:12.2px;">企业级标准与信任体系成熟 → 渗透率抬升；Gartner 全球 2030 $164 亿、中国 IDC 2030 340.3 亿。</span></div>
+    </div>
+    <p style="font-size:12.8px;color:var(--ink2);margin:8px 0 0;"><b>中美格局差异：</b>美国为<b>资本风投驱动 + 平台化整合</b>（Check Point 收购 Lakera、Cisco 收购 Astrix，独立厂商被巨头吸纳）；中国为<b>监管合规驱动 + 垂直行业深耕</b>（强制算法备案、AIGC 内容标识、智能体安全国标）。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">⑤ 过去若干年的规模与增速</h3>
+    <table>
+      <tr><th>口径</th><th>规模</th><th>增速</th></tr>
+      <tr><td><b>中国“人工智能安全”总盘（IDC，本报告权威口径）</b></td><td>2025 44.1 亿 → 2030 340.3 亿元</td><td>CAGR 50.5%</td></tr>
+      <tr><td>中国 AI 安全相关支出（多方交叉，网易 / 豆丁多口径）</td><td>2024 约 87.6–187.3 亿元 / 约 18 亿美元</td><td>2023→2024 同比 +19%～+26%，复合约 23.4%</td></tr>
+      <tr><td>中国网络安全大盘（赛迪口径）</td><td>2019 478 亿 → 2023 694 亿元</td><td>CAGR 9.77%（AI 安全增速显著高于大盘）</td></tr>
+      <tr><td>全球 Securing AI（Gartner，权威）</td><td>2026 $28.35 亿 → 2030 $164 亿美元</td><td>2027 同比 +68.7%</td></tr>
+      <tr><td>分项示例：中国基于大模型的安全运营平台（IDC）</td><td>2025 15 亿元</td><td>同比 +144%（近年网安最快细分）</td></tr>
+    </table>
+    <div style="margin-top:10px;text-align:center;font-size:12.2px;color:var(--ink2);">全球 Securing AI 市场规模趋势（Gartner，亿美元）</div>
+    <div id="c_ov" class="chart" style="height:300px;margin-top:4px;"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;color:var(--navy);">⑥ 相对国外领先产品的差距、瓶颈</h3>
+    <table>
+      <tr><th>维度</th><th>国外领先（美国）</th><th>国内现状</th><th>差距 / 瓶颈</th></tr>
+      <tr><td><b>产品生态成熟度</b></td><td>Lakera→Check Point、Astrix→Cisco，独立产品已被巨头整合，平台化整合活跃</td><td>多为大厂内嵌方案（360 / 某头部一线安全厂商 / 深信服 / 蚂蚁）+ 初创，独立产品生态尚不成熟</td><td>生态与产品成熟度落后</td></tr>
+      <tr><td><b>攻防数据积累</b></td><td>开源生态 + 企业落地早，数据与案例领先</td><td>数据与算力是瓶颈；开源模型多为“开放权重”半开源，靠后训练把能力卷上去存疑</td><td>数据飞轮落后</td></tr>
+      <tr><td><b>标准 / 合规</b></td><td>平台化整合活跃、标准先行</td><td>监管合规驱动、垂直行业深耕；但企业级 Agent 安全标准 / 信任体系缺失，方案互不联通形成“安全孤岛”</td><td>标准与互操作滞后</td></tr>
+      <tr><td><b>核心技术</b></td><td>多步行为建模、Guardian 自主决策领先</td><td>多依赖大模型厂商底座，Harness 自研能力分化</td><td>存在代差，头部正追赶</td></tr>
+    </table>
+    <p style="margin:8px 0 0;"><b>四大瓶颈：</b>① <b>数据与算力</b>——半开源模型后训练提升存疑，攻防数据积累不足；② <b>标准缺失</b>——企业级 Agent 安全标准 / 合规框架未统一，“安全孤岛”；③ <b>性能权衡</b>——inline 低延迟 + 高准确率难兼得，误报会打断 Agent 业务；④ <b>攻击面爆炸</b>——MCP / Skill 供应链、多步“洗脑”式攻击，静态规则难以覆盖，需动态意图理解。</p>
+  </div>
 
   <!-- 一 -->
   <h2 class="sec">一、划分原则与主轴线</h2>
   <p class="ss">界线清晰不杂糅 ｜ 体现大行业→细分层级 ｜ 产品类型（客户需求）为主轴，技术路线 / 产业链为辅助视角。</p>
   <div class="card"><div class="rules">
-    <div class="rule"><b>主轴 · 产品类型（客户需求不同）</b><br>以“谁买、生命周期哪一环、哪种控制模式”切三级，各有独立买方与预算、边界清晰、不重不漏。</div>
+    <div class="rule"><b>主轴 · 产品类型（客户需求不同）</b><br>以“谁买、生命周期哪一环、哪种控制模式”划分三级，各有独立买方与预算、边界清晰互不重叠。</div>
     <div class="rule"><b>辅助 A · 技术路线</b><br>网关 / SDK / 平台 / Agent 原生是同一需求的不同实现，横跨多层，不单独成客户细分。</div>
     <div class="rule"><b>辅助 B · 产业链环节</b><br>上游基座数据 → 中游产品平台 → 下游运营服务，客户彼此不同，单列纵向结构。</div>
   </div></div>
@@ -126,8 +211,8 @@
       <div class="tnode" style="border:2px solid var(--teal);background:#f2f9fb;">
         <span class="lvl-label" style="background:var(--teal);">二级</span><b>安全地运行 Agent（Securing AI / 守护智能体）— 本报告对象</b>
         <div class="branch" style="margin-top:9px;">
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s1);">T1</span><span class="seg-name">AI 资产治理与态势管理 <span class="seg-en">AISPM &amp; Governance</span></span></div><div class="l4list"><span class="l4">1.1 资产发现与影子 AI</span><span class="l4">1.2 风险态势 / AI-BOM / 合规映射</span><span class="l4">1.3 策略与治理工作流</span></div></div>
-          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s2);">T2</span><span class="seg-name">AI 应用安全测试（上线前） <span class="seg-en">AppSec Testing / Shift-Left</span></span></div><div class="l4list"><span class="l4">2.1 自动化红队 / 对抗测试</span><span class="l4">2.2 模型制品安全扫描</span><span class="l4">2.3 MCP/Skill 供应链审查与签名</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s1);">T1</span><span class="seg-name">智能体资产治理与态势管理 <span class="seg-en">AISPM &amp; Governance</span></span></div><div class="l4list"><span class="l4">1.1 资产发现与影子 AI</span><span class="l4">1.2 风险态势 / AI-BOM / 合规映射</span><span class="l4">1.3 策略与治理工作流</span></div></div>
+          <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s2);">T2</span><span class="seg-name">智能体应用安全测试（上线前） <span class="seg-en">AppSec Testing / Shift-Left</span></span></div><div class="l4list"><span class="l4">2.1 自动化红队 / 对抗测试</span><span class="l4">2.2 模型制品安全扫描</span><span class="l4">2.3 MCP/Skill 供应链审查与签名</span></div></div>
           <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s3);">T3</span><span class="seg-name">智能体身份与访问控制 <span class="seg-en">Agent Identity / NHI-PAM</span></span></div><div class="l4list"><span class="l4">3.1 非人身份(NHI)生命周期</span><span class="l4">3.2 最小权限与委托链</span><span class="l4">3.3 特权访问与凭证防护</span></div></div>
           <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s4);">T4</span><span class="seg-name">智能体运行时防护 <span class="seg-en">Runtime Protection / Usage Control</span></span></div><div class="l4list"><span class="l4">4.1 护栏 / LLM 防火墙</span><span class="l4">4.2 工具调用与行为实时管控</span><span class="l4">4.3 Agentic DLP 数据防泄漏</span><span class="l4">4.4 执行沙箱与爆炸半径隔离</span></div></div>
           <div class="tnode"><div class="seg-head"><span class="seg-badge" style="background:var(--s5);">T5</span><span class="seg-name">可观测、检测响应与守护智能体 <span class="seg-en">Observability / AIDR / Guardian</span></span></div><div class="l4list"><span class="l4">5.1 全链路轨迹可观测与审计</span><span class="l4">5.2 AIDR / 级联熔断</span><span class="l4">5.3 守护智能体 Guardian Agents</span></div></div>
@@ -175,7 +260,7 @@
   <h2 class="sec">四、五个三级细分的中国市场规模与 CAGR（2025 / 2030）</h2>
   <p class="ss">权威总盘 + 分项测算，逐项标注口径，避免把“相邻成熟市场”与“本细分增量”重复相加。</p>
   <div class="card">
-    <div class="warn"><b>口径说明：</b>①总盘为 IDC 权威值——中国“人工智能安全（Securing AI，即保护 AI 自身）”收入 <b>2025 年 44.1 亿 → 2030 年 340.3 亿元、CAGR 50.5%</b>，占网络安全市场比重由 5.3% 升至 24.28%；本报告 T1–T5 聚焦其中可独立商业化的“运行”侧。IDC 尚未按 T1–T5 口径发布分项。②各三级分项为研究团队以 IDC 总盘为锚、参照 Gartner 全球细分结构并结合中国“合规内容 / 护栏先行、身份与守护偏早期”阶段特征的行业测算，用于筛选排序。③右侧“权威锚点”为可直接引用的相邻市场，用于量级参照，<b>不并入</b>总盘（口径更宽，含非智能体部分）。</div>
+    <div class="warn"><b>口径说明：</b>①总盘为 IDC 权威值——中国“人工智能安全（Securing AI，即保护 AI 自身）”收入 <b>2025 年 44.1 亿 → 2030 年 340.3 亿元、CAGR 50.5%</b>，占网络安全市场比重由 5.3% 升至 24.28%；此为 Securing AI 全口径（含建设侧、评测侧），本报告 T1–T5 聚焦其中可独立商业化的“运行”侧，是其主体，IDC 尚未按 T1–T5 口径发布分项。②各三级分项为研究团队以 IDC 总盘为锚、参照 Gartner 全球细分结构并结合中国“合规内容 / 护栏先行、身份与守护偏早期”阶段特征的行业测算，用于赛道筛选与排序。③右侧“权威锚点”为可直接引用的相邻市场，用于量级参照，<b>不并入</b>总盘（口径更宽，含非智能体部分）。④<b>跨页口径对照：</b>本页 T1–T5 以 Securing AI 全口径总盘为锚，覆盖服务于 Agent 安全运行的紧邻环节（含上线前测试、治理态势）；若按<a href="segment-compare.html">《四大二级细分重点比较》</a>“建设 / 运行 / 治理”三分的同口径横向比较，纯运行时部分 2030 约 <b>245 亿元</b>。两页分别为“全生命周期运行视角”与“四细分同口径切分视角”，数字不矛盾、亦不可直接相加。</div>
     <div class="warn" style="background:#eef4f9;border-color:#c4d9e8;color:#1c4a63;"><b>⚠ 易混口径辨析（同一份 IDC 2026-04 里有两个数，别混用）：</b>
       <table style="margin-top:7px;background:#fff;">
         <tr><th>IDC 口径</th><th>2025→2030 / CAGR</th><th>本质</th><th>对应本报告二级</th></tr>
@@ -185,13 +270,13 @@
       <span style="font-size:12.3px;">为何增速差一倍：后者 2025 基数仅 15.8 亿（自主安全智能体刚试点），处于 S 曲线最陡段、连年翻倍，且其天花板是“智能体承担整个网安运营的工作量”，故 2030 年绝对值反而更大；前者 44.1 亿已含较成熟的合规 / 评估产品，增长更稳健。两者是“保护 AI”与“用 AI 保护一切”两条正交的轴，<b>本章一律用 340.3 亿口径</b>。</span>
     </div>
     <table>
-      <tr><th>三级细分</th><th>2025 中国规模<br>（亿元）</th><th>2030 中国规模<br>（亿元）</th><th>CAGR<br>2025–2030</th><th>权威锚点（相邻市场 · 量级参照）</th></tr>
+      <tr><th>三级细分</th><th>2025 中国规模<br>（亿元，测算）</th><th>2030 中国规模<br>（亿元，测算）</th><th>CAGR<br>2025–2030</th><th>权威锚点（可直接引用，仅作量级校验）</th></tr>
       <tr><td><b>T1 资产治理与态势</b></td><td class="est">9.7</td><td class="est">54.0</td><td class="est">≈41.0%</td><td class="auth">IDC 人工智能安全总盘；Gartner AI 治理平台 2027 年 4.62 亿美元</td></tr>
       <tr><td><b>T2 应用安全测试</b></td><td class="est">5.3</td><td class="est">37.0</td><td class="est">≈47.5%</td><td class="auth">信通院《代码安全审计智能体》标准、安恒 350+ 采购客户；Gartner AI 应用安全 2027 年 8.51 亿美元（最大）</td></tr>
       <tr><td><b>T3 智能体身份与访问</b></td><td class="est">3.5</td><td class="est">40.0</td><td class="est">≈62.8%（最快）</td><td class="auth">IDC 中国统一身份管理平台 25.7 亿元(2024)、中国 IAM 大盘约 72.3 亿元(2025)、零信任 27.6 亿元(2025)；Gartner 使用控制增速 +73% 最快</td></tr>
       <tr><td><b>T4 智能体运行时防护</b></td><td class="est">18.5</td><td class="est">148.0</td><td class="est">≈51.6%（最大）</td><td class="auth">艾瑞：第三方大模型内容风控 24.8 亿(2025)→93.7 亿(2030)、CAGR 30.5%；IDC 数据安全 112 亿(2025)→208 亿(2029)、CAGR 16.7%</td></tr>
       <tr><td><b>T5 可观测 / 检测 / 守护</b></td><td class="est">7.1</td><td class="est">61.3</td><td class="est">≈53.9%</td><td class="auth">Gartner Guardian Agents 预计 2030 占 Agentic AI 市场 10–15%；APM/可观测由 Datadog、Langfuse 等主导</td></tr>
-      <tr style="background:#eef3f8;font-weight:700;"><td>合计（= IDC 权威总盘）</td><td>44.1</td><td>340.3</td><td>50.5%</td><td class="auth">IDC（2026.4）：总盘值，分项合计与总盘一致</td></tr>
+      <tr style="background:#eef3f8;font-weight:700;"><td>合计（= IDC 权威总盘）</td><td>44.1</td><td>340.3</td><td>50.5%</td><td class="auth">IDC（2026.4）：权威总盘，分项为以总盘为锚的行业测算</td></tr>
     </table>
     <div id="c_cn" class="chart"></div>
     <div id="fb2" class="fb">静态读数（亿元，测算）：2025 T1 9.7 / T2 5.3 / T3 3.5 / T4 18.5 / T5 7.1（合 44.1）；2030 T1 54 / T2 37 / T3 40 / T4 148 / T5 61.3（合 340.3）。</div>
@@ -216,18 +301,108 @@
         <tr><td>同速假设</td><td>安全支出与 Agent 大盘同速（CAGR 70.9%）复利：18.5×1.709⁵</td><td class="est">—</td><td class="est">≈270</td></tr>
         <tr><td>合规驱动</td><td>大盘≈3500 亿 × 20%（智能体安全强制国标 L1–L5）</td><td class="est">≈700</td><td class="est">≈305</td></tr>
       </table>
-      <p style="margin:8px 0 0;font-size:12.8px;color:#7a531b;"><b>大盘联动结论：</b>“18.5→148 亿”不是天花板，而是介于“中性（104）—乐观（228）”之间的锚点；大盘联动下 T4 级市场 2030 实为 <b>100–310 亿量级</b>、智能体安全总盘 240–700 亿。全球侧 Gartner：Securing AI 2026 $28.4 亿→2030 $164 亿美元，守护智能体占 Agentic AI 10–15%（2030 全球 Agentic AI ≈$47B≈3380 亿 RMB → 340–510 亿 RMB）同量级。<b>收入模型正从 license 转向“按 Agent 运行量 / 事件计费”——市场跟着 Agent 大盘走，不跟着静态安全线走。</b>对投委会：判断天花板看 Agent 大盘渗透率与合规强制进度（智能体安全强制国标 2026-06 已立项），而非静态安全预算。口径说明：情景表为“大盘×渗透率”建模（口径 B），与 IDC 340.3 亿全口径（口径 A）互为参照、不合并相加。</p>
+      <p style="margin:8px 0 0;font-size:12.8px;color:#7a531b;"><b>大盘联动结论：</b>“18.5→148 亿”不是天花板，而是介于“中性（104）—乐观（228）”之间的锚点；大盘联动下 T4 细分市场 2030 实为 <b>100–310 亿量级</b>、智能体安全总盘 240–700 亿。全球侧 Gartner：Securing AI 2026 $28.4 亿→2030 $164 亿美元，守护智能体占 Agentic AI 10–15%（2030 全球 Agentic AI ≈$47B≈3380 亿 RMB → 340–510 亿 RMB）同量级。<b>收入模型正从 license 转向“按 Agent 运行量 / 事件计费”——市场跟着 Agent 大盘走，不跟着静态安全线走。</b>对投委会：判断天花板看 Agent 大盘渗透率与合规强制进度（智能体安全强制国标 2026-06 已立项），而非静态安全预算。口径说明：情景表为“大盘×渗透率”建模（口径 B），与 IDC 340.3 亿“全口径”（口径 A）互为参照、不合并相加。</p>
     </div>
   </div>
 
   <!-- 五：三级详解 -->
-  <!-- 五：行业专家观点 -->
-  <h2 class="sec">五、行业专家观点：头部专家对 Harness / 智能体安全的判断</h2>
-  <p class="ss">汇总头部专家对“智能体安全 / Harness”赛道的判断并结合公开依据，为市场规模与竞争判断提供交叉参照；并与头部安全实验室、大模型厂商专家访谈互为补充。</p>
+  <!-- 五：重点细分比较 -->
+  <h2 class="sec">五、重点细分比较：筛选值得重点关注的细分行业</h2>
+  <p class="ss">从历史增速、现有规模、进口占比、预期增速、未来空间、行业简析（竞争/门槛/生命周期/重大变化）等维度对 5 个三级细分进行比较；结合权威数据源填表，给出研究优先级与价值判断。研究顺序：增速高规模大 → 增速中等规模大 → 增速高规模小 → 增速慢规模大 → 增速中等规模小；不轻易否定任一细分。</p>
 
   <div class="card">
-    <h3 style="margin:0 0 8px;font-size:15.5px;color:var(--navy);">专家一｜某头部一线安全厂商安全实验室负责人（行业专家访谈 · 匿名呈现）</h3>
-    <div class="warn"><b>观点摘要：</b>
+    <div style="overflow-x:auto;">
+    <table style="font-size:11.6px;min-width:1120px;">
+      <tr>
+        <th style="width:88px;">细分行业</th>
+        <th style="width:78px;">行业过去增速</th>
+        <th style="width:135px;">市场现有规模</th>
+        <th style="width:88px;">国内市场进口占比</th>
+        <th style="width:78px;">行业预期增速</th>
+        <th style="width:135px;">行业未来空间（未来3-5年）</th>
+        <th style="width:280px;">行业简析（竞争 / 门槛 / 生命周期 / 重大变化）</th>
+        <th style="width:105px;">研究建议</th>
+      </tr>
+      <tr>
+        <td><b>T1 智能体资产治理与态势管理</b></td>
+        <td>10-20%<br><span class="est">中</span></td>
+        <td>全球 2026 $27.5亿（Gartner AI治理平台）<br>中国 2025 9.7亿（IDC约束测算）</td>
+        <td>10-30%<br><span class="est">中</span></td>
+        <td>>20%<br><span class="auth">高</span><br>中国CAGR 41%</td>
+        <td>全球 2030 ~$15-20亿<br>中国 2030 54.0亿</td>
+        <td><b>竞争：</b>激烈，云/CNAPP/GRC大厂主导（Cisco AI Defense/Prisma AIRS/Wiz/HiddenLayer，国内百度/亚信/电信），独立创业多被并购。<b>门槛：</b>一般，易被云平台原生整合。<b>生命周期：</b>成长期早期。<b>重大变化：</b>等保2.0/数据安全法/AI治理国标驱动合规需求，云原生治理进口替代加速。</td>
+        <td><span class="tag t-warn">待补充数据后评估</span><br>易被平台整合，独立巨头潜力弱，需更多国产化率与竞争格局数据</td>
+      </tr>
+      <tr>
+        <td><b>T2 智能体应用安全测试（上线前）</b></td>
+        <td><10%<br><span class="est">低</span><br>AppSec成熟，IDC 2024 IT安全软件仅+1.8%</td>
+        <td>全球 2026 $50.8亿（Gartner AI应用安全，最大品类）<br>中国 2025 5.3亿</td>
+        <td>10-30%<br><span class="est">中</span></td>
+        <td>>20%<br><span class="auth">高</span><br>中国CAGR 47.5%</td>
+        <td>全球 2030 ~$25-30亿<br>中国 2030 37.0亿</td>
+        <td><b>竞争：</b>中等，开源工具（Promptfoo/PyRIT/Garak）压薄单点收费，Mindgard/JFrog，国内百度/中移动/安恒。<b>门槛：</b>一般，开源替代；但MCP/Skill供应链审查是新溢价点。<b>生命周期：</b>导入期-成长期。<b>重大变化：</b>MCP供应链安全/AI-SBOM技术突破，智能体安全强制国标2026-06立项。</td>
+        <td><span class="tag t-warn">待补充数据后评估</span><br>开源压薄，但MCP供应链安全是新溢价点，需更多数据判断独立价值</td>
+      </tr>
+      <tr style="background:#f0f7f4;">
+        <td><b>T3 智能体身份与访问控制</b></td>
+        <td>10-20%<br><span class="est">中</span><br>IAM/PAM成熟市场</td>
+        <td>全球 2026 含于AI使用控制$43.3亿（Gartner）<br>中国 2025 3.5亿</td>
+        <td>10-30%<br><span class="est">中</span><br>CyberArk/Okta仍有份额</td>
+        <td>>20%<br><span class="auth">高</span><br>中国CAGR 62.8%（最快）</td>
+        <td>全球 2030 ~$20-25亿（身份部分）<br>中国 2030 40.0亿</td>
+        <td><b>竞争：</b>中等，PAM大厂延伸（CyberArk/Microsoft Entra/Okta/Astrix），国内亚信/百度/中移动。<b>门槛：</b>高，身份信任体系/跨域互信。<b>生命周期：</b>导入期。<b>重大变化：</b>NHI非人身份/A2A跨域互信技术突破，身份认证合规，北美并购最热（Cisco-Astrix≈$4亿）。</td>
+        <td><span class="tag t-ok">重点研究</span><br>增速最快+并购最热+跨域互信空白+独立巨头潜力</td>
+      </tr>
+      <tr style="background:#f0f7f4;">
+        <td><b>T4 智能体运行时防护（核心战场）</b></td>
+        <td>>20%<br><span class="auth">高</span><br>内容风控CAGR 30.5%（艾瑞），LLM防火墙新品类爆发</td>
+        <td>全球 2026 含于AI使用控制$43.3亿+AI网关$25.1亿<br>中国 2025 18.5亿（最大）</td>
+        <td><10%<br><span class="auth">低</span><br>内容风控国产化率高，国际厂商进入中国有限</td>
+        <td>>20%<br><span class="auth">高</span><br>中国CAGR 51.6%</td>
+        <td>全球 2030 ~$25-35亿（运行时部分）<br>中国 2030 148.0亿（最大，大盘联动100-310亿）</td>
+        <td><b>竞争：</b>激烈，创业主战场（Lakera/Operant/Nightfall）+云网关（Cloudflare/FortiAIGate）+国内中移动/百度/华清未央/电信。<b>门槛：</b>高，意图识别/攻防数据/毫秒级inline阻断。<b>生命周期：</b>成长期。<b>重大变化：</b>LLM防火墙/Agent沙箱/意图识别技术突破，智能体安全强制国标2026-06立项，内容风控进口替代。</td>
+        <td><span class="tag t-ok">重点研究</span><br>增速高+规模最大+咽喉点+独立巨头最可能出现+数据飞轮</td>
+      </tr>
+      <tr style="background:#f0f7f4;">
+        <td><b>T5 可观测/检测响应/守护智能体</b></td>
+        <td>10-20%<br><span class="est">中</span><br>APM/SOC成熟，AI安全运营平台2025 +144%（IDC）</td>
+        <td>全球 2026 含于Other $136.8亿+Guardian新品类<br>中国 2025 7.1亿</td>
+        <td>10-30%<br><span class="est">中</span><br>Datadog/Langfuse国际APM，安全向AIDR国内主导</td>
+        <td>>20%<br><span class="auth">高</span><br>中国CAGR 53.9%</td>
+        <td>全球 2030 ~$20-30亿（检测/守护部分）<br>中国 2030 61.3亿</td>
+        <td><b>竞争：</b>中等，APM（Datadog/Langfuse/LangSmith）+开源挤压，国内百度/华清未央/安恒。<b>门槛：</b>中高，全链路Trace/数据飞轮/Guardian自主决策。<b>生命周期：</b>导入期-成长期。<b>重大变化：</b>Guardian Agents（Gartner独立品类）/AIDR级联熔断技术突破，审计合规驱动。</td>
+        <td><span class="tag t-ok">重点研究</span><br>增速高+Guardian新品类+数据飞轮+独立增量</td>
+      </tr>
+    </table>
+    </div>
+    <p class="note" style="margin-top:8px;">口径说明：全球规模采用 Gartner《Securing AI》2026-2027 细分预测（AI应用安全/使用控制/治理平台/网关/Other），2030 为按 Gartner 增速外推的估算区间；中国规模采用 IDC 中国"人工智能安全"总盘（2025 44.1亿→2030 340.3亿，CAGR 50.5%）约束下的分项测算；过去增速采用相邻成熟市场（GRC/AppSec/IAM/DLP/APM）历史增速作为代理，AI 原生子品类增速显著更高；进口占比以中国网络安全产品整体国产化率约65%（2024）为基准，结合各细分国际厂商进入程度调整。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 10px;color:var(--navy);">分析逻辑：研究优先级排序</h3>
+    <div class="step"><b>第一步 · 按"增速×规模"矩阵排序。</b>5 个三级细分 2025-2030 CAGR 均 >40%（绝对高增速），相对排序：T3(62.8%) &gt; T5(53.9%) &gt; T4(51.6%) &gt; T2(47.5%) &gt; T1(41.0%)；2030 规模排序：T4(148亿) &gt; T5(61.3亿) &gt; T1(54亿) &gt; T3(40亿) &gt; T2(37亿)。</div>
+    <div class="step"><b>第二步 · 按研究优先级规则归类。</b>
+      <table style="margin-top:6px;font-size:12.5px;">
+        <tr><th>优先级</th><th>规则</th><th>对应细分</th><th>判断</th></tr>
+        <tr><td>第一优先级</td><td>增速高 + 规模大</td><td><b>T4 运行时防护</b>（CAGR 51.6%，2030 148亿，最大）</td><td><span class="tag t-ok">确定有研究价值</span></td></tr>
+        <tr><td>第二优先级</td><td>增速高 + 规模中等</td><td><b>T5 可观测/守护</b>（CAGR 53.9%，2030 61.3亿）</td><td><span class="tag t-ok">确定有研究价值</span></td></tr>
+        <tr><td>第三优先级</td><td>增速高 + 规模小（但增速最快/并购最热）</td><td><b>T3 智能体身份</b>（CAGR 62.8%最快，2030 40亿）</td><td><span class="tag t-ok">确定有研究价值</span></td></tr>
+        <tr><td>第四优先级</td><td>增速相对最低 + 规模中等</td><td><b>T1 治理态势</b>（CAGR 41.0%，2030 54亿）</td><td><span class="tag t-warn">待进一步获取信息后分析</span></td></tr>
+        <tr><td>第五优先级</td><td>增速相对低 + 规模最小</td><td><b>T2 应用安全测试</b>（CAGR 47.5%，2030 37亿，最小）</td><td><span class="tag t-warn">待进一步获取信息后分析</span></td></tr>
+      </table>
+    </div>
+    <div class="step"><b>第三步 · 叠加"独立巨头潜力"与"重大变化"修正。</b>T4 咽喉点+数据飞轮+独立巨头最可能出现 → 上调；T3 并购最热+跨域互信空白 → 上调；T5 Guardian新品类+数据飞轮 → 上调；T1 易被云平台整合 → 独立价值待确认；T2 开源压薄但MCP供应链新溢价 → 需更多数据。不轻易否定任一细分，T1/T2 标注"待进一步获取信息后分析"而非"暂不关注"。</div>
+  </div>
+
+  <div class="core" style="margin-top:14px;"><b>结论：</b>在"安全地运行 Agent"二级细分的 5 个三级细分中——<b>确定有研究价值（重点研究）：T4 智能体运行时防护、T3 智能体身份与访问控制、T5 可观测/检测响应/守护智能体</b>；<b>待进一步获取信息后分析：T1 智能体资产治理与态势管理、T2 智能体应用安全测试（上线前）</b>（T1 易被云平台整合、T2 开源压薄，均需更多国产化率与竞争格局数据判断独立研究价值）；<b>确定没有研究价值的细分：无</b>（不轻易否定，5 个细分均处于 CAGR&gt;40% 的高增长赛道）。研究投入建议按 <b>T4 → T5 → T3 → T1 → T2</b> 排序，T4 为第一优先级。</div>
+
+  <!-- 六：行业专家观点 -->
+  <h2 class="sec">六、行业专家观点：头部安全厂商对 Harness / 智能体安全的判断</h2>
+  <p class="ss">纳入头部安全厂商对“智能体安全 / Harness”赛道的最新判断并标注核实状态，供投委会交叉验证市场规模与竞争判断；与既有行业调研（腾讯朱雀、阿里千问，2026-08）互为补充。</p>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;font-size:15.5px;color:var(--navy);">专家一｜某头部一线安全厂商安全实验室负责人（行业内部交流，匿名化处理）</h3>
+    <div class="warn"><b>观点摘要（匿名化处理，仅保留观点核心）：</b>
       <ul style="margin:8px 0 0;padding-left:18px;">
         <li>Harness 方向被国内安全圈头部玩家共同卡位，效果领先者少、进入门槛高；</li>
         <li>自研模型存在能力瓶颈：开源模型多为“半开源”（开放权重但训练数据不公开），靠后训练难以快速提升能力，瓶颈在数据与算力；</li>
@@ -236,35 +411,36 @@
       </ul>
     </div>
     <table>
-      <tr><th>观点要点</th><th>印证情况</th><th>公开依据 / 判断</th></tr>
-      <tr><td>做 Harness 效果好的人不多、门槛高</td><td><b style="color:#2f6b45;">公开印证</b></td><td>公开佐证：2026-08-24 披露 DeepSeek Harness 极危 RCE（QVD-2026-57410，CVSS 9.8，官方已验证）；国内首份《OpenClaw 生态威胁分析报告》；QAgentFabric 安全智能体研发框架；LLM 自动生成 harness 论文——Agent / harness 攻防研究确处国内一线</td></tr>
-      <tr><td>生命周期管理缺乏核心技术、易被复制</td><td><b style="color:#2f6b45;">行业共识</b></td><td>对应本报告 T1 治理 / 生命周期层壁垒最低、易被云与平台原生整合，独立厂商难在此建立护城河</td></tr>
-      <tr><td>开源模型基本为半开源</td><td><b style="color:#2f6b45;">行业共识</b></td><td>DeepSeek / GLM / Qwen 等主流国产“开源”模型多为开放权重（open weights），不公开完整训练数据与全过程，业界通称“开放权重 ≠ 开源”；GLM-5.3 发布即联合某头部一线安全厂商等 12 家安全团队红队测试</td></tr>
-      <tr><td>靠后训练提升能力存疑、瓶颈在数据与算力</td><td><b style="color:#2f6b45;">行业共识</b></td><td>后训练（SFT / RLHF / 强化学习）主要提升对齐与指令遵循，难以突破基座模型推理天花板；安天肖新光访谈同样指出开源 / 商业模型在特定域（如二进制分析）存在能力短板</td></tr>
-      <tr><td>数据积累 / 实验室与集团产研分开</td><td><b style="color:#5a7189;">厂商自评 / 组织常态</b></td><td>数据积累属厂商自我评价、无公开可比口径；“实验室与集团产研分开”符合大厂研究院与产品线的组织常态</td></tr>
+      <tr><th>观点要点</th><th>核实结果</th><th>依据 / 判断</th></tr>
+      <tr><td>观点来源</td><td><b style="color:#b56a1c;">未公开证实</b></td><td>观点原文未在公开渠道检索到（来自行业内部交流），不作已查证事实引用，仅作方向参考；原话与个人身份已做匿名化处理</td></tr>
+      <tr><td>做 Harness 效果好的人不多、门槛高</td><td><b style="color:#2f6b45;">方向吻合</b></td><td>公开佐证：2026-08-24 披露 DeepSeek Harness 极危 RCE（QVD-2026-57410，CVSS 9.8，官方已验证）；国内首份《OpenClaw 生态威胁分析报告》；QAgentFabric 安全智能体研发框架；LLM 自动生成 harness 论文——Agent / harness 攻防研究确处国内一线</td></tr>
+      <tr><td>生命周期管理缺乏核心技术、易被复制</td><td><b style="color:#2f6b45;">与行业判断一致</b></td><td>对应本报告 T1 治理 / 生命周期层壁垒最低、易被云与平台原生整合，独立厂商难在此建立护城河</td></tr>
+      <tr><td>开源模型基本为半开源</td><td><b style="color:#2f6b45;">属实</b></td><td>DeepSeek / GLM / Qwen 等主流国产“开源”模型多为开放权重（open weights），不公开完整训练数据与全过程，业界通称“开放权重 ≠ 开源”；GLM-5.3 发布即联合某头部一线安全厂商等 12 家安全团队红队测试</td></tr>
+      <tr><td>靠后训练提升能力存疑、瓶颈在数据与算力</td><td><b style="color:#2f6b45;">与行业共识一致</b></td><td>后训练（SFT / RLHF / 强化学习）主要提升对齐与指令遵循，难以突破基座模型推理天花板；安天肖新光访谈同样指出开源 / 商业模型在特定域（如二进制分析）存在能力短板</td></tr>
+      <tr><td>数据积累 / 实验室与集团产研分开</td><td><b style="color:#5a7189;">厂商自评 / 组织常态</b></td><td>数据积累属自我评价、无公开可比口径；“实验室与集团产研分开”符合大厂研究院与产品线的组织常态，但无公开证据</td></tr>
     </table>
     <p style="font-size:13.2px;margin:10px 0 0;"><b>对投资判断的含义：</b>① <b>赛道确认</b>——harness 是安全圈顶级玩家共同卡点（某头部一线安全厂商 / 360 均公开押注），切入方向不偏；② <b>壁垒判断</b>——真护城河在“运行时控制面＋攻防数据＋反滥用场景”，不在“模型”也不在“生命周期管理”（后者正是其自认易复制的层）；③ <b>竞争格局</b>——大厂研究强但产品化与产研割裂，给快速产品化的创业公司留窗口；④ <b>印证市场判断</b>——头部连自研模型都认为“靠后训练卷不动”，说明价值主张在控制面与数据飞轮，与控制面 / 咽喉点（T4）逻辑一致。</p>
   </div>
 
   <div class="card">
     <h3 style="margin:0 0 8px;font-size:15.5px;color:var(--navy);">专家二｜360 创始人周鸿祎（ISC.AI 2026 公开演讲）</h3>
-    <div class="warn"><b>公开观点：</b>2026-06-24 ISC.AI 2026 演讲中，周鸿祎把“智能体 Harness 平台”列为安全厂商在 AI 时代的第二张牌 / 新基础设施，提出“通过智能体 Harness 平台，可以让 80 分的大模型达到 90 分的水平”。</div>
+    <div class="warn"><b>公开观点：</b>2026-06-24 ISC.AI 2026 演讲中，周鸿祎把“智能体 Harness 平台”列为安全厂商在 AI 时代的第二张牌 / 新基础设施，提出“通过智能体 Harness 平台，可以让 80 分的大模型达到 90 分的水平”。（公开可查证）</div>
     <table>
-      <tr><th>判断点</th><th>公开依据</th><th>对投资判断的含义</th></tr>
-      <tr><td>观点真实性</td><td><b style="color:#2f6b45;">公开报道</b></td><td>来源为 ISC.AI 2026 公开报道</td></tr>
-      <tr><td>harness 是头部共同判断</td><td><b style="color:#2f6b45;">公开印证</b></td><td>继某头部一线安全厂商后，360 亦把“智能体 Harness 平台”作为战略卡位 → 再次印证 harness / 运行时控制面是安全巨头共同选择的方向，赛道真实需求得到印证</td></tr>
+      <tr><th>判断点</th><th>核实状态</th><th>对投资判断的含义</th></tr>
+      <tr><td>观点真实性</td><td><b style="color:#2f6b45;">已核实（公开报道）</b></td><td>来源为 ISC.AI 2026 公开报道，可直接引用</td></tr>
+      <tr><td>harness 是头部共同判断</td><td><b style="color:#2f6b45;">已核实</b></td><td>继某头部一线安全厂商后，360 亦把“智能体 Harness 平台”作为战略卡位 → 再次印证 harness / 运行时控制面是安全巨头共同选择的方向，赛道真实需求被交叉验证</td></tr>
       <tr><td>路线差异（机会点）</td><td><b style="color:#2f6b45;">已核实（分析）</b></td><td>360 的 Harness 是“赋能型平台”（让大模型更强），与“安全原生 Harness”（防滥用 / 控制面 / 意图识别）是两条路线；创业公司可在“安全原生”深水区差异化，避免与巨头平台正面同质化</td></tr>
-      <tr><td>竞争升级警示</td><td><b style="color:#b56a1c;">分析判断</b></td><td>巨头从“产品”上升到“平台”层卡位 → 独立厂商须以“数据飞轮＋场景深水区”构筑不可替代性，而非单点功能</td></tr>
+      <tr><td>竞争升级警示</td><td><b style="color:#b56a1c;">已核实（分析）</b></td><td>巨头从“产品”上升到“平台”层卡位 → 独立厂商须以“数据飞轮＋场景深水区”构筑不可替代性，而非单点功能</td></tr>
     </table>
   </div>
 
-  <div class="core" style="margin-top:14px;"><b>两位专家观点的汇总启示：</b>① 市场——T4 静态 148 亿 → 大盘联动 100–310 亿，天花板由 Agent 大盘决定（见第四节）；② 需求——头部厂商均在押注 harness，方向与真实需求相互印证；③ 壁垒——模型自研不可靠（半开源、后训练存疑），壁垒在“控制面＋数据飞轮”（T4 咽喉点），“生命周期管理”等通用层易复制、不构成壁垒；④ 竞争——巨头在平台化但存在实验室与产研割裂的结构性短板，安全原生深水区留给创业公司；⑤ 对本类标的（如张瑞东团队 harness）——落点正处 T4 咽喉点、与两位专家判断同频；应主打“安全原生控制面＋反滥用数据飞轮”，回避生命周期管理等易复制层；⑥ 风险——资源不对称、标准（MCP / A2A / 国标）未定、商业化节奏 vs 18–24 个月窗口。</div>
+  <div class="core" style="margin-top:14px;"><b>两位专家观点对投委会的汇总启示（逻辑闭环）：</b>① 市场——T4 静态 148 亿 → 大盘联动 100–310 亿，天花板由 Agent 大盘决定（见第四节）；② 需求——头部厂商公开与内部均在押注 harness，方向与真实需求被交叉验证；③ 壁垒——模型自研不可靠（半开源、后训练存疑），壁垒在“控制面＋数据飞轮”（T4 咽喉点），“生命周期管理”等通用层易复制、不构成壁垒；④ 竞争——巨头在平台化但存在实验室与产研割裂的结构性短板，安全原生深水区留给创业公司；⑤ 对本类安全原生 Harness 标的——落点正处 T4 咽喉点、与头部专家判断同频；应主打“安全原生控制面＋反滥用数据飞轮”，回避生命周期管理等易复制层；⑥ 风险——资源不对称、标准（MCP / A2A / 国标）未定、商业化节奏 vs 18–24 个月窗口。</div>
 
   <!-- 六：三级详解 -->
-  <h2 class="sec">六、五个三级细分详解：买方、界线、竞争</h2>
+  <h2 class="sec">七、五个三级细分详解：买方、界线、竞争</h2>
   <p class="ss">界线三问：谁买？上线前 / 生产 inline / 生产旁路？管理 / 测试 / 认身份 / 阻断 / 检测哪种控制模式？</p>
 
-  <div class="seg s1"><div class="seg-top"><div class="seg-badge">T1</div><div class="tt"><div class="a">AI 资产治理与态势管理</div><div class="b">管理平面：看清“有多少 AI、谁负责、合不合规”</div></div><div class="buyer">买方<b>CISO / GRC</b>合规</div></div>
+  <div class="seg s1"><div class="seg-top"><div class="seg-badge">T1</div><div class="tt"><div class="a">智能体资产治理与态势管理</div><div class="b">管理平面：看清“有多少 AI、谁负责、合不合规”</div></div><div class="buyer">买方<b>CISO / GRC</b>合规</div></div>
     <div class="seg-grid">
       <div class="sg"><h5>需求 / 功能点（1.1–1.3）</h5><ul><li>资产发现与影子 AI、风险态势 / AI-BOM / 合规、策略工作流</li></ul><div class="bound"><b>界线：</b>只看清、定策略、留痕；不做 inline 阻断(T4)、不做攻击测试(T2)。</div></div>
       <div class="sg"><h5>企业竞争</h5>
@@ -273,7 +449,7 @@
         <div class="comp-note">云 / CNAPP / GRC 大厂主导，独立创业多被并购。</div></div>
     </div></div>
 
-  <div class="seg s2"><div class="seg-top"><div class="seg-badge">T2</div><div class="tt"><div class="a">AI 应用安全测试（上线前）</div><div class="b">Build-time 离线找漏洞，嵌入 CI/CD 门禁</div></div><div class="buyer">买方<b>DevSecOps</b>研发安全</div></div>
+  <div class="seg s2"><div class="seg-top"><div class="seg-badge">T2</div><div class="tt"><div class="a">智能体应用安全测试（上线前）</div><div class="b">Build-time 离线找漏洞，嵌入 CI/CD 门禁</div></div><div class="buyer">买方<b>DevSecOps</b>研发安全</div></div>
     <div class="seg-grid">
       <div class="sg"><h5>需求 / 功能点（2.1–2.3）</h5><ul><li>自动红队、模型制品扫描、MCP/Skill 供应链审查签名</li></ul><div class="bound"><b>界线：</b>仅上线前 / 离线，不管生产实时流量(T4/T5)。</div></div>
       <div class="sg"><h5>企业竞争</h5>
@@ -310,7 +486,7 @@
     </div></div>
 
   <!-- 六：技术路线 -->
-  <h2 class="sec">七、辅助视角 A · 技术路线（同一需求的不同实现）</h2>
+  <h2 class="sec">八、辅助视角 A · 技术路线（同一需求的不同实现）</h2>
   <div class="card"><table>
     <tr><th>交付形态</th><th>接入方式</th><th>主要服务</th><th>代表</th></tr>
     <tr><td><b>网关 / 内联代理</b></td><td>改 URL / 虚拟密钥，最快</td><td>T4 为主兼 T1</td><td>Cloudflare、Portkey、LiteLLM、FortiAIGate、中移动 IOA</td></tr>
@@ -320,7 +496,7 @@
   </table></div>
 
   <!-- 七：产业链 -->
-  <h2 class="sec">八、辅助视角 B · 产业链环节（客户不同）</h2>
+  <h2 class="sec">九、辅助视角 B · 产业链环节（客户不同）</h2>
   <div class="card"><div class="flow">
     <span class="chip"><b>上游 · 能力供给</b><br>安全基座大模型 / 攻防数据 / 评测基准<br><span class="note">客户＝中游厂商，壁垒最高、数据飞轮</span></span><span class="arrow">→</span>
     <span class="chip"><b>中游 · 产品平台</b><br>T1–T5 五类产品<br><span class="note">客户＝终端企业 / 政企，独立巨头主战场</span></span><span class="arrow">→</span>
@@ -328,7 +504,7 @@
   </div></div>
 
   <!-- 八：C端推演 -->
-  <h2 class="sec">九、关键推演：会出现 360 式“安全→C 端流量入口”新商业模式吗？</h2>
+  <h2 class="sec">十、关键推演：会出现 360 式“安全→C 端流量入口”新商业模式吗？</h2>
   <p class="ss">方法：先还原 2009 年 360 模式成立的必要条件，再逐条对照 2026 智能体时代检验，最后给出结论与跟踪触发条件。</p>
   <div class="card">
     <div class="step"><b>第一步 · 还原 360（2009）模式的 7 个必要条件。</b>360 的本质不是“卖杀毒”，而是<b>用免费、全民、高频的安全做钩子获取 C 端流量，再导流到浏览器 / 导航 / 应用分发，用搜索广告与游戏联运变现</b>——安全本身不赚钱，流量入口才赚钱。成立需同时满足：C1 需求全民化；C2 高频可感知；C3 产品标准化零边际成本；C4 存在可被免费颠覆的付费在位者；C5 安全占据设备级咽喉、可自然导流高频应用；C6 下游存在巨大可变现流量市场；C7 规模 / 数据飞轮。</div>
@@ -357,13 +533,13 @@
       </ul>
     </div>
 
-    <div class="verdict no"><b>结论（严密、不含糊）：在“安全地运行 Agent”细分内，360 式“免费安全 → 占领 C 端流量入口 → 全新商业模式”不成立。</b>七条必要条件中 C1/C2/C4/C5/C6 五条不成立、C3/C7 仅在 B 端成立；根因是买方结构与入口位置的双重反转。<b>独立安全巨头的现实路径在 B 端：</b>以 T4 运行时防护 + T3 智能体身份为支点，靠攻防数据飞轮成为 AI 时代“安全底座 / 智能体流量的安全清算层”，以 License 订阅 + 涉密 / 国防 B2G 变现，赢家通吃，而非 C 端广告流量。</div>
+    <div class="verdict no"><b>结论：在“安全地运行 Agent”细分内，360 式“免费安全 → 占领 C 端流量入口 → 全新商业模式”不成立。</b>七条必要条件中 C1/C2/C4/C5/C6 五条不成立、C3/C7 仅在 B 端成立；根因是买方结构与入口位置的双重反转。<b>独立安全巨头的现实路径在 B 端：</b>以 T4 运行时防护 + T3 智能体身份为支点，靠攻防数据飞轮成为 AI 时代“安全底座 / 智能体流量的安全清算层”，以 License 订阅 + 涉密 / 国防 B2G 变现，赢家通吃，而非 C 端广告流量。</div>
 
     <div class="warn"><b>结论的跟踪触发条件：</b>需 F1、F2 <b>同时</b>成立——F1：个人 Agent 大规模普及（每个网民都有可代己交易 / 操作的私人 Agent），且 OS 与超级 App 因反垄断 / 碎片化不提供统一安全层，催生“中立第三方个人 Agent 运行时 + 身份钱包”刚需；F2：某安全厂商能把防护做成个人 Agent 的<b>默认承载层</b>（即自己成为个人 Agent 入口 / 信任 OS）。届时它本质已是消费级 Agent / 身份超级 App，须具备 C 端产品与生态基因并正面对抗 Apple / 字节 / 腾讯 / OpenAI，概率低。截至 2026 年的全部证据（OS、国家、平台三方内化）均指向相反方向，故当前判断为“不成立”，并持续以 F1/F2 作为跟踪信号。</div>
   </div>
 
-  <!-- 九：对比总表 -->
-  <h2 class="sec">十、三级细分对比总表（细分筛选底稿）</h2>
+  <!-- 十一：对比总表 -->
+  <h2 class="sec">十一、三级细分对比总表（细分筛选底稿）</h2>
   <div class="card"><table>
     <tr><th>三级</th><th>买方 / 预算</th><th>阶段 / 模式</th><th>2025 / 2030（亿元，测算）</th><th>CAGR</th><th>竞争主导</th><th>独立巨头潜力</th></tr>
     <tr><td><b>T1 治理态势</b></td><td>CISO/GRC</td><td>全周期·管理平面</td><td>9.7 / 54.0</td><td>≈41%</td><td>云 / GRC 大厂 + 并购</td><td>★★</td></tr>
@@ -373,10 +549,10 @@
     <tr><td><b>T5 检测 / 守护</b></td><td>SOC / 审计</td><td>生产·旁路</td><td>7.1 / 61.3</td><td>≈53.9%</td><td>APM + 开源挤压，Guardian 增量</td><td>★★★</td></tr>
     <tr style="background:#eef3f8;font-weight:700;"><td>合计</td><td colspan="2">= IDC 中国人工智能安全总盘</td><td>44.1 / 340.3</td><td>50.5%</td><td colspan="2">全球 Gartner：2026 $28.4 亿→2030 $164 亿美元</td></tr>
   </table>
-  <div class="core" style="margin-top:12px;"><b>核心判断：</b>治理是“户口本”、测试是“体检”、身份是“工牌”、运行时是“防空司令部”、监控是“黑匣子”。体量看 T4、弹性看 T3、终局看 T5 的 Guardian；户口本与收费站迟早是大厂赠品，能在多步行为里看懂 Agent“下一步想干什么”并当场拦下的防空司令部，才最可能跑出独立巨头——且这门生意在 B 端，不在 C 端流量。<b>T4 的天花板由 Agent 大盘决定（大盘联动 100–310 亿，148 非上限），跟着 Agent 渗透率与合规强制走。</b></div></div>
+  <div class="core" style="margin-top:12px;"><b>筛选金句：</b>治理是“户口本”、测试是“体检”、身份是“工牌”、运行时是“防空司令部”、监控是“黑匣子”。体量看 T4、弹性看 T3、终局看 T5 的 Guardian；户口本与收费站迟早是大厂赠品，能在多步行为里看懂 Agent“下一步想干什么”并当场拦下的防空司令部，才最可能跑出独立巨头——且这门生意在 B 端，不在 C 端流量。<b>T4 的天花板由 Agent 大盘决定（大盘联动 100–310 亿，148 非上限），跟着 Agent 渗透率与合规强制走。</b></div></div>
 
-  <!-- 十：全球规模 -->
-  <h2 class="sec">十一、全球市场对照（Gartner，权威）</h2>
+  <!-- 十二：全球规模 -->
+  <h2 class="sec">十二、全球市场对照（Gartner，权威）</h2>
   <div class="card"><table>
     <tr><th>Gartner 采购口袋</th><th>2026（百万美元）</th><th>2027（百万美元）</th><th>2027 增速</th><th>对应本报告三级</th></tr>
     <tr><td>AI 应用安全</td><td>508</td><td>851（最大）</td><td>67.5%</td><td>T2 + T4/T5 运行部分</td></tr>
@@ -388,7 +564,7 @@
   </table><p class="note" style="margin-bottom:0;">口径：此为狭义 Securing AI（守护 AI）＝本二级细分；勿与 AI-amplified Security（用 AI 做安全，2026≈$485 亿）合并。</p></div>
 
   <!-- 来源 -->
-  <h2 class="sec">十二、数据与资料来源</h2>
+  <h2 class="sec">十三、数据与资料来源</h2>
   <div class="card">
     <p style="margin-top:0;"><span class="pill">权威规模</span></p>
     <div class="refs">
@@ -404,21 +580,31 @@
       <div>国家反诈中心 App“AI 内容鉴定”；TC260《个人用户使用人工智能服务安全指南》2026-08</div>
       <div>OpenAI《Introducing Advanced Account Security》2026-04；Google SynthID / C2PA（I/O 2026）；Savi Security 融资 700 万美元（2026-07）</div>
     </div>
-    <p><span class="pill" style="background:#d98324;">行业调研 / 威胁标准</span></p>
+    <p><span class="pill" style="background:#d98324;">内部调研 / 威胁标准</span></p>
     <div class="refs">
       <div>AI 安全治理与智能体安全实践分享会（百度 / 中移动 / 亚信 / 华清未央 / 中国电信 / 安恒 / 绿盟）2026-08-18</div>
-      <div>头部安全实验室专家访谈 2026-08；头部大模型厂商专家访谈 2026-08；OWASP《Top 10 for Agentic Applications 2026》ASI01–10</div>
+      <div>腾讯朱雀专家访谈 2026-08-11/13；阿里千问访谈 2026-08-24；OWASP《Top 10 for Agentic Applications 2026》ASI01–10</div>
       <div>北美《Securing AI Tools Landscape》（8 工具品类）；Menlo Ventures《Agents for Security》；NIST AASI 2026-02</div>
     </div>
-    <p><span class="pill" style="background:#13405f;">大盘联动口径 · 行业专家观点</span></p>
+    <p><span class="pill" style="background:#0f2c44;">细分行业概述引用</span></p>
+    <div class="refs">
+      <div>数说安全《2026 AI 安全产业研究报告》：智能体身份独立成为“第三类身份”、Agent 网关成为新基线；计算机操控智能体颠覆浏览器与桌面应用安全模型（2026-06）</div>
+      <div>Gartner《Market for Securing AI Will Reach $4.8B in 2027》（2026-08-26）：2026 $28.35 亿 → 2027 $47.83 亿（+68.7%）→ 2030 $164 亿美元；AI应用安全 / 使用控制 / 治理平台 / 网关细分</div>
+      <div>中国网络安全市场 2019 478 亿 → 2023 694 亿元、CAGR 9.77%（赛迪口径，未来智库转引）；中国 AI 安全相关支出 2024 约 18 亿美元、占网安总支出 16%、复合增速约 23.4%（网易 2026-05）</div>
+      <div>OpenClaw“利爪浩劫”ClawHavoc：迄今最大规模 AI 智能体供应链攻击（2026-01，通信世界网 / 掘金 2026）；Lakera 被 Check Point 收购（2025-09）、Astrix 被 Cisco 收购（2025）；网安标委组建“人工智能安全标准工作组（WG9）”（新华网 2026-04）</div>
+      <div>OFweek 维科网《中国 Agent 产业面临的四重不确定性挑战》：企业级 Agent 安全标准 / 信任体系缺失、方案互不联通形成“安全孤岛”（2026-05）；数说 Social Research：中美治理双轨（美国资本驱动+平台化整合 / 中国监管合规驱动+垂直深耕）</div>
+      <div>IDC《中国基于大模型的安全运营平台市场份额 2025》：15 亿元、同比 +144%（2026-07）；某头部一线安全厂商智能体安全监测平台 / SAFESKILL、360 智能体安全管理与防护系统、深信服安全 GPT、蚂蚁数科蚁天鉴 2.0（腾讯云开发者社区 2026-08 横向评测）</div>
+    </div>
+    <p><span class="pill" style="background:#13405f;">重点细分比较与大盘联动口径</span></p>
     <div class="refs">
       <div>2026 中国企业级 AI Agent 发展洞察报告：2025 投 55.9 亿→2030 达 815.1 亿元、CAGR 70.9%（IDC 口径转引，新浪财经 2026）；IDC 中国 Agent 市场 2026 已超千亿元、Harness 层约占 30%（行业转引）</div>
       <div>某头部一线安全厂商威胁情报中心：DeepSeek Harness 极危 RCE（QVD-2026-57410，CVSS 9.8）2026-08-24；X 实验室《OpenClaw 生态威胁分析报告》2026-03；QAgentFabric 安全智能体研发框架 2026-06；星图实验室 harness 论文</div>
       <div>360 周鸿祎 ISC.AI 2026 演讲：“智能体 Harness 平台是安全厂商第二张牌”（2026-06-24）</div>
       <div>安天肖新光访谈：开源 / 商业模型在特定域存在能力短板（2026-03）；GLM-5.3 发布联合某头部一线安全厂商等 12 家安全团队红队测试（2026-08）；新华网：全球首部智能体安全强制国标《智能体应用安全基本要求》2026-06 立项</div>
-      <div>Gartner《Market for Securing AI Will Reach $4.8B in 2027》（2026-08-26）、《Forecasting the $16.4B Opportunity in Securing AI》（2026-07-30）、《Market Guide for Guardian Agents》（2026-02）</div>
+      <div>Gartner《Market for Securing AI Will Reach $4.8B in 2027》（2026-08-26）：AI应用安全 $508M→$851M(67.5%)、AI使用控制 $433M→$749M(73%最快)、AI治理平台 $275M→$462M(68%)、AI网关 $251M→$429M(70.9%)、Other $1368M→$2292M；《Forecasting the $16.4B Opportunity in Securing AI》（2026-07-30）；《Market Guide for Guardian Agents》（2026-02）</div>
+      <div>中国网络安全产品国产化率约65%（2024年底，行业统计）；IDC《中国基于大模型的安全运营平台市场份额2025》15亿元、同比+144%（2026-07）；IDC《2024年中国IT安全软件市场份额》283亿元、同比+1.8%（2025-07）；数世咨询《信创安全市场指南》骨干厂商国产化率70%+</div>
     </div>
-    <p class="note" style="margin-bottom:0;">数据说明：T1–T5 中国分项为研究团队以 IDC 总盘为锚、参照相邻权威市场的行业测算；全球与总盘数字为权威机构直接引用。大盘联动情景为“Agent 大盘×安全渗透率”建模（口径 B，含保守 / 中性 / 乐观 / 同速 / 合规驱动五档），与 IDC 340.3 亿全口径（口径 A）互为参照、不合并相加；行业专家访谈匿名呈现、仅作方向参考，周鸿祎观点为 ISC.AI 2026 公开报道。</p>
+    <p class="note" style="margin-bottom:0;">口径注：T1–T5 中国分项为研究团队以 IDC 总盘为锚的行业测算（非权威机构直接发布），全球与总盘数字为权威机构公开引用；大盘联动情景为“Agent 大盘×安全渗透率”建模（口径 B，含保守 / 中性 / 乐观 / 同速 / 合规驱动五档），与 IDC 340.3 亿全口径（口径 A）互为参照、不合并相加；某头部一线安全厂商实验室负责人观点来自行业内部交流（已匿名化处理），仅作方向参考；周鸿祎观点为 ISC.AI 2026 公开报道，可直接引用。</p>
   </div>
 
 </div>
@@ -445,6 +631,26 @@
     window.addEventListener('resize',function(){ch.resize();});
   }catch(e){if(window&&window.console)console.error(e);}
 })();
+(function(){
+  try{
+    var el=document.getElementById('c_ov');
+    if(!el||typeof echarts==='undefined'){return;}
+    var ch=echarts.init(el);
+    ch.setOption({
+      backgroundColor:'transparent',
+      title:{text:'全球 Securing AI 市场规模（亿美元，Gartner 权威）',left:'center',textStyle:{fontSize:13,color:'#13405f'}},
+      tooltip:{trigger:'axis',confine:true},
+      grid:{left:10,right:14,bottom:8,top:42,containLabel:true},
+      xAxis:{type:'category',data:['2026','2027','2028','2030'],axisLabel:{fontSize:11,color:'#3d546b'}},
+      yAxis:{type:'value',name:'亿美元',nameTextStyle:{fontSize:11},axisLabel:{color:'#3d546b'}},
+      series:[{name:'Securing AI',type:'line',smooth:true,symbolSize:9,data:[28.35,47.83,77,164],
+        itemStyle:{color:'#1f7a8c'},lineStyle:{color:'#1f7a8c',width:3},
+        label:{show:true,position:'top',fontSize:11,formatter:function(p){return p.value+'亿';}}}]
+    });
+    window.addEventListener('resize',function(){ch.resize();});
+  }catch(e){if(window&&window.console)console.error(e);}
+})();
+
 </script>
 </body>
 </html>
