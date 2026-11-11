@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "generatedAt": "2026-11-11",
+    "quoteAsof": {
+      "cn": "2026-11-11",
+      "us": "2026-11-10",
+      "jp": "2026-11-11"
+    },
+    "fx": { "usdcny": 7.2, "usdjpy": 158.92 },
+    "psFormula": "PS = 最新总市值 / 最新完整财年营业收入（同币种，无量纲，保留2位小数；标注“测算”）",
+    "layers": "quote 层（mktcap/ps）每个交易日刷新；annual 层（fy/rev/gm/ni）仅在发布新一份完整财年年报时更新；private/frozen 公司不参与行情刷新",
+    "quoteSources": ["Wind 万得行情", "同花顺 iFinD 个股基本信息/财报历史"],
+    "annualSources": ["同花顺 iFinD 财报历史", "各公司投资者关系页官方财报新闻稿/10-K/年报"]
+  },
+  "quotes": [
+    {"name": "三六零", "ticker": "601360", "region": "cn", "unit": "亿元人民币", "mktcap": 578.16, "ps": 6.65, "quoteDate": "2026-11-11"},
+    {"name": "深信服", "ticker": "300454", "region": "cn", "unit": "亿元人民币", "mktcap": 517.70, "ps": 6.44, "quoteDate": "2026-11-11"},
+    {"name": "天融信", "ticker": "002212", "region": "cn", "unit": "亿元人民币", "mktcap": 71.71, "ps": 2.79, "quoteDate": "2026-11-11"},
+    {"name": "山石网科", "ticker": "688030", "region": "cn", "unit": "亿元人民币", "mktcap": 26.60, "ps": 2.92, "quoteDate": "2026-11-11"},
+    {"name": "迪普科技", "ticker": "300768", "region": "cn", "unit": "亿元人民币", "mktcap": 89.81, "ps": 7.37, "quoteDate": "2026-11-11"},
+    {"name": "奇安信", "ticker": "688561", "region": "cn", "unit": "亿元人民币", "mktcap": 173.97, "ps": 3.96, "quoteDate": "2026-11-11"},
+    {"name": "绿盟科技", "ticker": "300369", "region": "cn", "unit": "亿元人民币", "mktcap": 90.06, "ps": 3.54, "quoteDate": "2026-11-11"},
+    {"name": "永信至诚", "ticker": "688244", "region": "cn", "unit": "亿元人民币", "mktcap": 23.97, "ps": 8.68, "quoteDate": "2026-11-11"},
+    {"name": "任子行", "ticker": "300311", "region": "cn", "unit": "亿元人民币", "mktcap": 33.28, "ps": 6.81, "quoteDate": "2026-11-11"},
+    {"name": "启明星辰", "ticker": "002439", "region": "cn", "unit": "亿元人民币", "mktcap": 172.87, "ps": 7.39, "quoteDate": "2026-11-11"},
+    {"name": "美亚柏科", "ticker": "300188", "region": "cn", "unit": "亿元人民币", "mktcap": 92.05, "ps": 6.52, "quoteDate": "2026-11-11"},
+    {"name": "安恒信息", "ticker": "688023", "region": "cn", "unit": "亿元人民币", "mktcap": 44.10, "ps": 2.05, "quoteDate": "2026-11-11"},
+    {"name": "亚信安全", "ticker": "688225", "region": "cn", "unit": "亿元人民币", "mktcap": 61.28, "ps": 0.79, "quoteDate": "2026-11-11"},
+
+    {"name": "Palo Alto Networks", "ticker": "PANW", "region": "us", "unit": "亿美元", "mktcap": 2672.14, "ps": 23.28, "quoteDate": "2026-11-10"},
+    {"name": "Fortinet", "ticker": "FTNT", "region": "us", "unit": "亿美元", "mktcap": 907.88, "ps": 13.35, "quoteDate": "2026-11-10"},
+    {"name": "CrowdStrike", "ticker": "CRWD", "region": "us", "unit": "亿美元", "mktcap": 2316.59, "ps": 48.14, "quoteDate": "2026-11-10"},
+    {"name": "SentinelOne", "ticker": "S", "region": "us", "unit": "亿美元", "mktcap": 81.55, "ps": 8.15, "quoteDate": "2026-11-10"},
+    {"name": "Cloudflare", "ticker": "NET", "region": "us", "unit": "亿美元", "mktcap": 1095.96, "ps": 50.55, "quoteDate": "2026-11-10"},
+    {"name": "Zscaler", "ticker": "ZS", "region": "us", "unit": "亿美元", "mktcap": 317.83, "ps": 9.48, "quoteDate": "2026-11-10"},
+    {"name": "Okta", "ticker": "OKTA", "region": "us", "unit": "亿美元", "mktcap": 311.81, "ps": 10.68, "quoteDate": "2026-11-10"},
+    {"name": "Tenable", "ticker": "TENB", "region": "us", "unit": "亿美元", "mktcap": 43.85, "ps": 4.39, "quoteDate": "2026-11-10"},
+    {"name": "Rapid7", "ticker": "RPD", "region": "us", "unit": "亿美元", "mktcap": 9.93, "ps": 1.15, "quoteDate": "2026-11-10"},
+    {"name": "Qualys", "ticker": "QLYS", "region": "us", "unit": "亿美元", "mktcap": 61.13, "ps": 9.14, "quoteDate": "2026-11-10"},
+    {"name": "Gen Digital", "ticker": "GEN", "region": "us", "unit": "亿美元", "mktcap": 178.04, "ps": 3.56, "quoteDate": "2026-11-10"},
+
+    {"name": "Check Point", "ticker": "CHKP", "region": "other", "unit": "亿美元", "mktcap": 147.61, "ps": 5.42, "quoteDate": "2026-11-10"},
+    {"name": "Trend Micro", "ticker": "4704.T", "region": "other", "unit": "亿美元", "mktcap": 54.86, "ps": 3.16, "quoteDate": "2026-11-11", "mktcapJpyOku": 8718.15, "sharesOutstanding": 129792336, "priceJpy": 6717}
+  ],
+
+  "annuals": [
+    {"name": "三六零", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 86.93, "gm": 66.54, "ni": 2.63, "unit": "亿元人民币"},
+    {"name": "深信服", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 80.43, "gm": 59.31, "ni": 3.93, "unit": "亿元人民币"},
+    {"name": "天融信", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 25.72, "gm": 66.30, "ni": 0.74, "unit": "亿元人民币"},
+    {"name": "山石网科", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 9.11, "gm": 67.33, "ni": -1.94, "unit": "亿元人民币"},
+    {"name": "迪普科技", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 12.18, "gm": 62.87, "ni": 1.81, "unit": "亿元人民币"},
+    {"name": "奇安信", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 43.92, "gm": 50.32, "ni": -12.87, "unit": "亿元人民币"},
+    {"name": "绿盟科技", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 25.41, "gm": 53.88, "ni": -0.45, "unit": "亿元人民币"},
+    {"name": "永信至诚", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 2.76, "gm": 54.28, "ni": -0.49, "unit": "亿元人民币"},
+    {"name": "任子行", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 4.89, "gm": 66.72, "ni": 0.23, "unit": "亿元人民币"},
+    {"name": "启明星辰", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 23.38, "gm": 58.27, "ni": -5.72, "unit": "亿元人民币"},
+    {"name": "美亚柏科", "fy": "FY2025 · 2025年报（现名国投智能）", "fyEnd": "2025-12-31", "rev": 14.11, "gm": 31.99, "ni": -7.82, "unit": "亿元人民币"},
+    {"name": "安恒信息", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 21.51, "gm": 61.90, "ni": -0.57, "unit": "亿元人民币"},
+    {"name": "亚信安全", "fy": "FY2025 · 2025年报", "fyEnd": "2025-12-31", "rev": 77.41, "gm": 39.14, "ni": -4.46, "unit": "亿元人民币", "note": "2025年因业务整合并表，营收口径同比变动较大"},
+
+    {"name": "Palo Alto Networks", "fy": "FY2026（截至2026-07，US GAAP）", "fyEnd": "2026-07-31", "rev": 114.80, "gm": 70.4, "ni": 3.07, "unit": "亿美元", "annualUpdated": true, "gmSource": "公司FY2026财报新闻稿：全年毛利80.77亿/总营收114.80亿=70.4%"},
+    {"name": "Fortinet", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 68.00, "gm": 80.4, "ni": 18.53, "unit": "亿美元"},
+    {"name": "CrowdStrike", "fy": "FY2026（截至2026-01，US GAAP）", "fyEnd": "2026-01-31", "rev": 48.12, "gm": 74.7, "ni": -1.63, "unit": "亿美元"},
+    {"name": "SentinelOne", "fy": "FY2026（截至2026-01，US GAAP）", "fyEnd": "2026-01-31", "rev": 10.01, "gm": 74.1, "ni": -4.51, "unit": "亿美元"},
+    {"name": "Cloudflare", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 21.68, "gm": 74.5, "ni": -1.02, "unit": "亿美元"},
+    {"name": "Zscaler", "fy": "FY2026（截至2026-07，US GAAP）", "fyEnd": "2026-07-31", "rev": 33.53, "gm": 76.8, "ni": -0.63, "unit": "亿美元", "annualUpdated": true, "gmSource": "公司FY2026财报新闻稿GAAP口径：毛利25.749亿/营收33.525亿=76.8%"},
+    {"name": "Okta", "fy": "FY2026（截至2026-01，US GAAP）", "fyEnd": "2026-01-31", "rev": 29.19, "gm": 77.4, "ni": 2.35, "unit": "亿美元"},
+    {"name": "Tenable", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 9.99, "gm": 78.1, "ni": -0.36, "unit": "亿美元"},
+    {"name": "Rapid7", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 8.60, "gm": 70.3, "ni": 0.23, "unit": "亿美元"},
+    {"name": "Qualys", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 6.69, "gm": 82.9, "ni": 1.98, "unit": "亿美元"},
+    {"name": "Gen Digital", "fy": "FY2026（截至2026-04，52/53周财年，US GAAP）", "fyEnd": "2026-04-03", "rev": 50.00, "gm": 78.5, "ni": 9.73, "unit": "亿美元"},
+    {"name": "Check Point", "fy": "FY2025（截至2025-12，US GAAP）", "fyEnd": "2025-12-31", "rev": 27.25, "gm": 86.8, "ni": 10.57, "unit": "亿美元"},
+    {"name": "Trend Micro", "fy": "FY2025（截至2025-12，日本会计准则）", "fyEnd": "2025-12-31", "revJpyOku": 2759.8, "gm": 76.9, "niJpyOku": 345.2, "unit": "亿日元", "revUsdOku": 17.37, "niUsdOku": 2.17}
+  ],
+
+  "frozen": [
+    {"name": "CyberArk", "reason": "2024年被 Palo Alto Networks 收购并退市，无公开行情，沿用收购前 FY2024 年报，不刷新"},
+    {"name": "Sophos", "reason": "2020年 Thoma Bravo 私有化"},
+    {"name": "Kaspersky", "reason": "私营未上市"},
+    {"name": "Darktrace", "reason": "2024年 Thoma Bravo 私有化"},
+    {"name": "OneTrust", "reason": "私营，估值口径"},
+    {"name": "Mimecast", "reason": "2022年私有化"}
+  ]
+}
