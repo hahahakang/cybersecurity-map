@@ -95,7 +95,16 @@ const block =
 let html = fs.readFileSync(HTML_PATH, 'utf8');
 const markerRe = /(  |\t)*\/\/ __QUOTE_START__[\s\S]*?\/\/ __QUOTE_END__/;
 if (!markerRe.test(html)) fail('index.html 缺少 __QUOTE_START__/__QUOTE_END__ 标记');
-const next = html.replace(markerRe, block);
+let next = html.replace(markerRe, block);
+
+// ---- 3b. 同步各公司对象上的 val 字面量（仅替换数字、绝不触碰 fin/年报层），保证源码与运行时一致 ----
+function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+for (const q of quotes) {
+  const valRe = new RegExp("(\\{name:'" + escRe(q.name) + "'[^\\n]*?\\bval:)-?[0-9]+(?:\\.[0-9]+)?");
+  const hits = next.match(new RegExp(valRe.source, 'g')) || [];
+  if (hits.length !== 1) fail(q.name + ' 的 val 字面量锚点不唯一/缺失（命中 ' + hits.length + ' 处），中止以防误改');
+  next = next.replace(valRe, '$1' + q.mktcap.toFixed(2));
+}
 
 // ---- 4. 内联脚本语法编译校验（不执行 DOM）----
 const inlineMatches = [...next.matchAll(/<script(?![^>]*src)[^>]*>([\s\S]*?)<\/script>/g)];
