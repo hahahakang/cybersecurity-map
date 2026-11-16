@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>全球网络安全产业地图：格局・市值・演进 | Cybersecurity Industry Map</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="vendor/echarts.min.js"></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -355,8 +355,16 @@
     });
   }
 
-  // ===== ECharts初始化 =====
-  var chart = echarts.init(document.getElementById('mainChart'));
+  // ===== ECharts初始化（echarts 已改为本地同源加载；极端情况下未加载时安全降级，不阻断统计等其余脚本）=====
+  var chart = null;
+  if (typeof echarts !== 'undefined') {
+    chart = echarts.init(document.getElementById('mainChart'));
+  } else {
+    (function () {
+      var e = document.getElementById('mainChart');
+      if (e) { e.style.display = 'flex'; e.style.alignItems = 'center'; e.style.justifyContent = 'center'; e.style.color = '#94a3b8'; e.style.fontSize = '14px'; e.textContent = '图表库未能加载，请检查网络后刷新页面'; }
+    })();
+  }
   var currentMarket = 'cn';
 
   function getColor(catName) {
@@ -380,6 +388,7 @@
   }
 
   function renderChart(market) {
+    if (!chart) return;
     currentMarket = market;
     var isGlobal = (market === 'global');
     var rawData, unitLabel, levels;
@@ -600,7 +609,7 @@
   });
 
   // ===== 响应式 =====
-  window.addEventListener('resize', function(){ chart.resize(); });
+  window.addEventListener('resize', function(){ if (chart) chart.resize(); });
 
   // ===== 行情/来源日期注入 =====
   (function fillAsof(){
