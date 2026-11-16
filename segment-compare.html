@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AGI 安全行业 · 四大二级细分重点比较</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="vendor/echarts.min.js"></script>
 <style>
   :root{
     --ink:#16263a; --ink2:#3a4c63; --mut:#6b7a90; --line:#e3e9f2; --bg:#f4f7fb; --card:#ffffff;
@@ -296,6 +296,7 @@
 <script>
 const navy='#0f3a5f',s1c='#4a86a8',s2c='#1f6fb2',s3c='#c6452f',s4c='#7a6fb0',grey='#9fb0c3';
 // 中国柱状
+if (typeof echarts !== 'undefined') {
 echarts.init(document.getElementById('c_cn')).setOption({
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
   legend:{top:0,textStyle:{fontSize:12}},
@@ -331,6 +332,7 @@ echarts.init(document.getElementById('c_gl')).setOption({
   ]
 });
 window.addEventListener('resize',()=>{document.querySelectorAll('.chart').forEach(el=>{const i=echarts.getInstanceByDom(el);if(i)i.resize()})});
+}
 </script>
 </body>
 </html>
